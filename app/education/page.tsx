@@ -38,6 +38,10 @@ const educationTimeline = [
   },
 ]
 
+/**
+ * Coursework (reverse chronological for readability & impact)
+ * We reverse at render-time to keep source order human-friendly.
+ */
 const coursework = [
   {
     term: "Fall 2018",
@@ -153,6 +157,45 @@ const coursework = [
   },
 ]
 
+const collegeActivities = [
+  {
+    title: "Yale Student Investment Group",
+    role: "Investment Analyst",
+    bullets: [
+      "Produced one investment pitch each semester as part of a fund managing ~$500,000 on behalf of the university endowment",
+      "Won best pitch presenting a small-cap industrial stock for the Analyst Training Program conclusion (TGLS), now up 1000%+ since",
+    ],
+  },
+  {
+    title: "Elmseed Enterprise Fund",
+    role: "Project Head",
+    bullets: [
+      "Spearheaded consulting initiatives for local New Haven startups and provided strategic advice during weekly office hours",
+      "Helped a Korean food cart operationalize, a Filipino outlet launch pop-ups, and a Mediterranean restaurant start franchising",
+    ],
+  },
+  {
+    title: "Tsai CITY Accelerator Program",
+    role: "Alumnus",
+    bullets: ["Secured initial funding and mentorship opportunities (Fall ’21)"],
+  },
+  {
+    title: "Volunteer Income Tax Assistance (VITA)",
+    role: "Tax Preparer",
+    bullets: [
+      "Returned $150,000+ for 75 low-income New Haven residents by providing tax services as an IRS-certified volunteer",
+    ],
+  },
+  {
+    title: "Dwight Hall at Yale",
+    role: "Support Crew",
+    period: "Fall 2018",
+    bullets: [
+      "Organized logistics for FOCUS on New Haven, one of Yale's nine pre-orientation programs hosting 150 students",
+    ],
+  },
+]
+
 const testScores = [
   { test: "SAT", score: "1580", detail: "780 EBRW, 800 Math" },
   { test: "SAT Essay", score: "24/24", detail: "Perfect score" },
@@ -216,7 +259,7 @@ const honors = [
   { title: "Johns Hopkins Book Award", organization: "Miami Palmetto Senior High School", year: "2017" },
 ]
 
-// HS extracurriculars moved here; tags already styled with gray background
+// High school extracurriculars (kept with gray tags)
 const extracurriculars = [
   {
     title: "National Honor Society",
@@ -309,7 +352,7 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* Coursework (vertical) */}
+          {/* Coursework (reverse chronological, vertical) */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-8">
               <Library className="w-5 h-5 text-primary" />
@@ -317,7 +360,7 @@ export default function EducationPage() {
             </div>
 
             <div className="space-y-6">
-              {coursework.map((block) => (
+              {[...coursework].reverse().map((block) => (
                 <div key={block.term} className="bg-card border border-border rounded-xl p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-medium text-foreground">{block.term}</h3>
@@ -332,13 +375,48 @@ export default function EducationPage() {
                           {c.code}: {c.title}
                         </p>
                         {c.instructors.length > 0 && (
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {c.instructors.join(", ")}
-                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">{c.instructors.join(", ")}</p>
                         )}
                       </div>
                     ))}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* College Extracurriculars */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <Users className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">College Extracurriculars</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {collegeActivities.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-card border border-border rounded-xl p-6 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-base font-medium group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-primary">{item.role}</p>
+                    </div>
+                    {item.period && (
+                      <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
+                        {item.period}
+                      </span>
+                    )}
+                  </div>
+                  <ul className="list-disc pl-5 space-y-2">
+                    {item.bullets.map((b, i) => (
+                      <li key={i} className="text-sm text-muted-foreground leading-relaxed">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -394,11 +472,11 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* Extracurriculars */}
+          {/* High School Extracurriculars */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-8">
               <Users className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Extracurriculars</h2>
+              <h2 className="text-2xl font-light text-foreground">High School Extracurriculars</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {extracurriculars.map((item, idx) => (

@@ -98,6 +98,11 @@ const projects: ProjectItem[] = [
     ],
   },
   {
+    title: "Tsai CITY Accelerator",
+    period: "Sep 2021 - Nov 2021",
+    bullets: ["Secured initial funding and mentorship opportunities (Fall ’21)"],
+  },
+  {
     title: "Tutoring for Tomorrow",
     period: "Aug 2015 - May 2021",
     bullets: [
