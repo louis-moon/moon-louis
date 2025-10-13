@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]   # or your default branch
   workflow_dispatch:
 
 permissions:
@@ -12,44 +12,28 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "pnpm"
 
-      - name: Use pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@8 --activate
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build   # creates ./out with .nojekyll and _next assets
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile=false
-
-      - name: Build (Next static export via output:'export')
-        env:
-          NEXT_TELEMETRY_DISABLED: "1"
-          GITHUB_PAGES: "true"
-        run: pnpm build
-
-      - name: Verify export folder
-        run: |
-          if [ ! -d out ]; then
-            echo "::error::Expected ./out folder not found. Ensure next.config.mjs has: export default { output: 'export' }"
-            ls -la
-            exit 1
-          fi
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # Upload the ./out folder (includes dotfiles like .nojekyll)
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
@@ -60,6 +44,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
