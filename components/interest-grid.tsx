@@ -1,328 +1,257 @@
 "use client"
 
 import { useState } from "react"
-import type { LucideIcon } from "lucide-react"
-import {
-  Music,
-  Film,
-  Tv,
-  Book,
-  MapPin,
-  Trophy,
-  Mountain,
-  Utensils,
-  Users,
-  GraduationCap,
-  Gamepad2,
-  Palette,
-  Plane,
-  X,
-} from "lucide-react"
+import { Music, Film, Tv, Book, Trophy, Plane, Coffee, Utensils, Heart, X, Palette, GraduationCap, Gamepad2, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-type Section = {
-  title: string
-  items: string[] // exactly 3
-}
-
-type Tile = {
-  id: string
-  title: string
-  icon: LucideIcon
-  color: string
-  borderColor: string
-  sections: [Section, Section, Section] // exactly 3
-}
-
 /**
- * 3 × 3 tiles. Each tile expands to 3 categories, each with 3 items.
- * Total: 9 tiles, 27 categories, 81 items.
+ * Notes for mobile polish:
+ * - Fixed square tiles with consistent internal layout
+ * - Icons sized with a wrapper so they don’t jump around
+ * - Tighter leading/line-clamp to avoid awkward wraps on small screens
  */
-const tiles: Tile[] = [
-  // 1) Entertainment A
+
+const interestCategories = [
   {
-    id: "entertainment-a",
-    title: "Music • Movies • TV",
+    id: "music-movies",
+    title: "Music • Movies",
     icon: Music,
     color: "from-blue-500/10 to-blue-600/10 hover:from-blue-500/20 hover:to-blue-600/20",
     borderColor: "hover:border-blue-500/50",
-    sections: [
-      {
-        title: "Music",
-        items: ["Juice WRLD (Rap)", "The Chainsmokers (EDM)", "HONNE (Pop)"],
-      },
-      {
-        title: "Movies",
-        items: ["Manchester by the Sea", "La La Land", "The Lion King"],
-      },
-      {
-        title: "TV Shows",
-        items: ["Ozark", "Monster", "Chernobyl"],
-      },
+    items: [
+      { label: "Juice WRLD", category: "Music" },
+      { label: "The Chainsmokers", category: "Music" },
+      { label: "HONNE", category: "Music" },
+      { label: "Manchester by the Sea", category: "Movies" },
+      { label: "La La Land", category: "Movies" },
+      { label: "The Lion King", category: "Movies" },
     ],
   },
-
-  // 2) Books & Places (Favorites)
   {
-    id: "books-places",
-    title: "Books • Cities • Spots",
+    id: "books-cities",
+    title: "Books • Cities",
     icon: Book,
     color: "from-amber-500/10 to-amber-600/10 hover:from-amber-500/20 hover:to-amber-600/20",
     borderColor: "hover:border-amber-500/50",
-    sections: [
-      {
-        title: "Favorite Books",
-        items: ["Eragon", "When Breath Becomes Air", "The Stranger"],
-      },
-      {
-        title: "Favorite Cities",
-        items: ["Banff", "Haeundae", "Puerto Ayora"],
-      },
-      {
-        title: "Favorite Spots",
-        items: ["South Beach", "East Rock", "Bar Harbor"],
-      },
+    items: [
+      { label: "Eragon", category: "Books" },
+      { label: "When Breath Becomes Air", category: "Books" },
+      { label: "The Stranger", category: "Books" },
+      { label: "Banff", category: "Cities" },
+      { label: "Haeundae", category: "Cities" },
+      { label: "Puerto Ayora", category: "Cities" },
     ],
   },
-
-  // 3) Sports
   {
-    id: "sports",
-    title: "Ball • Non-ball • Outdoor",
+    id: "ball-nonball",
+    title: "Ball • Non-ball",
     icon: Trophy,
     color: "from-green-500/10 to-green-600/10 hover:from-green-500/20 hover:to-green-600/20",
     borderColor: "hover:border-green-500/50",
-    sections: [
-      {
-        title: "Ball Sports",
-        items: ["Tennis", "Golf", "Basketball"],
-      },
-      {
-        title: "Non-ball Sports",
-        items: ["Running", "Frisbee", "Cycling"],
-      },
-      {
-        title: "Outdoor Activities",
-        items: ["Fishing", "Skiing", "Hiking"],
-      },
+    items: [
+      { label: "Tennis", category: "Ball Sports" },
+      { label: "Golf", category: "Ball Sports" },
+      { label: "Basketball", category: "Ball Sports" },
+      { label: "Running", category: "Non-ball Sports" },
+      { label: "Frisbee", category: "Non-ball Sports" },
+      { label: "Cycling", category: "Non-ball Sports" },
     ],
   },
-
-  // 4) Food & Drink
   {
     id: "food-drink",
-    title: "Food • Drink • Alcohol",
+    title: "Food • Drink",
     icon: Utensils,
     color: "from-rose-500/10 to-rose-600/10 hover:from-rose-500/20 hover:to-rose-600/20",
     borderColor: "hover:border-rose-500/50",
-    sections: [
-      {
-        title: "Food",
-        items: ["Risotto", "Tiramisu", "Dim Sum"],
-      },
-      {
-        title: "Drink",
-        items: ["Sprite", "Cold Brew", "Apple Juice"],
-      },
-      {
-        title: "Alcohol",
-        items: ["Sangria", "High Noon", "Don’t like beer"],
-      },
+    items: [
+      { label: "Risotto", category: "Food" },
+      { label: "Tiramisu", category: "Food" },
+      { label: "Dim Sum", category: "Food" },
+      { label: "Sprite", category: "Drink" },
+      { label: "Cold Brew", category: "Drink" },
+      { label: "Apple Juice", category: "Drink" },
+      { label: "Sangria", category: "Alcohol" },
+      { label: "High Noon", category: "Alcohol" },
+      { label: "Don’t like beer", category: "Alcohol" },
     ],
   },
-
-  // 5) Travel & Nature
   {
-    id: "travel-nature",
-    title: "Wish List • Pets • Animals",
+    id: "wishlist-pets",
+    title: "Wish List • Pets",
     icon: Plane,
     color: "from-cyan-500/10 to-cyan-600/10 hover:from-cyan-500/20 hover:to-cyan-600/20",
     borderColor: "hover:border-cyan-500/50",
-    sections: [
-      {
-        title: "Travel Wish List",
-        items: ["Germany", "Alaska", "Spain"],
-      },
-      {
-        title: "Pet Wishlist",
-        items: ["Golden Retriever", "British Shorthair", "French Bulldog"],
-      },
-      {
-        title: "Favorite Animals",
-        items: ["Polar Bears", "Dragons", "Lions"],
-      },
+    items: [
+      { label: "Germany", category: "Wish List" },
+      { label: "Alaska", category: "Wish List" },
+      { label: "Spain", category: "Wish List" },
+      { label: "Golden Retriever", category: "Pets" },
+      { label: "British Shorthair", category: "Pets" },
+      { label: "French Bulldog", category: "Pets" },
+      { label: "South Beach", category: "Spots" },
+      { label: "East Rock", category: "Spots" },
+      { label: "Bar Harbor", category: "Spots" },
     ],
   },
-
-  // 6) People
   {
-    id: "people",
-    title: "Actors • Athletes • Figures",
-    icon: Users,
-    color: "from-violet-500/10 to-violet-600/10 hover:from-violet-500/20 hover:to-violet-600/20",
-    borderColor: "hover:border-violet-500/50",
-    sections: [
-      {
-        title: "Favorite Actors",
-        items: ["Emily Blunt", "Ryan Gosling", "Brad Pitt"],
-      },
-      {
-        title: "Favorite Athletes",
-        items: ["Victor Wembanyama", "Lewis Hamilton", "Roger Federer"],
-      },
-      {
-        title: "Inspirational Figures",
-        items: ["Janet Yellen", "Richard Feynman", "Jim Simons"],
-      },
+    id: "actors-athletes",
+    title: "Actors • Athletes",
+    icon: Heart,
+    color: "from-pink-500/10 to-pink-600/10 hover:from-pink-500/20 hover:to-pink-600/20",
+    borderColor: "hover:border-pink-500/50",
+    items: [
+      { label: "Emily Blunt", category: "Actors" },
+      { label: "Ryan Gosling", category: "Actors" },
+      { label: "Brad Pitt", category: "Actors" },
+      { label: "Victor Wembanyama", category: "Athletes" },
+      { label: "Lewis Hamilton", category: "Athletes" },
+      { label: "Roger Federer", category: "Athletes" },
+      { label: "Janet Yellen", category: "Figures" },
+      { label: "Richard Feynman", category: "Figures" },
+      { label: "Jim Simons", category: "Figures" },
     ],
   },
-
-  // 7) Academic & Goals
   {
-    id: "academics-goals",
-    title: "Majors • Passions • Learn",
+    id: "majors-passions",
+    title: "Majors • Passions",
     icon: GraduationCap,
-    color: "from-sky-500/10 to-sky-600/10 hover:from-sky-500/20 hover:to-sky-600/20",
-    borderColor: "hover:border-sky-500/50",
-    sections: [
-      {
-        title: "What I Would Major In",
-        items: ["Philosophy", "Global Affairs", "Statistics"],
-      },
-      {
-        title: "Passions",
-        items: ["Science & Technology", "Environment", "Education"],
-      },
-      {
-        title: "Things to Learn / Work On",
-        items: ["Spanish", "Relationships", "Korean"],
-      },
-    ],
-  },
-
-  // 8) Games
-  {
-    id: "games",
-    title: "Video • Card/Board • Recreation",
-    icon: Gamepad2,
     color: "from-indigo-500/10 to-indigo-600/10 hover:from-indigo-500/20 hover:to-indigo-600/20",
     borderColor: "hover:border-indigo-500/50",
-    sections: [
-      {
-        title: "Video Games",
-        items: ["Roblox", "FIFA", "Clash of Clans"],
-      },
-      {
-        title: "Card / Board Games",
-        items: ["Poker", "Egyptian Rat Screw", "Chess"],
-      },
-      {
-        title: "Other Games / Recreation",
-        items: ["Bowling", "Tetris", "Super Smash Bros."],
-      },
+    items: [
+      { label: "Philosophy", category: "Majors" },
+      { label: "Global Affairs", category: "Majors" },
+      { label: "Statistics", category: "Majors" },
+      { label: "Science & Technology", category: "Passions" },
+      { label: "Environment", category: "Passions" },
+      { label: "Education", category: "Passions" },
+      { label: "Spanish", category: "Learn / Work On" },
+      { label: "Relationships", category: "Learn / Work On" },
+      { label: "Korean", category: "Learn / Work On" },
     ],
   },
-
-  // 9) Creative
   {
-    id: "creative",
-    title: "Written • Visual • Music",
+    id: "video-cardboard",
+    title: "Video • Card/Board",
+    icon: Gamepad2,
+    color: "from-blue-400/10 to-blue-500/10 hover:from-blue-400/20 hover:to-blue-500/20",
+    borderColor: "hover:border-blue-500/50",
+    items: [
+      { label: "Roblox", category: "Video Games" },
+      { label: "FIFA", category: "Video Games" },
+      { label: "Clash of Clans", category: "Video Games" },
+      { label: "Poker", category: "Card/Board" },
+      { label: "Egyptian Rat Screw", category: "Card/Board" },
+      { label: "Chess", category: "Card/Board" },
+      { label: "Bowling", category: "Recreation" },
+      { label: "Tetris", category: "Recreation" },
+      { label: "Super Smash Bros.", category: "Recreation" },
+    ],
+  },
+  {
+    id: "written-visual",
+    title: "Written • Visual",
     icon: Palette,
     color: "from-teal-500/10 to-teal-600/10 hover:from-teal-500/20 hover:to-teal-600/20",
     borderColor: "hover:border-teal-500/50",
-    sections: [
-      {
-        title: "Creative (Written)",
-        items: ["Journaling", "Reading", "Poetry"],
-      },
-      {
-        title: "Creative (Visual)",
-        items: ["Video Editing", "Photography", "Art"],
-      },
-      {
-        title: "Creative (Music)",
-        items: ["Songwriting", "Jazz", "Freestyling"],
-      },
+    items: [
+      { label: "Journaling", category: "Written" },
+      { label: "Reading", category: "Written" },
+      { label: "Poetry", category: "Written" },
+      { label: "Video Editing", category: "Visual" },
+      { label: "Photography", category: "Visual" },
+      { label: "Art", category: "Visual" },
+      { label: "Songwriting", category: "Music" },
+      { label: "Jazz", category: "Music" },
+      { label: "Freestyling", category: "Music" },
     ],
   },
 ]
 
 export function InterestGrid() {
-  const [selectedId, setSelectedId] = useState<string | null>(null)
-  const selected = tiles.find((t) => t.id === selectedId) ?? null
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const selected = interestCategories.find((cat) => cat.id === selectedCategory)
 
   return (
     <div className="relative">
-      {/* 3 × 3 grid */}
-      <div className="grid grid-cols-3 gap-4 md:gap-6">
-        {tiles.map((tile) => {
-          const Icon = tile.icon
+      {/* Grid — keep 3x3 always, but improve legibility on small screens */}
+      <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+        {interestCategories.map((category) => {
+          const Icon = category.icon
           return (
             <button
-              key={tile.id}
-              onClick={() => setSelectedId(tile.id)}
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
               className={cn(
-                "aspect-square bg-gradient-to-br border border-border rounded-xl p-6 transition-all duration-300 group relative overflow-hidden",
-                tile.color,
-                tile.borderColor,
-                selectedId === tile.id && "scale-95 opacity-50",
+                "aspect-square rounded-xl border border-border bg-gradient-to-br p-3 sm:p-4 transition-all duration-300 group relative overflow-hidden",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+                category.color,
+                category.borderColor,
+                selectedCategory === category.id && "scale-95 opacity-60"
               )}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative h-full flex flex-col items-center justify-center gap-3">
-                <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary group-hover:scale-110 transition-transform" />
-                <p className="text-sm md:text-base font-medium text-foreground text-center">{tile.title}</p>
+              <div className="relative h-full w-full flex flex-col items-center justify-center gap-2">
+                {/* Icon wrapper fixes tiny/misaligned icons on iOS Safari */}
+                <div className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 flex items-center justify-center">
+                  <Icon className="h-full w-full text-primary group-hover:scale-110 transition-transform" />
+                </div>
+                <p className="text-center font-medium text-foreground leading-tight text-sm sm:text-base line-clamp-2">
+                  {category.title}
+                </p>
               </div>
             </button>
           )
         })}
       </div>
 
-      {/* Modal */}
+      {/* Modal overlay */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-in fade-in duration-200"
-          onClick={() => setSelectedId(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-6 animate-in fade-in duration-200"
+          onClick={() => setSelectedCategory(null)}
         >
           <div
-            className="bg-card border border-border rounded-2xl p-8 max-w-3xl w-full max-h-[85vh] overflow-y-auto animate-in zoom-in-95 duration-200"
+            className="w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl border border-border bg-card p-6 sm:p-8 animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between mb-6">
+            <div className="mb-6 flex items-start justify-between">
               <div className="flex items-center gap-3">
                 {(() => {
-                  const SelectedIcon: LucideIcon = selected.icon
-                  return <SelectedIcon className="w-6 h-6 text-primary" />
+                  const SelectedIcon = selected.icon
+                  return <SelectedIcon className="h-6 w-6 text-primary" />
                 })()}
                 <h3 className="text-2xl font-medium text-foreground">{selected.title}</h3>
               </div>
               <button
-                onClick={() => setSelectedId(null)}
+                onClick={() => setSelectedCategory(null)}
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Close"
               >
-                <X className="w-5 h-5" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
-            {/* 3 sections × 3 items each */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {selected.sections.map((section) => (
-                <div
-                  key={section.title}
-                  className="bg-card/40 border border-border rounded-xl p-5 hover:border-primary transition-colors"
-                >
-                  <h4 className="text-sm font-medium text-primary mb-3">{section.title}</h4>
-                  <ul className="space-y-2">
-                    {section.items.map((item) => (
-                      <li
-                        key={item}
-                        className="text-sm text-foreground bg-secondary px-3 py-1.5 rounded-lg border border-border"
+            {/* Group by subcategory */}
+            <div className="space-y-4">
+              {Object.entries(
+                selected.items.reduce((acc, item) => {
+                  if (!acc[item.category]) acc[item.category] = []
+                  acc[item.category].push(item.label)
+                  return acc
+                }, {} as Record<string, string[]>)
+              ).map(([category, items]) => (
+                <div key={category}>
+                  <h4 className="mb-2 text-sm font-medium text-primary">{category}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {items.map((item, i) => (
+                      <span
+                        key={i}
+                        className="rounded-lg border border-border bg-secondary px-3 py-1.5 text-sm text-foreground"
                       >
                         {item}
-                      </li>
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               ))}
             </div>

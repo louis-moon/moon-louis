@@ -2,7 +2,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
-
+@layer base {
+  nav { padding-top: max(env(safe-area-inset-top), 0px); }
+}
 /* ----- Design Tokens (light) ----- */
 :root {
   /* Blue-tinted elegant palette */
