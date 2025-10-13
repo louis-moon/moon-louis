@@ -9,7 +9,7 @@ const educationTimeline = [
     period: "2018 - 2022",
     focus: "Statistics & Data Science",
     description:
-      "Interdisciplinary learning focused on understanding how complex systems function and resolving pressing socioeconomic issues.",
+      "Interdisciplinary learning focused on understanding how complex systems function.",
     highlights: [
       "Alpha Epsilon Pi",
       "Tsai CITY Accelerator",
