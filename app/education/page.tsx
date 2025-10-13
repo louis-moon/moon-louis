@@ -15,16 +15,6 @@ const educationTimeline = [
       "Tsai CITY Accelerator",
     ],
   },
-  // NEW: Yale Young Global Scholars (Summer Program)
-  {
-    institution: "Yale Young Global Scholars",
-    degree: "Summer Program",
-    period: "Jul 2016 - Aug 2016",
-    focus: "Technology, Innovation & Entrepreneurship • Jonathan Edwards College",
-    description:
-      "Summer academic program at Yale University emphasizing innovation, venture thinking, and interdisciplinary collaboration.",
-    highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
-  },
   {
     institution: "Miami Palmetto Senior High School",
     degree: "High School Diploma",
@@ -40,6 +30,15 @@ const educationTimeline = [
     focus: "Advanced Mathematics",
     description: "Completed Calculus III and Introduction to Differential Equations while in high school.",
     highlights: ["Calculus and Analytic Geometry III", "Introduction to Differential Equations"],
+  },
+  {
+    institution: "Yale Young Global Scholars",
+    degree: "Summer Program",
+    period: "Jul 2016 - Aug 2016",
+    focus: "Technology, Innovation & Entrepreneurship • Jonathan Edwards College",
+    description:
+      "Summer academic program at Yale University emphasizing innovation, venture thinking, and interdisciplinary collaboration.",
+    highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
   },
 ]
 
