@@ -17,15 +17,16 @@ export default function HomePage() {
               Exploring the intersections of policy, data, and human experience.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
               <Link
                 href="/professional"
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Professional Experience
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">Explore my work history and projects</p>
+                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Professional</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Applying analytical thinking, strategic creativity, and collaborative leadership to solve real-world
+                  challenges and drive meaningful impact.
+                </p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -42,9 +43,7 @@ export default function HomePage() {
                 href="/personal"
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Personal Interests
-                </h3>
+                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Personal</h3>
                 <p className="text-sm text-muted-foreground mb-4">Discover what inspires and drives me</p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -53,8 +52,19 @@ export default function HomePage() {
                 href="/media"
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Media & Essays</h3>
-                <p className="text-sm text-muted-foreground mb-4">Photography, videos, and written work</p>
+                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Media</h3>
+                <p className="text-sm text-muted-foreground mb-4">Photos and videos of memories with friends and family</p>
+                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                href="/essays"
+                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
+              >
+                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Essays</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Reflections on personal growth, academics, and places that shaped my perspective
+                </p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
