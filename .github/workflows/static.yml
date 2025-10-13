@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile=false
 
-      - name: Build (Next static export via output: 'export')
+      - name: Build (Next static export via output:'export')
         env:
           NEXT_TELEMETRY_DISABLED: "1"
           GITHUB_PAGES: "true"
