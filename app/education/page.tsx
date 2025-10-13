@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { GraduationCap, Award, BookOpen, Users } from "lucide-react"
+import { GraduationCap, Award, BookOpen, Users, Library } from "lucide-react"
 
 const educationTimeline = [
   {
@@ -8,19 +8,16 @@ const educationTimeline = [
     degree: "Bachelor of Science",
     period: "2018 - 2023",
     focus: "Statistics & Data Science",
-    description:
-      "Interdisciplinary learning focused on understanding how complex systems function.",
-    highlights: [
-      "Alpha Epsilon Pi",
-      "Tsai CITY Accelerator",
-    ],
+    description: "Interdisciplinary learning focused on understanding how complex systems function.",
+    highlights: ["Alpha Epsilon Pi", "Tsai CITY Accelerator"],
   },
   {
     institution: "Miami Palmetto Senior High School",
     degree: "High School Diploma",
     period: "2014 - 2018",
     focus: "Summa Cum Laude",
-    description: "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
+    description:
+      "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
     highlights: ["3rd in class of 673 students", "National Merit Scholar"],
   },
   {
@@ -36,9 +33,123 @@ const educationTimeline = [
     degree: "Summer Program",
     period: "Jul 2016 - Aug 2016",
     focus: "Technology, Innovation & Entrepreneurship",
-    description:
-      "Innovation, venture thinking, and interdisciplinary collaboration.",
+    description: "Innovation, venture thinking, and interdisciplinary collaboration.",
     highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
+  },
+]
+
+const coursework = [
+  {
+    term: "Fall 2018",
+    courses: [
+      {
+        code: "ECON 115",
+        title: "Introductory Microeconomics",
+        instructors: ["P. Goldberg", "D. Morar", "S. Oster"],
+      },
+      {
+        code: "ENGL 120",
+        title: "Reading & Writing the Modern Essay",
+        instructors: ["A. Sexton"],
+      },
+      {
+        code: "MATH 222",
+        title: "Linear Algebra with Applications",
+        instructors: ["C. Uyanik"],
+      },
+      {
+        code: "SPAN 243",
+        title: "Advanced Spanish Grammar",
+        instructors: ["M. Asensio-Manrique"],
+      },
+    ],
+  },
+  {
+    term: "Spring 2019",
+    courses: [
+      { code: "ECON 159", title: "Game Theory", instructors: ["M. Halal"] },
+      { code: "ENAS 151", title: "Multivariable Calculus for Engineers", instructors: ["B. Bennett"] },
+      {
+        code: "PHIL 126",
+        title: "Intro to Modern Philosophy: Descartes to Kant",
+        instructors: ["M. Della Rocca"],
+      },
+      { code: "PSYC 110", title: "Introduction to Psychology", instructors: ["M. Chun", "N. Córdova Sánchez"] },
+      { code: "S&DS 230", title: "Data Exploration and Analysis", instructors: ["J. Reuning-Scherer"] },
+    ],
+  },
+  {
+    term: "Fall 2019",
+    courses: [
+      { code: "ECON 117", title: "Intro Data Analysis & Econometrics", instructors: ["N. Ryan"] },
+      { code: "ENAS 130", title: "Computing for Engineers & Scientists", instructors: ["B. Bennett"] },
+      { code: "KREN 132", title: "Intermediate Korean for Advanced Learners I", instructors: ["S. Choi"] },
+      { code: "S&DS 241", title: "Probability Theory", instructors: ["W. Lin"] },
+    ],
+  },
+  {
+    term: "Spring 2020",
+    courses: [
+      { code: "ASTR 130", title: "Origins and Search for Life in the Universe", instructors: ["D. Fischer"] },
+      { code: "KREN 142", title: "Intermediate Korean for Advanced Learners II", instructors: ["A. Lee-Smith"] },
+      { code: "S&DS 242", title: "Theory of Statistics", instructors: ["Z. Fan"] },
+      {
+        code: "S&DS 363",
+        title: "Multivariate Statistics for Social Sciences",
+        instructors: ["J. Reuning-Scherer"],
+      },
+    ],
+  },
+  {
+    term: "Fall 2020",
+    courses: [
+      { code: "ARCG 161", title: "Art & Myth in Greek Antiquity", instructors: ["M. Gaifman"] },
+      { code: "ECON 251", title: "Financial Economics", instructors: ["E. Davila"] },
+      { code: "S&DS 312", title: "Linear Models", instructors: ["J. Emerson"] },
+      { code: "S&DS 365", title: "Data Mining & Machine Learning", instructors: ["S. Negahban"] },
+    ],
+  },
+  {
+    term: "Spring 2021",
+    courses: [
+      { code: "ASTR 160", title: "Frontiers & Controversies in Astrophysics", instructors: ["M. Geha"] },
+      { code: "ENGL 114", title: "Kid Power", instructors: ["H. Klemann"] },
+      { code: "MATH 244", title: "Discrete Mathematics", instructors: ["A. Pohoata"] },
+      { code: "S&DS 674", title: "Applied Spatial Statistics", instructors: ["T. Gregoire"] },
+    ],
+  },
+  {
+    term: "Summer 2021",
+    courses: [{ code: "EDST S255", title: "Education and Housing Policy", instructors: ["R. Barnes"] }],
+  },
+  {
+    term: "Summer 2022",
+    courses: [
+      { code: "ASTR S110E", title: "Planets and Stars", instructors: ["M. Faison"] },
+      { code: "FILM S274", title: "Global Hollywood", instructors: ["X. Sawada"] },
+    ],
+  },
+  {
+    term: "Fall 2022",
+    courses: [
+      { code: "E&EB 250", title: "Biology of Terrestrial Arthropods", instructors: ["M. Wells"] },
+      { code: "KREN 152", title: "Advanced Korean for Advanced Learners", instructors: ["A. Lee-Smith"] },
+      { code: "MATH 244", title: "Discrete Mathematics", instructors: ["D. Douglas"] },
+      { code: "PSYC 160", title: "The Human Brain", instructors: ["G. McCarthy"] },
+    ],
+  },
+  {
+    term: "Spring 2023",
+    courses: [
+      { code: "LING 227", title: "Language and Computation I", instructors: [] },
+      {
+        code: "PSYC 258",
+        title: "Computational Methods in Human Neuroscience",
+        instructors: ["N. Turk-Browne"],
+      },
+      { code: "S&DS 361", title: "Data Analysis", instructors: ["B. Macdonald"] },
+      { code: "S&DS 492", title: "Senior Project", instructors: ["H. Seo"] },
+    ],
   },
 ]
 
@@ -48,21 +159,37 @@ const testScores = [
   { test: "SAT Subject Tests", score: "2400", detail: "800 Math II, Chemistry, US History" },
 ]
 
+// Expanded AP list (chronological)
 const apScores = [
-  { subject: "Calculus BC", score: 5, year: 2016 },
+  // 2015
   { subject: "World History", score: 5, year: 2015 },
   { subject: "Human Geography", score: 5, year: 2015 },
-  { subject: "Spanish Language", score: 5, year: 2016 },
-  { subject: "Environmental Science", score: 5, year: 2017 },
-  { subject: "United States History", score: 5, year: 2017 },
-  { subject: "Physics C Mechanics", score: 5, year: 2017 },
-  { subject: "Physics C E&M", score: 5, year: 2017 },
-  { subject: "English Language", score: 5, year: 2017 },
-  { subject: "Statistics", score: 5, year: 2017 },
+
+  // 2016
   { subject: "Chemistry", score: 4, year: 2016 },
+  { subject: "Spanish Language", score: 5, year: 2016 },
   { subject: "Physics 1", score: 4, year: 2016 },
+  { subject: "Calculus BC", score: 5, year: 2016 },
+  { subject: "Calculus BC — AB Subscore", score: 5, year: 2016 },
   { subject: "European History", score: 4, year: 2016 },
+
+  // 2017
+  { subject: "Environmental Science", score: 5, year: 2017 },
   { subject: "Computer Science A", score: 4, year: 2017 },
+  { subject: "United States History", score: 5, year: 2017 },
+  { subject: "Physics C: Mechanics", score: 5, year: 2017 },
+  { subject: "Physics C: Electricity & Magnetism", score: 5, year: 2017 },
+  { subject: "English Language & Composition", score: 5, year: 2017 },
+  { subject: "Statistics", score: 5, year: 2017 },
+
+  // 2018
+  { subject: "Art History", score: 3, year: 2018 },
+  { subject: "Psychology", score: 4, year: 2018 },
+  { subject: "Biology", score: 3, year: 2018 },
+  { subject: "English Literature & Composition", score: 5, year: 2018 },
+  { subject: "United States Government & Politics", score: 3, year: 2018 },
+  { subject: "Macroeconomics", score: 5, year: 2018 },
+  { subject: "Microeconomics", score: 5, year: 2018 },
 ]
 
 const honors = [
@@ -89,7 +216,7 @@ const honors = [
   { title: "Johns Hopkins Book Award", organization: "Miami Palmetto Senior High School", year: "2017" },
 ]
 
-// HS extracurriculars moved here (unchanged content, updated tag style)
+// HS extracurriculars moved here; tags already styled with gray background
 const extracurriculars = [
   {
     title: "National Honor Society",
@@ -131,6 +258,7 @@ export default function EducationPage() {
       <Navigation />
       <main className="min-h-screen pt-24 px-6 pb-20">
         <div className="max-w-7xl mx-auto">
+          {/* Header */}
           <div className="animate-fade-in mb-16">
             <div className="flex items-center gap-3 mb-4">
               <GraduationCap className="w-6 h-6 text-primary" />
@@ -143,7 +271,7 @@ export default function EducationPage() {
             </p>
           </div>
 
-          {/* Academic Timeline */}
+          {/* Academic Timeline (horizontal) */}
           <div className="mb-20">
             <h2 className="text-2xl font-light mb-8 text-foreground">Academic Timeline</h2>
             <div className="relative">
@@ -181,7 +309,42 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* Test Scores */}
+          {/* Coursework (vertical) */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <Library className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">Coursework</h2>
+            </div>
+
+            <div className="space-y-6">
+              {coursework.map((block) => (
+                <div key={block.term} className="bg-card border border-border rounded-xl p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-medium text-foreground">{block.term}</h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {block.courses.map((c) => (
+                      <div
+                        key={`${block.term}-${c.code}`}
+                        className="rounded-lg border border-border bg-secondary p-4"
+                      >
+                        <p className="text-sm font-medium text-foreground">
+                          {c.code}: {c.title}
+                        </p>
+                        {c.instructors.length > 0 && (
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {c.instructors.join(", ")}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Standardized Testing */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-8">
               <BookOpen className="w-5 h-5 text-primary" />
@@ -201,7 +364,7 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* AP Scores */}
+          {/* AP Scores (chronological horizontal scroll) */}
           <div className="mb-20">
             <h2 className="text-2xl font-light mb-8 text-foreground">Advanced Placement Examinations</h2>
             <div className="relative">
@@ -209,13 +372,15 @@ export default function EducationPage() {
                 <div className="flex gap-4 min-w-max">
                   {apScores.map((ap, index) => (
                     <div
-                      key={index}
-                      className="w-[200px] flex-shrink-0 bg-card border border-border rounded-lg p-4 hover:border-primary transition-all"
+                      key={`${ap.subject}-${index}`}
+                      className="w-[240px] flex-shrink-0 bg-card border border-border rounded-lg p-4 hover:border-primary transition-all"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <p className="text-sm font-medium text-foreground">{ap.subject}</p>
                         <span
-                          className={`text-lg font-medium ${ap.score === 5 ? "text-primary" : "text-muted-foreground"}`}
+                          className={`text-lg font-medium ${
+                            ap.score >= 5 ? "text-primary" : ap.score === 4 ? "text-foreground" : "text-muted-foreground"
+                          }`}
                         >
                           {ap.score}
                         </span>
