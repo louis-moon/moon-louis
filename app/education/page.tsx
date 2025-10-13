@@ -86,7 +86,7 @@ const honors = [
     organization: "National Conservation Foundation",
     year: "2017",
   },
-  { title: "Johns Hopkins Book Award", organization: "Johns Hopkins University", year: "2017" },
+  { title: "Johns Hopkins Book Award", organization: "Miami Palmetto Senior High School", year: "2017" },
 ]
 
 // HS extracurriculars moved here (unchanged content, updated tag style)
