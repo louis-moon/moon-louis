@@ -53,7 +53,7 @@ export default function HomePage() {
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Media</h3>
-                <p className="text-sm text-muted-foreground mb-4">Photos and videos of memories with friends and family</p>
+                <p className="text-sm text-muted-foreground mb-4">Photos and videos of friends and family</p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -63,7 +63,7 @@ export default function HomePage() {
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Essays</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Reflections on personal growth, academics, and places that shaped my perspective
+                  Reflections on personal growth
                 </p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
