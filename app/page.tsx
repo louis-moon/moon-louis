@@ -24,8 +24,7 @@ export default function HomePage() {
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Professional</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Applying analytical thinking, strategic creativity, and collaborative leadership to solve real-world
-                  challenges and drive meaningful impact.
+                  Solving real-world challenges
                 </p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -44,7 +43,7 @@ export default function HomePage() {
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Personal</h3>
-                <p className="text-sm text-muted-foreground mb-4">Discover what inspires and drives me</p>
+                <p className="text-sm text-muted-foreground mb-4">What inspires and drives me</p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -53,7 +52,7 @@ export default function HomePage() {
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Media</h3>
-                <p className="text-sm text-muted-foreground mb-4">Photos and videos of friends and family</p>
+                <p className="text-sm text-muted-foreground mb-4">Media of friends and family</p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
 
