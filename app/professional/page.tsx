@@ -121,7 +121,7 @@ export default function ProfessionalPage() {
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Work & Projects</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              Recent roles and flagship projects. Education-adjacent activities now live on the Education page.
+              Recent roles and projects.
             </p>
           </div>
 

@@ -9,11 +9,10 @@ const educationTimeline = [
     period: "2018 - 2023",
     focus: "Statistics & Data Science",
     description:
-      "Interdisciplinary learning focused on understanding how societies function and resolving pressing socioeconomic issues.",
+      "Interdisciplinary learning focused on understanding how systems function and resolving pressing socioeconomic issues.",
     highlights: [
-      "Tsai CITY Accelerator Alum",
+      "Tsai CITY Accelerator",
       "Restrictive Early Action admit",
-      "Focus on policy analysis and data contextualization",
     ],
   },
   {
@@ -22,7 +21,7 @@ const educationTimeline = [
     period: "2014 - 2018",
     focus: "Advanced Placement & Dual Enrollment",
     description: "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
-    highlights: ["3rd in class of 673 students", "National Merit Scholars", "Johns Hopkins Book Award"],
+    highlights: ["3rd in class of 673 students", "National Merit Scholar"],
   },
   {
     institution: "Miami Dade College",
@@ -71,6 +70,11 @@ const honors = [
   {
     title: "Envirothon: North American Qualifier, 1st Place State",
     organization: "National Conservation Foundation",
+    year: "2017",
+  },
+  {
+    title: "Johns Hopkins Book Award",
+    organization: "Miami Palmetto Senior High School",
     year: "2017",
   },
 ]
