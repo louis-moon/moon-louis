@@ -1,14 +1,13 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+export default {
+  output: 'export',
+  images: { unoptimized: true },
 
-export default nextConfig
+  // GitHub Pages project site lives at /moon-louis
+  basePath: '/moon-louis',
+  assetPrefix: '/moon-louis/',
+
+  // Helps static hosts serve folder-style routes
+  trailingSlash: true,
+}
