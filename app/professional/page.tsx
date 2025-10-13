@@ -112,6 +112,10 @@ const projects: ProjectItem[] = [
   },
 ]
 
+// Helper to size the Tsai card narrower
+const cardWidthClass = (title: string) =>
+  title === "Tsai CITY Accelerator" ? "w-[320px]" : "w-[450px]"
+
 export default function ProfessionalPage() {
   return (
     <>
@@ -142,7 +146,9 @@ export default function ProfessionalPage() {
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
                     <div>
                       <h3 className="text-xl font-medium text-foreground">{item.company}</h3>
-                      <p className="text-sm text-primary">{item.role} • {item.employment}</p>
+                      <p className="text-sm text-primary">
+                        {item.role} • {item.employment}
+                      </p>
                     </div>
                     <div className="text-xs text-muted-foreground flex flex-col items-start md:items-end">
                       <span>{item.period}</span>
@@ -171,7 +177,9 @@ export default function ProfessionalPage() {
                   {projects.map((project, index) => (
                     <div
                       key={index}
-                      className="w-[450px] flex-shrink-0 bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5 group"
+                      className={`${cardWidthClass(
+                        project.title
+                      )} flex-shrink-0 bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5 group`}
                     >
                       <div className="flex items-start justify-between mb-3">
                         <h3 className="text-lg font-medium group-hover:text-primary transition-colors">

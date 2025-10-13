@@ -145,7 +145,7 @@ const coursework = [
   {
     term: "Spring 2023",
     courses: [
-      { code: "LING 227", title: "Language and Computation I", instructors: [] },
+      { code: "LING 227", title: "Language and Computation I", instructors: ["R. Frank"] },
       {
         code: "PSYC 258",
         title: "Computational Methods in Human Neuroscience",
@@ -173,11 +173,6 @@ const collegeActivities = [
       "Spearheaded consulting initiatives for local New Haven startups and provided strategic advice during weekly office hours",
       "Helped a Korean food cart operationalize, a Filipino outlet launch pop-ups, and a Mediterranean restaurant start franchising",
     ],
-  },
-  {
-    title: "Tsai CITY Accelerator Program",
-    role: "Alumnus",
-    bullets: ["Secured initial funding and mentorship opportunities (Fall ’21)"],
   },
   {
     title: "Volunteer Income Tax Assistance (VITA)",
