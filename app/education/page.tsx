@@ -5,8 +5,8 @@ import { GraduationCap, Award, BookOpen, Users } from "lucide-react"
 const educationTimeline = [
   {
     institution: "Yale University",
-    degree: "Bachelor of Arts",
-    period: "2018 - 2022",
+    degree: "Bachelor of Science",
+    period: "2018 - 2023",
     focus: "Statistics & Data Science",
     description:
       "Interdisciplinary learning focused on understanding how complex systems function.",
@@ -19,7 +19,7 @@ const educationTimeline = [
     institution: "Miami Palmetto Senior High School",
     degree: "High School Diploma",
     period: "2014 - 2018",
-    focus: "Advanced Placement & Dual Enrollment",
+    focus: "Summa Cum Laude",
     description: "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
     highlights: ["3rd in class of 673 students", "National Merit Scholar"],
   },
