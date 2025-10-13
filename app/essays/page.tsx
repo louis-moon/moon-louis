@@ -35,29 +35,52 @@ We returned to World Finals the following year to place second overall, and I st
 An alumnus on Quora writes, "Yale presents majors as areas to indulge intellectual and academic curiosity, not as vocational training." The same reason underlying the lack of an acting major, offering Theater Studies instead, emboldens me: Yale strives to offer a holistic experience, not a means to a career – it seeks to enrich, not to facilitate getting rich.`,
     tags: ["Education", "Philosophy", "Values"],
   },
+  // Replaced "Honesty and Action" with the new essay below
   {
-    title: "Interdisciplinary Learning",
-    subtitle: "Yale Academic Interests Essay",
-    date: "November 2017",
+    title: "The Dead Shall Be Praised",
+    subtitle: "ENGL 120 Essay (Professor Sexton)",
+    date: "November 2018",
     excerpt:
-      "Giddy with excitement, I set up my friend's saxophone for the first time, envisioning a seamless transition to the instrument given my experience with clarinet.",
-    content: `Giddy with excitement, I set up my friend's saxophone for the first time, envisioning a seamless transition to the instrument given my experience with clarinet. I released my first note, only to laugh at how badly out of tune I was – it was liberating to be a novice again, to revisit the basics and get into the swing of things. The spontaneous idea of taking jazz band instead of AP Music Theory thrust me into an alien world: I was mesmerized by the intimate setting and enthralling solos that flooded the classroom.
+      "Grove Street Cemetery’s Egyptian pylon bears the inscription “THE DEAD SHALL BE RAISED.” Inside, New Haven’s first chartered burial ground reframes death, memory, and the desire for permanence.",
+    content: `Louis Moon
+Professor Sexton
+ENGL 120-10
+01 November 2018
 
-My introduction to economics took place on the other side of campus when I involved myself in Euro Challenge, a competition regarding the European Union. I was fascinated by the subject material and thrilled to lead my teammates in learning the ins and outs of macroeconomics and international policy.
+The Dead Shall Be Praised
 
-This initial spark of awe illuminates synergies reflected in the real world. It is one thing to trace jazz's West African roots from a historical perspective, and another altogether to fully grasp music's authority in defining culture by indulging in it firsthand. The mechanics underlying quantitative easing can only be so interesting; rather, it is the paradigm shift in perspective on how monetary policy during my childhood influenced today's political atmosphere that gives the subject matter weight and depth. Thus, economics enchants me for the same reasons jazz and philosophy do: when studied under an interdisciplinary approach, it reveals how to think, live, and why.`,
-    tags: ["Education", "Economics", "Music"],
-  },
-  {
-    title: "Honesty and Action",
-    subtitle: "Yale Additional Essay",
-    date: "November 2017",
-    excerpt:
-      "This wasn't the typical Honor Council case involving a high-achieving AP student succumbing to academic pressure.",
-    content: `This wasn't the typical Honor Council case involving a high-achieving AP student succumbing to academic pressure. Instead, I stared into the blank eyes of a disinterested student who had likely been on his phone for entertainment, not to cheat during his test. The discussion shifted to address the importance of prioritizing educational achievement, but I began to choke up in the middle of my moralizing speech: 'Of course! Listen to me and you can transform your life to achieve all of your goals! Also, what are socioeconomic burdens again?' Disgusted, I left the meeting and sobbed. The arrogance of it all stunned me, and the belief that I could better someone's life became laughable.
+The looming gateway to Grove Street Cemetery faces High Street. Inscribed on the lintel reads, “THE DEAD SHALL BE RAISED,” (1 Corinthians 15:52) to which Yale President Arthur Twining Hadley supposedly responded, “They certainly will be, if Yale needs the property.”
 
-But I was wrong. Slowly, junior year disillusionment gave way to senior leadership over Tutoring for Tomorrow. As I publicized and expanded the organization through events on and off school campus, middle school teachers, my school principal, and the PTSA president expressed what registered as sincere gratitude. I began the year by raising well over $2000 in a month, twice that of last year's average. I browsed Charity Navigator for valuable causes and suddenly realized the fault in last year's defeatist logic. It's easy to feel hopeless when it's impossible for an individual to singlehandedly dismantle institutional and systemic barriers. However, to effect meaningful change, we must not only be honest about society's imperfections, but also go beyond and carry that honesty into our actions as a way of expressing intentionality and accountability.`,
-    tags: ["Leadership", "Social Justice", "Personal Growth"],
+Architects Henry Austin and Hezekiah Augur designed this brownstone ancient Egyptian pylon during a wave of Egyptian Revival architecture that flourished from 1820-1850. In ancient Egypt, the two monumental towers on either side of the columns represented the hills between which the sun rose and set. While it’s uncertain whether Austin and Augur knew of this, they nevertheless chose a symbol of eternal renewal and resurrection to mark the entrance.
+
+Prior to the establishment of Grove Street Cemetery, New Haven residents buried their dead on the Green, the central block of the town’s nine-square settlement plan. This changed when severe yellow fever epidemics devastated the city in 1794 and 1795: with almost five thousand buried over the past one hundred fifty years, the Green was much too crowded for any more skeletal occupants. New Haven residents and U.S. Senator James Hillhouse planned out a new graveyard on farmland to the north and two years later, Connecticut officially incorporated The New Burying Ground.
+
+Over two hundred years later, the commotion of a bustling city and large university contrast the aura of peace coming from within the cemetery. An eight-foot brownstone wall surrounds three sides of the graveyard and obstructs everything from view, save a few trees and the most massive of headstones. Should you venture down Grove Street, a wrought iron fence provides a view into the graveyard. Immediately beyond the entrance lies a brick Victorian office topped with steep roofs that once served as a chapel so that service could be held in inclement weather; its sole decoration is a gilded butterfly symbolizing the soul’s release from the body.
+
+The cemetery greets me through its vast scale, with a seemingly infinite number of gray headstones populating the whopping eighteen acres. The grass is neatly trimmed and ancient oak trees shade the paths, which are wide enough for cars or horse-drawn carriages to pass through. Each road is named after a tree: Maple, Magnolia, and Cedar Avenue are each lined with their titular species – Hillhouse prized trees and initiated the extensive plantings that would give New Haven the nickname of “Elm City.”
+
+As I look beyond the wall, buildings like the Center for Innovation and Design, Benjamin Franklin College, and Yale Health provide a refreshing contrast of color and style to the graveyard’s beautiful, albeit monotonous green and gray. American flags honor veterans’ headstones and wilting flowers adorn the walkways. A low hum can be heard in the distance as two men work diligently on maintaining the property amidst freezing temperatures; another man can be seen sitting alone in front of a grave marker, slowly taking drags of his cigarette.
+
+One tourist carries a DSLR camera and takes photos of the headstones. “I’m actually from Ireland – my wife left to go shopping but I thought this place looked more interesting. It’s very beautiful, I was just looking at the different ethnicities in the names.” His name is Killian, and he snaps a photo of me before we part ways. Another older visitor dressed in a suit strolls around with his daughter. I ask him why he’s here, to which he responds, “It’s very peaceful. Graveyards are a place for introspection and reflection – we’re all going to end up in one, or something like it, one day.” As I listen to birds chirping freely, I agree with his sentiment.
+
+The very notion of a cemetery, not just the first chartered burial ground in the United States, is revolutionary in itself. Some tens of thousands of years ago, humans stumbled upon the dual emergence of symbols and sentience due to the increasing complexity and growth of the brain, coupled with vocal cords. With these tools came the development of language and eventually, the creation of a symbolic reality. Mortuary rituals fit into this newfound ability to reminisce about the past and envision the future, to collaborate and think abstractly. Although there is no way for anthropologists to research language in this regard, graveyards leave behind a literal fossil to study.
+
+Burials reflect a deeply spiritual and meaningful aspect of humans mourning past deaths and imagining their own in the future. And for a long time, deliberate interment was thought to be a practice unique to Homo sapiens, one of many factors seeming to distinguish us from other animals. However, fossils discovered in 2013 evidenced that Homo naledi also carried out burials, even though their brains were half as small as ours. Pinpointing what exactly separates us from the rest of nature is surprisingly difficult.
+
+As the first private nonprofit cemetery in the world, Grove Street Cemetery redefined graveyards from the ground down. Whereas bodies used to be thrown into the ground wherever space was available, sections of the cemetery were allocated for certain families. Beyond this, land was specifically designated for church parishioners, out of town strangers, the indigent, persons of color, and Yale College.
+
+These divisions become immediately apparent when touring the area. Plots like Number 2 Cedar Avenue are enclosed by an iron fence and host the family of Benjamin Silliman, a prominent American chemist and Yalie. Luminaries such as Roger Sherman, Noah Webster, and Eli Whitney exhibit well-crafted, elegant headstones; lofty obelisks seem to reach for the heavens, continuing the Egyptian motif found in the pylon.
+
+On the other hand, comparatively tiny stone grave markers moved from the Green can be found lined up against the back wall in alphabetical order. No bigger than 2’ x 1’, they are the oldest relics that can be found here, dating back to the seventeenth century. Wear and tear has rendered some illegible, and one looks more like a rock than an ornament. Another simply reads, “IH AGE 79 1683,” in what could pass for a child’s handwriting, with the word AGE sloping diagonally to avoid running out of space. Inscriptions recall the deaths of everyone from 5-week-old William to 93-year-old Decon.
+
+Stone obviously isn’t permanent, but on the scale of a human life, it is – our lives are too short for us to perceive the constant movement of plate tectonics and mountains eroding. Consequently, we build monuments like the Great Pyramids and carve statues out of stone because they will outlast us, effectively achieving immortality. Modern constructions of metal and glass are nothing more than stone refined through human ingenuity – collectively, they anchor a sense of continuity and permanence, the kind that we wish for ourselves. One headstone reads, “We all yearn for transcendence, for immortal life, to be part of the future.”
+
+Looking at the grave markers, I realize their decay aligns with the enduring truth that like humans, stone is transitory. According to estimates by demographic researchers at the Population Reference Bureau, roughly 100 billion people have died before us. Yet, death stalks us in a trivial, ignorable way: an expiration date far in the future engenders a false sense of permanence and lulls us into complacency. There is always tomorrow, so why start today?
+
+The opposite idea, that our days are numbered, is emboldening. Although failures and humiliations will be forgotten, great achievements may not. As I leave, I find a bench marked with the words of Pericles: “What you leave behind is not what is engraved in stone monuments, but what is woven into the lives of others.” From the fallen soldiers to the fourteen Yale presidents who lie here, the people interred at Grove Street Cemetery are immortal in this sense.
+
+I have never seen leaves change color first-hand. I have seen red and orange leaves while traveling, but green leaves are a constant in my mind, like stone. Yet, for the first time, I am seeing the leaves change color in the cemetery.`,
+    tags: ["Place Writing", "History", "Reflection"],
   },
 ]
 
@@ -75,7 +98,7 @@ export default function EssaysPage() {
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Essays</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              Reflections on personal growth, academic pursuits, and the experiences that have shaped my perspective on
+              Reflections on personal growth, academic pursuits, and places that shaped my perspective on
               learning, leadership, and life.
             </p>
           </div>

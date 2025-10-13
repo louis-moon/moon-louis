@@ -1,17 +1,17 @@
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { GraduationCap, Award, BookOpen } from "lucide-react"
+import { GraduationCap, Award, BookOpen, Users } from "lucide-react"
 
 const educationTimeline = [
   {
     institution: "Yale University",
-    degree: "Bachelor of Arts",
-    period: "2018 - 2022",
-    focus: "Global Affairs, Ethics Politics & Economics, Statistics & Data Science",
+    degree: "Bachelor of Science",
+    period: "2018 - 2023",
+    focus: "Statistics & Data Science",
     description:
       "Interdisciplinary learning focused on understanding how societies function and resolving pressing socioeconomic issues.",
     highlights: [
-      "Yale Young Global Scholars participant",
+      "Tsai CITY Accelerator Alum",
       "Restrictive Early Action admit",
       "Focus on policy analysis and data contextualization",
     ],
@@ -22,7 +22,7 @@ const educationTimeline = [
     period: "2014 - 2018",
     focus: "Advanced Placement & Dual Enrollment",
     description: "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
-    highlights: ["Top 10% of 673 students", "5.364 / 6.0 Weighted GPA", "National Merit Semifinalist"],
+    highlights: ["3rd in class of 673 students", "National Merit Scholars", "Johns Hopkins Book Award"],
   },
   {
     institution: "Miami Dade College",
@@ -35,7 +35,7 @@ const educationTimeline = [
 ]
 
 const testScores = [
-  { test: "SAT", score: "1600", detail: "800 Math, 800 Reading/Writing" },
+  { test: "SAT", score: "1580", detail: "780 EBRW, 800 Math" },
   { test: "SAT Essay", score: "24/24", detail: "Perfect score" },
   { test: "SAT Subject Tests", score: "2400", detail: "800 Math II, Chemistry, US History" },
 ]
@@ -59,18 +59,13 @@ const apScores = [
 
 const honors = [
   {
-    title: "National Merit Semifinalist",
-    organization: "National Merit Scholarship Corporation",
-    year: "2017",
-  },
-  {
     title: "National Economics Challenge: State Champion, 9th Place Nationally",
     organization: "Council for Economic Education",
     year: "2017",
   },
   {
-    title: "National Personal Finance Challenge: State Champion, Semifinalist",
-    organization: "National Economics Challenge",
+    title: "National Finance Challenge: State Champion, Semifinalist",
+    organization: "Council for Economic Education",
     year: "2017",
   },
   {
@@ -78,10 +73,40 @@ const honors = [
     organization: "National Conservation Foundation",
     year: "2017",
   },
+]
+
+// Moved from Professional → Education as extracurriculars (HS)
+const extracurriculars = [
   {
-    title: "Johns Hopkins Book Award",
-    organization: "Johns Hopkins University",
-    year: "2017",
+    title: "National Honor Society",
+    role: "President",
+    period: "2017 - 2018",
+    description:
+      "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.",
+    tags: ["Leadership", "Community Service"],
+  },
+  {
+    title: "Honor Council",
+    role: "Co-President",
+    period: "2016 - 2018",
+    description: "Led student-run body addressing academic misconduct; formalized and promoted the honor code.",
+    tags: ["Leadership", "Ethics"],
+  },
+  {
+    title: "Science National Honor Society",
+    role: "VP of Competitions",
+    period: "2016 - 2018",
+    description:
+      "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.",
+    tags: ["Science", "Competition"],
+  },
+  {
+    title: "Mu Alpha Theta",
+    role: "Vice President of Tutoring",
+    period: "2015 - 2018",
+    description:
+      "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.",
+    tags: ["Mathematics", "Tutoring"],
   },
 ]
 
@@ -104,7 +129,7 @@ export default function EducationPage() {
             </p>
           </div>
 
-          {/* Horizontal scrolling education timeline */}
+          {/* Academic Timeline */}
           <div className="mb-20">
             <h2 className="text-2xl font-light mb-8 text-foreground">Academic Timeline</h2>
             <div className="relative">
@@ -162,7 +187,7 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* AP Scores in horizontal scroll */}
+          {/* AP Scores */}
           <div className="mb-20">
             <h2 className="text-2xl font-light mb-8 text-foreground">Advanced Placement Examinations</h2>
             <div className="relative">
@@ -190,6 +215,40 @@ export default function EducationPage() {
             </div>
           </div>
 
+          {/* Extracurriculars (moved here) */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <Users className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">Extracurriculars</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {extracurriculars.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-card border border-border rounded-xl p-6 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h3 className="text-base font-medium group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-primary">{item.role}</p>
+                    </div>
+                    <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">{item.period}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((t, i) => (
+                      <span key={i} className="text-xs text-foreground bg-accent px-2 py-1 rounded-md border border-border">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Honors & Awards */}
           <div>
             <div className="flex items-center gap-3 mb-8">
@@ -202,9 +261,7 @@ export default function EducationPage() {
                   key={index}
                   className="bg-card border border-border rounded-xl p-6 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5 group"
                 >
-                  <h3 className="text-base font-medium mb-2 group-hover:text-primary transition-colors">
-                    {honor.title}
-                  </h3>
+                  <h3 className="text-base font-medium mb-2 group-hover:text-primary transition-colors">{honor.title}</h3>
                   <p className="text-sm text-muted-foreground mb-1">{honor.organization}</p>
                   <p className="text-xs text-primary">{honor.year}</p>
                 </div>

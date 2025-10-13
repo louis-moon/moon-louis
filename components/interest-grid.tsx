@@ -1,9 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { Music, Film, Tv, Book, Trophy, Plane, Coffee, Utensils, Heart, X } from "lucide-react"
+import { Music, Film, Tv, Book, Trophy, Mountain, Utensils, Users, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+/**
+ * Consolidated to a strict 3x3 grid (nine categories),
+ * each category exposes exactly three items on click.
+ */
 const interestCategories = [
   {
     id: "music",
@@ -19,17 +23,26 @@ const interestCategories = [
   },
   {
     id: "movies",
-    title: "Movies & TV",
+    title: "Movies",
     icon: Film,
     color: "from-purple-500/10 to-purple-600/10 hover:from-purple-500/20 hover:to-purple-600/20",
     borderColor: "hover:border-purple-500/50",
     items: [
-      { label: "Manchester by the Sea", category: "Movies" },
-      { label: "La La Land", category: "Movies" },
-      { label: "The Lion King", category: "Movies" },
-      { label: "Ozark", category: "TV Shows" },
-      { label: "Monster", category: "TV Shows" },
-      { label: "Chernobyl", category: "TV Shows" },
+      { label: "Manchester by the Sea", category: "Films" },
+      { label: "La La Land", category: "Films" },
+      { label: "The Lion King", category: "Films" },
+    ],
+  },
+  {
+    id: "tv",
+    title: "TV Shows",
+    icon: Tv,
+    color: "from-indigo-500/10 to-indigo-600/10 hover:from-indigo-500/20 hover:to-indigo-600/20",
+    borderColor: "hover:border-indigo-500/50",
+    items: [
+      { label: "Ozark", category: "Series" },
+      { label: "Monster", category: "Series" },
+      { label: "Chernobyl", category: "Series" },
     ],
   },
   {
@@ -39,120 +52,75 @@ const interestCategories = [
     color: "from-amber-500/10 to-amber-600/10 hover:from-amber-500/20 hover:to-amber-600/20",
     borderColor: "hover:border-amber-500/50",
     items: [
-      { label: "Eragon", category: "Fiction" },
-      { label: "When Breath Becomes Air", category: "Memoir" },
-      { label: "The Stranger", category: "Philosophy" },
+      { label: "Eragon", category: "Favorites" },
+      { label: "When Breath Becomes Air", category: "Favorites" },
+      { label: "The Stranger", category: "Favorites" },
     ],
   },
   {
-    id: "sports",
-    title: "Sports & Activities",
+    id: "ball-sports",
+    title: "Ball Sports",
     icon: Trophy,
     color: "from-green-500/10 to-green-600/10 hover:from-green-500/20 hover:to-green-600/20",
     borderColor: "hover:border-green-500/50",
     items: [
-      { label: "Tennis", category: "Ball Sports" },
-      { label: "Golf", category: "Ball Sports" },
-      { label: "Basketball", category: "Ball Sports" },
-      { label: "Running", category: "Non-ball Sports" },
-      { label: "Frisbee", category: "Non-ball Sports" },
-      { label: "Cycling", category: "Non-ball Sports" },
-      { label: "Fishing", category: "Outdoor" },
-      { label: "Skiing", category: "Outdoor" },
-      { label: "Hiking", category: "Outdoor" },
+      { label: "Tennis", category: "Sports" },
+      { label: "Golf", category: "Sports" },
+      { label: "Basketball", category: "Sports" },
     ],
   },
   {
-    id: "travel",
-    title: "Travel",
-    icon: Plane,
-    color: "from-cyan-500/10 to-cyan-600/10 hover:from-cyan-500/20 hover:to-cyan-600/20",
-    borderColor: "hover:border-cyan-500/50",
+    id: "nonball-sports",
+    title: "Non-ball Sports",
+    icon: Trophy,
+    color: "from-emerald-500/10 to-emerald-600/10 hover:from-emerald-500/20 hover:to-emerald-600/20",
+    borderColor: "hover:border-emerald-500/50",
     items: [
-      { label: "Banff", category: "Favorite Cities" },
-      { label: "Haeundae", category: "Favorite Cities" },
-      { label: "Puerto Ayora", category: "Favorite Cities" },
-      { label: "Germany", category: "Wish List" },
-      { label: "Alaska", category: "Wish List" },
-      { label: "Spain", category: "Wish List" },
+      { label: "Running", category: "Sports" },
+      { label: "Frisbee", category: "Sports" },
+      { label: "Cycling", category: "Sports" },
     ],
   },
   {
-    id: "food",
+    id: "outdoors",
+    title: "Outdoors",
+    icon: Mountain,
+    color: "from-teal-500/10 to-teal-600/10 hover:from-teal-500/20 hover:to-teal-600/20",
+    borderColor: "hover:border-teal-500/50",
+    items: [
+      { label: "Fishing", category: "Activities" },
+      { label: "Skiing", category: "Activities" },
+      { label: "Hiking", category: "Activities" },
+    ],
+  },
+  {
+    id: "food-drink",
     title: "Food & Drink",
     icon: Utensils,
     color: "from-rose-500/10 to-rose-600/10 hover:from-rose-500/20 hover:to-rose-600/20",
     borderColor: "hover:border-rose-500/50",
     items: [
       { label: "Risotto", category: "Food" },
-      { label: "Tiramisu", category: "Food" },
       { label: "Dim Sum", category: "Food" },
-      { label: "Sprite", category: "Drink" },
       { label: "Cold Brew", category: "Drink" },
-      { label: "Apple Juice", category: "Drink" },
-      { label: "Sangria", category: "Alcohol" },
-      { label: "High Noon", category: "Alcohol" },
     ],
   },
   {
     id: "people",
-    title: "Inspirations",
-    icon: Heart,
-    color: "from-pink-500/10 to-pink-600/10 hover:from-pink-500/20 hover:to-pink-600/20",
-    borderColor: "hover:border-pink-500/50",
+    title: "People & Inspirations",
+    icon: Users,
+    color: "from-cyan-500/10 to-cyan-600/10 hover:from-cyan-500/20 hover:to-cyan-600/20",
+    borderColor: "hover:border-cyan-500/50",
     items: [
       { label: "Emily Blunt", category: "Actors" },
-      { label: "Ryan Gosling", category: "Actors" },
-      { label: "Brad Pitt", category: "Actors" },
-      { label: "Victor Wembanyama", category: "Athletes" },
-      { label: "Lewis Hamilton", category: "Athletes" },
       { label: "Roger Federer", category: "Athletes" },
-      { label: "Janet Yellen", category: "Figures" },
       { label: "Richard Feynman", category: "Figures" },
-      { label: "Jim Simons", category: "Figures" },
-    ],
-  },
-  {
-    id: "games",
-    title: "Games & Recreation",
-    icon: Coffee,
-    color: "from-indigo-500/10 to-indigo-600/10 hover:from-indigo-500/20 hover:to-indigo-600/20",
-    borderColor: "hover:border-indigo-500/50",
-    items: [
-      { label: "Roblox", category: "Video Games" },
-      { label: "FIFA", category: "Video Games" },
-      { label: "Clash of Clans", category: "Video Games" },
-      { label: "Poker", category: "Card Games" },
-      { label: "Egyptian Rat Screw", category: "Card Games" },
-      { label: "Chess", category: "Board Games" },
-      { label: "Bowling", category: "Recreation" },
-      { label: "Tetris", category: "Recreation" },
-      { label: "Super Smash Bros.", category: "Recreation" },
-    ],
-  },
-  {
-    id: "creative",
-    title: "Creative Pursuits",
-    icon: Tv,
-    color: "from-teal-500/10 to-teal-600/10 hover:from-teal-500/20 hover:to-teal-600/20",
-    borderColor: "hover:border-teal-500/50",
-    items: [
-      { label: "Journaling", category: "Written" },
-      { label: "Reading", category: "Written" },
-      { label: "Poetry", category: "Written" },
-      { label: "Video Editing", category: "Visual" },
-      { label: "Photography", category: "Visual" },
-      { label: "Art", category: "Visual" },
-      { label: "Songwriting", category: "Music" },
-      { label: "Jazz", category: "Music" },
-      { label: "Freestyling", category: "Music" },
     ],
   },
 ]
 
 export function InterestGrid() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-
   const selected = interestCategories.find((cat) => cat.id === selectedCategory)
 
   return (
@@ -181,7 +149,7 @@ export function InterestGrid() {
         })}
       </div>
 
-      {/* Modal overlay */}
+      {/* Modal */}
       {selected && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-in fade-in duration-200"
@@ -193,6 +161,7 @@ export function InterestGrid() {
           >
             <div className="flex items-start justify-between mb-6">
               <div className="flex items-center gap-3">
+                {/* @ts-expect-error dynamic icon component */}
                 <selected.icon className="w-6 h-6 text-primary" />
                 <h3 className="text-2xl font-medium text-foreground">{selected.title}</h3>
               </div>

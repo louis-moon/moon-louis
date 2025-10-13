@@ -1,38 +1,41 @@
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Camera, Video, ImageIcon } from "lucide-react"
+import Image from "next/image"
+
+/**
+ * 👇 HOW TO ADD YOUR 20 PHOTOS
+ *
+ * 1) Create a folder: /public/media/
+ * 2) Drop your image files there named photo-01.jpg ... photo-20.jpg
+ *    (any extension is fine: .jpg/.png/.webp — keep the names consistent).
+ * 3) Update titles/locations below as you like. The "src" must point to /media/<filename>.
+ * 4) That's it. Next/Image is configured for static export (images.unoptimized=true).
+ */
 
 const photoGallery = [
-  {
-    title: "South Beach",
-    location: "Miami, Florida",
-    description: "Sunset views along the iconic Miami coastline",
-  },
-  {
-    title: "Banff National Park",
-    location: "Alberta, Canada",
-    description: "Mountain landscapes and pristine wilderness",
-  },
-  {
-    title: "Galapagos Islands",
-    location: "Ecuador",
-    description: "Wildlife and natural wonders of Puerto Ayora",
-  },
-  {
-    title: "Haeundae Beach",
-    location: "Busan, South Korea",
-    description: "Coastal beauty and urban landscapes",
-  },
-  {
-    title: "East Rock",
-    location: "New Haven, Connecticut",
-    description: "Views from Yale's iconic hiking spot",
-  },
-  {
-    title: "Bar Harbor",
-    location: "Maine",
-    description: "New England coastal charm",
-  },
+  { title: "South Beach", location: "Miami, Florida", description: "Sunset views along the iconic Miami coastline", src: "/media/photo-01.jpg" },
+  { title: "Banff National Park", location: "Alberta, Canada", description: "Mountain landscapes and pristine wilderness", src: "/media/photo-02.jpg" },
+  { title: "Galapagos Islands", location: "Puerto Ayora, Ecuador", description: "Wildlife and natural wonders", src: "/media/photo-03.jpg" },
+  { title: "Haeundae Beach", location: "Busan, South Korea", description: "Coastal beauty and urban landscapes", src: "/media/photo-04.jpg" },
+  { title: "East Rock", location: "New Haven, Connecticut", description: "Views from Yale's iconic hiking spot", src: "/media/photo-05.jpg" },
+  { title: "Bar Harbor", location: "Maine", description: "New England coastal charm", src: "/media/photo-06.jpg" },
+
+  // Add the remaining slots up to 20; replace titles/locations as desired
+  { title: "Photo 07", location: "—", description: "—", src: "/media/photo-07.jpg" },
+  { title: "Photo 08", location: "—", description: "—", src: "/media/photo-08.jpg" },
+  { title: "Photo 09", location: "—", description: "—", src: "/media/photo-09.jpg" },
+  { title: "Photo 10", location: "—", description: "—", src: "/media/photo-10.jpg" },
+  { title: "Photo 11", location: "—", description: "—", src: "/media/photo-11.jpg" },
+  { title: "Photo 12", location: "—", description: "—", src: "/media/photo-12.jpg" },
+  { title: "Photo 13", location: "—", description: "—", src: "/media/photo-13.jpg" },
+  { title: "Photo 14", location: "—", description: "—", src: "/media/photo-14.jpg" },
+  { title: "Photo 15", location: "—", description: "—", src: "/media/photo-15.jpg" },
+  { title: "Photo 16", location: "—", description: "—", src: "/media/photo-16.jpg" },
+  { title: "Photo 17", location: "—", description: "—", src: "/media/photo-17.jpg" },
+  { title: "Photo 18", location: "—", description: "—", src: "/media/photo-18.jpg" },
+  { title: "Photo 19", location: "—", description: "—", src: "/media/photo-19.jpg" },
+  { title: "Photo 20", location: "—", description: "—", src: "/media/photo-20.jpg" },
 ]
 
 const videoProjects = [
@@ -84,11 +87,15 @@ export default function MediaPage() {
                   key={index}
                   className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
                 >
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Camera className="w-12 h-12 text-primary/30 group-hover:scale-110 transition-transform" />
-                    </div>
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={photo.src}
+                      alt={`${photo.title} — ${photo.location}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                      className="object-cover"
+                      priority={index < 3}
+                    />
                   </div>
                   <div className="p-6">
                     <h3 className="text-lg font-medium mb-1 group-hover:text-primary transition-colors">

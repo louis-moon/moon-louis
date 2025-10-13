@@ -38,8 +38,12 @@ export default function PersonalPage() {
                 Statistics
               </p>
               <p>
-                <span className="font-medium text-foreground">Things I Want to Learn:</span> Spanish fluency,
-                Relationships, Korean language
+                <span className="font-medium text-foreground">Passions:</span> Science &amp; Technology, Environment,
+                Education
+              </p>
+              <p>
+                <span className="font-medium text-foreground">Things I Want to Learn / Work On:</span> Spanish,
+                Relationships, Korean
               </p>
               <p>
                 <span className="font-medium text-foreground">Pet Wishlist:</span> Golden Retriever, British Shorthair,
@@ -50,7 +54,7 @@ export default function PersonalPage() {
               </p>
               <p className="text-sm italic pt-4 border-t border-border">
                 "They offer food to the indigent, the orphan, and the captive, saying, 'We feed you for the sake of
-                Allah alone; we wish not from you reward, nor gratitude.'" — Islamic charity founding principle
+                Allah alone; we wish not from you reward, nor gratitude.'"
               </p>
             </div>
           </div>
