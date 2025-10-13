@@ -42,8 +42,7 @@ An alumnus on Quora writes, "Yale presents majors as areas to indulge intellectu
     date: "November 2018",
     excerpt:
       "Grove Street Cemetery’s Egyptian pylon bears the inscription “THE DEAD SHALL BE RAISED.” Inside, New Haven’s first chartered burial ground reframes death, memory, and the desire for permanence.",
-    content: `Louis Moon
-The looming gateway to Grove Street Cemetery faces High Street. Inscribed on the lintel reads, “THE DEAD SHALL BE RAISED,” (1 Corinthians 15:52) to which Yale President Arthur Twining Hadley supposedly responded, “They certainly will be, if Yale needs the property.”
+    content: `The looming gateway to Grove Street Cemetery faces High Street. Inscribed on the lintel reads, “THE DEAD SHALL BE RAISED,” (1 Corinthians 15:52) to which Yale President Arthur Twining Hadley supposedly responded, “They certainly will be, if Yale needs the property.”
 
 Architects Henry Austin and Hezekiah Augur designed this brownstone ancient Egyptian pylon during a wave of Egyptian Revival architecture that flourished from 1820-1850. In ancient Egypt, the two monumental towers on either side of the columns represented the hills between which the sun rose and set. While it’s uncertain whether Austin and Augur knew of this, they nevertheless chose a symbol of eternal renewal and resurrection to mark the entrance.
 
