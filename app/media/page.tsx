@@ -1,59 +1,63 @@
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { Camera, Video, ImageIcon } from "lucide-react"
-import Image from "next/image"
+import { Camera } from "lucide-react"
+import { PhotoCarousel } from "@/components/photo-carousel"
+import { PhotoGrid } from "@/components/photo-grid"
 
-/**
- * 👇 HOW TO ADD YOUR 20 PHOTOS
- *
- * 1) Create a folder: /public/media/
- * 2) Drop your image files there named photo-01.jpg ... photo-20.jpg
- *    (any extension is fine: .jpg/.png/.webp — keep the names consistent).
- * 3) Update titles/locations below as you like. The "src" must point to /media/<filename>.
- * 4) That's it. Next/Image is configured for static export (images.unoptimized=true).
- */
+const photos = [
+  // 2019
+  { src: "/photos/IMG_0244.HEIC", alt: "Me and Sam (Yale)", caption: "New Haven, CT — Nov 5, 2019" },
 
-const photoGallery = [
-  { title: "South Beach", location: "Miami, Florida", description: "Sunset views along the iconic Miami coastline", src: "/media/photo-01.jpg" },
-  { title: "Banff National Park", location: "Alberta, Canada", description: "Mountain landscapes and pristine wilderness", src: "/media/photo-02.jpg" },
-  { title: "Galapagos Islands", location: "Puerto Ayora, Ecuador", description: "Wildlife and natural wonders", src: "/media/photo-03.jpg" },
-  { title: "Haeundae Beach", location: "Busan, South Korea", description: "Coastal beauty and urban landscapes", src: "/media/photo-04.jpg" },
-  { title: "East Rock", location: "New Haven, Connecticut", description: "Views from Yale's iconic hiking spot", src: "/media/photo-05.jpg" },
-  { title: "Bar Harbor", location: "Maine", description: "New England coastal charm", src: "/media/photo-06.jpg" },
+  // 2020
+  { src: "/photos/IMG_0720.HEIC", alt: "Me and Blake (Gainesville)", caption: "Gainesville, FL — Mar 21, 2020" },
 
-  // Add the remaining slots up to 20; replace titles/locations as desired
-  { title: "Photo 07", location: "—", description: "—", src: "/media/photo-07.jpg" },
-  { title: "Photo 08", location: "—", description: "—", src: "/media/photo-08.jpg" },
-  { title: "Photo 09", location: "—", description: "—", src: "/media/photo-09.jpg" },
-  { title: "Photo 10", location: "—", description: "—", src: "/media/photo-10.jpg" },
-  { title: "Photo 11", location: "—", description: "—", src: "/media/photo-11.jpg" },
-  { title: "Photo 12", location: "—", description: "—", src: "/media/photo-12.jpg" },
-  { title: "Photo 13", location: "—", description: "—", src: "/media/photo-13.jpg" },
-  { title: "Photo 14", location: "—", description: "—", src: "/media/photo-14.jpg" },
-  { title: "Photo 15", location: "—", description: "—", src: "/media/photo-15.jpg" },
-  { title: "Photo 16", location: "—", description: "—", src: "/media/photo-16.jpg" },
-  { title: "Photo 17", location: "—", description: "—", src: "/media/photo-17.jpg" },
-  { title: "Photo 18", location: "—", description: "—", src: "/media/photo-18.jpg" },
-  { title: "Photo 19", location: "—", description: "—", src: "/media/photo-19.jpg" },
-  { title: "Photo 20", location: "—", description: "—", src: "/media/photo-20.jpg" },
+  // 2023
+  { src: "/photos/IMG_0884.HEIC", alt: "Me and Dan (Tidal Basin)", caption: "Washington, DC — Mar 25, 2023" },
+  { src: "/photos/IMG_2190.heic", alt: "Family (UNC White Coat Ceremony)", caption: "Chapel Hill, NC — May 21, 2023" },
+  { src: "/photos/IMG_3044.PNG", alt: "Family (Yale graduation)", caption: "New Haven, CT — May 22, 2023" },
+  { src: "/photos/IMG_4012.JPG", alt: "Family (Acadia National Park)", caption: "Maine — Jul 1, 2023" },
+  { src: "/photos/IMG_5373.JPG", alt: "Me and Adyant (SF)", caption: "San Francisco, CA — Jul 30, 2023" },
+  { src: "/photos/IMG_6140.HEIC", alt: "Me and Sam (Santa's Enchanted Forest)", caption: "Miami, FL — Dec 29, 2023" },
+  { src: "/photos/IMG_6155.HEIC", alt: "Family (Fairchild Tropical Botanical Gardens)", caption: "Miami, FL — Dec 31, 2023" },
+
+  // 2024
+  { src: "/photos/IMG_7263.HEIC", alt: "Me and Jonathan (Doral)", caption: "Doral, FL — Jan 1, 2024" },
+  { src: "/photos/IMG_7350.HEIC", alt: "Me and Mom (Hoboken)", caption: "Hoboken, NJ — Apr 28, 2024" },
+  { src: "/photos/IMG_7569.HEIC", alt: "Family (Banff)", caption: "Banff, AB — Jun 17, 2024" },
+  { src: "/photos/IMG_7643.HEIC", alt: "Me and David and Jaewon (Banff)", caption: "Banff, AB — Jun 19, 2024" },
+  { src: "/photos/IMG_7685.HEIC", alt: "Family (Banff) — Kananaskis Country Golf Course", caption: "Kananaskis, AB — Jun 20, 2024" },
+  { src: "/photos/IMG_7698.HEIC", alt: "Family (Banff) — Kananaskis Country Golf Course", caption: "Kananaskis, AB — Jun 20, 2024" },
+  { src: "/photos/IMG_8225.HEIC", alt: "Me and Dad (US Open) — USTA Billie Jean King National Tennis Center", caption: "New York, NY — Sep 2, 2024" },
+
+  // 2025
+  { src: "/photos/IMG_9009.HEIC", alt: "Me and Preston (Doral)", caption: "Doral, FL — Feb 8, 2025" },
+  { src: "/photos/IMG_9191.HEIC", alt: "Me and Youssef (Regatta Grove)", caption: "Miami, FL — Feb 9, 2025" },
+  { src: "/photos/IMG_9400.heic", alt: "Me and Alan (Pier 86)", caption: "New York, NY — Mar 16, 2025" },
+  { src: "/photos/IMG_9480.heic", alt: "Me and Jack (Longwood Gardens)", caption: "Kennett Square, PA — Mar 29, 2025" },
 ]
 
-const videoProjects = [
-  {
-    title: "Greater Miami Youth Symphony",
-    description: "Performance highlights and behind-the-scenes footage",
-    year: "2017",
-  },
-  {
-    title: "Odyssey of the Mind World Finals",
-    description: "Creative problem-solving competition journey",
-    year: "2018",
-  },
-  {
-    title: "Jazz Band Performances",
-    description: "Saxophone and clarinet performances",
-    year: "2017-2018",
-  },
+// Same list with ISO dates for the carousel (chronological)
+const photosForCarousel = [
+  { src: "/photos/IMG_0244.jpg", title: "Me and Sam (Yale)", subtitle: "New Haven, CT — Nov 5, 2019", dateISO: "2019-11-05" },
+  { src: "/photos/IMG_0720.jpg", title: "Me and Blake (Gainesville)", subtitle: "Gainesville, FL — Mar 21, 2020", dateISO: "2020-03-21" },
+  { src: "/photos/IMG_0884.jpg", title: "Me and Dan (Tidal Basin)", subtitle: "Washington, DC — Mar 25, 2023", dateISO: "2023-03-25" },
+  { src: "/photos/IMG_2190.jpg", title: "Family (UNC White Coat Ceremony)", subtitle: "Chapel Hill, NC — May 21, 2023", dateISO: "2023-05-21" },
+  { src: "/photos/IMG_3044.jpg", title: "Family (Yale graduation)", subtitle: "New Haven, CT — May 22, 2023", dateISO: "2023-05-22" },
+  { src: "/photos/IMG_4012.jpg", title: "Family (Acadia National Park)", subtitle: "Maine — Jul 1, 2023", dateISO: "2023-07-01" },
+  { src: "/photos/IMG_5373.jpg", title: "Me and Adyant (SF)", subtitle: "San Francisco, CA — Jul 30, 2023", dateISO: "2023-07-30" },
+  { src: "/photos/IMG_6140.jpg", title: "Me and Sam (Santa's Enchanted Forest)", subtitle: "Miami, FL — Dec 29, 2023", dateISO: "2023-12-29" },
+  { src: "/photos/IMG_6155.jpg", title: "Family (Fairchild Tropical Botanical Gardens)", subtitle: "Miami, FL — Dec 31, 2023", dateISO: "2023-12-31" },
+  { src: "/photos/IMG_7263.jpg", title: "Me and Jonathan (Doral)", subtitle: "Doral, FL — Jan 1, 2024", dateISO: "2024-01-01" },
+  { src: "/photos/IMG_7350.jpg", title: "Me and Mom (Hoboken)", subtitle: "Hoboken, NJ — Apr 28, 2024", dateISO: "2024-04-28" },
+  { src: "/photos/IMG_7569.jpg", title: "Family (Banff)", subtitle: "Banff, AB — Jun 17, 2024", dateISO: "2024-06-17" },
+  { src: "/photos/IMG_7643.jpg", title: "Me and David and Jaewon (Banff)", subtitle: "Banff, AB — Jun 19, 2024", dateISO: "2024-06-19" },
+  { src: "/photos/IMG_7685.jpg", title: "Family (Banff) — Kananaskis Country Golf Course", subtitle: "Kananaskis, AB — Jun 20, 2024", dateISO: "2024-06-20" },
+  { src: "/photos/IMG_7698.jpg", title: "Family (Banff) — Kananaskis Country Golf Course", subtitle: "Kananaskis, AB — Jun 20, 2024", dateISO: "2024-06-20" },
+  { src: "/photos/IMG_8225.jpg", title: "Me and Dad (US Open)", subtitle: "New York, NY — Sep 2, 2024", dateISO: "2024-09-02" },
+  { src: "/photos/IMG_9009.jpg", title: "Me and Preston (Doral)", subtitle: "Doral, FL — Feb 8, 2025", dateISO: "2025-02-08" },
+  { src: "/photos/IMG_9191.jpg", title: "Me and Youssef (Regatta Grove)", subtitle: "Miami, FL — Feb 9, 2025", dateISO: "2025-02-09" },
+  { src: "/photos/IMG_9400.jpg", title: "Me and Alan (Pier 86)", subtitle: "New York, NY — Mar 16, 2025", dateISO: "2025-03-16" },
+  { src: "/photos/IMG_9480.jpg", title: "Me and Jack (Longwood Gardens)", subtitle: "Kennett Square, PA — Mar 29, 2025", dateISO: "2025-03-29" },
 ]
 
 export default function MediaPage() {
@@ -63,6 +67,7 @@ export default function MediaPage() {
       <Navigation />
       <main className="min-h-screen pt-24 px-6 pb-20">
         <div className="max-w-7xl mx-auto">
+          {/* Header */}
           <div className="animate-fade-in mb-16">
             <div className="flex items-center gap-3 mb-4">
               <Camera className="w-6 h-6 text-primary" />
@@ -75,69 +80,17 @@ export default function MediaPage() {
             </p>
           </div>
 
-          {/* Photography Section */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
-              <ImageIcon className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Photography</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {photoGallery.map((photo, index) => (
-                <div
-                  key={index}
-                  className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-                >
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={photo.src}
-                      alt={`${photo.title} — ${photo.location}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                      className="object-cover"
-                      priority={index < 3}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-medium mb-1 group-hover:text-primary transition-colors">
-                      {photo.title}
-                    </h3>
-                    <p className="text-sm text-primary mb-2">{photo.location}</p>
-                    <p className="text-sm text-muted-foreground">{photo.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Featured carousel (chronological) */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-light mb-6 text-foreground">Featured</h2>
+            <PhotoCarousel photos={photosForCarousel} />
+          </section>
 
-          {/* Video Section */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <Video className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Video Projects</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {videoProjects.map((video, index) => (
-                <div
-                  key={index}
-                  className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-                >
-                  <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Video className="w-12 h-12 text-primary/30 group-hover:scale-110 transition-transform" />
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-lg font-medium group-hover:text-primary transition-colors">{video.title}</h3>
-                      <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">{video.year}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{video.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* All photos grid */}
+          <section>
+            <h2 className="text-2xl font-light mb-6 text-foreground">Photography</h2>
+            <PhotoGrid photos={photos} />
+          </section>
         </div>
       </main>
     </>
