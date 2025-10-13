@@ -43,7 +43,7 @@ const educationTimeline = [
 ]
 
 const testScores = [
-  { test: "SAT", score: "1600", detail: "800 Math, 800 Reading/Writing" },
+  { test: "SAT", score: "1580", detail: "780 EBRW, 800 Math" },
   { test: "SAT Essay", score: "24/24", detail: "Perfect score" },
   { test: "SAT Subject Tests", score: "2400", detail: "800 Math II, Chemistry, US History" },
 ]
@@ -93,14 +93,14 @@ const extracurriculars = [
     period: "2017 - 2018",
     description:
       "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.",
-    tags: ["Leadership", "Community Service"],
+    tags: ["Community Service"],
   },
   {
     title: "Honor Council",
     role: "Co-President",
     period: "2016 - 2018",
     description: "Led student-run body addressing academic misconduct; formalized and promoted the honor code.",
-    tags: ["Leadership", "Ethics"],
+    tags: ["Leadership"],
   },
   {
     title: "Science National Honor Society",
@@ -108,7 +108,7 @@ const extracurriculars = [
     period: "2016 - 2018",
     description:
       "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.",
-    tags: ["Science", "Competition"],
+    tags: ["Science"],
   },
   {
     title: "Mu Alpha Theta",
@@ -116,7 +116,7 @@ const extracurriculars = [
     period: "2015 - 2018",
     description:
       "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.",
-    tags: ["Mathematics", "Tutoring"],
+    tags: ["Mathematics"],
   },
 ]
 
