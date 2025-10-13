@@ -34,7 +34,7 @@ export default function HomePage() {
                 className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Education</h3>
-                <p className="text-sm text-muted-foreground mb-4">Academic journey and achievements</p>
+                <p className="text-sm text-muted-foreground mb-4">Academic journey & achievements</p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
 
