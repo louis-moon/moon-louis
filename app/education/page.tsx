@@ -77,7 +77,7 @@ const honors = [
     year: "2017",
   },
   {
-    title: "Odyssey of the Mind: 2nd Place World Finals, Ranatra Fusca Creativity Award",
+    title: "Odyssey of the Mind: 2nd Place World Finals",
     organization: "Creative Competitions",
     year: "2017",
   },
