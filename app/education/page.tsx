@@ -397,11 +397,6 @@ export default function EducationPage() {
                       </h3>
                       <p className="text-sm text-primary">{item.role}</p>
                     </div>
-                    {item.period && (
-                      <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
-                        {item.period}
-                      </span>
-                    )}
                   </div>
                   <ul className="list-disc pl-5 space-y-2">
                     {item.bullets.map((b, i) => (
