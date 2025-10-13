@@ -149,7 +149,7 @@ export default function PersonalPage() {
               <Heart className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Personal Interests</p>
             </div>
-            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">What Inspires Me</h1>
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Personal</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
               Beyond academics and professional pursuits, these are the passions, experiences, and inspirations that
               shape who I am.
