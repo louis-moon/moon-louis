@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react"
 import useEmblaCarousel from "embla-carousel-react"
-import type { EmblaOptionsType } from "embla-carousel"  // ⬅️ type comes from core
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -10,7 +9,7 @@ type Photo = {
   src: string
   title: string
   subtitle?: string
-  dateISO: string // used for sorting; YYYY-MM-DD
+  dateISO: string // YYYY-MM-DD (used for chronological sort)
 }
 
 export function PhotoCarousel({
@@ -18,16 +17,17 @@ export function PhotoCarousel({
   options,
 }: {
   photos: Photo[]
-  options?: EmblaOptionsType
+  // use a loose type so we don't need the core 'embla-carousel' types installed
+  options?: Record<string, unknown>
 }) {
-  // sort chronologically by date (oldest → newest)
+  // sort chronologically (oldest → newest)
   const ordered = [...photos].sort((a, b) => a.dateISO.localeCompare(b.dateISO))
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "center",
     skipSnaps: false,
-    ...options,
+    ...(options as any),
   })
   const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -61,7 +61,6 @@ export function PhotoCarousel({
                   className="object-cover"
                   priority={i < 1}
                 />
-                {/* caption bar */}
                 <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                   <p className="text-sm text-white/95 font-medium">{p.title}</p>
                   {p.subtitle && <p className="text-xs text-white/80">{p.subtitle}</p>}
