@@ -119,9 +119,9 @@ export default function ProfessionalPage() {
               <Briefcase className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Professional Experience</p>
             </div>
-            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Work & Projects</h1>
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Professional</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              Recent roles and projects.
+              Applying analytical thinking, strategic creativity, and collaborative leadership to solve real-world challenges.
             </p>
           </div>
 
