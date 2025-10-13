@@ -1,15 +1,8 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { EB_Garamond } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
 import "./globals.css";
-
-const garamond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-garamond",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Louis Moon",
@@ -22,7 +15,8 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${garamond.variable} font-serif antialiased`}>
+      {/* Tailwind’s `font-serif` will use the system serif stack */}
+      <body className="font-serif antialiased">
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
