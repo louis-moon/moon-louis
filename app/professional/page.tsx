@@ -49,8 +49,8 @@ const work: WorkItem[] = [
     period: "Mar 2024 - Feb 2025 • 4 mos",
     location: "Orlando, Florida, United States • Remote",
     bullets: [
-      "Crafted a product roadmap & managed the lifecycle of various technology products, including UI and go-to-market strategy; directed product iteration, led MVP testing, and developed user personas, leading to a successful product launch preparation",
-      "Established a semantic comparable business search query system to value businesses through comparable company analyses; designed one version for the sell-side and one for buy-side users, bringing the time for process down from hours to seconds",
+      "Established a semantic comparable business search query system to value businesses through comparable company analyses; formulated one version for the sell-side and one for the buy-side, bringing the time for process down from hours to seconds",
+      "Led product development initiatives for the financial valuation product, focusing on core functionalities and user experience; created & maintained comprehensive product roadmap, prioritizing key features for MVP development and future iterations",
     ],
   },
   {
@@ -60,8 +60,8 @@ const work: WorkItem[] = [
     period: "Apr 2020 - Jun 2020 • 3 mos",
     location: "New York, New York, United States • Remote",
     bullets: [
-      "Crafted a product roadmap & managed the lifecycle of various technology products, including UI and go-to-market strategy; directed product iteration, led MVP testing, and developed user personas, leading to a successful product launch preparation",
-      "Established a semantic comparable business search query system to value businesses through comparable company analyses; designed one version for the sell-side and one for buy-side users, bringing the time for process down from hours to seconds",
+      "Supported portfolio manager in reviewing investment prospects by performing due diligence and building valuation models; crafted scenario-based financial statements with schedules and spread industry comparables to enhance investment decisions",
+      "Performed company valuations including discounted cash flow, comparable companies, and precedent transactions analyses; utilized LBO and M&A models to evaluate and compare valuation levels, resulting in full valuation comparisons and insights",
     ],
   },
   {
