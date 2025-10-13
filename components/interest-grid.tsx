@@ -1,14 +1,25 @@
 "use client"
 
 import { useState } from "react"
+import type { LucideIcon } from "lucide-react"
 import { Music, Film, Tv, Book, Trophy, Mountain, Utensils, Users, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+
+type InterestItem = { label: string; category: string }
+type InterestCategory = {
+  id: string
+  title: string
+  icon: LucideIcon
+  color: string
+  borderColor: string
+  items: InterestItem[]
+}
 
 /**
  * Consolidated to a strict 3x3 grid (nine categories),
  * each category exposes exactly three items on click.
  */
-const interestCategories = [
+const interestCategories: InterestCategory[] = [
   {
     id: "music",
     title: "Music",
@@ -149,7 +160,7 @@ export function InterestGrid() {
         })}
       </div>
 
-      {/* Modal */}
+      {/* Modal overlay */}
       {selected && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-in fade-in duration-200"
@@ -161,8 +172,10 @@ export function InterestGrid() {
           >
             <div className="flex items-start justify-between mb-6">
               <div className="flex items-center gap-3">
-                {/* @ts-expect-error dynamic icon component */}
-                <selected.icon className="w-6 h-6 text-primary" />
+                {(() => {
+                  const SelectedIcon: LucideIcon = selected.icon
+                  return <SelectedIcon className="w-6 h-6 text-primary" />
+                })()}
                 <h3 className="text-2xl font-medium text-foreground">{selected.title}</h3>
               </div>
               <button
@@ -175,14 +188,11 @@ export function InterestGrid() {
 
             <div className="space-y-4">
               {Object.entries(
-                selected.items.reduce(
-                  (acc, item) => {
-                    if (!acc[item.category]) acc[item.category] = []
-                    acc[item.category].push(item.label)
-                    return acc
-                  },
-                  {} as Record<string, string[]>,
-                ),
+                selected.items.reduce<Record<string, string[]>>((acc, item) => {
+                  if (!acc[item.category]) acc[item.category] = []
+                  acc[item.category].push(item.label)
+                  return acc
+                }, {}),
               ).map(([category, items]) => (
                 <div key={category}>
                   <h4 className="text-sm font-medium text-primary mb-2">{category}</h4>
