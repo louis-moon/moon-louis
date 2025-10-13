@@ -49,8 +49,8 @@ const work: WorkItem[] = [
     period: "Mar 2024 - Feb 2025 • 4 mos",
     location: "Orlando, Florida, United States • Remote",
     bullets: [
-      "Established a semantic comparable business search query system to value businesses through comparable company analyses; formulated one version for the sell-side and one for the buy-side, reducing the process from hours to seconds",
-      "Led product development for the financial valuation product, focusing on core functionality and UX; created and maintained a comprehensive product roadmap, prioritizing MVP features and future iterations",
+      "Crafted a product roadmap & managed the lifecycle of various technology products, including UI and go-to-market strategy; directed product iteration, led MVP testing, and developed user personas, leading to a successful product launch preparation",
+      "Established a semantic comparable business search query system to value businesses through comparable company analyses; designed one version for the sell-side and one for buy-side users, bringing the time for process down from hours to seconds",
     ],
   },
   {
@@ -60,8 +60,8 @@ const work: WorkItem[] = [
     period: "Apr 2020 - Jun 2020 • 3 mos",
     location: "New York, New York, United States • Remote",
     bullets: [
-      "Supported portfolio manager by performing due diligence and building valuation models; crafted scenario-based financial statements with schedules and spread industry comparables",
-      "Performed DCF, trading comps, and precedent transaction analyses; utilized LBO and M&A models to compare valuation levels and surface insights",
+      "Crafted a product roadmap & managed the lifecycle of various technology products, including UI and go-to-market strategy; directed product iteration, led MVP testing, and developed user personas, leading to a successful product launch preparation",
+      "Established a semantic comparable business search query system to value businesses through comparable company analyses; designed one version for the sell-side and one for buy-side users, bringing the time for process down from hours to seconds",
     ],
   },
   {
@@ -71,8 +71,8 @@ const work: WorkItem[] = [
     period: "Jun 2019 - Aug 2019 • 3 mos",
     location: "New Haven, Connecticut, United States • On-site",
     bullets: [
-      "Designed and implemented curriculum as one of 12 undergraduate instructors; taught Sustainable Development & Social Entrepreneurship and Politics, Law, & Economics",
-      "Delivered 4 unique seminars per session, ran 3 simulated case studies, mentored students through post-lecture breakouts; advised 6 successful capstone research projects",
+      "Designed and implemented teaching curriculum at Yale University summer program as one of 12 undergraduate instructors; taught Sustainable Development and Social Entrepreneurship and Politics, Law, & Economics to enhance academic breadth",
+      "Delivered 4 unique seminars each session, orchestrated 3 simulated case studies, and oversaw post-lecture breakout sessions; mentored high school students, enhancing their academic capabilities and resulting in 6 successful capstone research projects",
     ],
   },
   {
@@ -82,8 +82,8 @@ const work: WorkItem[] = [
     period: "Jun 2018 – Aug 2018 • 3 mos",
     location: "Miami, Florida, United States • On-site",
     bullets: [
-      "Set up 5 summer boot camps (100 students) teaching computer science for South Florida’s TechHire initiative to expand local tech-sector talent pipelines",
-      "Modeled lead flows, managed campaigns, and provided competitive analysis for the coding bootcamp; focused on SEO and improving CTRs via CRM and email marketing",
+      "Set up 5 summer boot camps with 100 students to teach teenagers computer science for South Florida’s TechHire initiative, a campaign to expand local technology sectors by establishing talent pipelines in underserved communities across the nation",
+      "Modelled lead flows, managed marketing campaigns, and provided competitive analysis for the company’s coding bootcamp; centered on search engine optimization along with improving click-through rates using CRM platforms and email marketing",
     ],
   },
 ]
@@ -93,16 +93,16 @@ const projects: ProjectItem[] = [
     title: "Equity A1",
     period: "Dec 2021 - Mar 2024",
     bullets: [
-      "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients; focused on package delivery verification, employee monitoring, and driver safety checks",
-      "Co-founded organization with Yale, Berkeley, and UChicago alums; leveraged children’s books to build a text-to-video model as a complementary solution using natural language processing tools",
+      "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry specific use cases including package delivery verification, employee monitoring, and driver safety checks",
+      "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children’s books to build a text-to-video model as a complementary solution using natural language processing tools",
     ],
   },
   {
     title: "Tutoring for Tomorrow",
     period: "Aug 2015 - May 2021",
     bullets: [
-      "Tripled sales to $3,000/month, raised $100,000+ over 5 years, and expanded operations to 4 Miami-Dade schools as Executive Director after serving as tutor, VP, and President",
-      "Personally raised $5,000+ as a tutor, incorporated the org as a 501(c)(3), and recruited 50+ student tutors; engaged lawyers and nonprofit education consultants to form a board and formalize strategy",
+      "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
+      "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
     ],
   },
 ]
