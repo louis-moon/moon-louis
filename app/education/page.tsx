@@ -23,9 +23,9 @@ const educationTimeline = [
   {
     institution: "Miami Dade College",
     degree: "Dual Enrollment",
-    period: "2017",
-    focus: "Advanced Mathematics",
-    description: "Completed Calculus III and Introduction to Differential Equations while in high school.",
+    period: "2017-2018",
+    focus: "Introductory Mathematics",
+    description: "College courses that count toward high school graduation at MDC's Kendall Campus",
     highlights: ["Calculus and Analytic Geometry III", "Introduction to Differential Equations"],
   },
   {
@@ -33,7 +33,7 @@ const educationTimeline = [
     degree: "Summer Program",
     period: "Jul 2016 - Aug 2016",
     focus: "Technology, Innovation & Entrepreneurship",
-    description: "Innovation, venture thinking, and interdisciplinary collaboration.",
+    description: "Academic enrichment and leadership training program for oustanding high school students.",
     highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
   },
 ]
@@ -184,7 +184,6 @@ const collegeActivities = [
   {
     title: "Dwight Hall at Yale",
     role: "Support Crew",
-    period: "Fall 2018",
     bullets: [
       "Organized logistics for FOCUS on New Haven, one of Yale's nine pre-orientation programs hosting 150 students",
     ],
@@ -193,8 +192,8 @@ const collegeActivities = [
 
 const testScores = [
   { test: "SAT", score: "1580", detail: "780 EBRW, 800 Math" },
-  { test: "SAT Essay", score: "24/24", detail: "Perfect score" },
-  { test: "SAT Subject Tests", score: "2400", detail: "800 Math II, Chemistry, US History" },
+  { test: "SAT Essay", score: "24/24", detail: "8/8/8" },
+  { test: "SAT Subject Tests", score: "2400", detail: "Chemistry, Math II, US History" },
 ]
 
 // Expanded AP list (chronological)
@@ -251,7 +250,6 @@ const honors = [
     organization: "National Conservation Foundation",
     year: "2017",
   },
-  { title: "Johns Hopkins Book Award", organization: "Miami Palmetto Senior High School", year: "2017" },
 ]
 
 // High school extracurriculars (kept with gray tags)
@@ -281,7 +279,7 @@ const extracurriculars = [
   },
   {
     title: "Mu Alpha Theta",
-    role: "Vice President of Tutoring",
+    role: "VP of Tutoring",
     period: "2015 - 2018",
     description:
       "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.",

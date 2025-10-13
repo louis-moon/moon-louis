@@ -4,39 +4,6 @@ import { FileText, BookOpen } from "lucide-react"
 
 const essays = [
   {
-    title: "The Lessons We Take from Obstacles",
-    subtitle: "Common Application Personal Essay",
-    date: "November 2017",
-    excerpt:
-      "For eight glacially slow minutes, we performed our skit, featuring everything from pneumatic wings to a fully functional go-kart built from scratch. It was our fifth time at World Finals and in that stadium, all I could think about was how bizarre it was to watch your work blow up in front of you, literally.",
-    content: `I embarked on my venture with Odyssey of the Mind (OM) when I was in first grade. Alongside six teammates, I harbored a certain naiveté that made the whole experience seem more like glorified playtime than a creative problem-solving competition. We worked as diligently as our sub-four-foot-tall bodies would enable us and struggled to work with anything that weighed more than five pounds. Power tools were undoubtedly off limits per our parents' safety concerns, not that our juvenile hands could handle them anyway.
-
-Over the years, we fashioned elaborate solutions to quirky challenges, producing a diverse selection of vehicles that could catalyze chemical reactions or disassemble and reassemble: a bootleg Transformers of sorts. I felt fiery nuts of steel drop into my lap and burn holes through my dearest pair of navy blue Nike basketball shorts. Neodymium magnets worked in tandem with rat traps to crush my hands: all part of the learning process. Whereas I had once been shy and trembled at the snap of dinky mousetraps, I now found myself featuring as a rapping grandma in our music videos and adrenalized to sit on exploding boxes.
-
-My sophomore year marked the team's tenth anniversary: only three of the seven original team members remained, myself included, and whether or not to continue was a legitimate question. After collectively agreeing to another year, Home Depot became my third home again, right behind the coach's. Weekends meant OM work marathons wherein I could spend four hours testing the viability of a solution to meet problem limitations, just to spectacularly fail in a matter of seconds.
-
-The engineering component of OM had largely been handled by my best friend and me every year, and this time was no different. Without a doubt, the single large car was the most difficult element of the problem we chose. I applied what little physics knowledge I possessed to get the job done; pressurized air tanks blew up in our faces and batteries shorted, but we eventually achieved our final product. The car worked in sync with an imaginative storyline to win us first place at the regional and state tournament, the latter of which would take us to Iowa for World Finals.
-
-Even in the minutes leading up to the finale, our vehicle displayed undying loyalty to Murphy's law: the batteries exploded and set off the fire alarm, leaving bystanders stuck in the elevator and us with nothing but the ultimate stress test. After hurriedly repairing the flaming car, we came, we saw, but failed to conquer, placing eleventh overall. It was utter disillusionment to see that hundreds of hours of work was nothing but charcoal, crumbling into a pile of ashes rather than the diamond we had hoped to produce. I could all but hear the world laughing in my face, saying, "Your best wasn't good enough!"
-
-Although blunt and severe, the realization that I couldn't have done better was liberating: in the face of the universe's stubborn silence, words like "deserve" and "fair" become indistinct – all we can do is constantly strive for something better. And there is real meaning and value to be created by pursuing projects in spite of, rather than because of incentives. Over the past decade, working with everything from amphibious cars to a makeshift eighty-gallon water trough shaped us into calculating risk-takers, ready to adapt to whatever challenge the future had to offer.
-
-We returned to World Finals the following year to place second overall, and I still wear those navy blue shorts today.`,
-    tags: ["Personal Growth", "Resilience", "Engineering"],
-  },
-  {
-    title: "Why Yale",
-    subtitle: "Yale Supplemental Essay",
-    date: "November 2017",
-    excerpt:
-      "During my time at Yale Young Global Scholars, I befriended Yalies who were world debate champions and self-made executive directors, yet whose resumes alone would fail to reveal their defining qualities as sincere, hilarious people.",
-    content: `During my time at Yale Young Global Scholars, I befriended Yalies who were world debate champions and self-made executive directors, yet whose resumes alone would fail to reveal their defining qualities as sincere, hilarious people. Likewise, Yale's strength as an academic institution is self-evident, yet it is the primary focus on community and genuine learning that engenders a unanimous appreciation valuing Yale's education over its degrees.
-
-An alumnus on Quora writes, "Yale presents majors as areas to indulge intellectual and academic curiosity, not as vocational training." The same reason underlying the lack of an acting major, offering Theater Studies instead, emboldens me: Yale strives to offer a holistic experience, not a means to a career – it seeks to enrich, not to facilitate getting rich.`,
-    tags: ["Education", "Philosophy", "Values"],
-  },
-  // Replaced "Honesty and Action" with the new essay below
-  {
     title: "The Dead Shall Be Praised",
     subtitle: "ENGL 120 Essay (Professor Sexton)",
     date: "November 2018",
@@ -74,6 +41,38 @@ The opposite idea, that our days are numbered, is emboldening. Although failures
 
 I have never seen leaves change color first-hand. I have seen red and orange leaves while traveling, but green leaves are a constant in my mind, like stone. Yet, for the first time, I am seeing the leaves change color in the cemetery.`,
     tags: ["Place Writing", "History", "Reflection"],
+  },
+  {
+    title: "The Lessons We Take from Obstacles",
+    subtitle: "Common Application Personal Essay",
+    date: "November 2017",
+    excerpt:
+      "For eight glacially slow minutes, we performed our skit, featuring everything from pneumatic wings to a fully functional go-kart built from scratch. It was our fifth time at World Finals and in that stadium, all I could think about was how bizarre it was to watch your work blow up in front of you, literally.",
+    content: `I embarked on my venture with Odyssey of the Mind (OM) when I was in first grade. Alongside six teammates, I harbored a certain naiveté that made the whole experience seem more like glorified playtime than a creative problem-solving competition. We worked as diligently as our sub-four-foot-tall bodies would enable us and struggled to work with anything that weighed more than five pounds. Power tools were undoubtedly off limits per our parents' safety concerns, not that our juvenile hands could handle them anyway.
+
+Over the years, we fashioned elaborate solutions to quirky challenges, producing a diverse selection of vehicles that could catalyze chemical reactions or disassemble and reassemble: a bootleg Transformers of sorts. I felt fiery nuts of steel drop into my lap and burn holes through my dearest pair of navy blue Nike basketball shorts. Neodymium magnets worked in tandem with rat traps to crush my hands: all part of the learning process. Whereas I had once been shy and trembled at the snap of dinky mousetraps, I now found myself featuring as a rapping grandma in our music videos and adrenalized to sit on exploding boxes.
+
+My sophomore year marked the team's tenth anniversary: only three of the seven original team members remained, myself included, and whether or not to continue was a legitimate question. After collectively agreeing to another year, Home Depot became my third home again, right behind the coach's. Weekends meant OM work marathons wherein I could spend four hours testing the viability of a solution to meet problem limitations, just to spectacularly fail in a matter of seconds.
+
+The engineering component of OM had largely been handled by my best friend and me every year, and this time was no different. Without a doubt, the single large car was the most difficult element of the problem we chose. I applied what little physics knowledge I possessed to get the job done; pressurized air tanks blew up in our faces and batteries shorted, but we eventually achieved our final product. The car worked in sync with an imaginative storyline to win us first place at the regional and state tournament, the latter of which would take us to Iowa for World Finals.
+
+Even in the minutes leading up to the finale, our vehicle displayed undying loyalty to Murphy's law: the batteries exploded and set off the fire alarm, leaving bystanders stuck in the elevator and us with nothing but the ultimate stress test. After hurriedly repairing the flaming car, we came, we saw, but failed to conquer, placing eleventh overall. It was utter disillusionment to see that hundreds of hours of work was nothing but charcoal, crumbling into a pile of ashes rather than the diamond we had hoped to produce. I could all but hear the world laughing in my face, saying, "Your best wasn't good enough!"
+
+Although blunt and severe, the realization that I couldn't have done better was liberating: in the face of the universe's stubborn silence, words like "deserve" and "fair" become indistinct – all we can do is constantly strive for something better. And there is real meaning and value to be created by pursuing projects in spite of, rather than because of incentives. Over the past decade, working with everything from amphibious cars to a makeshift eighty-gallon water trough shaped us into calculating risk-takers, ready to adapt to whatever challenge the future had to offer.
+
+We returned to World Finals the following year to place second overall, and I still wear those navy blue shorts today.`,
+    tags: ["Personal Growth", "Resilience", "Engineering"],
+  },
+  {
+    title: "Why Yale",
+    subtitle: "Yale Supplemental Essay",
+    date: "November 2017",
+    excerpt:
+      "During my time at Yale Young Global Scholars, I befriended Yalies who were world debate champions and self-made executive directors, yet whose resumes alone would fail to reveal their defining qualities as sincere, hilarious people.",
+    content: `During my time at Yale Young Global Scholars, I befriended Yalies who were world debate champions and self-made executive directors, yet whose resumes alone would fail to reveal their defining qualities as sincere, hilarious people. Likewise, Yale's strength as an academic institution is self-evident, yet it is the primary focus on community and genuine learning that engenders a unanimous appreciation valuing Yale's education over its degrees.
+
+An alumnus on Quora writes, "Yale presents majors as areas to indulge intellectual and academic curiosity, not as vocational training." The same reason underlying the lack of an acting major, offering Theater Studies instead, emboldens me: Yale strives to offer a holistic experience, not a means to a career – it seeks to enrich, not to facilitate getting rich.`,
+    tags: ["Education", "Philosophy", "Values"],
   },
 ]
 
