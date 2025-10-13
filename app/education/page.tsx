@@ -11,7 +11,7 @@ const educationTimeline = [
     description:
       "Interdisciplinary learning focused on understanding how societies function and resolving pressing socioeconomic issues.",
     highlights: [
-      "Restrictive Early Action admit",
+      "Alpha Epsilon Pi",
       "Tsai CITY Accelerator",
     ],
   },
