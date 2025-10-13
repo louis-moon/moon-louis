@@ -1,13 +1,16 @@
-// next.config.mjs
 /** @type {import('next').NextConfig} */
-export default {
-  output: 'export',
-  images: { unoptimized: true },
+const isProd = process.env.NODE_ENV === 'production';
 
-  // Project site lives at /moon-louis
-  basePath: '/moon-louis',
-  assetPrefix: '/moon-louis/',
+const nextConfig = {
+  // Keep your settings here, but make basePath/assetPrefix dev-safe:
+  basePath: isProd ? '/moon-louis' : '',
+  assetPrefix: isProd ? '/moon-louis/' : '',
 
-  // Avoids route 404s on static hosts
-  trailingSlash: true,
-}
+  // Recommended basics
+  reactStrictMode: true,
+
+  // DO NOT disable the app router. This must not be false:
+  // experimental: { appDir: false }  <-- remove if you have it
+};
+
+export default nextConfig;
