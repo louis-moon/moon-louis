@@ -7,9 +7,9 @@ const educationTimeline = [
     institution: "Yale University",
     degree: "Bachelor of Arts",
     period: "2018 - 2022",
-    focus: "Global Affairs, Ethics Politics & Economics, Statistics & Data Science",
+    focus: "Statistics & Data Science",
     description:
-      "Interdisciplinary learning focused on understanding how societies function and resolving pressing socioeconomic issues.",
+      "Interdisciplinary learning focused on understanding how complex systems function and resolving pressing socioeconomic issues.",
     highlights: [
       "Alpha Epsilon Pi",
       "Tsai CITY Accelerator",
@@ -21,7 +21,7 @@ const educationTimeline = [
     period: "2014 - 2018",
     focus: "Advanced Placement & Dual Enrollment",
     description: "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
-    highlights: ["3rd in class of 673 students", "National Merit Semifinalist"],
+    highlights: ["3rd in class of 673 students", "National Merit Scholar"],
   },
   {
     institution: "Miami Dade College",
@@ -35,9 +35,9 @@ const educationTimeline = [
     institution: "Yale Young Global Scholars",
     degree: "Summer Program",
     period: "Jul 2016 - Aug 2016",
-    focus: "Technology, Innovation & Entrepreneurship • Jonathan Edwards College",
+    focus: "Technology, Innovation & Entrepreneurship",
     description:
-      "Summer academic program at Yale University emphasizing innovation, venture thinking, and interdisciplinary collaboration.",
+      "Innovation, venture thinking, and interdisciplinary collaboration.",
     highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
   },
 ]
@@ -66,7 +66,6 @@ const apScores = [
 ]
 
 const honors = [
-  { title: "National Merit Semifinalist", organization: "National Merit Scholarship Corporation", year: "2017" },
   {
     title: "National Economics Challenge: State Champion, 9th Place Nationally",
     organization: "Council for Economic Education",
@@ -75,6 +74,11 @@ const honors = [
   {
     title: "National Personal Finance Challenge: State Champion, Semifinalist",
     organization: "National Economics Challenge",
+    year: "2017",
+  },
+  {
+    title: "Odyssey of the Mind: 2nd Place World Finals, Ranatra Fusca Creativity Award",
+    organization: "Creative Competitions",
     year: "2017",
   },
   {
