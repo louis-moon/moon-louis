@@ -26,20 +26,40 @@ jobs:
         with:
           node-version: 20
 
-      # Installs deps whether your lockfile is present or not
-      - name: Install dependencies
-        run: npm ci || npm install
+      # If your v0 zip uses pnpm, this will install with pnpm; else fallback to npm.
+      - name: Install dependencies (pnpm or npm)
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            corepack enable
+            corepack prepare pnpm@8 --activate
+            pnpm install --frozen-lockfile=false
+          else
+            npm config set legacy-peer-deps true
+            npm install --legacy-peer-deps
+          fi
 
-      # Next.js 13+ static export via next.config.js `output: "export"`
+      # Build your site. For Next 13+ static export, next.config.js should have:  output: 'export'
       - name: Build
         env:
-          # Helps Next.js generate absolute asset URLs for GitHub Pages
-          GITHUB_PAGES: "true"
           NEXT_TELEMETRY_DISABLED: "1"
-        run: npm run build
+          GITHUB_PAGES: "true"
+        run: |
+          if npm run | grep -qE '(^| )gh:build( |$)'; then
+            npm run gh:build || npm run build
+          else
+            npm run build
+          fi
 
-      # Upload the exported 'out' folder (Next.js export default)
-      - name: Upload artifact
+      # Verify 'out' exists (friendly error if not)
+      - name: Verify export folder
+        run: |
+          if [ ! -d out ]; then
+            echo "::error::Expected ./out folder not found. Ensure next.config.js has: module.exports = { output: 'export' }"
+            ls -la
+            exit 1
+          fi
+
+      - name: Upload artifact (out)
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
