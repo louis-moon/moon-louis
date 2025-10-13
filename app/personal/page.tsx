@@ -29,35 +29,6 @@ export default function PersonalPage() {
             </div>
             <InterestGrid />
           </div>
-
-          <div className="mt-16 bg-card border border-border rounded-xl p-8">
-            <h2 className="text-2xl font-light mb-4 text-foreground">Philosophy & Aspirations</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                <span className="font-medium text-foreground">What I Would Major In:</span> Philosophy, Global Affairs,
-                Statistics
-              </p>
-              <p>
-                <span className="font-medium text-foreground">Passions:</span> Science &amp; Technology, Environment,
-                Education
-              </p>
-              <p>
-                <span className="font-medium text-foreground">Things I Want to Learn / Work On:</span> Spanish,
-                Relationships, Korean
-              </p>
-              <p>
-                <span className="font-medium text-foreground">Pet Wishlist:</span> Golden Retriever, British Shorthair,
-                French Bulldog
-              </p>
-              <p>
-                <span className="font-medium text-foreground">Favorite Animals:</span> Polar Bears, Dragons, Lions
-              </p>
-              <p className="text-sm italic pt-4 border-t border-border">
-                "They offer food to the indigent, the orphan, and the captive, saying, 'We feed you for the sake of
-                Allah alone; we wish not from you reward, nor gratitude.'"
-              </p>
-            </div>
-          </div>
         </div>
       </main>
     </>

@@ -5,15 +5,25 @@ import { GraduationCap, Award, BookOpen, Users } from "lucide-react"
 const educationTimeline = [
   {
     institution: "Yale University",
-    degree: "Bachelor of Science",
-    period: "2018 - 2023",
-    focus: "Statistics & Data Science",
+    degree: "Bachelor of Arts",
+    period: "2018 - 2022",
+    focus: "Global Affairs, Ethics Politics & Economics, Statistics & Data Science",
     description:
-      "Interdisciplinary learning focused on understanding how systems function and resolving pressing socioeconomic issues.",
+      "Interdisciplinary learning focused on understanding how societies function and resolving pressing socioeconomic issues.",
     highlights: [
-      "Tsai CITY Accelerator",
       "Restrictive Early Action admit",
+      "Tsai CITY Accelerator",
     ],
+  },
+  // NEW: Yale Young Global Scholars (Summer Program)
+  {
+    institution: "Yale Young Global Scholars",
+    degree: "Summer Program",
+    period: "Jul 2016 - Aug 2016",
+    focus: "Technology, Innovation & Entrepreneurship • Jonathan Edwards College",
+    description:
+      "Summer academic program at Yale University emphasizing innovation, venture thinking, and interdisciplinary collaboration.",
+    highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
   },
   {
     institution: "Miami Palmetto Senior High School",
@@ -21,7 +31,7 @@ const educationTimeline = [
     period: "2014 - 2018",
     focus: "Advanced Placement & Dual Enrollment",
     description: "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
-    highlights: ["3rd in class of 673 students", "National Merit Scholar"],
+    highlights: ["3rd in class of 673 students", "National Merit Semifinalist"],
   },
   {
     institution: "Miami Dade College",
@@ -34,7 +44,7 @@ const educationTimeline = [
 ]
 
 const testScores = [
-  { test: "SAT", score: "1580", detail: "780 EBRW, 800 Math" },
+  { test: "SAT", score: "1600", detail: "800 Math, 800 Reading/Writing" },
   { test: "SAT Essay", score: "24/24", detail: "Perfect score" },
   { test: "SAT Subject Tests", score: "2400", detail: "800 Math II, Chemistry, US History" },
 ]
@@ -57,14 +67,15 @@ const apScores = [
 ]
 
 const honors = [
+  { title: "National Merit Semifinalist", organization: "National Merit Scholarship Corporation", year: "2017" },
   {
     title: "National Economics Challenge: State Champion, 9th Place Nationally",
     organization: "Council for Economic Education",
     year: "2017",
   },
   {
-    title: "National Finance Challenge: State Champion, Semifinalist",
-    organization: "Council for Economic Education",
+    title: "National Personal Finance Challenge: State Champion, Semifinalist",
+    organization: "National Economics Challenge",
     year: "2017",
   },
   {
@@ -72,14 +83,10 @@ const honors = [
     organization: "National Conservation Foundation",
     year: "2017",
   },
-  {
-    title: "Johns Hopkins Book Award",
-    organization: "Miami Palmetto Senior High School",
-    year: "2017",
-  },
+  { title: "Johns Hopkins Book Award", organization: "Johns Hopkins University", year: "2017" },
 ]
 
-// Moved from Professional → Education as extracurriculars (HS)
+// HS extracurriculars moved here (unchanged content, updated tag style)
 const extracurriculars = [
   {
     title: "National Honor Society",
@@ -219,7 +226,7 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* Extracurriculars (moved here) */}
+          {/* Extracurriculars */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-8">
               <Users className="w-5 h-5 text-primary" />
@@ -243,7 +250,10 @@ export default function EducationPage() {
                   <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((t, i) => (
-                      <span key={i} className="text-xs text-foreground bg-accent px-2 py-1 rounded-md border border-border">
+                      <span
+                        key={i}
+                        className="text-xs text-foreground bg-secondary px-2 py-1 rounded-md border border-border"
+                      >
                         {t}
                       </span>
                     ))}
