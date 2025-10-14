@@ -101,7 +101,7 @@ const projects: ProjectItem[] = [
     title: "Tsai CITY",
     period: "Sep 2021 - Nov 2021",
     bullets: ["Participated in Tsai CITY's flagship venture accelerator; secured initiial funding, mentorship, and strategic support",
-    "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine early-stage concepts",
+    "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine concepts",
     ],
   },
   {
