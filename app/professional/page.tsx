@@ -82,8 +82,8 @@ const work: WorkItem[] = [
     period: "Jun 2018 – Aug 2018 • 3 mos",
     location: "Miami, Florida, United States • On-site",
     bullets: [
-      "Set up 5 summer boot camps with 100 students to teach teenagers computer science for South Florida’s TechHire initiative, a campaign to expand local technology sectors by establishing talent pipelines in underserved communities across the nation",
-      "Modelled lead flows, managed marketing campaigns, and provided competitive analysis for the company’s coding bootcamp; centered on search engine optimization along with improving click-through rates using CRM platforms and email marketing",
+      "Set up 5 summer boot camps with 100 students to teach teenagers computer science for South Florida's TechHire initiative, a campaign to expand local technology sectors by establishing talent pipelines in underserved communities across the nation",
+      "Modelled lead flows, managed marketing campaigns, and provided competitive analysis for the company's coding bootcamp; centered on search engine optimization along with improving click-through rates using CRM platforms and email marketing",
     ],
   },
 ]
@@ -94,7 +94,7 @@ const projects: ProjectItem[] = [
     period: "Dec 2021 - Mar 2024",
     bullets: [
       "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry specific use cases including package delivery verification, employee monitoring, and driver safety checks",
-      "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children’s books to build a text-to-video model as a complementary solution using natural language processing tools",
+      "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children's books to build a text-to-video model as a complementary solution using natural language processing tools",
     ],
   },
   {
