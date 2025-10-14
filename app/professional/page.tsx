@@ -46,7 +46,7 @@ const work: WorkItem[] = [
     company: "Boom",
     role: "Product Manager",
     employment: "Contract",
-    period: "Mar 2024 - Feb 2025 • 4 mos",
+    period: "Mar 2024 - Feb 2025 • 1 yr",
     location: "Orlando, Florida, United States • Remote",
     bullets: [
       "Established a semantic comparable business search query system to value businesses through comparable company analyses; formulated one version for the sell-side and one for the buy-side, bringing the time for process down from hours to seconds",
@@ -77,7 +77,7 @@ const work: WorkItem[] = [
   },
   {
     company: "Florida Vocational Institute",
-    role: "Marketing Intern",
+    role: "Summer Intern",
     employment: "Internship",
     period: "Jun 2018 – Aug 2018 • 3 mos",
     location: "Miami, Florida, United States • On-site",
@@ -101,6 +101,7 @@ const projects: ProjectItem[] = [
     title: "Tsai CITY Accelerator",
     period: "Sep 2021 - Nov 2021",
     bullets: ["Secured initial funding and mentorship opportunities (Fall ’21)"],
+    "Part of broader venture development pipeline at Tsai CITY",
   },
   {
     title: "Tutoring for Tomorrow",
