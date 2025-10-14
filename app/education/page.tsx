@@ -8,8 +8,8 @@ const educationTimeline = [
     degree: "Bachelor of Science",
     period: "2018 - 2023",
     focus: "Statistics & Data Science",
-    description: "Interdisciplinary learning focused on understanding how complex systems function.",
-    highlights: ["Alpha Epsilon Pi", "Tsai CITY Accelerator"],
+    description: "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
+    highlights: ["Alpha Epsilon Pi: Epsilon Upsilon Chapter, Eta Deuteron Class"],
   },
   {
     institution: "Miami Palmetto Senior High School",
@@ -17,15 +17,15 @@ const educationTimeline = [
     period: "2014 - 2018",
     focus: "Summa Cum Laude",
     description:
-      "Rigorous academic program with extensive AP coursework and dual enrollment at Miami Dade College.",
-    highlights: ["3rd in class of 673 students", "National Merit Scholar"],
+      "National Honor Society President, Chopin Foundation, Greater Miami Youth Symphony, Jazz Band",
+    highlights: ["3rd in class of 673 students", "Johns Hopkins Book Award"],
   },
   {
     institution: "Miami Dade College",
     degree: "Dual Enrollment",
     period: "2017-2018",
     focus: "Introductory Mathematics",
-    description: "College courses that count toward high school graduation at MDC's Kendall Campus",
+    description: "Completed university-level coursework at Miami Dade College's Kendall Campus",
     highlights: ["Calculus and Analytic Geometry III", "Introduction to Differential Equations"],
   },
   {
@@ -33,8 +33,8 @@ const educationTimeline = [
     degree: "Summer Program",
     period: "Jul 2016 - Aug 2016",
     focus: "Technology, Innovation & Entrepreneurship",
-    description: "Academic enrichment and leadership training program for oustanding high school students.",
-    highlights: ["Technology, Innovation & Entrepreneurship", "Jonathan Edwards College"],
+    description: "Academic enrichment and leadership training program for exceptional high school students.",
+    highlights: ["Outstanding marks", "Jonathan Edwards College"],
   },
 ]
 
@@ -302,8 +302,7 @@ export default function EducationPage() {
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Education</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              A commitment to interdisciplinary learning, combining economics, philosophy, and technology to understand
-              complex systems and human behavior.
+              At the heart of interdisciplinary learning and growth.
             </p>
           </div>
 
