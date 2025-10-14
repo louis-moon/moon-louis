@@ -86,12 +86,11 @@ export default function EssaysPage() {
           <div className="animate-fade-in mb-16">
             <div className="flex items-center gap-3 mb-4">
               <FileText className="w-6 h-6 text-primary" />
-              <p className="text-sm text-muted-foreground">Written Work</p>
+              <p className="text-sm text-muted-foreground">Written</p>
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Essays</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              Reflections on personal growth, academic pursuits, and places that shaped my perspective on
-              learning, leadership, and life.
+              Thoughts and stories on life, learning, and everything in between.
             </p>
           </div>
 

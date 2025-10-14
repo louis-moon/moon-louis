@@ -48,12 +48,11 @@ export default function MediaPage() {
           <div className="animate-fade-in mb-16">
             <div className="flex items-center gap-3 mb-4">
               <Camera className="w-6 h-6 text-primary" />
-              <p className="text-sm text-muted-foreground">Visual Stories</p>
+              <p className="text-sm text-muted-foreground">Visual</p>
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Media</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              Capturing moments and experiences through photography and video, documenting travels, performances, and
-              creative projects.
+              A collection of memories shared with those I love.
             </p>
           </div>
 
