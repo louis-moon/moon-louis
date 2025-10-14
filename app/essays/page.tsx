@@ -159,10 +159,13 @@ export default function EssaysPage() {
                   </summary>
                   <div className="mt-6 pt-6 border-t border-border">
                     <div className="prose prose-sm max-w-none">
-                      {essay.content.split("\n\n").map((paragraph, pIndex) => (
-                        <p key={pIndex} className="text-muted-foreground leading-relaxed mb-4">
-                          {paragraph}
-                        </p>
+                      {essay.content
+                        .split(/\r?\n\s*\r?\n/)   // handles \n\n, \r\n\r\n, and blank lines with spaces
+                        .filter(p => p.trim())
+                        .map((paragraph, pIndex) => (
+                          <p key={pIndex} className="text-muted-foreground leading-relaxed mb-4">
+                            {paragraph}
+                          </p>
                       ))}
                     </div>
                   </div>
