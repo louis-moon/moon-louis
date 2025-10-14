@@ -5,7 +5,7 @@ import { FileText, BookOpen } from "lucide-react"
 const essays = [
   {
     title: "The Dead Shall Be Praised",
-    subtitle: "ENGL 120 Essay (Professor Sexton)",
+    subtitle: "ENGL 120 Essay",
     date: "November 2018",
     excerpt:
       "Grove Street Cemetery’s Egyptian pylon bears the inscription “THE DEAD SHALL BE RAISED.” Inside, New Haven’s first chartered burial ground reframes death, memory, and the desire for permanence.",
@@ -44,7 +44,7 @@ I have never seen leaves change color first-hand. I have seen red and orange lea
   },
   {
     title: "The Lessons We Take from Obstacles",
-    subtitle: "Common Application Personal Essay",
+    subtitle: "Common App",
     date: "November 2017",
     excerpt:
       "For eight glacially slow minutes, we performed our skit, featuring everything from pneumatic wings to a fully functional go-kart built from scratch. It was our fifth time at World Finals and in that stadium, all I could think about was how bizarre it was to watch your work blow up in front of you, literally.",
