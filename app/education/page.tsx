@@ -207,7 +207,7 @@ const apScores = [
   { subject: "Spanish Language", score: 5, year: 2016 },
   { subject: "Physics 1", score: 4, year: 2016 },
   { subject: "Calculus BC", score: 5, year: 2016 },
-  { subject: "Calculus BC — AB Subscore", score: 5, year: 2016 },
+  { subject: "Calculus BC—AB Subscore", score: 5, year: 2016 },
   { subject: "European History", score: 4, year: 2016 },
 
   // 2017

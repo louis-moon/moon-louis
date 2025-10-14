@@ -9,17 +9,17 @@ const essays = [
   date: "Oct 2025",
   tags: ["Personal Growth", "Philosophy", "Mindset"],
   excerpt:
-    "Meaning isn’t something we stumble upon — it’s something we build. Through effort, intention, and a belief in our own agency, the ordinary actions of daily life can become deeply significant.",
+    "Meaning isn’t something we stumble upon—it’s something we build. Through effort, intention, and a belief in our own agency, the ordinary actions of daily life can become deeply significant.",
   content: `
 Statement: Meaning isn’t discovered; rather, it’s created.
 
-I have found myself, like many others, struggling with the notion of meaning, fulfillment, happiness — whatever you’d like to call it. And I could never get good, centralized feedback on how to bridge this gap in my life. In the following anecdotes, I’ll share my story and some heuristics that have helped me throughout my life.
+I have found myself, like many others, struggling with the notion of meaning, fulfillment, happiness—whatever you’d like to call it. And I could never get good, centralized feedback on how to bridge this gap in my life. In the following anecdotes, I’ll share my story and some heuristics that have helped me throughout my life.
 
 1. More effort almost always yields better outcomes
 
-Growing up, I never thought I was the smartest kid; I did think, however, that I put a lot of effort into whatever I set my mind to. Somewhere along the way, though, I realized that the opposite was true: intelligence didn’t matter anywhere near as much as the effort I put in — which, at times, was very little.
+Growing up, I never thought I was the smartest kid; I did think, however, that I put a lot of effort into whatever I set my mind to. Somewhere along the way, though, I realized that the opposite was true: intelligence didn’t matter anywhere near as much as the effort I put in—which, at times, was very little.
 
-As a side note, I also think that nonchalance in today’s society is horrible. People should care about their relationships with others and about their passions, interests, and hobbies. Effort is cool, and it always will be — at least to me. I’ll always be the one to put in more if need be.
+As a side note, I also think that nonchalance in today’s society is horrible. People should care about their relationships with others and about their passions, interests, and hobbies. Effort is cool, and it always will be—at least to me. I’ll always be the one to put in more if need be.
 
 2. Manifestation / visualization
 
@@ -29,21 +29,21 @@ For me, it looks like this: if you are able to conceptualize the beginning of wh
 
 3. Personal identity
 
-The two most important questions in life, to me, are: 1) Who am I? (What systems and heuristics work best for me? What do I derive pleasure from? What do I enjoy doing?) and 2) Where am I going? (What do I want?) Similar to the previous point, I think that not enough people spend enough time thinking deeply about what they want — whether it be in the short or long term. Once this is nailed down, again, making it happen is easy.
+The two most important questions in life, to me, are: 1) Who am I? (What systems and heuristics work best for me? What do I derive pleasure from? What do I enjoy doing?) and 2) Where am I going? (What do I want?) Similar to the previous point, I think that not enough people spend enough time thinking deeply about what they want—whether it be in the short or long term. Once this is nailed down, again, making it happen is easy.
 
-Additionally, something that has helped me, which I derived from a hiring assessment, is understanding the difference between how you view yourself versus how you think others view you. This delta says a lot about our personality — not necessarily in a good or bad way, but in a way that can be helpful.
+Additionally, something that has helped me, which I derived from a hiring assessment, is understanding the difference between how you view yourself versus how you think others view you. This delta says a lot about our personality—not necessarily in a good or bad way, but in a way that can be helpful.
 
 4. Deconstruction
 
-Being a student made it seem to me as though the world was very systematic and driven by a very specific set of rules — which can be true to some extent, but not entirely so. Understanding that there are no “rules” or objective truths can be freeing. An example from my college philosophy class: Hume said that just because something’s always happened before — like a ball falling due to gravity — doesn’t mean it must happen again; our belief that it will is habit, not logic.
+Being a student made it seem to me as though the world was very systematic and driven by a very specific set of rules—which can be true to some extent, but not entirely so. Understanding that there are no “rules” or objective truths can be freeing. An example from my college philosophy class: Hume said that just because something’s always happened before—like a ball falling due to gravity—doesn’t mean it must happen again; our belief that it will is habit, not logic.
 
 Ultimately, perception is reality, and we should adopt systems and heuristics that make it easier to live our day-to-day lives.
 
 5. Internal locus of control
 
-I like thinking about the world in terms of fate, luck, or destiny to some degree. However, it is much more helpful to have an internal locus of control — adhering to the notion that our actions determine outcomes in our lives rather than determinism. It is essentially to say that we should hold the notion of free will dear to our hearts, and perhaps that is because…
+I like thinking about the world in terms of fate, luck, or destiny to some degree. However, it is much more helpful to have an internal locus of control—adhering to the notion that our actions determine outcomes in our lives rather than determinism. It is essentially to say that we should hold the notion of free will dear to our hearts, and perhaps that is because…
 
-What we ultimately want is agency — the feeling that I meaningfully exist, that I have influence over my life.
+What we ultimately want is agency—the feeling that I meaningfully exist, that I have influence over my life.
 
 I want to feel as though I am acting on the world rather than the world acting on me.
 
@@ -57,7 +57,7 @@ At least, they have for me in my own lived experience.
   subtitle: "PHIL 126 Essay",
   date: "April 2019",
   excerpt:
-    "In writing An Essay Concerning Human Understanding, John Locke argues that memory is a necessary and sufficient condition for personal identity — and that we should not be punished for actions we do not remember committing.",
+    "In writing An Essay Concerning Human Understanding, John Locke argues that memory is a necessary and sufficient condition for personal identity—and that we should not be punished for actions we do not remember committing.",
   content: `1   Introduction
 
 In writing An Essay Concerning Human Understanding, John Locke details his account of self and personal identity over time. He argues that memory is a necessary and sufficient condition of personal identity, and that one should not be punished for performing an action that person does not recall having performed, for they are not the same person as the one who committed the action. In this paper, I will argue that Locke's argument ultimately fails due to his mistaken view that memory is a necessary and sufficient condition for personal identity.'
