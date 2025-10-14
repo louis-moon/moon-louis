@@ -45,7 +45,7 @@ const work: WorkItem[] = [
   {
     company: "Boom",
     role: "Product Manager",
-    employment: "Contract",
+    employment: "Full-time",
     period: "Mar 2024 - Feb 2025 • 1 yr",
     location: "Orlando, Florida, United States • Remote",
     bullets: [

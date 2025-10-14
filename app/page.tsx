@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import { ArrowRight } from "lucide-react"
+import { Home } from "lucide-react"
 import Link from "next/link"
 
 export default function HomePage() {
@@ -11,7 +12,10 @@ export default function HomePage() {
       <main className="min-h-screen pt-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="animate-fade-in">
-            <p className="text-sm text-muted-foreground mb-4">Welcome</p>
+            <p className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+              <Home className="w-4 h-4 text-primary" />
+              Welcome
+            </p>
             <h1 className="text-6xl md:text-7xl font-light text-foreground mb-6 text-balance">Louis Moon</h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-2xl text-pretty leading-relaxed">
               Exploring the intersections of culture, systems, and human experience.
