@@ -486,8 +486,6 @@ export default function EducationPage() {
                       </h3>
                       <p className="text-sm text-primary">{item.role}</p>
                     </div>
-                    <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">{item.period}</span>
-                  </div>
                   <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((t, i) => (
