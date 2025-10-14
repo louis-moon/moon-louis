@@ -98,10 +98,10 @@ const projects: ProjectItem[] = [
     ],
   },
   {
-    title: "Tsai CITY Accelerator",
+    title: "Tsai CITY",
     period: "Sep 2021 - Nov 2021",
-    bullets: ["Secured initial funding and mentorship opportunities (Fall ’21)",
-    "Part of broader venture development pipeline at Tsai CITY",
+    bullets: ["Participated in Tsai CITY's flagship venture accelerator; secured initiial funding, mentorship, and strategic support",
+    "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine early-stage concepts",
     ],
   },
   {
@@ -128,11 +128,11 @@ export default function ProfessionalPage() {
           <div className="animate-fade-in mb-16">
             <div className="flex items-center gap-3 mb-4">
               <Briefcase className="w-6 h-6 text-primary" />
-              <p className="text-sm text-muted-foreground">Professional Experience</p>
+              <p className="text-sm text-muted-foreground">Experience</p>
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Professional</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
-              Applying analytical thinking, strategic creativity, and collaborative leadership to solve real-world challenges.
+              At the intersection of strategy, product, and people.
             </p>
           </div>
 
