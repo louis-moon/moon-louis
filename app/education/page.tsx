@@ -9,7 +9,7 @@ const educationTimeline = [
     period: "2018 - 2023",
     focus: "Statistics & Data Science",
     description: "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
-    highlights: ["Alpha Epsilon Pi: Epsilon Upsilon Chapter, Eta Deuteron Class"],
+    highlights: ["Alpha Epsilon Pi: Epsilon Upsilon Chapter, Eta Deuteron Class", "Yale Club of South Florida: New Leaders Council"],
   },
   {
     institution: "Miami Palmetto Senior High School",
@@ -34,7 +34,7 @@ const educationTimeline = [
     period: "Jul 2016 - Aug 2016",
     focus: "Technology, Innovation & Entrepreneurship",
     description: "Academic enrichment and leadership training program for exceptional high school students.",
-    highlights: ["Outstanding marks", "Jonathan Edwards College"],
+    highlights: ["Jonathan Edwards College", "Outstanding Marks"],
   },
 ]
 
