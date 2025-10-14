@@ -9,7 +9,7 @@ const photos = [
   // 2025
   { src: "/photos/IMG_0884.jpg", alt: "Me and Jack (Longwood Gardens)", caption: "Kennett Square, PA — Mar 29, 2025" },
   { src: "/photos/IMG_0720.jpg", alt: "Me and Alan (Pier 86)", caption: "New York, NY — Mar 16, 2025" },
-  { src: "/photos/IMG_0419.jpg", alt: "Me and Swoo (Fort Lee)", caption: "Fort Lee, NJ — Feb 14, 2025" },
+  { src: "/photos/IMG_0419.jpeg", alt: "Me and Swoo (Fort Lee)", caption: "Fort Lee, NJ — Feb 14, 2025" },
   { src: "/photos/IMG_5373.JPG", alt: "Me and Youssef (Regatta Grove)", caption: "Miami, FL — Feb 9, 2025" },
   { src: "/photos/IMG_0244.jpg", alt: "Me and Preston (Doral)", caption: "Doral, FL — Feb 8, 2025" },
 
