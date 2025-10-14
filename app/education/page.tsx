@@ -306,7 +306,7 @@ export default function EducationPage() {
           <div className="animate-fade-in mb-16">
             <div className="flex items-center gap-3 mb-4">
               <GraduationCap className="w-6 h-6 text-primary" />
-              <p className="text-sm text-muted-foreground">Academic Journey</p>
+              <p className="text-sm text-muted-foreground">Academics</p>
             </div>
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Education</h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
@@ -316,7 +316,7 @@ export default function EducationPage() {
 
           {/* Academic Timeline (horizontal) */}
           <div className="mb-20">
-            <h2 className="text-2xl font-light mb-8 text-foreground">Academic Timeline</h2>
+            <h2 className="text-2xl font-light mb-8 text-foreground">Timeline</h2>
             <div className="relative">
               <div className="overflow-x-auto horizontal-scroll pb-6">
                 <div className="flex gap-6 min-w-max">
@@ -486,6 +486,7 @@ export default function EducationPage() {
                       </h3>
                       <p className="text-sm text-primary">{item.role}</p>
                     </div>
+                  </div>
                   <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((t, i) => (
