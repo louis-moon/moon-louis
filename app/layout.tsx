@@ -24,7 +24,7 @@ export default function RootLayout({
         {/* 👇 This ensures browsers pick up the favicon correctly */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
       </head>
       <body className="font-serif antialiased">
         <Suspense fallback={null}>{children}</Suspense>
