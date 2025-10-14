@@ -162,8 +162,8 @@ const collegeActivities = [
     title: "Yale Student Investment Group",
     role: "Investment Analyst",
     bullets: [
-      "Produced one investment pitch each semester as part of a fund managing ~$500,000 on behalf of the university endowment",
-      "Won best pitch presenting a small-cap industrial stock for the Analyst Training Program conclusion (TGLS), now up 1000%+ since",
+      "Produced 1 investment pitch each semester as part of a team for fund managing ~$500,000 on behalf of university endowment",
+      "Won best pitch presenting small-cap industrial stock for Analyst Training Program conclusion, up over +1000% since (TGLS)",
     ],
   },
   {
@@ -191,9 +191,9 @@ const collegeActivities = [
 ]
 
 const testScores = [
-  { test: "SAT", score: "1580", detail: "780 EBRW, 800 Math" },
+  { test: "SAT", score: "1580/1600", detail: "780 EBRW, 800 Math" },
   { test: "SAT Essay", score: "24/24", detail: "8/8/8" },
-  { test: "SAT Subject Tests", score: "2400", detail: "Chemistry, Math II, US History" },
+  { test: "SAT Subject Tests", score: "2400/2400", detail: "Chemistry, Math II, US History" },
 ]
 
 // Expanded AP list (chronological)
@@ -250,6 +250,11 @@ const honors = [
     organization: "National Conservation Foundation",
     year: "2017",
   },
+  {
+    title: "National Merit Scholar",
+    organization: "National Merit Scholarship Corporation",
+    year: "2018",
+  },
 ]
 
 // High school extracurriculars (kept with gray tags)
@@ -257,7 +262,6 @@ const extracurriculars = [
   {
     title: "National Honor Society",
     role: "President",
-    period: "2017 - 2018",
     description:
       "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.",
     tags: ["Community Service"],
@@ -265,14 +269,12 @@ const extracurriculars = [
   {
     title: "Honor Council",
     role: "Co-President",
-    period: "2016 - 2018",
     description: "Led student-run body addressing academic misconduct; formalized and promoted the honor code.",
     tags: ["Leadership"],
   },
   {
     title: "Science National Honor Society",
     role: "VP of Competitions",
-    period: "2016 - 2018",
     description:
       "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.",
     tags: ["Science"],
@@ -280,10 +282,16 @@ const extracurriculars = [
   {
     title: "Mu Alpha Theta",
     role: "VP of Tutoring",
-    period: "2015 - 2018",
     description:
       "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.",
     tags: ["Mathematics"],
+  },
+  {
+    title: "Achieve Miami",
+    role: "Big Buddy",
+    description:
+      "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School",
+    tags: ["Volunteering"],
   },
 ]
 
