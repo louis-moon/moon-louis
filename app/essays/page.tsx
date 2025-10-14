@@ -8,7 +8,7 @@ const essays = [
   subtitle: "PHIL 126 Essay",
   date: "April 2019",
   excerpt:
-    "Argues that Locke's claim that memory is necessary and sufficient for personal identity leads to contradiction (Reid's brave officer) and circularity; considers a Grice-style total temporary states reply.",
+    "In writing An Essay Concerning Human Understanding, John Locke argues that memory is a necessary and sufficient condition for personal identity — and that we should not be punished for actions we do not remember committing.",
   content: `1   Introduction
 	In writing An Essay Concerning Human Understanding, John Locke details his account of self and personal identity over time. He argues that memory is a necessary and sufficient condition of personal identity, and that one should not be punished for performing an action that person does not recall having performed, for they are not the same person as the one who committed the action. In this paper, I will argue that Locke's argument ultimately fails due to his mistaken view that memory is a necessary and sufficient condition for personal identity.
 	I will begin by examining the notion of personal identity and Locke's view on the topic. His argument that memory is necessary and sufficient for sameness of person, along with its implications for moral responsibility, will be analyzed, followed by why this argument fails due to his mistaken view that memory is a necessary and sufficient condition for personal identity. Finally, I will consider and discuss a potential objection to this counterargument.
