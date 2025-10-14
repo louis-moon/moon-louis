@@ -63,17 +63,6 @@ Although blunt and severe, the realization that I couldn't have done better was 
 We returned to World Finals the following year to place second overall, and I still wear those navy blue shorts today.`,
     tags: ["Personal Growth", "Resilience", "Engineering"],
   },
-  {
-    title: "Why Yale",
-    subtitle: "Yale Supplemental Essay",
-    date: "November 2017",
-    excerpt:
-      "During my time at Yale Young Global Scholars, I befriended Yalies who were world debate champions and self-made executive directors, yet whose resumes alone would fail to reveal their defining qualities as sincere, hilarious people.",
-    content: `During my time at Yale Young Global Scholars, I befriended Yalies who were world debate champions and self-made executive directors, yet whose resumes alone would fail to reveal their defining qualities as sincere, hilarious people. Likewise, Yale's strength as an academic institution is self-evident, yet it is the primary focus on community and genuine learning that engenders a unanimous appreciation valuing Yale's education over its degrees.
-
-An alumnus on Quora writes, "Yale presents majors as areas to indulge intellectual and academic curiosity, not as vocational training." The same reason underlying the lack of an acting major, offering Theater Studies instead, emboldens me: Yale strives to offer a holistic experience, not a means to a career – it seeks to enrich, not to facilitate getting rich.`,
-    tags: ["Education", "Philosophy", "Values"],
-  },
 ]
 
 export default function EssaysPage() {
