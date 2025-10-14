@@ -42,18 +42,9 @@ const tiles: Tile[] = [
     color: "from-blue-500/10 to-blue-600/10 hover:from-blue-500/20 hover:to-blue-600/20",
     borderColor: "hover:border-blue-500/50",
     sections: [
-      {
-        title: "Music",
-        items: ["Juice WRLD (Rap)", "The Chainsmokers (EDM)", "HONNE (Pop)"],
-      },
-      {
-        title: "Movies",
-        items: ["Manchester by the Sea", "La La Land", "The Lion King"],
-      },
-      {
-        title: "TV Shows",
-        items: ["Ozark", "Monster", "Chernobyl"],
-      },
+      { title: "Music", items: ["Juice WRLD (Rap)", "The Chainsmokers (EDM)", "HONNE (Pop)"] },
+      { title: "Movies", items: ["Manchester by the Sea", "La La Land", "The Lion King"] },
+      { title: "TV Shows", items: ["Ozark", "Monster", "Chernobyl"] },
     ],
   },
   {
@@ -176,14 +167,17 @@ export function InterestGrid() {
               )}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative h-full flex flex-col items-center justify-center gap-2 sm:gap-3">
-                {/* On mobile: icon only. On ≥sm: icon + title */}
-                <div className="h-9 w-9 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center">
-                  <Icon className="h-full w-full text-primary group-hover:scale-110 transition-transform" />
+
+              {/* CENTERING FIX: grid + place-items-center keeps the icon perfectly centered on mobile */}
+              <div className="relative h-full grid place-items-center">
+                <div className="flex flex-col items-center gap-2 sm:gap-3">
+                  <div className="h-10 w-10 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center">
+                    <Icon className="block h-full w-full text-primary group-hover:scale-110 transition-transform" />
+                  </div>
+                  <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
+                    {tile.title}
+                  </p>
                 </div>
-                <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
-                  {tile.title}
-                </p>
               </div>
             </button>
           )

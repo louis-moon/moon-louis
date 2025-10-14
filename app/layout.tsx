@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "Louis Moon",
   description: "Personal portfolio of Louis Moon",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.svg", // 👈 This is the key line to add
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -15,7 +20,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Tailwind’s `font-serif` will use the system serif stack */}
+      <head>
+        {/* 👇 This ensures browsers pick up the favicon correctly */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+      </head>
       <body className="font-serif antialiased">
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
