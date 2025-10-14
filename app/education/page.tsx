@@ -33,7 +33,7 @@ const educationTimeline = [
     degree: "Summer Program",
     period: "Jul 2016 - Aug 2016",
     focus: "Technology, Innovation & Entrepreneurship",
-    description: "Academic enrichment and leadership training program for exceptional high school students.",
+    description: "Academic enrichment and leadership training program for exceptional high school students",
     highlights: ["Jonathan Edwards College", "Outstanding Marks"],
   },
 ]
@@ -231,6 +231,11 @@ const apScores = [
 
 const honors = [
   {
+    title: "National Merit Scholar",
+    organization: "National Merit Scholarship Corporation",
+    year: "2018",
+  },
+  {
     title: "National Economics Challenge: State Champion, 9th Place Nationally",
     organization: "Council for Economic Education",
     year: "2017",
@@ -249,11 +254,6 @@ const honors = [
     title: "Envirothon: North American Qualifier, 1st Place State",
     organization: "National Conservation Foundation",
     year: "2017",
-  },
-  {
-    title: "National Merit Scholar",
-    organization: "National Merit Scholarship Corporation",
-    year: "2018",
   },
 ]
 
