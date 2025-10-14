@@ -9,7 +9,7 @@ const educationTimeline = [
     period: "2018 - 2023",
     focus: "Statistics & Data Science",
     description: "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
-    highlights: ["Alpha Epsilon Pi: Epsilon Upsilon Chapter, Eta Deuteron Class", "Yale Club of South Florida: New Leaders Council"],
+    highlights: ["AEPi: Epsilon Upsilon Chapter, Eta Deuteron Class", "Yale Club of South Florida: New Leaders Council"],
   },
   {
     institution: "Miami Palmetto Senior High School",

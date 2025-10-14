@@ -169,9 +169,9 @@ export function InterestGrid() {
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               {/* CENTERING FIX: grid + place-items-center keeps the icon perfectly centered on mobile */}
-              <div className="relative h-full grid place-items-center">
-                <div className="flex flex-col items-center gap-2 sm:gap-3">
-                  <div className="h-10 w-10 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center">
+              <div className="relative h-full flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center gap-2 sm:gap-3">
+                  <div className="h-10 w-10 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center leading-none">
                     <Icon className="block h-full w-full text-primary group-hover:scale-110 transition-transform" />
                   </div>
                   <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
