@@ -9,6 +9,7 @@ const photos = [
   // 2025
   { src: "/photos/IMG_0884.jpg", alt: "Me and Jack (Longwood Gardens)", caption: "Kennett Square, PA — Mar 29, 2025" },
   { src: "/photos/IMG_0720.jpg", alt: "Me and Alan (Pier 86)", caption: "New York, NY — Mar 16, 2025" },
+  { src: "/photos/IMG_0419.jpg", alt: "Me and Swoo (Fort Lee)", caption: "Fort Lee, NJ — Feb 14, 2025" },
   { src: "/photos/IMG_5373.JPG", alt: "Me and Youssef (Regatta Grove)", caption: "Miami, FL — Feb 9, 2025" },
   { src: "/photos/IMG_0244.jpg", alt: "Me and Preston (Doral)", caption: "Doral, FL — Feb 8, 2025" },
 
@@ -19,7 +20,7 @@ const photos = [
   { src: "/photos/IMG_7643.jpg", alt: "Me and David and Jaewon (Banff)", caption: "Banff, AB — Jun 19, 2024" },
   { src: "/photos/IMG_7569.jpg", alt: "Family (Banff)", caption: "Banff, AB — Jun 17, 2024" },
   { src: "/photos/IMG_7263.jpg", alt: "Me and Mom (Hoboken)", caption: "Hoboken, NJ — Apr 28, 2024" },
-  { src: "/photos/IMG_6155.jpg", alt: "Me and Jonathan (Doral)", caption: "Doral, FL — Jan 1, 2024" },
+  { src: "/photos/IMG_6155.jpg", alt: "Me and Chen (Doral)", caption: "Doral, FL — Jan 1, 2024" },
 
   // 2023
   { src: "/photos/IMG_6140.jpg", alt: "Family (Fairchild Tropical Botanical Gardens)", caption: "Miami, FL — Dec 31, 2023" },
@@ -29,12 +30,6 @@ const photos = [
   { src: "/photos/IMG_9191.jpg", alt: "Family (Yale graduation)", caption: "New Haven, CT — May 22, 2023" },
   { src: "/photos/IMG_9009.jpg", alt: "Family (UNC White Coat Ceremony)", caption: "Chapel Hill, NC — May 21, 2023" },
   { src: "/photos/IMG_2190.jpg", alt: "Me and Dan (Tidal Basin)", caption: "Washington, DC — Mar 25, 2023" },
-
-  // 2020
-  { src: "/photos/IMG_4012.JPG", alt: "Me and Blake (Gainesville)", caption: "Gainesville, FL — Mar 21, 2020" },
-
-  // 2019
-  { src: "/photos/IMG_3044.PNG", alt: "Me and Sam (Yale)", caption: "New Haven, CT — Nov 5, 2019" },
 ]
 
 export default function MediaPage() {
