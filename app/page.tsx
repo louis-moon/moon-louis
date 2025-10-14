@@ -24,7 +24,7 @@ export default function HomePage() {
               >
                 <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">Professional</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Helping people solve problems together
+                  Turning ideas into real change
                 </p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
