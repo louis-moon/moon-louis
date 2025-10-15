@@ -18,7 +18,7 @@ export default function HomePage() {
             </p>
             <h1 className="text-6xl md:text-7xl font-light text-foreground mb-6 text-balance">Louis Moon</h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-2xl text-pretty leading-relaxed">
-              Exploring the intersections of culture, systems, and human experience.
+              Exploring the intersections of systems, culture, and human experience.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
