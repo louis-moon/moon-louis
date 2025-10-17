@@ -35,8 +35,7 @@ const work: Company[] = [
         type: "Full-time",
         period: "Oct 2025 – Present • 1 mo",
         bullets: [
-          "Our patented method operates within turfgrass root zones to naturally improve soil quality while capturing atmospheric CO₂; our primary focus is golf courses and sports fields where our product can be integrated within existing maintenance programs",
-          "Building digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; directly working hand-in-hand with founders to raise venture capital funding, expand team, and validate product development",
+          "Our custom method operates within turfgrass root zones to naturally improve soil quality while capturing atmospheric CO2; our primary focus is golf courses and sports fields where our product can be integrated within existing maintenance programs",
         ],
       },
       {
@@ -44,8 +43,7 @@ const work: Company[] = [
         type: "Full-time",
         period: "Feb 2025 – Oct 2025 • 9 mos",
         bullets: [
-          "Green Golf Carbon is focused on capturing carbon and improving turfgrass sustainability through enhanced rock weathering; served as Chief of Staff to the CEO to carry out go-to-market strategy, improve operational efficiency and realize new projects",
-          "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 26k golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
+          "Green Golf Carbon is focused on capturing carbon and improving turfgrass sustainability through enhanced rock weathering; served as Chief of Staff to the CEO to carry out go-to-market strategy, improve operational efficiency, and realize new projects",
         ],
       },
     ],
