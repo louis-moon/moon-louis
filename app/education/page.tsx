@@ -241,7 +241,7 @@ const honors = [
     year: "2017",
   },
   {
-    title: "National Personal Finance Challenge: State Champion, Semifinalist",
+    title: "National Finance Challenge: State Champion, Semifinalist",
     organization: "Council for Economic Education",
     year: "2017",
   },
