@@ -119,7 +119,7 @@ I have never seen leaves change color first-hand. I have seen red and orange lea
     subtitle: "Common App",
     date: "Nov 2017",
     excerpt:
-      "From burnt fingers to broken machines, failure became less a setback and more a forge — a relentless process of refining ideas, pushing limits, and building something better.",
+      "From burnt fingers to broken machines, failure became less a setback and more a forge—a relentless process of refining ideas, pushing limits, and building something better.",
     content: `For eight glacially slow minutes, we performed our skit, featuring everything from pneumatic wings to a fully functional go-kart built from scratch. It was our fifth time at World Finals and in that stadium, all I could think about was how bizarre it was to watch your work blow up in front of you, literally.
     
 I embarked on my venture with Odyssey of the Mind (OM) when I was in first grade. Alongside six teammates, I harbored a certain naiveté that made the whole experience seem more like glorified playtime than a creative problem-solving competition. We worked as diligently as our sub-four-foot-tall bodies would enable us and struggled to work with anything that weighed more than five pounds. Power tools were undoubtedly off limits per our parents' safety concerns, not that our juvenile hands could handle them anyway.
