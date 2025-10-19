@@ -9,7 +9,7 @@ const essays = [
     date: "Nov 2025",
     tags: ["Identity", "Culture", "Miami"],
     excerpt:
-      "Growing up in Miami felt like playing life on hard mode—being different wasn’t a choice; it was necessary to navigate racism, cultural distance, and not fully belonging.",
+      "Difference isn’t a burden to hide but a strength to embrace. By owning what sets us apart, uniqueness becomes both a source of belonging and a way to thrive.",
     content: `
 Growing up in Miami felt like playing life on hard mode—being different wasn’t a choice; it was necessary to navigate racism, cultural distance, and not fully belonging. Over time, though, that difference became a strength, and embracing uniqueness taught me how to thrive wherever I found myself in life.
 
@@ -119,8 +119,10 @@ I have never seen leaves change color first-hand. I have seen red and orange lea
     subtitle: "Common App",
     date: "Nov 2017",
     excerpt:
-      "For eight glacially slow minutes, we performed our skit, featuring everything from pneumatic wings to a fully functional go-kart built from scratch. It was our fifth time at World Finals and in that stadium, all I could think about was how bizarre it was to watch your work blow up in front of you, literally.",
-    content: `I embarked on my venture with Odyssey of the Mind (OM) when I was in first grade. Alongside six teammates, I harbored a certain naiveté that made the whole experience seem more like glorified playtime than a creative problem-solving competition. We worked as diligently as our sub-four-foot-tall bodies would enable us and struggled to work with anything that weighed more than five pounds. Power tools were undoubtedly off limits per our parents' safety concerns, not that our juvenile hands could handle them anyway.
+      "From burnt fingers to broken machines, failure became less a setback and more a forge — a relentless process of refining ideas, pushing limits, and building something better.",
+    content: `For eight glacially slow minutes, we performed our skit, featuring everything from pneumatic wings to a fully functional go-kart built from scratch. It was our fifth time at World Finals and in that stadium, all I could think about was how bizarre it was to watch your work blow up in front of you, literally.
+    
+I embarked on my venture with Odyssey of the Mind (OM) when I was in first grade. Alongside six teammates, I harbored a certain naiveté that made the whole experience seem more like glorified playtime than a creative problem-solving competition. We worked as diligently as our sub-four-foot-tall bodies would enable us and struggled to work with anything that weighed more than five pounds. Power tools were undoubtedly off limits per our parents' safety concerns, not that our juvenile hands could handle them anyway.
 
 Over the years, we fashioned elaborate solutions to quirky challenges, producing a diverse selection of vehicles that could catalyze chemical reactions or disassemble and reassemble: a bootleg Transformers of sorts. I felt fiery nuts of steel drop into my lap and burn holes through my dearest pair of navy blue Nike basketball shorts. Neodymium magnets worked in tandem with rat traps to crush my hands: all part of the learning process. Whereas I had once been shy and trembled at the snap of dinky mousetraps, I now found myself featuring as a rapping grandma in our music videos and adrenalized to sit on exploding boxes.
 
