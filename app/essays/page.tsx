@@ -19,7 +19,7 @@ There was definitely more of an Asian community at Yale, and I took three Korean
 
 Korea, to me, represents the epitome of late-stage capitalism, largely due to America’s investment and military presence in the country post-war, which helped turn it into the cultural and economic powerhouse it is today. From the little time I’ve spent in the country, some notes and observations I have are: 1) there’s massive wealth inequality, 2) political polarization is one of the country’s most pressing issues, and 3) people are hyper-materialistic and obsessed with status chasing—where did X go to school, what job does X work, what car does X drive. What stands out most, though, is the cultural homogeneity—if you walk into a classroom, all of the boys will be rocking whatever hairstyle is trending at the time; everyone is very well dressed, too, but they all have the same fashion sense, etc.
 
-I say this to note that Miami isn’t so different regarding points 1–3; however, Miami is incredibly diverse and anything but homogeneous. I grew up hanging out with a lot of Jewish and Hispanic people and was lucky to have had people accept me for who I am.
+I say this to note that Miami isn’t so different regarding points 1–3; however, Miami is incredibly diverse and anything but homogeneous. I grew up hanging out with a lot of Jewish and Hispanic friends and was lucky to have had people accept me for who I am.
 
 Being unique is always a strength. And for me, I don’t mean being Korean made me unique—what I mean is that growing up as a Korean in Miami made me so. I think anyone who knows me will say that I’m different in some regard, hopefully in a good way. But that was shaped by my lived experiences, largely in Miami.
 
