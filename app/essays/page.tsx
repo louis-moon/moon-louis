@@ -4,6 +4,29 @@ import { FileText, BookOpen } from "lucide-react"
 
 const essays = [
   {
+    title: "Be Different",
+    subtitle: "Reflection #2",
+    date: "Nov 2025",
+    tags: ["Identity", "Culture", "Miami"],
+    excerpt:
+      "Growing up in Miami felt like playing life on hard mode—being different wasn’t a choice; it was necessary to navigate racism, cultural distance, and not fully belonging.",
+    content: `
+Growing up in Miami felt like playing life on hard mode—being different wasn’t a choice; it was necessary to navigate racism, cultural distance, and not fully belonging. Over time, though, that difference became a strength, and embracing uniqueness taught me how to thrive wherever I found myself in life.
+
+I spent my summers as a kid in South Korea, spending up to two months at a time there and even attending school some years. This number slowly dwindled down to two weeks as my sister and I got busier and found it harder to make time to travel. At home, though, I would get my dose of Korean culture by watching Korean TV shows at the dinner table and listening to K-pop (mostly BIGBANG). I met few Asian students in school and even fewer Koreans, and our family would have to drive up to an hour to eat at the closest Korean restaurant. Language was the biggest barrier for me, though, as I found it difficult to communicate as well as I wanted to with my parents and even my piano teacher, which made me feel disconnected at times.
+
+There was definitely more of an Asian community at Yale, and I took three Korean language classes, which dramatically improved my speaking skills and helped me connect with my parents on a deeper level. I moved back to Miami post-grad, where I had definitely had my fair share of racist remarks thrown my way growing up—and still do to this day—but felt much more secure this time around. I’m grateful to have grown up in such a diverse environment and now understand that home is where you feel most comfortable. My parents moved to New Jersey, where they’ve made new friends and there’s a Koreatown nearby, and I think we’ve both learned to make our home our home.
+
+Korea, to me, represents the epitome of late-stage capitalism, largely due to America’s investment and military presence in the country post-war, which helped turn it into the cultural and economic powerhouse it is today. From the little time I’ve spent in the country, some notes and observations I have are: 1) there’s massive wealth inequality, 2) political polarization is one of the country’s most pressing issues, and 3) people are hyper-materialistic and obsessed with status chasing—where did X go to school, what job does X work, what car does X drive. What stands out most, though, is the cultural homogeneity—if you walk into a classroom, all of the boys will be rocking whatever hairstyle is trending at the time; everyone is very well dressed, too, but they all have the same fashion sense, etc.
+
+I say this to note that Miami isn’t so different regarding points 1–3; however, Miami is incredibly diverse and anything but homogeneous. I grew up hanging out with a lot of Jewish and Hispanic people and was lucky to have had people accept me for who I am.
+
+Being unique is always a strength. And for me, I don’t mean being Korean made me unique—what I mean is that growing up as a Korean in Miami made me so. I think anyone who knows me will say that I’m different in some regard, hopefully in a good way. But that was shaped by my lived experiences, largely in Miami.
+
+I think too many people want to fit in, especially if they find themselves out of their comfort zone. But I’ve learned that home isn’t a place; rather, it’s something you create by owning who you are. Being unique makes you interesting and endearing to others. Yes, we should be true to ourselves, but we should also play to our strengths and strive to stand out. In a crowd full of boring, identical people, be yourself. And be different.
+`,
+  },
+  {
   title: "On Meaning",
   subtitle: "Reflection #1",
   date: "Oct 2025",
