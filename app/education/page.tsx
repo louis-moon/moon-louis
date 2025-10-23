@@ -9,7 +9,8 @@ const educationTimeline = [
     period: "2018 - 2023",
     focus: "Statistics & Data Science",
     description: "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
-    highlights: ["AEPi: Epsilon Upsilon Chapter, Eta Deuteron Class", "Yale Club of South Florida: New Leaders Council"],
+    highlights: ["Silliman College, Class of 2022 +1",
+                 "AEPi: Epsilon Upsilon Chapter, Eta Deuteron Class"],
   },
   {
     institution: "Miami Palmetto Senior High School",
