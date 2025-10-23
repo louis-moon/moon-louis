@@ -241,18 +241,25 @@ export default function ProfessionalPage() {
                   className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-                    <h3 className="text-lg font-medium text-foreground">{v.title}</h3>
+                    <div className="flex flex-col">
+                      <h3 className="text-lg font-medium text-foreground">{v.organization}</h3>
+                      <p className="text-sm text-primary">{v.role}</p>
+                      {v.location ? (
+                        <p className="text-xs text-muted-foreground">{v.location}</p>
+                      ) : null}
+                    </div>
                     <span className="text-xs text-muted-foreground">{v.period}</span>
                   </div>
                   <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                    {v.bullets.map((b, i) => (
-                      <li key={i}>{b}</li>
+                    {v.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
                     ))}
                   </ul>
                 </section>
               ))}
             </div>
           </section>
+
 
           {/* Projects */}
           <section>
