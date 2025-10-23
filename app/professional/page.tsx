@@ -2,7 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { Briefcase, Rocket } from "lucide-react"
+import { Briefcase, Rocket, HeartHandshake } from "lucide-react"
 
 type Bullet = string
 
@@ -22,6 +22,14 @@ type Company = {
 type ProjectItem = {
   title: string
   period: string
+  bullets: Bullet[]
+}
+
+type VolunteerItem = {
+  organization: string
+  role: string
+  period: string
+  location: string
   bullets: Bullet[]
 }
 
@@ -110,6 +118,27 @@ const work: Company[] = [
   },
 ]
 
+const volunteering: VolunteerItem[] = [
+  {
+    organization: "Big Brothers Big Sisters of Miami",
+    role: "Big Brother",
+    period: "2025 - Present",
+    location: "Miami, Florida",
+    bullets: [
+      "Mentor matched youth ages 5–14 through community-based program, meeting bi-monthly for structured, family-coordinated activities that promote personal growth, goal setting, and consistent developmental support",
+    ],
+  },
+  {
+    organization: "Yale Club of South Florida",
+    role: "New Leaders Council",
+    period: "2025 - Present",
+    location: "Miami, Florida",
+    bullets: [
+      "Organize and lead alumni engagement initiatives for the Yale Club of South Florida, coordinating programs and small-group events that strengthen networking, community participation, and sustained alumni involvement",
+    ],
+  },
+]
+
 const projects: ProjectItem[] = [
   {
     title: "Equity A1",
@@ -193,6 +222,33 @@ export default function ProfessionalPage() {
                       </div>
                     ))}
                   </div>
+                </section>
+              ))}
+            </div>
+          </section>
+
+          {/* Volunteering */}
+          <section className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <HeartHandshake className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">Volunteering</h2>
+            </div>
+
+            <div className="space-y-6">
+              {volunteering.map((v) => (
+                <section
+                  key={v.title}
+                  className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                    <h3 className="text-lg font-medium text-foreground">{v.title}</h3>
+                    <span className="text-xs text-muted-foreground">{v.period}</span>
+                  </div>
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                    {v.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
                 </section>
               ))}
             </div>
