@@ -235,9 +235,9 @@ export default function ProfessionalPage() {
             </div>
 
             <div className="space-y-6">
-              {volunteering.map((v) => (
+              {volunteering.map((v, i) => (
                 <section
-                  key={v.id ?? `${v.organization ?? v.role ?? 'vol'}-${i}`}
+                  key={`${v.organization ?? v.role ?? 'vol'}-${i}`}
                   className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
