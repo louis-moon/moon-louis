@@ -12,6 +12,7 @@ const photos = [
   { src: "/photos/IMG_0419.jpeg", alt: "Me and Swoo (Fort Lee)", caption: "Fort Lee, NJ — Feb 14, 2025" },
   { src: "/photos/IMG_5373.JPG", alt: "Me and Youssef (Regatta Grove)", caption: "Miami, FL — Feb 9, 2025" },
   { src: "/photos/IMG_0244.jpg", alt: "Me and Preston (Doral)", caption: "Doral, FL — Feb 8, 2025" },
+  { src: "/photos/IMG_1235.jpg", alt: "Me and Blake (Pinecrest)", caption: "Pinecrest, FL — Jan 3, 2025" },
 
   // 2024
   { src: "/photos/IMG_8225.jpg", alt: "Me and Dad (US Open) — USTA Billie Jean King National Tennis Center", caption: "New York, NY — Sep 2, 2024" },
