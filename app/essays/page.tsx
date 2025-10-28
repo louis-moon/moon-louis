@@ -42,6 +42,7 @@ The human brain is the most complex known object in the universe, as far as we k
 
 Humans share 98.8% of our DNA with chimpanzees—we are all more alike than we think. Our devotion to family, monogamy, and societal norms often conflicts with our natural instincts, yet it is through these very constructs that we define our humanity. Perhaps social faith is what lets us transcend instinct: the quiet conviction that meaning isn’t found in isolation, but made in the spaces between us.
 `,
+  },
 {
     title: "Be Different",
     subtitle: "Reflection #2",
