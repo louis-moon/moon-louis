@@ -4,6 +4,45 @@ import { FileText, BookOpen } from "lucide-react"
 
 const essays = [
   {
+    title: "Social Faith",
+    subtitle: "Reflection #3",
+    date: "Nov 2025",
+    tags: ["Relationships", "Human Nature", "Connection"],
+    excerpt:
+      "In a world of infinite choice, connection demands faith. Social faith is the belief that meaning isn’t found in isolation but made through the fragile, enduring bonds between family, love, and friendship.",
+    content: `
+“I think society’s emphasis on family forces us into relationships that are otherwise unhealthy. Sure, a long time ago, when people lived miles from civilization, family was all you had. There was a very practical purpose to sticking together. But now I have six million people in my backyard. Why should I be wasting time with someone I don’t like just because they have the same last name as me?”
+“Humans do everything they can to try to forget they are animals. We create these institutions and customs that deny our animal nature. Take our relationships with our parents, for example. No other animal keeps a relationship with its parents after it’s been raised. It’s not natural. Yet we insist, because we think that’s what makes us human. Think of the people you know. Are they happy when they go visit their parents? Is it something they naturally want to do? No. They bitch about it. But then they go anyway. Because that’s what makes them feel human.”
+Mar 24, 2014 (Humans of New York)
+If family was humanity’s first social covenant, perhaps it remains the one most misunderstood.
+Though many of our social institutions contradict evolutionary logic, they endure because they give meaning, structure, and moral coherence to human life, showing that what makes us human is not instinct but the choice to transcend it.
+What the New Yorker says is absolutely right—the majority of people used to live their whole lives in the city that they were born in; now, we meet an order of magnitude more people than we did in the past. A rough back of the envelope estimate suggests that an average person meets 80,000 people in a lifetime, and although Dunbar’s number has since been challenged, it once suggested that humans could only maintain about 150 close relationships. How do we bridge this massive disconnect in our lives? Through what I call social faith, we can open ourselves up to meaningful connections via shared responsibility and understanding. Social faith is the belief that even in an age of infinite choice, it’s worth choosing to connect—to believe in others without guarantee of reciprocity. It’s what binds our fragmented networks into something human again.
+
+Family: The First Social Construct
+Dawkins argued that rather than the individual, genes are the fundamental unit of evolution. From this lens, I believe that having kids is the most important decision that any one person can make in their life—there is an inherent social contract that you must be willing to do anything for your kid, and understandably so, that level of responsibility isn’t for everyone. But at the same time, it is the same reason why some people do not want to adopt. The understanding that you are a literal, living extension of your parents is powerful, and the nuclear family has arguably been the strongest living institution throughout human history because of it.
+But family, for most, is not chosen. So what happens when we begin to choose our families?
+
+Romantic Relationships: Chosen Family and Cultural Sanctity
+I’ve seen a number thrown around that any one person has a potential of 50,000 soulmates in a lifetime. Given this perspective, I believe it becomes easier to see that soulmates are made, not found—you could date any one of these 50,000 people and have it turn into the perfect marriage, but what ultimately matters is the effort you put in to build a lasting connection. I hear a lot of people throw around the idea of polyamory as a post-traditional pursuit, but 86% of people still believe in true love. Perhaps because of our belief in the sacredness of institutions like the nuclear family, we hold on to the idea of monogamy—and to the faith that true love exists.
+And then there are the relationships that ask for nothing—where obligation fades, but meaning remains.
+
+Friendship: The Third Family
+A popular meme going around these days I see is the one mocking the idea (derived from therapy?) that you do not owe anyone anything in your life. It is, of course, a much more optimistic view that we hold certain obligations to each other and reciprocate kind actions, but friendships are unique in that you truly don’t owe each other anything—and that freedom is what makes them so enduring. I think a lot of my good friends don’t have expectations of each other, but at the same time, open themselves up to draw each other into our respective lives.
+I’ve also seen talk about whether it’s okay to have “bum” friends, or if it’s okay to cut your “day ones” off. That’s of course up to you, and I believe friendship is the purest relationship in a way because it survives without obligation—a quiet act of mutual recognition. Granovetter’s ‘weak tie theory’ shows that acquaintances often shape our lives more than close friends—through the ideas, opportunities, and information they pass along. In that sense, friendship—and even acquaintance, illustrates the power of social faith: we trust that even small, transient connections can carry unexpected meaning.
+
+What Makes Relationships Last
+A different version of myself subsists in all my relationships’ minds as a mental / conceptual concept. Some may know me as funny, some may know me as quiet—they are all “real”, but they are not the “real” me as I view myself, for example. Let me set the scene with an analogy before we proceed:
+I have a Spotify playlist of my 100 favorite songs (yah). This is a very tight playlist where each song sounds “special” to me and is unique in its own way. I then made a second playlist of my next 100 favorite songs (yeh) and what I noticed is that the sound got “looser”, less specific and more broad.
+The version of myself that I conceptualize in my head is yah—this is my truest expression and it is very tight and neatly packed. But the version of myself that I present to others is closer to yeh, a more broad, wide-ranging number of personalities and affects.
+I believe that what makes relationships succeed is those who allow ourselves to be the most authentic, truest version of ourselves (max # of these copies) will build the strongest connections. Because in reality, the playlist that best describes me is not yeh or even yah, but rather nah, which has close to 3,000 songs. And yet, every person I meet only ever hears a handful of these songs. Relationships, then, are the act of building playlists together—curating which songs we reveal, which ones others discover, and which remain private tracks. The best relationships don’t just play on shuffle; they listen long enough to hear the deep cuts.
+Along these same lines, I believe that you can say similarity and reciprocity are subsets of authentic being and allow us to build stronger relationships because they allow ourselves to be more authentic (similarity = similar cultural, economic, political background; more reciprocity = more engagement).
+
+Ultimately, I think relationships are a core tenet of life because there is something sacred about being human. Compare talking with your good friend to ChatGPT for example; I think any of us would take talking to a person, even if it’s not a good friend, over an AI.
+The human brain is the most complex known object in the universe, as far as we know. There are many reasons why humans are social (biological, psychological, cultural), but focusing on Maslow’s hierarchy of needs, they provide us emotional support and validation, along with a sense of identity and purpose.
+
+Humans share 98.8% of our DNA with chimpanzees—we are all more alike than we think. Our devotion to family, monogamy, and societal norms often conflicts with our natural instincts, yet it is through these very constructs that we define our humanity. Perhaps social faith is what lets us transcend instinct: the quiet conviction that meaning isn’t found in isolation, but made in the spaces between us.
+`,
+{
     title: "Be Different",
     subtitle: "Reflection #2",
     date: "Nov 2025",
