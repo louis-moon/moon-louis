@@ -12,9 +12,13 @@ const essays = [
       "In a world of infinite choice, connection demands faith. Social faith is the belief that meaning isn’t found in isolation but made through the fragile, enduring bonds between family, love, and friendship.",
     content: `
 “I think society’s emphasis on family forces us into relationships that are otherwise unhealthy. Sure, a long time ago, when people lived miles from civilization, family was all you had. There was a very practical purpose to sticking together. But now I have six million people in my backyard. Why should I be wasting time with someone I don’t like just because they have the same last name as me?”
+
 “Humans do everything they can to try to forget they are animals. We create these institutions and customs that deny our animal nature. Take our relationships with our parents, for example. No other animal keeps a relationship with its parents after it’s been raised. It’s not natural. Yet we insist, because we think that’s what makes us human. Think of the people you know. Are they happy when they go visit their parents? Is it something they naturally want to do? No. They bitch about it. But then they go anyway. Because that’s what makes them feel human.”
+
 Mar 24, 2014 (Humans of New York)
+
 If family was humanity’s first social covenant, perhaps it remains the one most misunderstood.
+
 Though many of our social institutions contradict evolutionary logic, they endure because they give meaning, structure, and moral coherence to human life, showing that what makes us human is not instinct but the choice to transcend it.
 What the New Yorker says is absolutely right—the majority of people used to live their whole lives in the city that they were born in; now, we meet an order of magnitude more people than we did in the past. A rough back of the envelope estimate suggests that an average person meets 80,000 people in a lifetime, and although Dunbar’s number has since been challenged, it once suggested that humans could only maintain about 150 close relationships. How do we bridge this massive disconnect in our lives? Through what I call social faith, we can open ourselves up to meaningful connections via shared responsibility and understanding. Social faith is the belief that even in an age of infinite choice, it’s worth choosing to connect—to believe in others without guarantee of reciprocity. It’s what binds our fragmented networks into something human again.
 
