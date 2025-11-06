@@ -39,7 +39,7 @@ const work: Company[] = [
     location: "Miami, Florida, United States • On-site",
     roles: [
       {
-        title: "Chief Product & Technology Officer",
+        title: "Product & Technology",
         type: "Full-time",
         period: "Oct 2025 – Present • 2 mos",
         bullets: [
