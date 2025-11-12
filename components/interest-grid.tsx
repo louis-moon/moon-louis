@@ -80,7 +80,7 @@ const tiles: Tile[] = [
     sections: [
       { title: "Food", items: ["Risotto", "Tiramisu", "Dim Sum"] },
       { title: "Drink", items: ["Sprite", "Cold Brew", "Apple Juice"] },
-      { title: "Alcohol", items: ["Sangria", "High Noon", "Piña colada"] },
+      { title: "Alcohol", items: ["Sangria", "High Noon", "Piña Colada"] },
     ],
   },
   {
