@@ -57,7 +57,7 @@ const work: Company[] = [
     ],
   },
   {
-    company: "Boom",
+    company: "Rowan",
     location: "Orlando, Florida, United States • Remote",
     roles: [
       {
