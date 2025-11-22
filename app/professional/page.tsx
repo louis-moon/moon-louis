@@ -39,9 +39,9 @@ const work: Company[] = [
     location: "Miami, Florida, United States • On-site",
     roles: [
       {
-        title: "Product & Technology",
+        title: "Chief Product Officer",
         type: "Full-time",
-        period: "Oct 2025 – Present • 2 mos",
+        period: "Nov 2025 – Present • 1 mo",
         bullets: [
           "Our novel method works within turfgrass root zones to naturally improve soil quality while capturing atmospheric CO2; our primary focus is golf courses and sports fields where our enhanced top dressing can be integrated within existing maintenance programs",
         ],
@@ -49,7 +49,7 @@ const work: Company[] = [
       {
         title: "Chief of Staff",
         type: "Full-time",
-        period: "Feb 2025 – Oct 2025 • 9 mos",
+        period: "Feb 2025 – Nov 2025 • 10 mos",
         bullets: [
           "Green Golf Carbon is focused on capturing carbon and improving turfgrass sustainability through enhanced rock weathering; served as Chief of Staff to the CEO to carry out go-to-market strategy, improve operational efficiency, and realize new projects",
         ],
