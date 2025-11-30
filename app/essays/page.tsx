@@ -4,6 +4,57 @@ import { FileText, BookOpen } from "lucide-react"
 
 const essays = [
   {
+    title: "Praxis",
+    subtitle: "Reflection #5",
+    date: "Dec 2025",
+    tags: ["Action", "Agency", "Discipline"],
+    excerpt:
+      "Praxis is where belief hardens into habit—through faster decisions, intentional preparation, and repeated action, we turn abstract freedom into a life we’re actively shaping.",
+    content: `
+Meaning, identity, consciousness—these are useless without praxis, as life is shaped less by what we believe than by what we actually do. Praxis is philosophy translated into action and serves as the bridge between intention and action.
+
+Decision-Making as a Discipline
+
+One of the strongest predictors of founders’ success in the startup world is their speed of decision-making. One heuristic that dominates my life is the idea of one-way vs. two-way doors: if a decision is hard to reverse (one-way door), you should deliberate on it for a decent amount of time as opposed to a two-way door/decision where you can just go through with it with low risk as it’s easily reversible.
+
+What I’ll add to that is that most, if not all, decisions in life are actually two-way doors. We treat reversible decisions like irreversible ones when instead we should make decisions faster and iterate. We can always revert if needed—agility > perfection.
+
+Roadmapping and Preparation
+
+Rather than rushing into things, we should think deeply about the task at hand and what we want to accomplish. It’s better to take your time and put a disproportionate amount of time and effort into preparation; planning is half the battle, execution is just going through the motions of what you practiced.
+
+Volume > Study
+
+The player who shoots one free kick is better at it than the one who watched a video of 1,000 free kicks. There is a famous experiment where a professor assigns a photography task in two batches: one group is told to go for volume, while the other is just told to take one best picture. The volume group was dramatically better in overall quality and this goes to show that volume always wins—shoot your shot many times and get familiar with the task at hand.
+
+Wants and Needs
+
+To some degree, we are all trapped in the context of our upbringing, developmentally and socially/culturally. However, we should still strive to understand why we want what we want and differentiate this from what we actually need.
+
+“Anxiety is the dizziness of freedom,” and there are two traps I want to note here. 1) You can be lost in the infinite, essentially ‘analysis paralysis,’ where one is overwhelmed by the number of possible outcomes and choices they can make. And 2) you can be lost in the finite, where we simply assimilate into our surroundings without question. “Imitation is social suicide.”
+
+One of the most important qualities in life is individuality, and being unique is a virtue of sorts. Changing for other people is getting ‘lost in the finite,’ adhering to the crowd without questioning why. So don’t conform without questioning why.
+
+Leap of Faith
+
+As someone who grew up agnostic, I think a lot of atheists/agnostic folk misinterpret religion. Commitment is rationality, and taking a leap of faith is the ultimate act of reason. For example, imagine that you are told to write out your ideal life’s daily routine/schedule: drink enough water, work out, read, etc. We have this checklist of abc…xyz items and in theory, you would do them all every day.
+
+However, despite knowing what we should be doing, we just don’t commit to them. Religion is just that same commitment to a set of ideals that pushes us to be faithful.
+
+Desire
+
+There is a paradox of sorts where we always seem to want more of what we can’t have, and maybe this is because our brain equates things that are harder to get with higher value, so something unavailable feels more rewarding than what’s already ours.
+
+Drawing on Eastern philosophy, one grounding principle is that not wanting something is as good as having it. In this same way, I think there is a dialectic of love where you should be willing to die for the things you love, but also be able to live without them. A binary of sorts, where we don’t compromise on what we deeply, truly want.
+
+Semi-Determinism
+
+I used to be a hard determinist growing up, but now I have a heuristic of a semi-deterministic world that I rely on. Some longer-term things are more likely than not set in stone (e.g. the sun will rise tomorrow). However, on the shorter- and smaller-term scale, outcomes are more malleable, like whether I will have breakfast tomorrow or not. We can see that our agency exists in this near field and praxis turns possibility into reality.
+
+A lot of the thoughts in this essay are shaped by the 19th- and 20th-century existentialists who sought to pair theory with practical advice on how to lead a fulfilling life. I think the freedom that we are born with in this life requires courage, clarity, and repetition. Praxis actualizes identity. We become what we choose, repeatedly. But that choice is also what makes life worth living.
+`,
+  },
+  {
     title: "Perspective",
     subtitle: "Reflection #4",
     date: "Dec 2025",
