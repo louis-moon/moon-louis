@@ -4,6 +4,55 @@ import { FileText, BookOpen } from "lucide-react"
 
 const essays = [
   {
+    title: "Covenant",
+    subtitle: "Reflection #6",
+    date: "Dec 2025",
+    tags: ["Institutions", "Society", "Technology"],
+    excerpt:
+      "A reflection on institutions, the internet, and polarization—how our systems shape the way we see each other, and why meaning and agency have to scale beyond the individual.",
+    content: `
+There’s a funny book I think of every now and then called The End of History, published by Francis Fukuyama in 1992, and it essentially states that history ends happily ever after in liberal democracy. Okay, maybe not quite exactly, but I think that’s a funny interpretation of it as it reflects how optimistic people were at the end of the 20th century.
+
+I think about institutions a lot—what role they serve in our day-to-day and broader lives, and how everyone says that they are evil. This may be true, yet I think they serve a purpose in the world we live in. Yes, they are flawed and sometimes predatory, but they are also the only tool humans have ever invented for the long-term transmission of meaning. And I think that we should leverage this for good rather than solely be affected by the negative aspects.
+
+One part of the conservative faith I admire is the adherence to traditions. Not the broader theme of tradition itself, but celebrating even small things like birthdays, anniversaries, holidays, etc. I mean, it doesn’t actually matter that it’s been x years since you were born (the Earth isn’t in any meaningful position relative to the sun spatially), but the meaning is in what we attribute to it.
+
+Growing up with the Internet, I got to see how my peers grew up on it as well and how we differed from our parents and even those just a few years older than us. Now, it’s incredible to see how we (strangers) no longer see each other as human anymore.
+
+The Internet gave us infinite connection without community. I’ve seen this highlighted by people talking to chatbots and getting psychosis; people dating AI girlfriends; and hate comments everywhere—would you actually say that in real life? Probably not, I assume.
+
+I mean even dating has been commodified. Of all things, this seems to be the most hilariously tragic, that we are swiping for love when we should definitely be meeting in person.
+
+In tandem with the rise of the Internet, there has been widespread hyperpolarization since globalization peaked in the 2000s: Brexit, Trump’s 2016 victory, South Korea, pretty much everywhere and this all culminated in the COVID pandemic around 2020.
+
+There has also been a massive transfer of wealth that happened during COVID that is not talked about enough, I think; yes, at the corporate level, but also at the individual, which has led to the K-shaped economy we see today.
+
+And perhaps the most interesting to me is this massive shift to the right politically, at least in the United States, for the group of Gen Z young adults who experienced the pandemic in high school as opposed to the rest of the cohort who experienced it in college. Not too long ago, this generation was hailed as a liberal bastion that would continue in future generations. The end of history did not come about, decidedly so, and the world is hard to predict.
+
+Yet, when I talk to people in real life, no matter what background they’re from, I don’t tangibly feel any of the animosity I see displayed so fervently online. Especially in 1:1 settings, people are more likely than not to be civil. Nobody’s going to antagonize someone else right off the bat of meeting them for no reason.
+
+So, where do we most interact with people? In institutions: our schools, families, churches, etc. And when our institutions begin to fail us, that’s when the fabric of our society begins to collapse. We see this with systemic school failures, corruption in the church, dispersion of the nuclear family with divorce rates going up, etc.
+
+To me, it seems obvious that humans aren’t broken—our coordination mechanisms are. Institutions are those mechanisms, and when they fail, everything else starts failing downstream.
+
+Similar to institutions exist systems, and the purpose of a system is what it does: capitalism doesn’t reward connection, it rewards consumption; politics don’t reward nuance, they reward outrage; and online platforms don’t reward empathy, they reward engagement.
+
+Let’s consider the problem of phone usage / screen time for a moment. Yes, in theory everyone should have unlimited freedom and be able to make decisions for themselves. However, some people have certain (addictive) tendencies: to drugs, drinking, their phones, gambling, etc.
+
+Side note: I think it’s hilarious how the US is just allowed to advertise prescription medications on TV, and the national lottery is known to have by far some of the worst odds yet the government freely (and heavily) advertises that as well. As a basketball fan, all I’ll say is I have been just inundated with sports betting ads over the past few years, and now prediction markets are everywhere too.
+
+Systems don’t care for us by default—they only care for outputs. And just as a parent has a responsibility to take care of and educate their children on certain things, I believe the government has a fiduciary responsibility as well. Freedom is not enough without protection, and individual choice is not enough without collective guardrails.
+
+I go back and forth thinking about how resilient the systems and institutions we create are. Sometimes remarkably so, sometimes I have outright worry at their potential collapse.
+
+But are “people” necessarily evil? Are we not all to some extent trapped in the context of our developmental, historical, and cultural context? Or is it that non-actors in systems and institutions sometimes (maybe often) yield bad outcomes. Of course, it’s easiest for us to direct our anger and frustration at our peers, though.
+
+So what’s the answer? I don’t know. But I think about the following… if institutions transmit meaning across time, how do we design ones worth inheriting?
+
+Meaning and agency are not just personal virtues—they are social obligations. I think doctors have their oath to do no harm because all life is sacred. And maybe as hard as it can be, we should strive to treat each other with kindness and meet each other where we are. And slowly hope that we can expect this of our peers as well.
+`,
+  },
+  {
     title: "Praxis",
     subtitle: "Reflection #5",
     date: "Dec 2025",
