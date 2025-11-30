@@ -53,7 +53,7 @@ Let’s define the following terms as follows:
 
 “Existence”: physically exist (think an apple)
 
-“Absist”: conceptually exist (think mathematical concepts like numbers, Pythagorean’s theorem, a perfect circle: these are conceptually possible, but impossible to actually find in the real world of physical existence)
+“Absist”: conceptually exist (think mathematical concepts like numbers, the Pythagorean theorem, a perfect circle: these are conceptually possible, but impossible to actually find in the real world of physical existence)
 
 “Subsist”: perceived existence (think Harry Potter: even though he’s not “real,” there is a near infinite number of conceptions of Harry Potter; for example, the sum of J.K. Rowling’s written words about him; the movie depictions of him; my conception of him; your conception of him; and every other reader’s as well, etc.)
 
