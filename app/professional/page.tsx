@@ -41,7 +41,7 @@ const work: Company[] = [
       {
         title: "Chief of Staff",
         type: "Full-time",
-        period: "Feb 2025 – Jan 2026 • 1 yr",
+        period: "Feb 2025 – Present • 11 mos",
         bullets: [
           "Green Golf Carbon is focused on capturing carbon and improving turfgrass sustainability through enhanced rock weathering; served as Chief of Staff to the CEO to carry out go-to-market strategy, improve operational efficiency, and realize new projects",
           "Our novel method works within turfgrass root zones to naturally improve soil quality while capturing atmospheric CO2; our primary focus is golf courses and sports fields where our enhanced top dressing can be integrated within existing maintenance programs",
