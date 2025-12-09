@@ -39,12 +39,12 @@ const work: Company[] = [
     location: "Miami, Florida, United States • On-site",
     roles: [
       {
-        title: "Chief of Staff",
+        title: "Chief Product Officer",
         type: "Full-time",
         period: "Feb 2025 – Present • 11 mos",
         bullets: [
-          "Green Golf Carbon is focused on capturing carbon and improving turfgrass sustainability through enhanced rock weathering; served as Chief of Staff to the CEO to carry out go-to-market strategy, improve operational efficiency, and realize new projects",
-          "Our novel method works within turfgrass root zones to naturally improve soil quality while capturing atmospheric CO2; our primary focus is golf courses and sports fields where our enhanced top dressing can be integrated within existing maintenance programs",
+          "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 26k golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
+          "Building digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; directly working hand in hand with founders to raise venture capital funding, expand team, and validate product development",
         ],
       },
     ],
