@@ -41,7 +41,7 @@ const work: Company[] = [
       {
         title: "Chief Product Officer",
         type: "Full-time",
-        period: "Feb 2025 – Present • 11 mos",
+        period: "Feb 2025 – Present • 1 yr",
         bullets: [
           "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 26k golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
           "Building digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; directly working hand in hand with founders to raise venture capital funding, expand team, and validate product development",
