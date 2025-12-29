@@ -7,6 +7,12 @@ import { PhotoGrid } from "@/components/photo-grid"
 
 const photos = [
   // 2025
+  { src: "/photos/IMG_3931.jpeg", alt: "Me and Dad (PyeongAnDong)", caption: "Fort Lee, NJ — Dec 25, 2025" },
+  { src: "/photos/IMG_6418.jpeg", alt: "Me and Mom (Varka)",  caption: "Ramsey, NJ — Dec 23, 2025" },
+  { src: "/photos/IMG_3803.jpeg", alt: "Me and Jack (Rockefeller Center)", caption: "New York, NY — Dec 20, 2025" },
+  { src: "/photos/IMG_2236.jpeg", alt: "Me and Sam (Chinatown)", caption: "New York, NY — Aug 23, 2025" },
+  { src: "/photos/IMG_1696.jpeg", alt: "Me and Alan (Flatiron)", caption: "New York, NY — Jun 28, 2025" },
+  { src: "/photos/IMG_1550.jpeg", alt: "Me and Chen (Doral)", caption: "Doral, FL — Jun 16, 2025" },
   { src: "/photos/IMG_0884.jpg", alt: "Me and Jack (Longwood Gardens)", caption: "Kennett Square, PA — Mar 29, 2025" },
   { src: "/photos/IMG_0720.jpg", alt: "Me and Alan (Pier 86)", caption: "New York, NY — Mar 16, 2025" },
   { src: "/photos/IMG_0419.jpeg", alt: "Me and Swoo (Fort Lee)", caption: "Fort Lee, NJ — Feb 14, 2025" },
