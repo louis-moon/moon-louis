@@ -19,14 +19,6 @@ type Company = {
   roles: Role[]
 }
 
-type VolunteerItem = {
-  organization: string
-  role: string
-  period: string
-  location: string
-  bullets: Bullet[]
-}
-
 /**
  * 3 sections:
  * - Full-time: Green Golf Carbon, Rowan, Equity A1 (Equity A1 dates updated per request)
@@ -38,7 +30,7 @@ type VolunteerItem = {
 const fullTime: Company[] = [
   {
     company: "Green Golf Carbon",
-    location: "Miami, Florida, United States • On-site",
+    location: "Miami, Florida • On-site",
     roles: [
       {
         title: "Chief Product Officer",
@@ -53,7 +45,7 @@ const fullTime: Company[] = [
   },
   {
     company: "Rowan",
-    location: "Orlando, Florida, United States • Remote",
+    location: "Orlando, Florida • Remote",
     roles: [
       {
         title: "Product Manager",
@@ -69,7 +61,7 @@ const fullTime: Company[] = [
   // Equity A1 moved from Projects -> Full-time; dates updated per request.
   {
     company: "Equity A1",
-    location: "",
+    location: "New York City Metropolitan Area • On-site",
     roles: [
       {
         title: "Co-founder",
@@ -89,10 +81,10 @@ const internships: Company[] = [
   // Tsai CITY Accelerator placed in Internships section (program/accelerator experience)
   {
     company: "Tsai CITY Accelerator",
-    location: "Yale University • New Haven, Connecticut",
+    location: "New Haven, Connecticut • On-site",
     roles: [
       {
-        title: "Participant",
+        title: "Fall Cohort",
         type: "Accelerator",
         period: "Sep 2021 – Nov 2021",
         bullets: [
@@ -104,7 +96,7 @@ const internships: Company[] = [
   },
   {
     company: "Romero Capital",
-    location: "New York, New York, United States • Remote",
+    location: "New York, New York • Remote",
     roles: [
       {
         title: "Investment Analyst Intern",
@@ -119,7 +111,7 @@ const internships: Company[] = [
   },
   {
     company: "Yale Young Global Scholars",
-    location: "New Haven, Connecticut, United States • On-site",
+    location: "New Haven, Connecticut • On-site",
     roles: [
       {
         title: "Undergraduate Instructor",
@@ -134,7 +126,7 @@ const internships: Company[] = [
   },
   {
     company: "Florida Vocational Institute",
-    location: "Miami, Florida, United States • On-site",
+    location: "Miami, Florida • On-site",
     roles: [
       {
         title: "Summer Intern",
@@ -150,34 +142,48 @@ const internships: Company[] = [
 ]
 
 // VOLUNTEERING
-const volunteering: VolunteerItem[] = [
+const volunteering: Company[] = [
   {
-    organization: "Big Brothers Big Sisters of Miami",
-    role: "Big Brother",
-    period: "Oct 2025 – Present",
+    company: "Big Brothers Big Sisters of Miami",
     location: "Miami, Florida",
-    bullets: [
-      "Mentor matched youth ages 5–14 through community-based program, meeting bi-monthly for structured, family-coordinated activities that promote personal growth, goal setting, and consistent developmental support",
+    roles: [
+      {
+        title: "Big Brother",
+        type: "Volunteer",
+        period: "Oct 2025 – Present",
+        bullets: [
+          "Mentor matched youth ages 5–14 through community-based program, meeting bi-monthly for structured, family-coordinated activities that promote personal growth, goal setting, and consistent developmental support",
+        ],
+      },
     ],
   },
   {
-    organization: "Yale Club of South Florida",
-    role: "New Leaders Council",
-    period: "Sep 2025 – Present",
+    company: "Yale Club of South Florida",
     location: "Miami, Florida",
-    bullets: [
-      "Organize and lead alumni engagement initiatives for the Yale Club of South Florida, coordinating programs and small-group events that strengthen networking, community participation, and sustained alumni involvement",
+    roles: [
+      {
+        title: "New Leaders Council",
+        type: "Volunteer",
+        period: "Sep 2025 – Present",
+        bullets: [
+          "Organize and lead alumni engagement initiatives for the Yale Club of South Florida, coordinating programs and small-group events that strengthen networking, community participation, and sustained alumni involvement",
+        ],
+      },
     ],
   },
-  // Tutoring for Tomorrow moved from Projects -> Volunteering (kept bullets as-is)
   {
-    organization: "Tutoring for Tomorrow",
-    role: "Executive Director (formerly Tutor, VP, President)",
-    period: "Aug 2015 – May 2021",
+    company: "Tutoring for Tomorrow",
     location: "Miami-Dade County, Florida",
-    bullets: [
-      "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
-      "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
+    roles: [
+      {
+        title: "Executive Director",
+        type: "Volunteer",
+        period: "Aug 2015 – May 2021",
+        bullets: [
+          "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
+          "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
+        ],
+      },
     ],
   },
 ]
