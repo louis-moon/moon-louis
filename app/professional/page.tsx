@@ -56,7 +56,7 @@ const fullTime: Company[] = [
     location: "New York City Metropolitan Area • On-site",
     roles: [
       {
-        title: "Co-founder",
+        title: "Co-Founder",
         type: "Full-time",
         period: "Jan 2023 – Mar 2024",
         bullets: [
