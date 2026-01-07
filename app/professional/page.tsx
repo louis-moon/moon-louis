@@ -2,7 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { Briefcase, HeartHandshake } from "lucide-react"
+import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react"
 
 type Bullet = string
 
@@ -18,13 +18,6 @@ type Company = {
   location: string
   roles: Role[]
 }
-
-/**
- * 3 sections:
- * - Full-time: Green Golf Carbon, Rowan, Equity A1 (Equity A1 dates updated per request)
- * - Internships: Romero Capital, Yale Young Global Scholars, Florida Vocational Institute, + Tsai CITY Accelerator (placed here)
- * - Volunteering: BBBS (date updated), Yale Club of South Florida (date updated), Tutoring for Tomorrow (moved here)
- */
 
 // FULL-TIME
 const fullTime: Company[] = [
@@ -58,7 +51,6 @@ const fullTime: Company[] = [
       },
     ],
   },
-  // Equity A1 moved from Projects -> Full-time; dates updated per request.
   {
     company: "Equity A1",
     location: "New York City Metropolitan Area • On-site",
@@ -78,7 +70,6 @@ const fullTime: Company[] = [
 
 // INTERNSHIPS
 const internships: Company[] = [
-  // Tsai CITY Accelerator placed in Internships section (program/accelerator experience)
   {
     company: "Tsai CITY Accelerator",
     location: "New Haven, Connecticut • On-site",
@@ -141,7 +132,7 @@ const internships: Company[] = [
   },
 ]
 
-// VOLUNTEERING
+// VOLUNTEERING (Company[] format)
 const volunteering: Company[] = [
   {
     company: "Big Brothers Big Sisters of Miami",
@@ -196,13 +187,11 @@ function CompanySection({ data }: { data: Company[] }) {
           key={co.company}
           className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
         >
-          {/* Company header shown once */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
             <h3 className="text-xl font-medium text-foreground">{co.company}</h3>
             {co.location ? <p className="text-xs text-muted-foreground">{co.location}</p> : null}
           </div>
 
-          {/* Roles inside the company */}
           <div className="space-y-6">
             {co.roles.map((role, i) => (
               <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
@@ -247,13 +236,19 @@ export default function ProfessionalPage() {
 
           {/* Full-time */}
           <section className="mb-20">
-            <h2 className="text-2xl font-light mb-8 text-foreground">Full-time</h2>
+            <div className="flex items-center gap-3 mb-8">
+              <Briefcase className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">Full-time</h2>
+            </div>
             <CompanySection data={fullTime} />
           </section>
 
           {/* Internships */}
           <section className="mb-20">
-            <h2 className="text-2xl font-light mb-8 text-foreground">Internships</h2>
+            <div className="flex items-center gap-3 mb-8">
+              <GraduationCap className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">Internships</h2>
+            </div>
             <CompanySection data={internships} />
           </section>
 
@@ -263,29 +258,7 @@ export default function ProfessionalPage() {
               <HeartHandshake className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light text-foreground">Volunteering</h2>
             </div>
-
-            <div className="space-y-6">
-              {volunteering.map((v, i) => (
-                <section
-                  key={`${v.organization ?? v.role ?? "vol"}-${i}`}
-                  className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-                >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-                    <div className="flex flex-col">
-                      <h3 className="text-lg font-medium text-foreground">{v.organization}</h3>
-                      <p className="text-sm text-primary">{v.role}</p>
-                      {v.location ? <p className="text-xs text-muted-foreground">{v.location}</p> : null}
-                    </div>
-                    <span className="text-xs text-muted-foreground">{v.period}</span>
-                  </div>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                    {v.bullets.map((b, j) => (
-                      <li key={j}>{b}</li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
-            </div>
+            <CompanySection data={volunteering} />
           </section>
         </div>
       </main>
