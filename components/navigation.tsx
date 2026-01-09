@@ -8,11 +8,11 @@ import { Menu, X } from "lucide-react"
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/professional", label: "Professional" },
   { href: "/education", label: "Education" },
-  { href: "/personal", label: "Personal" },
-  { href: "/media", label: "Media" },
   { href: "/essays", label: "Essays" },
+  { href: "/media", label: "Media" },
+  { href: "/personal", label: "Personal" },
+  { href: "/professional", label: "Professional" },
 ]
 
 export function Navigation() {
