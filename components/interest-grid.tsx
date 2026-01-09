@@ -42,9 +42,9 @@ const tiles: Tile[] = [
     color: "from-blue-500/10 to-blue-600/10 hover:from-blue-500/20 hover:to-blue-600/20",
     borderColor: "hover:border-blue-500/50",
     sections: [
-      { title: "Music", items: ["Juice WRLD (Rap)", "The Chainsmokers (EDM)", "HONNE (Pop)"] },
-      { title: "Movies", items: ["Manchester by the Sea", "La La Land", "The Lion King"] },
-      { title: "TV Shows", items: ["Ozark", "Monster", "Chernobyl"] },
+      { title: "Music", items: ["HONNE (Pop)", "Juice WRLD (Rap)", "The Chainsmokers (EDM)"] },
+      { title: "Movies", items: ["La La Land", "Manchester by the Sea", "Troy"] },
+      { title: "TV Shows", items: ["Dragon Ball Z", "Impractical Jokers", "Ozark"] },
     ],
   },
   {
@@ -54,9 +54,9 @@ const tiles: Tile[] = [
     color: "from-amber-500/10 to-amber-600/10 hover:from-amber-500/20 hover:to-amber-600/20",
     borderColor: "hover:border-amber-500/50",
     sections: [
-      { title: "Favorite Books", items: ["Eragon", "When Breath Becomes Air", "The Stranger"] },
+      { title: "Favorite Books", items: ["Flowers for Algernon", "Proofs from THE BOOK", "When Breath Becomes Air"] },
       { title: "Favorite Cities", items: ["Banff", "Haeundae", "Puerto Ayora"] },
-      { title: "Favorite Spots", items: ["South Beach", "East Rock", "Bar Harbor"] },
+      { title: "Favorite Spots", items: ["Bar Harbor", "East Rock", "South Pointe"] },
     ],
   },
   {
@@ -66,9 +66,9 @@ const tiles: Tile[] = [
     color: "from-green-500/10 to-green-600/10 hover:from-green-500/20 hover:to-green-600/20",
     borderColor: "hover:border-green-500/50",
     sections: [
-      { title: "Ball Sports", items: ["Tennis", "Golf", "Basketball"] },
-      { title: "Non-ball Sports", items: ["Running", "Frisbee", "Cycling"] },
-      { title: "Outdoor Activities", items: ["Fishing", "Skiing", "Hiking"] },
+      { title: "Ball Sports", items: ["Basketball", "Golf", "Tennis"] },
+      { title: "Non-ball Sports", items: ["Cycling", "Frisbee", "Running"] },
+      { title: "Outdoor Activities", items: ["Fishing", "Hiking", "Skiing"] },
     ],
   },
   {
@@ -78,9 +78,9 @@ const tiles: Tile[] = [
     color: "from-rose-500/10 to-rose-600/10 hover:from-rose-500/20 hover:to-rose-600/20",
     borderColor: "hover:border-rose-500/50",
     sections: [
-      { title: "Food", items: ["Risotto", "Tiramisu", "Dim Sum"] },
-      { title: "Drink", items: ["Sprite", "Cold Brew", "Apple Juice"] },
-      { title: "Alcohol", items: ["Sangria", "High Noon", "Piña Colada"] },
+      { title: "Food", items: ["Dim Sum", "Naengmyeon (물냉면)", "Risotto"] },
+      { title: "Drink", items: ["Cold Brew", "Gatorade", "Sprite"] },
+      { title: "Alcohol", items: ["High Noon", "Piña Colada", "Sangria" },
     ],
   },
   {
@@ -90,9 +90,9 @@ const tiles: Tile[] = [
     color: "from-cyan-500/10 to-cyan-600/10 hover:from-cyan-500/20 hover:to-cyan-600/20",
     borderColor: "hover:border-cyan-500/50",
     sections: [
-      { title: "Travel Wish List", items: ["Germany", "Alaska", "Spain"] },
-      { title: "Pet Wishlist", items: ["Golden Retriever", "British Shorthair", "French Bulldog"] },
-      { title: "Favorite Animals", items: ["Polar Bears", "Dragons", "Lions"] },
+      { title: "Travel Wish List", items: ["Alaska", "Germany", "Spain"] },
+      { title: "Pet Wishlist", items: ["British Shorthair", "French Bulldog", "Stafforshire Bull Terrier"] },
+      { title: "Favorite Animals", items: ["Dragons", "Lions", "Polar Bears"] },
     ],
   },
   {
@@ -102,9 +102,9 @@ const tiles: Tile[] = [
     color: "from-violet-500/10 to-violet-600/10 hover:from-violet-500/20 hover:to-violet-600/20",
     borderColor: "hover:border-violet-500/50",
     sections: [
-      { title: "Favorite Actors", items: ["Emily Blunt", "Ryan Gosling", "Brad Pitt"] },
-      { title: "Favorite Athletes", items: ["Victor Wembanyama", "Lewis Hamilton", "Roger Federer"] },
-      { title: "Inspirational Figures", items: ["Janet Yellen", "Richard Feynman", "Jim Simons"] },
+      { title: "Favorite Actors", items: ["Brad Pitt", "Emily Blunt", "Ryan Gosling"] },
+      { title: "Favorite Athletes", items: ["Lewis Hamilton", "Roger Federer", "Victor Wembanyama"] },
+      { title: "Inspirational Figures", items: ["Albert Camus", "Janet Yellen", "Jim Simons"] },
     ],
   },
   {
@@ -114,9 +114,9 @@ const tiles: Tile[] = [
     color: "from-sky-500/10 to-sky-600/10 hover:from-sky-500/20 hover:to-sky-600/20",
     borderColor: "hover:border-sky-500/50",
     sections: [
-      { title: "What I Would Major In", items: ["Philosophy", "Global Affairs", "Statistics"] },
-      { title: "Passions", items: ["Science & Technology", "Environment", "Education"] },
-      { title: "Things to Learn / Work On", items: ["Spanish", "Relationships", "Korean"] },
+      { title: "What I Would Major In", items: ["Global Affairs", "Philosophy",  "Statistics"] },
+      { title: "Passions", items: ["Education", "Environment", "Science & Technology"] },
+      { title: "Things to Learn / Work On", items: ["Korean & Spanish", "Relationships", "Systems Building"] },
     ],
   },
   {
@@ -126,21 +126,21 @@ const tiles: Tile[] = [
     color: "from-indigo-500/10 to-indigo-600/10 hover:from-indigo-500/20 hover:to-indigo-600/20",
     borderColor: "hover:border-indigo-500/50",
     sections: [
-      { title: "Video Games", items: ["Roblox", "FIFA", "Clash of Clans"] },
-      { title: "Card / Board Games", items: ["Poker", "Egyptian Rat Screw", "Chess"] },
-      { title: "Other Games / Recreation", items: ["Bowling", "Tetris", "Super Smash Bros."] },
+      { title: "Video Games", items: ["Clash of Clans", "FIFA", "Halo"] },
+      { title: "Card / Board Games", items: ["Chess", "Egyptian Rat Screw", "Poker"] },
+      { title: "Other Games / Recreation", items: ["Bowling", "Super Smash Bros.", "Tetris"] },
     ],
   },
   {
     id: "creative",
-    title: "Written • Visual • Music",
+    title: "Creative",
     icon: Palette,
     color: "from-teal-500/10 to-teal-600/10 hover:from-teal-500/20 hover:to-teal-600/20",
     borderColor: "hover:border-teal-500/50",
     sections: [
-      { title: "Creative (Written)", items: ["Journaling", "Reading", "Poetry"] },
-      { title: "Creative (Visual)", items: ["Video Editing", "Photography", "Art"] },
-      { title: "Creative (Music)", items: ["Songwriting", "Jazz", "Freestyling"] },
+      { title: "Written", items: ["Journaling", "Reading", "Writing (Essays)",] },
+      { title: "Visual", items: ["Video Editing", "Photography", "Art"] },
+      { title: "Music", items: ["Jazz", "Piano", "Songwriting"] },
     ],
   },
 ]
