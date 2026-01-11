@@ -186,43 +186,7 @@ const honors = [
   { title: "Envirothon: North American Qualifier, 1st Place State", organization: "National Conservation Foundation", year: "2017" },
 ]
 
-const extracurriculars = [
-  {
-    title: "National Honor Society",
-    role: "President",
-    description:
-      "Launched and coordinated community service initiatives with local and national partners.",
-    tags: ["Community Service"],
-  },
-  {
-    title: "Honor Council",
-    role: "Co-President",
-    description:
-      "Led a student-run academic integrity body and formalized institutional honor procedures.",
-    tags: ["Leadership"],
-  },
-  {
-    title: "Science National Honor Society",
-    role: "VP of Competitions",
-    description:
-      "Prepared competitive teams for regional and national science challenges.",
-    tags: ["Science"],
-  },
-  {
-    title: "Mu Alpha Theta",
-    role: "VP of Tutoring",
-    description:
-      "Organized math tutoring infrastructure and competition preparation programs.",
-    tags: ["Mathematics"],
-  },
-  {
-    title: "Achieve Miami",
-    role: "Big Buddy",
-    description:
-      "Mentored elementary school students and supported early literacy education.",
-    tags: ["Volunteering"],
-  },
-]
+const extracurriculars = [ { title: "National Honor Society", role: "President", description: "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.", tags: ["Community Service"], }, { title: "Honor Council", role: "Co-President", description: "Led student-run body addressing academic misconduct; formalized and promoted the honor code.", tags: ["Leadership"], }, { title: "Science National Honor Society", role: "VP of Competitions", description: "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.", tags: ["Science"], }, { title: "Mu Alpha Theta", role: "VP of Tutoring", description: "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.", tags: ["Mathematics"], }, { title: "Achieve Miami", role: "Big Buddy", description: "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School", tags: ["Volunteering"], }, ]
 
 /* =========================
    COMPONENT
