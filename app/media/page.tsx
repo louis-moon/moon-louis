@@ -59,10 +59,7 @@ export default function MediaPage() {
           </div>
 
           {/* Photography grid only */}
-          <section>
-            <h2 className="text-2xl font-light mb-6 text-foreground">Photography</h2>
-            <PhotoGrid photos={photos} />
-          </section>
+          <PhotoGrid photos={photos} />
         </div>
       </main>
     </>
