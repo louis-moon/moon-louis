@@ -86,7 +86,7 @@ const projects: Project[] = [
   },
   {
     name: "Tutoring for Tomorrow",
-    location: "Miami, Florida",
+    location: "Miami, Florida • On-site",
     period: "Aug 2015 – May 2021",
     bullets: [
       "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
