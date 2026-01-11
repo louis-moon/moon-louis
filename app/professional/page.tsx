@@ -22,10 +22,10 @@ type Company = {
 /**
  * Projects are NOT companies/employment entries.
  * We intentionally do NOT model or render any role/title/type line for projects.
+ * We also intentionally do NOT include location for projects.
  */
 type Project = {
   name: string
-  location: string
   period: string
   bullets: Bullet[]
 }
@@ -41,7 +41,7 @@ const fullTime: Company[] = [
         type: "Full-time",
         period: "Feb 2025 – Present • 1 yr",
         bullets: [
-          "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 26k golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
+          "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 25k+ golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
           "Building digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; directly working hand in hand with founders to raise venture capital funding, expand team, and validate product development",
         ],
       },
@@ -64,11 +64,10 @@ const fullTime: Company[] = [
   },
 ]
 
-// PROJECTS (horizontal scroll) — intentionally NO title/type lines rendered
+// PROJECTS (horizontal scroll) — intentionally NO title/type/location lines rendered
 const projects: Project[] = [
   {
     name: "Equity A1",
-    location: "New York City Metropolitan Area • On-site",
     period: "Dec 2021 – Mar 2024",
     bullets: [
       "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry-specific use cases including package delivery verification, employee monitoring, and driver safety checks",
@@ -77,7 +76,6 @@ const projects: Project[] = [
   },
   {
     name: "Tsai CITY Accelerator",
-    location: "New Haven, Connecticut • On-site",
     period: "Sep 2021 – Nov 2021",
     bullets: [
       "Participated in Tsai CITY's flagship venture accelerator; secured initial funding, mentorship, and strategic support",
@@ -86,7 +84,6 @@ const projects: Project[] = [
   },
   {
     name: "Tutoring for Tomorrow",
-    location: "Miami, Florida • On-site",
     period: "Aug 2015 – May 2021",
     bullets: [
       "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
@@ -223,14 +220,9 @@ function ProjectsCarousel({ data }: { data: Project[] }) {
               className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5
                          w-[320px] sm:w-[420px] md:w-[520px] flex-shrink-0"
             >
-              <div className="flex flex-col gap-2 mb-4">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
-                  <span className="text-xs text-muted-foreground whitespace-nowrap">{p.period}</span>
-                </div>
-                {p.location ? (
-                  <p className="text-xs text-muted-foreground">{p.location}</p>
-                ) : null}
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
+                <span className="text-xs text-muted-foreground whitespace-nowrap">{p.period}</span>
               </div>
 
               <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
@@ -243,7 +235,6 @@ function ProjectsCarousel({ data }: { data: Project[] }) {
         </div>
       </div>
 
-      {/* Right-edge blur to suggest horizontal scroll */}
       <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
     </div>
   )
