@@ -1,6 +1,15 @@
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { GraduationCap, Award, BookOpen, Users, Library } from "lucide-react"
+import {
+  GraduationCap,
+  Award,
+  BookOpen,
+  Users,
+  Library,
+  Calendar,
+  Layers,
+  Backpack,
+} from "lucide-react"
 
 /* =========================
    DATA
@@ -51,9 +60,6 @@ const educationTimeline = [
   },
 ]
 
-/**
- * Coursework (stored chronologically, rendered reverse-chronological)
- */
 const coursework = [
   {
     term: "Fall 2018",
@@ -280,47 +286,26 @@ export default function EducationPage() {
             </p>
           </div>
 
-          {/* Timeline (vertical stack) */}
+          {/* Timeline */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-8">
-              <GraduationCap className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Timeline</h2>
+              <Calendar className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light">Timeline</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {educationTimeline.map((edu, index) => (
-                <div
-                  key={index}
-                  className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-                >
-                  <div className="mb-4">
-                    <h3 className="text-xl font-medium mb-2">
-                      {edu.institution}
-                    </h3>
-                    <p className="text-sm text-primary font-medium mb-1">
-                      {edu.degree}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {edu.period}
-                    </p>
-                  </div>
-
-                  <div className="mb-4">
-                    <p className="text-sm font-medium mb-2">
-                      {edu.focus}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {edu.description}
-                    </p>
-                  </div>
-
+              {educationTimeline.map((edu, i) => (
+                <div key={i} className="bg-card border border-border rounded-xl p-8">
+                  <h3 className="text-xl font-medium mb-1">{edu.institution}</h3>
+                  <p className="text-sm text-primary mb-1">{edu.degree}</p>
+                  <p className="text-xs text-muted-foreground mb-4">{edu.period}</p>
+                  <p className="text-sm font-medium mb-2">{edu.focus}</p>
+                  <p className="text-sm text-muted-foreground mb-4">{edu.description}</p>
                   <div className="space-y-2">
-                    {edu.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2">
+                    {edu.highlights.map((h, j) => (
+                      <div key={j} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary" />
-                        <p className="text-xs text-muted-foreground">
-                          {h}
-                        </p>
+                        <p className="text-xs text-muted-foreground">{h}</p>
                       </div>
                     ))}
                   </div>
@@ -329,11 +314,11 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* Coursework (horizontal) */}
+          {/* Coursework */}
           <div className="mb-20">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-2">
               <Library className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Coursework</h2>
+              <h2 className="text-2xl font-light">Coursework</h2>
             </div>
             <p className="text-xs text-muted-foreground md:hidden mb-4">
               Swipe by term →
@@ -343,26 +328,13 @@ export default function EducationPage() {
               <div className="overflow-x-auto horizontal-scroll pb-6">
                 <div className="flex gap-6 min-w-max">
                   {[...coursework].reverse().map((block) => (
-                    <div
-                      key={block.term}
-                      className="w-[320px] md:w-[420px] flex-shrink-0 bg-card border border-border rounded-xl p-6 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-                    >
-                      <h3 className="text-lg font-medium mb-4">
-                        {block.term}
-                      </h3>
-
+                    <div key={block.term} className="w-[320px] md:w-[420px] flex-shrink-0 bg-card border rounded-xl p-6">
+                      <h3 className="font-medium mb-4">{block.term}</h3>
                       <div className="space-y-3">
                         {block.courses.map((c) => (
-                          <div
-                            key={`${block.term}-${c.code}`}
-                            className="rounded-lg border border-border bg-secondary p-3"
-                          >
-                            <p className="text-sm font-medium">
-                              {c.code}: {c.title}
-                            </p>
-                            <p className="text-xs text-muted-foreground mt-1">
-                              {c.instructors.join(", ")}
-                            </p>
+                          <div key={c.code} className="bg-secondary border rounded-lg p-3">
+                            <p className="text-sm font-medium">{c.code}: {c.title}</p>
+                            <p className="text-xs text-muted-foreground">{c.instructors.join(", ")}</p>
                           </div>
                         ))}
                       </div>
@@ -370,7 +342,6 @@ export default function EducationPage() {
                   ))}
                 </div>
               </div>
-
               <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
             </div>
           </div>
@@ -384,14 +355,12 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {collegeActivities.map((item, i) => (
-                <div key={i} className="bg-card border border-border rounded-xl p-6">
+                <div key={i} className="bg-card border rounded-xl p-6">
                   <h3 className="font-medium">{item.title}</h3>
                   <p className="text-sm text-primary mb-3">{item.role}</p>
                   <ul className="list-disc pl-5 space-y-2">
                     {item.bullets.map((b, j) => (
-                      <li key={j} className="text-sm text-muted-foreground">
-                        {b}
-                      </li>
+                      <li key={j} className="text-sm text-muted-foreground">{b}</li>
                     ))}
                   </ul>
                 </div>
@@ -408,7 +377,7 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testScores.map((t, i) => (
-                <div key={i} className="bg-card border border-border rounded-xl p-6">
+                <div key={i} className="bg-card border rounded-xl p-6">
                   <p className="text-sm text-muted-foreground">{t.test}</p>
                   <p className="text-3xl font-light text-primary">{t.score}</p>
                   <p className="text-xs text-muted-foreground">{t.detail}</p>
@@ -417,11 +386,12 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* AP Scores (horizontal) */}
+          {/* AP Scores */}
           <div className="mb-20">
-            <h2 className="text-2xl font-light mb-2">
-              Advanced Placement Examinations
-            </h2>
+            <div className="flex items-center gap-3 mb-2">
+              <Layers className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light">Advanced Placement Examinations</h2>
+            </div>
             <p className="text-xs text-muted-foreground md:hidden mb-4">
               Swipe by exam →
             </p>
@@ -430,24 +400,16 @@ export default function EducationPage() {
               <div className="overflow-x-auto horizontal-scroll pb-6">
                 <div className="flex gap-4 min-w-max">
                   {apScores.map((ap, i) => (
-                    <div
-                      key={i}
-                      className="w-[220px] flex-shrink-0 bg-card border border-border rounded-lg p-4"
-                    >
+                    <div key={i} className="w-[220px] flex-shrink-0 bg-card border rounded-lg p-4">
                       <div className="flex justify-between mb-2">
                         <p className="text-sm font-medium">{ap.subject}</p>
-                        <span className="text-lg font-medium">
-                          {ap.score}
-                        </span>
+                        <span className="text-lg font-medium">{ap.score}</span>
                       </div>
-                      <p className="text-xs text-muted-foreground">
-                        {ap.year}
-                      </p>
+                      <p className="text-xs text-muted-foreground">{ap.year}</p>
                     </div>
                   ))}
                 </div>
               </div>
-
               <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
             </div>
           </div>
@@ -455,13 +417,13 @@ export default function EducationPage() {
           {/* High School Extracurriculars */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-8">
-              <Users className="w-5 h-5 text-primary" />
+              <Backpack className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">High School Extracurriculars</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {extracurriculars.map((e, i) => (
-                <div key={i} className="bg-card border border-border rounded-xl p-6">
+                <div key={i} className="bg-card border rounded-xl p-6">
                   <h3 className="font-medium">{e.title}</h3>
                   <p className="text-sm text-primary">{e.role}</p>
                   <p className="text-sm text-muted-foreground mb-3">{e.description}</p>
@@ -486,7 +448,7 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {honors.map((h, i) => (
-                <div key={i} className="bg-card border border-border rounded-xl p-6">
+                <div key={i} className="bg-card border rounded-xl p-6">
                   <h3 className="font-medium">{h.title}</h3>
                   <p className="text-sm text-muted-foreground">{h.organization}</p>
                   <p className="text-xs text-primary">{h.year}</p>
