@@ -8,7 +8,7 @@ type Bullet = string
 
 type Role = {
   title: string
-  type: string
+  type?: string
   period: string
   bullets: Bullet[]
 }
@@ -61,7 +61,6 @@ const projects: Company[] = [
     roles: [
       {
         title: "Co-Founder",
-        type: "Full-time",
         period: "Dec 2021 – Mar 2024",
         bullets: [
           "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry-specific use cases including package delivery verification, employee monitoring, and driver safety checks",
@@ -75,8 +74,7 @@ const projects: Company[] = [
     location: "New Haven, Connecticut • On-site",
     roles: [
       {
-        title: "Fall Cohort",
-        type: "Accelerator",
+        title: "Venture Accelerator Participant",
         period: "Sep 2021 – Nov 2021",
         bullets: [
           "Participated in Tsai CITY's flagship venture accelerator; secured initial funding, mentorship, and strategic support",
@@ -91,7 +89,6 @@ const projects: Company[] = [
     roles: [
       {
         title: "Executive Director",
-        type: "Volunteer",
         period: "Aug 2015 – May 2021",
         bullets: [
           "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
@@ -201,7 +198,8 @@ function CompanySection({ data }: { data: Company[] }) {
               <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
                   <p className="text-sm text-primary">
-                    {role.title} • {role.type}
+                    {role.title}
+                    {role.type ? ` • ${role.type}` : ""}
                   </p>
                   <span className="text-xs text-muted-foreground">{role.period}</span>
                 </div>
@@ -238,9 +236,7 @@ function ProjectsCarousel({ data }: { data: Company[] }) {
               {co.roles.map((role, i) => (
                 <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
                   <div className="flex flex-col gap-2 mb-2">
-                    <p className="text-sm text-primary">
-                      {role.title} • {role.type}
-                    </p>
+                    <p className="text-sm text-primary">{role.title}</p>
                     <span className="text-xs text-muted-foreground">{role.period}</span>
                   </div>
                   <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
