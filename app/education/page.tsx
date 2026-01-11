@@ -145,38 +145,7 @@ const coursework = [
   },
 ]
 
-const collegeActivities = [
-  {
-    title: "Yale Student Investment Group",
-    role: "Investment Analyst",
-    bullets: [
-      "Produced one investment pitch per semester for a student-managed fund overseeing ~$500,000",
-      "Won best pitch presenting a small-cap industrial equity (+1000% since presentation, TGLS)",
-    ],
-  },
-  {
-    title: "Elmseed Enterprise Fund",
-    role: "Project Head",
-    bullets: [
-      "Led consulting engagements for New Haven startups through structured advisory sessions",
-      "Supported restaurant launches, food cart operations, and early-stage franchising strategy",
-    ],
-  },
-  {
-    title: "Volunteer Income Tax Assistance (VITA)",
-    role: "Tax Preparer",
-    bullets: [
-      "Returned over $150,000 to low-income residents as an IRS-certified volunteer",
-    ],
-  },
-  {
-    title: "Dwight Hall at Yale",
-    role: "Support Crew",
-    bullets: [
-      "Coordinated logistics for FOCUS on New Haven, a pre-orientation program serving 150 students",
-    ],
-  },
-]
+const collegeActivities = [ { title: "Yale Student Investment Group", role: "Investment Analyst", bullets: [ "Produced 1 investment pitch each semester as part of a team for fund managing ~$500,000 on behalf of university endowment", "Won best pitch presenting small-cap industrial stock for Analyst Training Program conclusion, up over +1000% since (TGLS)", ], }, { title: "Elmseed Enterprise Fund", role: "Project Head", bullets: [ "Spearheaded consulting initiatives for local New Haven startups and provided strategic advice during weekly office hours", "Helped a Korean food cart operationalize, a Filipino outlet launch pop-ups, and a Mediterranean restaurant start franchising", ], }, { title: "Volunteer Income Tax Assistance (VITA)", role: "Tax Preparer", bullets: [ "Returned $150,000+ for 75 low-income New Haven residents by providing tax services as an IRS-certified volunteer", ], }, { title: "Dwight Hall at Yale", role: "Support Crew", bullets: [ "Organized logistics for FOCUS on New Haven, one of Yale's nine pre-orientation programs hosting 150 students", ], }, ]
 
 const testScores = [
   { test: "SAT", score: "1580/1600", detail: "780 EBRW, 800 Math" },
