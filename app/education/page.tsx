@@ -280,67 +280,58 @@ export default function EducationPage() {
             </p>
           </div>
 
-          {/* Timeline */}
+          {/* Timeline (vertical stack) */}
           <div className="mb-20">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light text-foreground">Timeline</h2>
             </div>
-            <p className="text-xs text-muted-foreground md:hidden mb-4">
-              Swipe to explore →
-            </p>
 
-            <div className="relative">
-              <div className="overflow-x-auto horizontal-scroll pb-6">
-                <div className="flex gap-6 min-w-max">
-                  {educationTimeline.map((edu, index) => (
-                    <div
-                      key={index}
-                      className="w-[360px] md:w-[450px] flex-shrink-0 bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-                    >
-                      <div className="mb-4">
-                        <h3 className="text-xl font-medium mb-2">
-                          {edu.institution}
-                        </h3>
-                        <p className="text-sm text-primary font-medium mb-1">
-                          {edu.degree}
-                        </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {educationTimeline.map((edu, index) => (
+                <div
+                  key={index}
+                  className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
+                >
+                  <div className="mb-4">
+                    <h3 className="text-xl font-medium mb-2">
+                      {edu.institution}
+                    </h3>
+                    <p className="text-sm text-primary font-medium mb-1">
+                      {edu.degree}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {edu.period}
+                    </p>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-sm font-medium mb-2">
+                      {edu.focus}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {edu.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    {edu.highlights.map((h, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary" />
                         <p className="text-xs text-muted-foreground">
-                          {edu.period}
+                          {h}
                         </p>
                       </div>
-
-                      <div className="mb-4">
-                        <p className="text-sm font-medium mb-2">
-                          {edu.focus}
-                        </p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {edu.description}
-                        </p>
-                      </div>
-
-                      <div className="space-y-2">
-                        {edu.highlights.map((h, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary" />
-                            <p className="text-xs text-muted-foreground">
-                              {h}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+              ))}
             </div>
           </div>
 
-          {/* Coursework */}
+          {/* Coursework (horizontal) */}
           <div className="mb-20">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4">
               <Library className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light text-foreground">Coursework</h2>
             </div>
@@ -426,11 +417,14 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* AP Scores */}
+          {/* AP Scores (horizontal) */}
           <div className="mb-20">
-            <h2 className="text-2xl font-light mb-6">
+            <h2 className="text-2xl font-light mb-2">
               Advanced Placement Examinations
             </h2>
+            <p className="text-xs text-muted-foreground md:hidden mb-4">
+              Swipe by exam →
+            </p>
 
             <div className="relative">
               <div className="overflow-x-auto horizontal-scroll pb-6">
