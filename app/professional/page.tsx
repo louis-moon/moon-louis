@@ -8,7 +8,7 @@ type Bullet = string
 
 type Role = {
   title: string
-  type?: string
+  type: string
   period: string
   bullets: Bullet[]
 }
@@ -17,6 +17,17 @@ type Company = {
   company: string
   location: string
   roles: Role[]
+}
+
+/**
+ * Projects are NOT companies/employment entries.
+ * We intentionally do NOT model or render any role/title/type line for projects.
+ */
+type Project = {
+  name: string
+  location: string
+  period: string
+  bullets: Bullet[]
 }
 
 // FULL-TIME (vertical stack)
@@ -53,48 +64,33 @@ const fullTime: Company[] = [
   },
 ]
 
-// PROJECTS (horizontal scroll)
-const projects: Company[] = [
+// PROJECTS (horizontal scroll) — intentionally NO title/type lines rendered
+const projects: Project[] = [
   {
-    company: "Equity A1",
+    name: "Equity A1",
     location: "New York City Metropolitan Area • On-site",
-    roles: [
-      {
-        title: "Co-Founder",
-        period: "Dec 2021 – Mar 2024",
-        bullets: [
-          "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry-specific use cases including package delivery verification, employee monitoring, and driver safety checks",
-          "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children's books to build a text-to-video model as a complementary solution using natural language processing tools",
-        ],
-      },
+    period: "Dec 2021 – Mar 2024",
+    bullets: [
+      "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry-specific use cases including package delivery verification, employee monitoring, and driver safety checks",
+      "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children's books to build a text-to-video model as a complementary solution using natural language processing tools",
     ],
   },
   {
-    company: "Tsai CITY Accelerator",
+    name: "Tsai CITY Accelerator",
     location: "New Haven, Connecticut • On-site",
-    roles: [
-      {
-        title: "Venture Accelerator Participant",
-        period: "Sep 2021 – Nov 2021",
-        bullets: [
-          "Participated in Tsai CITY's flagship venture accelerator; secured initial funding, mentorship, and strategic support",
-          "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine concepts",
-        ],
-      },
+    period: "Sep 2021 – Nov 2021",
+    bullets: [
+      "Participated in Tsai CITY's flagship venture accelerator; secured initial funding, mentorship, and strategic support",
+      "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine concepts",
     ],
   },
   {
-    company: "Tutoring for Tomorrow",
+    name: "Tutoring for Tomorrow",
     location: "Miami, Florida",
-    roles: [
-      {
-        title: "Executive Director",
-        period: "Aug 2015 – May 2021",
-        bullets: [
-          "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
-          "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
-        ],
-      },
+    period: "Aug 2015 – May 2021",
+    bullets: [
+      "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
+      "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
     ],
   },
 ]
@@ -198,8 +194,7 @@ function CompanySection({ data }: { data: Company[] }) {
               <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
                   <p className="text-sm text-primary">
-                    {role.title}
-                    {role.type ? ` • ${role.type}` : ""}
+                    {role.title} • {role.type}
                   </p>
                   <span className="text-xs text-muted-foreground">{role.period}</span>
                 </div>
@@ -217,36 +212,29 @@ function CompanySection({ data }: { data: Company[] }) {
   )
 }
 
-function ProjectsCarousel({ data }: { data: Company[] }) {
+function ProjectsCarousel({ data }: { data: Project[] }) {
   return (
     <div className="-mx-6 px-6">
       <div className="flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scroll-px-6">
-        {data.map((co) => (
+        {data.map((p) => (
           <section
-            key={co.company}
+            key={p.name}
             className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5
                        min-w-[320px] sm:min-w-[420px] md:min-w-[520px] snap-start"
           >
-            <div className="flex flex-col gap-2 mb-2">
-              <h3 className="text-xl font-medium text-foreground">{co.company}</h3>
-              {co.location ? <p className="text-xs text-muted-foreground">{co.location}</p> : null}
+            <div className="flex flex-col gap-2 mb-4">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
+                <span className="text-xs text-muted-foreground whitespace-nowrap">{p.period}</span>
+              </div>
+              {p.location ? <p className="text-xs text-muted-foreground">{p.location}</p> : null}
             </div>
 
-            <div className="space-y-6">
-              {co.roles.map((role, i) => (
-                <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
-                  <div className="flex flex-col gap-2 mb-2">
-                    <p className="text-sm text-primary">{role.title}</p>
-                    <span className="text-xs text-muted-foreground">{role.period}</span>
-                  </div>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                    {role.bullets.map((b, j) => (
-                      <li key={j}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
+            <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+              {p.bullets.map((b, j) => (
+                <li key={j}>{b}</li>
               ))}
-            </div>
+            </ul>
           </section>
         ))}
       </div>
