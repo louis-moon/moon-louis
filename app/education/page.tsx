@@ -117,7 +117,7 @@ const coursework = [
     ],
   },
   {
-    term: "Summer 2021–2022",
+    term: "Summer 2021 / 2022",
     courses: [
       { code: "EDST S255", title: "Education and Housing Policy", instructors: ["R. Barnes"] },
       { code: "ASTR S110E", title: "Planets and Stars", instructors: ["M. Faison"] },
