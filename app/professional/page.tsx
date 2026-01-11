@@ -2,7 +2,7 @@
 
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react"
+import { Briefcase, GraduationCap, HeartHandshake, FolderKanban } from "lucide-react"
 
 type Bullet = string
 
@@ -19,7 +19,7 @@ type Company = {
   roles: Role[]
 }
 
-// FULL-TIME
+// FULL-TIME (vertical stack)
 const fullTime: Company[] = [
   {
     company: "Green Golf Carbon",
@@ -51,6 +51,10 @@ const fullTime: Company[] = [
       },
     ],
   },
+]
+
+// PROJECTS (horizontal scroll)
+const projects: Company[] = [
   {
     company: "Equity A1",
     location: "New York City Metropolitan Area • On-site",
@@ -66,10 +70,6 @@ const fullTime: Company[] = [
       },
     ],
   },
-]
-
-// INTERNSHIPS
-const internships: Company[] = [
   {
     company: "Tsai CITY Accelerator",
     location: "New Haven, Connecticut • On-site",
@@ -85,6 +85,25 @@ const internships: Company[] = [
       },
     ],
   },
+  {
+    company: "Tutoring for Tomorrow",
+    location: "Miami-Dade County, Florida",
+    roles: [
+      {
+        title: "Executive Director",
+        type: "Volunteer",
+        period: "Aug 2015 – May 2021",
+        bullets: [
+          "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
+          "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
+        ],
+      },
+    ],
+  },
+]
+
+// INTERNSHIPS (vertical stack)
+const internships: Company[] = [
   {
     company: "Romero Capital",
     location: "New York, New York • Remote",
@@ -132,7 +151,7 @@ const internships: Company[] = [
   },
 ]
 
-// VOLUNTEERING (Company[] format)
+// VOLUNTEERING (vertical stack)
 const volunteering: Company[] = [
   {
     company: "Big Brothers Big Sisters of Miami",
@@ -158,21 +177,6 @@ const volunteering: Company[] = [
         period: "Sep 2025 – Present",
         bullets: [
           "Organize and lead alumni engagement initiatives for the Yale Club of South Florida, coordinating programs and small-group events that strengthen networking, community participation, and sustained alumni involvement",
-        ],
-      },
-    ],
-  },
-  {
-    company: "Tutoring for Tomorrow",
-    location: "Miami-Dade County, Florida",
-    roles: [
-      {
-        title: "Executive Director",
-        type: "Volunteer",
-        period: "Aug 2015 – May 2021",
-        bullets: [
-          "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
-          "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
         ],
       },
     ],
@@ -215,6 +219,45 @@ function CompanySection({ data }: { data: Company[] }) {
   )
 }
 
+function ProjectsCarousel({ data }: { data: Company[] }) {
+  return (
+    <div className="-mx-6 px-6">
+      <div className="flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scroll-px-6">
+        {data.map((co) => (
+          <section
+            key={co.company}
+            className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5
+                       min-w-[320px] sm:min-w-[420px] md:min-w-[520px] snap-start"
+          >
+            <div className="flex flex-col gap-2 mb-2">
+              <h3 className="text-xl font-medium text-foreground">{co.company}</h3>
+              {co.location ? <p className="text-xs text-muted-foreground">{co.location}</p> : null}
+            </div>
+
+            <div className="space-y-6">
+              {co.roles.map((role, i) => (
+                <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
+                  <div className="flex flex-col gap-2 mb-2">
+                    <p className="text-sm text-primary">
+                      {role.title} • {role.type}
+                    </p>
+                    <span className="text-xs text-muted-foreground">{role.period}</span>
+                  </div>
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                    {role.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function ProfessionalPage() {
   return (
     <>
@@ -241,6 +284,15 @@ export default function ProfessionalPage() {
               <h2 className="text-2xl font-light text-foreground">Full-time</h2>
             </div>
             <CompanySection data={fullTime} />
+          </section>
+
+          {/* Projects */}
+          <section className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <FolderKanban className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light text-foreground">Projects</h2>
+            </div>
+            <ProjectsCarousel data={projects} />
           </section>
 
           {/* Internships */}
