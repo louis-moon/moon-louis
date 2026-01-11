@@ -124,7 +124,6 @@ const coursework = [
       { code: "FILM S274", title: "Global Hollywood", instructors: ["X. Sawada"] },
     ],
   },
-
   {
     term: "Fall 2022",
     courses: [
@@ -145,7 +144,66 @@ const coursework = [
   },
 ]
 
-const collegeActivities = [ { title: "Yale Student Investment Group", role: "Investment Analyst", bullets: [ "Produced 1 investment pitch each semester as part of a team for fund managing ~$500,000 on behalf of university endowment", "Won best pitch presenting small-cap industrial stock for Analyst Training Program conclusion, up over +1000% since (TGLS)", ], }, { title: "Elmseed Enterprise Fund", role: "Project Head", bullets: [ "Spearheaded consulting initiatives for local New Haven startups and provided strategic advice during weekly office hours", "Helped a Korean food cart operationalize, a Filipino outlet launch pop-ups, and a Mediterranean restaurant start franchising", ], }, { title: "Volunteer Income Tax Assistance (VITA)", role: "Tax Preparer", bullets: [ "Returned $150,000+ for 75 low-income New Haven residents by providing tax services as an IRS-certified volunteer", ], }, { title: "Dwight Hall at Yale", role: "Support Crew", bullets: [ "Organized logistics for FOCUS on New Haven, one of Yale's nine pre-orientation programs hosting 150 students", ], }, ]
+const collegeActivities = [
+  {
+    title: "Yale Student Investment Group",
+    role: "Investment Analyst",
+    bullets: [
+      "Produced one investment pitch per semester for a student-managed fund overseeing ~$500,000",
+      "Won best pitch presenting a small-cap industrial equity (+1000% since presentation, TGLS)",
+    ],
+  },
+  {
+    title: "Elmseed Enterprise Fund",
+    role: "Project Head",
+    bullets: [
+      "Led consulting engagements for New Haven startups through structured advisory sessions",
+      "Supported restaurant launches, food cart operations, and early-stage franchising strategy",
+    ],
+  },
+  {
+    title: "Volunteer Income Tax Assistance (VITA)",
+    role: "Tax Preparer",
+    bullets: [
+      "Returned over $150,000 to low-income residents as an IRS-certified volunteer",
+    ],
+  },
+  {
+    title: "Dwight Hall at Yale",
+    role: "Support Crew",
+    bullets: [
+      "Coordinated logistics for FOCUS on New Haven, a pre-orientation program serving 150 students",
+    ],
+  },
+]
+
+const honors = [
+  {
+    title: "National Merit Scholar",
+    organization: "National Merit Scholarship Corporation",
+    tags: ["Scholarship", "Academic Excellence"],
+  },
+  {
+    title: "National Economics Challenge: State Champion, 9th Place Nationally",
+    organization: "Council for Economic Education",
+    tags: ["Economics", "Competition"],
+  },
+  {
+    title: "National Finance Challenge: State Champion, Semifinalist",
+    organization: "Council for Economic Education",
+    tags: ["Finance", "Competition"],
+  },
+  {
+    title: "Odyssey of the Mind: 2nd Place World Finals",
+    organization: "Creative Competitions",
+    tags: ["Problem-Solving", "Team Competition"],
+  },
+  {
+    title: "Envirothon: North American Qualifier, 1st Place State",
+    organization: "National Conservation Foundation",
+    tags: ["Conservation", "Environmental Science"],
+  },
+]
 
 const testScores = [
   { test: "SAT", score: "1580/1600", detail: "780 EBRW, 800 Math" },
@@ -178,15 +236,43 @@ const apScores = [
   { subject: "Microeconomics", score: 5, year: 2018 },
 ]
 
-const honors = [
-  { title: "National Merit Scholar", organization: "National Merit Scholarship Corporation", year: "2018" },
-  { title: "National Economics Challenge: State Champion, 9th Place Nationally", organization: "Council for Economic Education", year: "2017" },
-  { title: "National Finance Challenge: State Champion, Semifinalist", organization: "Council for Economic Education", year: "2017" },
-  { title: "Odyssey of the Mind: 2nd Place World Finals", organization: "Creative Competitions", year: "2017" },
-  { title: "Envirothon: North American Qualifier, 1st Place State", organization: "National Conservation Foundation", year: "2017" },
+const extracurriculars = [
+  {
+    title: "National Honor Society",
+    role: "President",
+    description:
+      "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.",
+    tags: ["Community Service"],
+  },
+  {
+    title: "Honor Council",
+    role: "Co-President",
+    description:
+      "Led student-run body addressing academic misconduct; formalized and promoted the honor code.",
+    tags: ["Leadership"],
+  },
+  {
+    title: "Science National Honor Society",
+    role: "VP of Competitions",
+    description:
+      "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.",
+    tags: ["Science"],
+  },
+  {
+    title: "Mu Alpha Theta",
+    role: "VP of Tutoring",
+    description:
+      "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.",
+    tags: ["Mathematics"],
+  },
+  {
+    title: "Achieve Miami",
+    role: "Big Buddy",
+    description:
+      "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School",
+    tags: ["Volunteering"],
+  },
 ]
-
-const extracurriculars = [ { title: "National Honor Society", role: "President", description: "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.", tags: ["Community Service"], }, { title: "Honor Council", role: "Co-President", description: "Led student-run body addressing academic misconduct; formalized and promoted the honor code.", tags: ["Leadership"], }, { title: "Science National Honor Society", role: "VP of Competitions", description: "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.", tags: ["Science"], }, { title: "Mu Alpha Theta", role: "VP of Tutoring", description: "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.", tags: ["Mathematics"], }, { title: "Achieve Miami", role: "Big Buddy", description: "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School", tags: ["Volunteering"], }, ]
 
 /* =========================
    COMPONENT
@@ -257,13 +343,20 @@ export default function EducationPage() {
               <div className="overflow-x-auto horizontal-scroll pb-6">
                 <div className="flex gap-6 min-w-max">
                   {[...coursework].reverse().map((block) => (
-                    <div key={block.term} className="w-[320px] md:w-[420px] flex-shrink-0 bg-card border rounded-xl p-6">
+                    <div
+                      key={block.term}
+                      className="w-[320px] md:w-[420px] flex-shrink-0 bg-card border rounded-xl p-6"
+                    >
                       <h3 className="font-medium mb-4">{block.term}</h3>
                       <div className="space-y-3">
                         {block.courses.map((c) => (
                           <div key={c.code} className="bg-secondary border rounded-lg p-3">
-                            <p className="text-sm font-medium">{c.code}: {c.title}</p>
-                            <p className="text-xs text-muted-foreground">{c.instructors.join(", ")}</p>
+                            <p className="text-sm font-medium">
+                              {c.code}: {c.title}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {c.instructors.join(", ")}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -289,9 +382,40 @@ export default function EducationPage() {
                   <p className="text-sm text-primary mb-3">{item.role}</p>
                   <ul className="list-disc pl-5 space-y-2">
                     {item.bullets.map((b, j) => (
-                      <li key={j} className="text-sm text-muted-foreground">{b}</li>
+                      <li key={j} className="text-sm text-muted-foreground">
+                        {b}
+                      </li>
                     ))}
                   </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Honors & Awards */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <Award className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light">Honors & Awards</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {honors.map((h, i) => (
+                <div key={i} className="bg-card border rounded-xl p-6">
+                  <h3 className="font-medium mb-2">{h.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {h.organization}
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    {h.tags.map((t, j) => (
+                      <span
+                        key={j}
+                        className="text-xs bg-secondary px-2 py-1 rounded-md border"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -319,7 +443,9 @@ export default function EducationPage() {
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-2">
               <Layers className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light">Advanced Placement Examinations</h2>
+              <h2 className="text-2xl font-light">
+                Advanced Placement Examinations
+              </h2>
             </div>
             <p className="text-xs text-muted-foreground md:hidden mb-4">
               Swipe by exam →
@@ -329,7 +455,10 @@ export default function EducationPage() {
               <div className="overflow-x-auto horizontal-scroll pb-6">
                 <div className="flex gap-4 min-w-max">
                   {apScores.map((ap, i) => (
-                    <div key={i} className="w-[220px] flex-shrink-0 bg-card border rounded-lg p-4">
+                    <div
+                      key={i}
+                      className="w-[220px] flex-shrink-0 bg-card border rounded-lg p-4"
+                    >
                       <div className="flex justify-between mb-2">
                         <p className="text-sm font-medium">{ap.subject}</p>
                         <span className="text-lg font-medium">{ap.score}</span>
@@ -355,32 +484,19 @@ export default function EducationPage() {
                 <div key={i} className="bg-card border rounded-xl p-6">
                   <h3 className="font-medium">{e.title}</h3>
                   <p className="text-sm text-primary">{e.role}</p>
-                  <p className="text-sm text-muted-foreground mb-3">{e.description}</p>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {e.description}
+                  </p>
                   <div className="flex gap-2 flex-wrap">
                     {e.tags.map((t, j) => (
-                      <span key={j} className="text-xs bg-secondary px-2 py-1 rounded-md border">
+                      <span
+                        key={j}
+                        className="text-xs bg-secondary px-2 py-1 rounded-md border"
+                      >
                         {t}
                       </span>
                     ))}
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Honors */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <Award className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light">Honors & Awards</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {honors.map((h, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
-                  <h3 className="font-medium">{h.title}</h3>
-                  <p className="text-sm text-muted-foreground">{h.organization}</p>
-                  <p className="text-xs text-primary">{h.year}</p>
                 </div>
               ))}
             </div>
