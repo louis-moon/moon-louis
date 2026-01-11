@@ -181,27 +181,27 @@ const honors = [
   {
     title: "National Merit Scholar",
     organization: "National Merit Scholarship Corporation",
-    tags: ["Scholarship", "Academic Excellence"],
+    tags: ["Scholarship"],
   },
   {
     title: "National Economics Challenge: State Champion, 9th Place Nationally",
     organization: "Council for Economic Education",
-    tags: ["Economics", "Competition"],
+    tags: ["Economics"],
   },
   {
     title: "National Finance Challenge: State Champion, Semifinalist",
     organization: "Council for Economic Education",
-    tags: ["Finance", "Competition"],
+    tags: ["Finance"],
   },
   {
     title: "Odyssey of the Mind: 2nd Place World Finals",
     organization: "Creative Competitions",
-    tags: ["Problem-Solving", "Team Competition"],
+    tags: ["Problem-Solving"],
   },
   {
     title: "Envirothon: North American Qualifier, 1st Place State",
     organization: "National Conservation Foundation",
-    tags: ["Conservation", "Environmental Science"],
+    tags: ["Environment"],
   },
 ]
 
