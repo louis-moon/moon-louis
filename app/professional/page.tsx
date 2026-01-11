@@ -62,7 +62,7 @@ const projects: Company[] = [
       {
         title: "Co-Founder",
         type: "Full-time",
-        period: "Jan 2023 – Mar 2024",
+        period: "Dec 2021 – Mar 2024",
         bullets: [
           "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry-specific use cases including package delivery verification, employee monitoring, and driver safety checks",
           "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children's books to build a text-to-video model as a complementary solution using natural language processing tools",
@@ -87,7 +87,7 @@ const projects: Company[] = [
   },
   {
     company: "Tutoring for Tomorrow",
-    location: "Miami-Dade County, Florida",
+    location: "Miami, Florida",
     roles: [
       {
         title: "Executive Director",
