@@ -25,7 +25,7 @@ const educationTimeline = [
       "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
     highlights: [
       "Silliman College, Class of 2022 +1",
-      "AEPi: Epsilon Upsilon Chapter, Eta Deuteron Class",
+      "Alpha Epsilon Pi: Epsilon Upsilon Chapter, Eta Deuteron Class",
     ],
   },
   {
