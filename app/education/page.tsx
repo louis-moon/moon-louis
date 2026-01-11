@@ -282,7 +282,7 @@ export default function EducationPage() {
               Education
             </h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
-              At the heart of interdisciplinary learning and long-term intellectual growth.
+              At the heart of interdisciplinary learning and growth.
             </p>
           </div>
 
