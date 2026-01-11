@@ -214,30 +214,37 @@ function CompanySection({ data }: { data: Company[] }) {
 
 function ProjectsCarousel({ data }: { data: Project[] }) {
   return (
-    <div className="-mx-6 px-6">
-      <div className="flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory scroll-px-6">
-        {data.map((p) => (
-          <section
-            key={p.name}
-            className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5
-                       min-w-[320px] sm:min-w-[420px] md:min-w-[520px] snap-start"
-          >
-            <div className="flex flex-col gap-2 mb-4">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
-                <span className="text-xs text-muted-foreground whitespace-nowrap">{p.period}</span>
+    <div className="relative">
+      <div className="-mx-6 px-6 overflow-x-auto horizontal-scroll pb-6">
+        <div className="flex gap-6 min-w-max">
+          {data.map((p) => (
+            <section
+              key={p.name}
+              className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5
+                         w-[320px] sm:w-[420px] md:w-[520px] flex-shrink-0"
+            >
+              <div className="flex flex-col gap-2 mb-4">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
+                  <span className="text-xs text-muted-foreground whitespace-nowrap">{p.period}</span>
+                </div>
+                {p.location ? (
+                  <p className="text-xs text-muted-foreground">{p.location}</p>
+                ) : null}
               </div>
-              {p.location ? <p className="text-xs text-muted-foreground">{p.location}</p> : null}
-            </div>
 
-            <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-              {p.bullets.map((b, j) => (
-                <li key={j}>{b}</li>
-              ))}
-            </ul>
-          </section>
-        ))}
+              <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                {p.bullets.map((b, j) => (
+                  <li key={j}>{b}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
       </div>
+
+      {/* Right-edge blur to suggest horizontal scroll */}
+      <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
     </div>
   )
 }
@@ -272,10 +279,13 @@ export default function ProfessionalPage() {
 
           {/* Projects */}
           <section className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-2">
               <FolderKanban className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light text-foreground">Projects</h2>
             </div>
+            <p className="text-xs text-muted-foreground md:hidden mb-4">
+              Swipe to explore →
+            </p>
             <ProjectsCarousel data={projects} />
           </section>
 
