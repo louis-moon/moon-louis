@@ -19,7 +19,7 @@ const educationTimeline = [
   {
     institution: "Yale University",
     degree: "Bachelor of Science",
-    period: "2018 - 2023",
+    period: "Aug 2018 - May 2023",
     focus: "Statistics & Data Science",
     description:
       "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
@@ -31,7 +31,7 @@ const educationTimeline = [
   {
     institution: "Miami Palmetto Senior High School",
     degree: "High School Diploma",
-    period: "2014 - 2018",
+    period: "Aug 2014 - Jun 2018",
     focus: "Summa Cum Laude",
     description:
       "National Honor Society President, Chopin Foundation, Greater Miami Youth Symphony, Jazz Band",
@@ -40,7 +40,7 @@ const educationTimeline = [
   {
     institution: "Miami Dade College",
     degree: "Dual Enrollment",
-    period: "2017 - 2018",
+    period: "Aug 2017 - Jun 2018",
     focus: "Introductory Mathematics",
     description:
       "Completed university-level coursework at Miami Dade College's Kendall Campus",
