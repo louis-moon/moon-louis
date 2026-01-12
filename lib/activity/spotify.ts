@@ -28,8 +28,9 @@ export async function getSpotifyActivity() {
       grant_type: "refresh_token",
       refresh_token: refreshToken,
     }),
-    next: { revalidate: 60 * 60 * 12 }, // 12 hours
+    cache: "no-store",
   })
+
 
   if (!tokenRes.ok) return empty
   const tokenJson = await tokenRes.json()
@@ -38,17 +39,19 @@ export async function getSpotifyActivity() {
   const [artists30Res, artists90Res, tracks30Res] = await Promise.all([
     fetch("https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=8", {
       headers: { Authorization: `Bearer ${accessToken}` },
-      next: { revalidate: 60 * 60 * 12 },
+      cache: "no-store",
     }),
     fetch("https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=20", {
       headers: { Authorization: `Bearer ${accessToken}` },
-      next: { revalidate: 60 * 60 * 12 },
+      cache: "no-store",
     }),
     fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5", {
       headers: { Authorization: `Bearer ${accessToken}` },
-      next: { revalidate: 60 * 60 * 12 },
+      cache: "no-store",
     }),
   ])
+
+
 
   if (!artists30Res.ok || !artists90Res.ok || !tracks30Res.ok) return empty
 

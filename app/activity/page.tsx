@@ -1,4 +1,7 @@
 // app/activity/page.tsx
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Activity as ActivityIcon, Code2, Dumbbell, Music2 } from "lucide-react"
