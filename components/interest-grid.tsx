@@ -91,7 +91,7 @@ const tiles: Tile[] = [
     borderColor: "hover:border-cyan-500/50",
     sections: [
       { title: "Travel Wish List", items: ["Alaska", "Germany", "Spain"] },
-      { title: "Pet Wishlist", items: ["British Shorthair", "French Bulldog", "Stafforshire Bull Terrier"] },
+      { title: "Pet Wishlist", items: ["British Shorthair", "French Bulldog", "Staffordshire Bull Terrier"] },
       { title: "Favorite Animals", items: ["Dragons", "Lions", "Polar Bears"] },
     ],
   },
@@ -102,7 +102,7 @@ const tiles: Tile[] = [
     color: "from-violet-500/10 to-violet-600/10 hover:from-violet-500/20 hover:to-violet-600/20",
     borderColor: "hover:border-violet-500/50",
     sections: [
-      { title: "Favorite Actors", items: ["Brad Pitt", "Emily Blunt", "Ryan Gosling"] },
+      { title: "Favorite Actors", items: ["Anthony Hopkins", "Emily Blunt", "Jeremy Irons"] },
       { title: "Favorite Athletes", items: ["Lewis Hamilton", "Roger Federer", "Victor Wembanyama"] },
       { title: "Inspirational Figures", items: ["Albert Camus", "Janet Yellen", "Jim Simons"] },
     ],

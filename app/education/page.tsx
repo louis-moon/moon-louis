@@ -22,7 +22,7 @@ const educationTimeline = [
     period: "Aug 2018 - May 2023",
     focus: "Statistics & Data Science",
     description:
-      "Senior Thesis: A Theoretical Framework for Implementing DCM with RNNs to Recover Brain Connectivity",
+      "Senior Thesis: A Theoretical Framework for Implementing Dynamic Causal Modeling with RNNs to Recover Brain Connectivity",
     highlights: [
       "Silliman College, Class of 2022 +1",
       "Alpha Epsilon Pi: Epsilon Upsilon Chapter, Eta Deuteron Class",
