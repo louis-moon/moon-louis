@@ -1,4 +1,5 @@
 // app/activity/page.tsx
+export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
 console.log("ACTIVITY PAGE EXECUTED")
