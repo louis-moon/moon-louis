@@ -1,3 +1,4 @@
+// components/navigation.tsx
 "use client"
 
 import Link from "next/link"
@@ -12,6 +13,7 @@ const navItems = [
   { href: "/essays", label: "Essays" },
   { href: "/media", label: "Media" },
   { href: "/personal", label: "Personal" },
+  { href: "/activity", label: "Activity" }, // ✅ added
   { href: "/professional", label: "Professional" },
 ]
 
@@ -19,12 +21,10 @@ export function Navigation() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
-  // Close the mobile menu on route change
   useEffect(() => {
     setOpen(false)
   }, [pathname])
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden"
@@ -37,7 +37,6 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
-          {/* Brand */}
           <Link
             href="/"
             className="text-xl font-semibold text-foreground hover:text-primary transition-colors"
@@ -45,7 +44,6 @@ export function Navigation() {
             Louis Moon
           </Link>
 
-          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.slice(1).map((item) => (
               <Link
@@ -69,7 +67,6 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground hover:bg-secondary"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -81,7 +78,6 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile sheet */}
       {open && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-sm">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3">
