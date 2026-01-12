@@ -85,6 +85,12 @@ export async function getStravaActivity() {
 
   const activities: any[] = await actsRes.json()
 
+  console.log("STRAVA DEBUG:", {
+    status: actsRes.status,
+    count: activities.length,
+    sample: activities[0],
+  })
+
   console.log("Strava activities count:", activities.length)
   console.log("First activity sample:", activities[0])
 
