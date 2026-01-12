@@ -85,6 +85,11 @@ export async function getStravaActivity() {
 
   const activities: any[] = await actsRes.json()
 
+  console.log("STRAVA RAW COUNT:", activities.length)
+  console.log("STRAVA FIRST ACTIVITY:", activities[0])
+  console.log("STRAVA LAST ACTIVITY:", activities[activities.length - 1])
+
+
   console.log("STRAVA DEBUG:", {
     status: actsRes.status,
     count: activities.length,
@@ -105,14 +110,14 @@ export async function getStravaActivity() {
   const toISO = toISODate(to)
 
   const inWindow = activities.filter((a) => {
-    const day = toISODate(new Date(a.start_date))
+    const day = toISODate(new Date(a.start_date_local))
     return day >= fromISO && day <= toISO
   })
 
   // Heatmap: count activities per day (or use moving time sum; counts are cleaner)
   const perDay = new Map<string, number>()
   for (const a of inWindow) {
-    const day = toISODate(new Date(a.start_date))
+    const day = toISODate(new Date(a.start_date_local))
     perDay.set(day, (perDay.get(day) ?? 0) + 1)
   }
 
@@ -128,7 +133,7 @@ export async function getStravaActivity() {
   // Monthly bar: total moving time per month (hours)
   const perMonth = new Map<string, number>() // YYYY-MM -> seconds
   for (const a of inWindow) {
-    const d = new Date(a.start_date)
+    const d = new Date(a.start_date_local)
     const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`
     perMonth.set(key, (perMonth.get(key) ?? 0) + Number(a.moving_time ?? 0))
   }
