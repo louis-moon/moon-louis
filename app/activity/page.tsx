@@ -1,5 +1,8 @@
 // app/activity/page.tsx
 export const dynamic = "force-dynamic"
+
+console.log("ACTIVITY PAGE EXECUTED")
+
 export const revalidate = 0
 
 import { Navigation } from "@/components/navigation"
