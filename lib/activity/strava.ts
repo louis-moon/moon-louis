@@ -101,9 +101,12 @@ export async function getStravaActivity() {
 
 
   // Filter to window
+  const fromISO = toISODate(from)
+  const toISO = toISODate(to)
+
   const inWindow = activities.filter((a) => {
-    const d = new Date(a.start_date)
-    return d >= from && d <= to
+    const day = toISODate(new Date(a.start_date))
+    return day >= fromISO && day <= toISO
   })
 
   // Heatmap: count activities per day (or use moving time sum; counts are cleaner)
