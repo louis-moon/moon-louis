@@ -34,15 +34,17 @@ export async function getStravaActivity() {
 
   const tokenRes = await fetch("https://www.strava.com/oauth/token", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      client_id: clientId,
-      client_secret: clientSecret,
-      grant_type: "refresh_token",
-      refresh_token: refreshToken,
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+        client_id: clientId,
+        client_secret: clientSecret,
+        grant_type: "refresh_token",
+        refresh_token: refreshToken,
     }),
-    next: { revalidate: 60 * 60 * 12 }, // 12 hours
-  })
+    cache: "no-store",
+    })
 
   if (!tokenRes.ok) {
     return {
@@ -63,12 +65,14 @@ export async function getStravaActivity() {
 
   // Pull last ~200 activities; plenty for 120 days for most people
   const actsRes = await fetch(
-    `https://www.strava.com/api/v3/athlete/activities?per_page=200`,
+    "https://www.strava.com/api/v3/athlete/activities?per_page=200",
     {
-      headers: { Authorization: `Bearer ${accessToken}` },
-      next: { revalidate: 60 * 60 * 6 }, // 6 hours
+        headers: {
+        Authorization: `Bearer ${accessToken}`,
+        },
+        cache: "no-store",
     }
-  )
+    )
 
   if (!actsRes.ok) {
     return {
@@ -80,6 +84,11 @@ export async function getStravaActivity() {
   }
 
   const activities: any[] = await actsRes.json()
+
+  if (!Array.isArray(activities)) {
+    console.error("Strava activities response:", activities)
+  }
+
 
   // Filter to window
   const inWindow = activities.filter((a) => {
