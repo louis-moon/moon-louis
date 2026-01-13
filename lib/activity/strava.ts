@@ -51,7 +51,7 @@ export async function getStravaActivity() {
   const clientSecret = process.env.STRAVA_CLIENT_SECRET
   const refreshToken = process.env.STRAVA_REFRESH_TOKEN
 
-  const windowDays = 365
+  const windowDays = 90
 
   if (!clientId || !clientSecret || !refreshToken) {
     return {
@@ -121,7 +121,7 @@ export async function getStravaActivity() {
   const perDay = new Map<string, number>()
   for (const a of inWindow) {
     const day = toISODateUTC(new Date(a.start_date))
-    perDay.set(day, (perDay.get(day) ?? 0) + 1)
+    perDay.set(day, (perDay.get(day) ?? 0) + a.moving_time / 1800)
   }
 
   const days: HeatDay[] = []
