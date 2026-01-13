@@ -1,4 +1,5 @@
 // lib/activity/strava.ts
+
 type HeatDay = { date: string; value: number }
 type BarPoint = { label: string; value: number }
 
@@ -19,6 +20,11 @@ function metersToMiles(m: number) {
 }
 
 export async function getStravaActivity() {
+  console.log("STRAVA ENV CHECK:", {
+    hasId: !!process.env.STRAVA_CLIENT_ID,
+    hasSecret: !!process.env.STRAVA_CLIENT_SECRET,
+    hasRefresh: !!process.env.STRAVA_REFRESH_TOKEN,
+  })
   const clientId = process.env.STRAVA_CLIENT_ID
   const clientSecret = process.env.STRAVA_CLIENT_SECRET
   const refreshToken = process.env.STRAVA_REFRESH_TOKEN
