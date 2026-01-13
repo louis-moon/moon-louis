@@ -7,6 +7,7 @@ import { PhotoGrid } from "@/components/photo-grid"
 
 const photos = [
   // 2025
+  { src: "/photos/IMG_6509.jpeg", alt: "Me and Jaewon (Museum of Modern Art)", caption: "New York, NY — Dec 29, 2025" },
   { src: "/photos/IMG_3931.jpeg", alt: "Me and Dad (PyeongAnDong)", caption: "Fort Lee, NJ — Dec 25, 2025" },
   { src: "/photos/IMG_6418.jpeg", alt: "Me and Mom (Varka Estiatorio)",  caption: "Ramsey, NJ — Dec 23, 2025" },
   { src: "/photos/IMG_3803.jpeg", alt: "Me and Jack (Rockefeller Center)", caption: "New York, NY — Dec 20, 2025" },
