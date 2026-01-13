@@ -106,8 +106,8 @@ export default async function ActivityPage() {
             <h1 className="text-5xl md:text-6xl font-light mb-6">
               Activity
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              An overview of where my time goes.
+            <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
+              Following the flow of work, rest, and play.
             </p>
           </div>
 
