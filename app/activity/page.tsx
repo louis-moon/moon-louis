@@ -34,40 +34,17 @@ export default async function ActivityPage() {
               Activity
             </h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
-              What I’ve been focused on lately.
+              An overview of where my time goes.
             </p>
           </div>
 
           {/* GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* BUILDING */}
-            <section className="bg-card border border-border rounded-xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <Code2 className="w-4 h-4 text-primary" />
-                  <h2 className="text-sm font-medium">Building</h2>
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  Last {github.windowDays} days
-                </span>
-              </div>
-
-              <Heatmap
-                ariaLabel="GitHub contribution heatmap"
-                days={github.days}
-              />
-            </section>
-
             {/* LISTENING */}
             <section className="lg:col-span-2 bg-card border border-border rounded-xl p-8">
-              <div className="flex items-center justify-between gap-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <Music2 className="w-5 h-5 text-primary" />
-                  <h2 className="text-2xl font-light">Listening</h2>
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  Rolling windows
-                </span>
+              <div className="flex items-center gap-3 mb-6">
+                <Music2 className="w-5 h-5 text-primary" />
+                <h2 className="text-2xl font-light">Listening</h2>
               </div>
 
               <div className="space-y-8">
@@ -89,23 +66,6 @@ export default async function ActivityPage() {
 
                 <div>
                   <p className="text-xs text-muted-foreground mb-3">
-                    Top genres (90 days)
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {spotify.topGenres90.map((g) => (
-                      <span
-                        key={g.name}
-                        className="text-xs bg-secondary px-2 py-1 rounded-md border border-border text-foreground"
-                        title={`${g.count}`}
-                      >
-                        {g.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-xs text-muted-foreground mb-3">
                     On repeat (30 days)
                   </p>
                   <ol className="space-y-2">
@@ -114,10 +74,8 @@ export default async function ActivityPage() {
                         key={`${t.name}-${t.artist}`}
                         className="text-sm text-muted-foreground"
                       >
-                        <span className="text-foreground">{t.name}</span>{" "}
-                        <span className="text-muted-foreground">
-                          — {t.artist}
-                        </span>
+                        <span className="text-foreground">{t.name}</span> —{" "}
+                        {t.artist}
                       </li>
                     ))}
                   </ol>
@@ -155,6 +113,24 @@ export default async function ActivityPage() {
                   <p className="text-xs text-muted-foreground">Director</p>
                 </div>
               </div>
+            </section>
+
+            {/* BUILDING (last, visual-only) */}
+            <section className="bg-card border border-border rounded-xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <Code2 className="w-4 h-4 text-primary" />
+                  <h2 className="text-sm font-medium">Building</h2>
+                </div>
+                <span className="text-xs text-muted-foreground">
+                  Last {github.windowDays} days
+                </span>
+              </div>
+
+              <Heatmap
+                ariaLabel="GitHub contribution heatmap"
+                days={github.days}
+              />
             </section>
 
             {/* TRAINING (hidden) */}

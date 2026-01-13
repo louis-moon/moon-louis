@@ -1,4 +1,3 @@
-// components/navigation.tsx
 "use client"
 
 import Link from "next/link"
@@ -9,11 +8,11 @@ import { Menu, X } from "lucide-react"
 
 const navItems = [
   { href: "/", label: "Home" },
+  { href: "/activity", label: "Activity" },
   { href: "/education", label: "Education" },
   { href: "/essays", label: "Essays" },
   { href: "/media", label: "Media" },
   { href: "/personal", label: "Personal" },
-  { href: "/activity", label: "Activity" }, // ✅ added
   { href: "/professional", label: "Professional" },
 ]
 
@@ -26,11 +25,7 @@ export function Navigation() {
   }, [pathname])
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
+    document.body.style.overflow = open ? "hidden" : ""
   }, [open])
 
   return (
