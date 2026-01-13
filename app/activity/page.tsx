@@ -19,14 +19,13 @@ import { getSpotifyActivity } from "@/lib/activity/spotify"
 import { getStravaActivity } from "@/lib/activity/strava"
 
 import { Heatmap } from "@/components/activity/heatmap"
-
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Activity — Louis Moon",
+  title: "Louis Moon",
   description: "An overview of where my time goes.",
   openGraph: {
-    title: "Activity — Louis Moon",
+    title: "Louis Moon",
     description: "An overview of where my time goes.",
     url: "https://moonlouis.com/activity",
     siteName: "Louis Moon",
@@ -42,12 +41,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Activity — Louis Moon",
+    title: "Louis Moon",
     description: "An overview of where my time goes.",
     images: ["https://moonlouis.com/favicon.svg"],
   },
 }
-
 
 /* ──────────────────────────────────────────────
    MANUAL CONTENT
@@ -88,7 +86,6 @@ export default async function ActivityPage() {
     results[2].status === "fulfilled"
       ? results[2].value
       : {
-          windowDays: 90,
           days: [],
           stats: {
             activities: 0,
@@ -119,118 +116,131 @@ export default async function ActivityPage() {
           </div>
 
           {/* ─────────────────────────────────────
-              STATE CARDS
+              STATE CARDS (EQUAL HEIGHT ON DESKTOP)
              ───────────────────────────────────── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* LISTENING */}
-            <section className="bg-card border rounded-xl p-6">
+            <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px]">
               <div className="flex items-center gap-2 mb-4">
                 <Music2 className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Listening to</h2>
               </div>
 
-              <p className="text-xs text-muted-foreground mb-2">
-                Top artists (30 days)
-              </p>
-              <ul className="space-y-2 mb-6">
-                {spotify.topArtists30.map((a) => (
-                  <li
-                    key={a.name}
-                    className="text-sm bg-secondary px-3 py-2 rounded-lg"
-                  >
-                    {a.name}
-                  </li>
-                ))}
-              </ul>
+              <div className="flex-1 overflow-y-auto space-y-6 pr-1">
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Top artists (30 days)
+                  </p>
+                  <ul className="space-y-2">
+                    {spotify.topArtists30.map((a) => (
+                      <li
+                        key={a.name}
+                        className="text-sm bg-secondary px-3 py-2 rounded-lg"
+                      >
+                        {a.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              <p className="text-xs text-muted-foreground mb-2">
-                Top genres (90 days)
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {spotify.topGenres90.map((g) => (
-                  <span
-                    key={g.name}
-                    className="text-xs bg-secondary px-2 py-1 rounded-md"
-                  >
-                    {g.name}
-                  </span>
-                ))}
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Top genres (90 days)
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {spotify.topGenres90.map((g) => (
+                      <span
+                        key={g.name}
+                        className="text-xs bg-secondary px-2 py-1 rounded-md"
+                      >
+                        {g.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    On repeat (30 days)
+                  </p>
+                  <ul className="space-y-1 text-sm">
+                    {spotify.topTracks30.map((t) => (
+                      <li key={`${t.name}-${t.artist}`}>
+                        <span className="text-foreground">{t.name}</span> —{" "}
+                        {t.artist}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-
-              <p className="text-xs text-muted-foreground mb-2">
-                On repeat (30 days)
-              </p>
-              <ul className="space-y-1 text-sm">
-                {spotify.topTracks30.map((t) => (
-                  <li key={`${t.name}-${t.artist}`}>
-                    <span className="text-foreground">{t.name}</span> —{" "}
-                    {t.artist}
-                  </li>
-                ))}
-              </ul>
             </section>
 
             {/* READING */}
-            <section className="bg-card border rounded-xl p-6">
+            <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px]">
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Currently reading</h2>
               </div>
 
-              <Image
-                src={reading.image}
-                alt={`Cover of ${reading.title}`}
-                width={300}
-                height={400}
-                className="w-full aspect-[3/4] object-cover rounded-lg mb-3"
-              />
+              <div className="flex-1 flex flex-col justify-between">
+                <Image
+                  src={reading.image}
+                  alt={`Cover of ${reading.title}`}
+                  width={300}
+                  height={400}
+                  className="w-full aspect-[3/4] object-cover rounded-lg mb-4"
+                />
 
-              <p className="text-sm">{reading.title}</p>
-              <p className="text-xs text-muted-foreground">
-                {reading.author}
-              </p>
+                <div>
+                  <p className="text-sm">{reading.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {reading.author}
+                  </p>
+                </div>
+              </div>
             </section>
 
             {/* WATCHING */}
-            <section className="bg-card border rounded-xl p-6">
+            <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px]">
               <div className="flex items-center gap-2 mb-4">
                 <Film className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Next watching</h2>
               </div>
 
-              <Image
-                src={watching.image}
-                alt={`Poster for ${watching.title}`}
-                width={300}
-                height={450}
-                className="w-full aspect-[2/3] object-cover rounded-lg mb-3"
-              />
+              <div className="flex-1 flex flex-col justify-between">
+                <Image
+                  src={watching.image}
+                  alt={`Poster for ${watching.title}`}
+                  width={300}
+                  height={450}
+                  className="w-full aspect-[2/3] object-cover rounded-lg mb-4"
+                />
 
-              <p className="text-sm">{watching.title}</p>
-              <p className="text-xs text-muted-foreground">
-                {watching.director}
-              </p>
+                <div>
+                  <p className="text-sm">{watching.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {watching.director}
+                  </p>
+                </div>
+              </div>
             </section>
 
-            {/* BUILDING */}
+            {/* BUILDING + MOVING */}
             {github && (
-              <section className="bg-card border rounded-xl p-6 space-y-8">
-                {/* BUILDING */}
+              <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px] space-y-8">
                 <div>
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <div className="flex items-center gap-2">
                       <Code2 className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium">Building...</h2>
+                      <h2 className="text-sm font-medium">Building…</h2>
                     </div>
 
                     <p className="text-xs text-muted-foreground">
                       {github.stats.activeDays} active days ·{" "}
                       {github.stats.total} commits ·{" "}
-                      {github.stats.reposTouched}{" "}
-                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
+                      {github.stats.reposTouched} repo
                     </p>
                   </div>
-
 
                   <Heatmap
                     ariaLabel="GitHub contribution heatmap"
@@ -238,12 +248,13 @@ export default async function ActivityPage() {
                   />
                 </div>
 
-                {/* TRAINING */}
                 <div>
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <div className="flex items-center gap-2">
                       <Dumbbell className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium">...and moving</h2>
+                      <h2 className="text-sm font-medium text-muted-foreground">
+                        …and moving
+                      </h2>
                     </div>
 
                     <p className="text-xs text-muted-foreground">
