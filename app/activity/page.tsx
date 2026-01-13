@@ -20,6 +20,35 @@ import { getStravaActivity } from "@/lib/activity/strava"
 
 import { Heatmap } from "@/components/activity/heatmap"
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Activity — Louis Moon",
+  description: "An overview of where my time goes.",
+  openGraph: {
+    title: "Activity — Louis Moon",
+    description: "An overview of where my time goes.",
+    url: "https://moonlouis.com/activity",
+    siteName: "Louis Moon",
+    images: [
+      {
+        url: "https://moonlouis.com/favicon.svg",
+        width: 1200,
+        height: 630,
+        alt: "Louis Moon",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Activity — Louis Moon",
+    description: "An overview of where my time goes.",
+    images: ["https://moonlouis.com/favicon.svg"],
+  },
+}
+
+
 /* ──────────────────────────────────────────────
    MANUAL CONTENT
 ────────────────────────────────────────────── */
