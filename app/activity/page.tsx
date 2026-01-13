@@ -2,6 +2,7 @@ export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 export const revalidate = 0
 
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import {
@@ -16,6 +17,23 @@ import { getGithubActivity } from "@/lib/activity/github"
 import { getSpotifyActivity } from "@/lib/activity/spotify"
 
 import { Heatmap } from "@/components/activity/heatmap"
+
+/* ──────────────────────────────────────────────
+   MANUAL CONTENT (Option 2)
+   Update these values only
+────────────────────────────────────────────── */
+
+const reading = {
+  title: "Book Title",
+  author: "Author",
+  image: "/media/reading.jpg", // put file in /public/media/
+}
+
+const watching = {
+  title: "Movie Title",
+  director: "Director",
+  image: "/media/watching.jpg", // put file in /public/media/
+}
 
 export default async function ActivityPage() {
   const [github, spotify] = await Promise.all([
@@ -40,7 +58,7 @@ export default async function ActivityPage() {
               Activity
             </h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
-              Patterns in how my time and attention unfold.
+              An overview of where my time goes.
             </p>
           </div>
 
@@ -50,7 +68,7 @@ export default async function ActivityPage() {
             <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Music2 className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-medium">Listening</h2>
+                <h2 className="text-sm font-medium">Listening to</h2>
               </div>
 
               <div className="space-y-6 flex-1">
@@ -106,17 +124,23 @@ export default async function ActivityPage() {
             <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-medium">Reading</h2>
+                <h2 className="text-sm font-medium">Currently reading</h2>
               </div>
 
               <div className="space-y-3 flex-1">
-                <div className="w-full aspect-[3/4] bg-secondary rounded-lg border border-border flex items-center justify-center text-xs text-muted-foreground">
-                  Book cover
-                </div>
+                <Image
+                  src={reading.image}
+                  alt={`Cover of ${reading.title}`}
+                  width={300}
+                  height={400}
+                  className="w-full aspect-[3/4] object-cover rounded-lg border border-border"
+                />
 
                 <div>
-                  <p className="text-sm text-foreground">Book Title</p>
-                  <p className="text-xs text-muted-foreground">Author</p>
+                  <p className="text-sm text-foreground">{reading.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {reading.author}
+                  </p>
                 </div>
               </div>
             </section>
@@ -125,17 +149,23 @@ export default async function ActivityPage() {
             <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Film className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-medium">Watching</h2>
+                <h2 className="text-sm font-medium">Next watching</h2>
               </div>
 
               <div className="space-y-3 flex-1">
-                <div className="w-full aspect-[2/3] bg-secondary rounded-lg border border-border flex items-center justify-center text-xs text-muted-foreground">
-                  Movie poster
-                </div>
+                <Image
+                  src={watching.image}
+                  alt={`Poster for ${watching.title}`}
+                  width={300}
+                  height={450}
+                  className="w-full aspect-[2/3] object-cover rounded-lg border border-border"
+                />
 
                 <div>
-                  <p className="text-sm text-foreground">Movie Title</p>
-                  <p className="text-xs text-muted-foreground">Director</p>
+                  <p className="text-sm text-foreground">{watching.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {watching.director}
+                  </p>
                 </div>
               </div>
             </section>
