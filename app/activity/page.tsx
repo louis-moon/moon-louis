@@ -17,8 +17,8 @@ import {
 import { getGithubActivity } from "@/lib/activity/github"
 import { getSpotifyActivity } from "@/lib/activity/spotify"
 import { getStravaActivity } from "@/lib/activity/strava"
-
 import { Heatmap } from "@/components/activity/heatmap"
+
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -116,11 +116,11 @@ export default async function ActivityPage() {
           </div>
 
           {/* ─────────────────────────────────────
-              STATE CARDS (EQUAL HEIGHT ON DESKTOP)
+              STATE CARDS
              ───────────────────────────────────── */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* LISTENING */}
-            <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px]">
+            <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Music2 className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Listening to</h2>
@@ -132,7 +132,7 @@ export default async function ActivityPage() {
                     Top artists (30 days)
                   </p>
                   <ul className="space-y-2">
-                    {spotify.topArtists30.map((a) => (
+                    {spotify.topArtists30.slice(0, 5).map((a) => (
                       <li
                         key={a.name}
                         className="text-sm bg-secondary px-3 py-2 rounded-lg"
@@ -148,7 +148,7 @@ export default async function ActivityPage() {
                     Top genres (90 days)
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {spotify.topGenres90.map((g) => (
+                    {spotify.topGenres90.slice(0, 5).map((g) => (
                       <span
                         key={g.name}
                         className="text-xs bg-secondary px-2 py-1 rounded-md"
@@ -164,10 +164,10 @@ export default async function ActivityPage() {
                     On repeat (30 days)
                   </p>
                   <ul className="space-y-1 text-sm">
-                    {spotify.topTracks30.map((t) => (
+                    {spotify.topTracks30.slice(0, 5).map((t) => (
                       <li key={`${t.name}-${t.artist}`}>
-                        <span className="text-foreground">{t.name}</span> —{" "}
-                        {t.artist}
+                        <span className="text-foreground">{t.name}</span>{" "}
+                        — {t.artist}
                       </li>
                     ))}
                   </ul>
@@ -176,13 +176,13 @@ export default async function ActivityPage() {
             </section>
 
             {/* READING */}
-            <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px]">
+            <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Currently reading</h2>
               </div>
 
-              <div className="flex-1 flex flex-col justify-between">
+              <div className="flex-1 flex flex-col justify-center">
                 <Image
                   src={reading.image}
                   alt={`Cover of ${reading.title}`}
@@ -190,24 +190,21 @@ export default async function ActivityPage() {
                   height={400}
                   className="w-full aspect-[3/4] object-cover rounded-lg mb-4"
                 />
-
-                <div>
-                  <p className="text-sm">{reading.title}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {reading.author}
-                  </p>
-                </div>
+                <p className="text-sm">{reading.title}</p>
+                <p className="text-xs text-muted-foreground">
+                  {reading.author}
+                </p>
               </div>
             </section>
 
             {/* WATCHING */}
-            <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px]">
+            <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Film className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Next watching</h2>
               </div>
 
-              <div className="flex-1 flex flex-col justify-between">
+              <div className="flex-1 flex flex-col justify-center">
                 <Image
                   src={watching.image}
                   alt={`Poster for ${watching.title}`}
@@ -215,30 +212,28 @@ export default async function ActivityPage() {
                   height={450}
                   className="w-full aspect-[2/3] object-cover rounded-lg mb-4"
                 />
-
-                <div>
-                  <p className="text-sm">{watching.title}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {watching.director}
-                  </p>
-                </div>
+                <p className="text-sm">{watching.title}</p>
+                <p className="text-xs text-muted-foreground">
+                  {watching.director}
+                </p>
               </div>
             </section>
 
             {/* BUILDING + MOVING */}
             {github && (
-              <section className="bg-card border rounded-xl p-6 flex flex-col lg:h-[640px] space-y-8">
+              <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col space-y-8">
+                {/* BUILDING */}
                 <div>
                   <div className="mb-3">
                     <div className="flex items-center gap-2">
                       <Code2 className="w-4 h-4 text-primary" />
                       <h2 className="text-sm font-medium">Building…</h2>
                     </div>
-
                     <p className="text-xs text-muted-foreground">
                       {github.stats.activeDays} active days ·{" "}
                       {github.stats.total} commits ·{" "}
-                      {github.stats.reposTouched} repo
+                      {github.stats.reposTouched}{" "}
+                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
                     </p>
                   </div>
 
@@ -248,6 +243,7 @@ export default async function ActivityPage() {
                   />
                 </div>
 
+                {/* MOVING */}
                 <div>
                   <div className="mb-3">
                     <div className="flex items-center gap-2">
@@ -256,7 +252,6 @@ export default async function ActivityPage() {
                         …and moving
                       </h2>
                     </div>
-
                     <p className="text-xs text-muted-foreground">
                       {strava.stats.activities} activities ·{" "}
                       {strava.stats.totalDistanceHuman} ·{" "}
