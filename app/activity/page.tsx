@@ -211,57 +211,54 @@ export default async function ActivityPage() {
                 </p>
               </div>
             </section>
-            {/* BUILDING + MOVING (POLISHED HIERARCHY FIX) */}
+            {/* BUILDING + MOVING (DESKTOP-OPTIMIZED, SYMMETRIC) */}
             {github && (
               <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
-                {/* BUILDING HEADER */}
-                <div className="mb-4">
-                  <div className="flex items-center gap-2">
+                {/* BUILDING */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-3">
                     <Code2 className="w-4 h-4 text-primary" />
                     <h2 className="text-sm font-medium">Building…</h2>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {github.stats.activeDays} active days ·{" "}
-                    {github.stats.total} commits ·{" "}
-                    {github.stats.reposTouched}{" "}
-                    {github.stats.reposTouched === 1 ? "repo" : "repos"}
-                  </p>
+
+                  <div className="space-y-1 text-xs text-muted-foreground mb-4">
+                    <p>{github.stats.activeDays} active days</p>
+                    <p>{github.stats.total} commits</p>
+                    <p>
+                      {github.stats.reposTouched}{" "}
+                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
+                    </p>
+                  </div>
+
+                  <Heatmap
+                    ariaLabel="GitHub contribution heatmap"
+                    days={github.days}
+                  />
                 </div>
 
-                {/* CONTENT */}
-                <div className="flex-1 flex flex-col">
-                  {/* GITHUB (PRIMARY) */}
-                  <div className="mb-10">
-                    <Heatmap
-                      ariaLabel="GitHub contribution heatmap"
-                      days={github.days}
-                    />
+                {/* MOVING */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Dumbbell className="w-4 h-4 text-primary" />
+                    <h3 className="text-sm font-medium text-muted-foreground">
+                      …and moving
+                    </h3>
                   </div>
 
-                  {/* MOVING (SECONDARY) */}
-                  <div className="mt-auto space-y-3 opacity-90">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <Dumbbell className="w-4 h-4 text-primary" />
-                        <h3 className="text-sm font-medium text-muted-foreground">
-                          …and moving
-                        </h3>
-                      </div>
-                      <p className="text-xs text-muted-foreground">
-                        {strava.stats.activities} activities ·{" "}
-                        {strava.stats.totalDistanceHuman} ·{" "}
-                        {strava.stats.totalTimeHuman}
-                      </p>
-                    </div>
-
-                    <Heatmap
-                      ariaLabel="Strava activity heatmap"
-                      days={strava.days}
-                    />
+                  <div className="space-y-1 text-xs text-muted-foreground mb-4">
+                    <p>{strava.stats.activities} activities</p>
+                    <p>{strava.stats.totalDistanceHuman}</p>
+                    <p>{strava.stats.totalTimeHuman}</p>
                   </div>
+
+                  <Heatmap
+                    ariaLabel="Strava activity heatmap"
+                    days={strava.days}
+                  />
                 </div>
               </section>
             )}
+
           </div>
         </div>
       </main>
