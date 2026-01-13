@@ -231,7 +231,10 @@ export default async function ActivityPage() {
                       </p>
                     </div>
 
-                    <Heatmap days={github.days} />
+                    <Heatmap
+                      ariaLabel="GitHub contribution heatmap"
+                      days={github.days}
+                    />
                   </div>
 
                   {/* MOVING */}
@@ -250,7 +253,10 @@ export default async function ActivityPage() {
                       </p>
                     </div>
 
-                    <Heatmap days={strava.days} />
+                    <Heatmap
+                      ariaLabel="Strava activity heatmap"
+                      days={strava.days}
+                    />
                   </div>
                 </div>
               </section>
