@@ -243,7 +243,7 @@ export default async function ActivityPage() {
                   <div className="mb-4">
                     <div className="flex items-center gap-2">
                       <Dumbbell className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium">and exercising</h2>
+                      <h2 className="text-sm font-medium">...and moving</h2>
                     </div>
 
                     <p className="text-xs text-muted-foreground">
