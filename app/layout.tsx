@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description: "Personal portfolio of Louis Moon",
   generator: "v0.app",
   icons: {
-    icon: "/favicon.svg", // 👈 This is the key line to add
+    icon: "/favicon.svg",
     shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 

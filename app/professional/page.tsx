@@ -4,6 +4,13 @@ import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Briefcase, GraduationCap, HeartHandshake, FolderKanban } from "lucide-react"
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professional — Louis Moon",
+  description: "Turning ideas into real change",
+};
+
 type Bullet = string
 
 type Role = {

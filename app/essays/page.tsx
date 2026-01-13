@@ -2,6 +2,13 @@ import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import { FileText, BookOpen } from "lucide-react"
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Essays — Louis Moon",
+  description: "Reflections on growth and change",
+};
+
 const essays = [
   {
     title: "Covenant",

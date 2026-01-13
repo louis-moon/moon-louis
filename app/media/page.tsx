@@ -5,6 +5,13 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { Camera } from "lucide-react"
 import { PhotoGrid } from "@/components/photo-grid"
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Media — Louis Moon",
+  description: "Moments that shape who I am",
+};
+
 const photos = [
   // 2025
   { src: "/photos/IMG_6509.jpeg", alt: "Me and Jaewon (Museum of Modern Art)", caption: "New York, NY — Dec 29, 2025" },

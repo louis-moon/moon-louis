@@ -17,7 +17,7 @@ export default function HomePage() {
             </p>
 
             <h1 className="text-6xl md:text-7xl font-light text-foreground mb-6 text-balance">
-              Louis Moon
+              문석현
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-2xl text-pretty leading-relaxed">

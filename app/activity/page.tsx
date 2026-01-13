@@ -19,33 +19,12 @@ import { getSpotifyActivity } from "@/lib/activity/spotify"
 import { getStravaActivity } from "@/lib/activity/strava"
 import { Heatmap } from "@/components/activity/heatmap"
 
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Louis Moon",
-  description: "An overview of where my time goes.",
-  openGraph: {
-    title: "Louis Moon",
-    description: "An overview of where my time goes.",
-    url: "https://moonlouis.com/activity",
-    siteName: "Louis Moon",
-    images: [
-      {
-        url: "https://moonlouis.com/favicon.svg",
-        width: 1200,
-        height: 630,
-        alt: "Louis Moon",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Louis Moon",
-    description: "An overview of where my time goes.",
-    images: ["https://moonlouis.com/favicon.svg"],
-  },
-}
+  title: "Activity — Louis Moon",
+  description: "Patterns in how I spend my time",
+};
 
 /* ──────────────────────────────────────────────
    MANUAL CONTENT

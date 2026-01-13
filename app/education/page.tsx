@@ -11,6 +11,13 @@ import {
   Backpack,
 } from "lucide-react"
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Education — Louis Moon",
+  description: "Expanding how I see the world",
+};
+
 /* =========================
    DATA
 ========================= */

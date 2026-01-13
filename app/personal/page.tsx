@@ -3,6 +3,13 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { InterestGrid } from "@/components/interest-grid"
 import { Heart, Sparkles } from "lucide-react"
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Personal — Louis Moon",
+  description: "What matters most beyond work",
+};
+
 export default function PersonalPage() {
   return (
     <>
