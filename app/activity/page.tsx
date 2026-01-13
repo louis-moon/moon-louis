@@ -45,9 +45,9 @@ export default async function ActivityPage() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
             {/* LISTENING */}
-            <section className="bg-card border border-border rounded-xl p-6 flex flex-col">
+            <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Music2 className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Listening</h2>
@@ -78,7 +78,7 @@ export default async function ActivityPage() {
                     {spotify.topGenres90.map((g) => (
                       <span
                         key={g.name}
-                        className="text-xs bg-secondary px-2 py-1 rounded-md border border-border"
+                        className="text-xs bg-secondary px-2 py-1 rounded-md border border-border whitespace-nowrap"
                       >
                         {g.name}
                       </span>
@@ -103,7 +103,7 @@ export default async function ActivityPage() {
             </section>
 
             {/* READING */}
-            <section className="bg-card border border-border rounded-xl p-6 flex flex-col">
+            <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Reading</h2>
@@ -122,7 +122,7 @@ export default async function ActivityPage() {
             </section>
 
             {/* WATCHING */}
-            <section className="bg-card border border-border rounded-xl p-6 flex flex-col">
+            <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Film className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Watching</h2>
@@ -141,7 +141,7 @@ export default async function ActivityPage() {
             </section>
 
             {/* BUILDING */}
-            <section className="bg-card border border-border rounded-xl p-6 flex flex-col">
+            <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Code2 className="w-4 h-4 text-primary" />
