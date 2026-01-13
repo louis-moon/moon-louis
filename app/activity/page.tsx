@@ -188,16 +188,20 @@ export default async function ActivityPage() {
               <section className="bg-card border rounded-xl p-6 space-y-8">
                 {/* BUILDING */}
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Code2 className="w-4 h-4 text-primary" />
-                    <h2 className="text-sm font-medium">Building</h2>
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2">
+                      <Code2 className="w-4 h-4 text-primary" />
+                      <h2 className="text-sm font-medium">Building...</h2>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground">
+                      {github.stats.activeDays} active days ·{" "}
+                      {github.stats.total} commits ·{" "}
+                      {github.stats.reposTouched}{" "}
+                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
+                    </p>
                   </div>
 
-                  <div className="text-xs text-muted-foreground mb-4 space-y-1">
-                    <div>{github.stats.activeDays} active days</div>
-                    <div>{github.stats.total} commits</div>
-                    <div>{github.stats.reposTouched} repos</div>
-                  </div>
 
                   <Heatmap
                     ariaLabel="GitHub contribution heatmap"
@@ -207,15 +211,17 @@ export default async function ActivityPage() {
 
                 {/* TRAINING */}
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Dumbbell className="w-4 h-4 text-primary" />
-                    <h2 className="text-sm font-medium">Training</h2>
-                  </div>
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2">
+                      <Dumbbell className="w-4 h-4 text-primary" />
+                      <h2 className="text-sm font-medium">and exercising</h2>
+                    </div>
 
-                  <div className="text-xs text-muted-foreground mb-4">
-                    {strava.stats.activities} activities ·{" "}
-                    {strava.stats.totalDistanceHuman} ·{" "}
-                    {strava.stats.totalTimeHuman}
+                    <p className="text-xs text-muted-foreground">
+                      {strava.stats.activities} activities ·{" "}
+                      {strava.stats.totalDistanceHuman} ·{" "}
+                      {strava.stats.totalTimeHuman}
+                    </p>
                   </div>
 
                   <Heatmap
