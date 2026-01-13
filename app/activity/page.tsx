@@ -224,10 +224,7 @@ export default async function ActivityPage() {
                   <div className="space-y-1 text-xs text-muted-foreground mb-4">
                     <p>{github.stats.activeDays} active days</p>
                     <p>{github.stats.total} commits</p>
-                    <p>
-                      {github.stats.reposTouched}{" "}
-                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
-                    </p>
+                    <p>{github.stats.linesChangedHuman} lines changed</p>
                   </div>
 
                   <Heatmap
