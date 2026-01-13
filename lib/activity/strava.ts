@@ -31,7 +31,11 @@ async function fetchAllActivities(accessToken: string) {
       }
     )
 
-    if (!res.ok) break
+    if (!res.ok) {
+      const text = await res.text()
+      console.error("Strava activities error:", res.status, text)
+      break
+    }
     const batch = await res.json()
     if (!Array.isArray(batch) || batch.length === 0) break
 
@@ -71,7 +75,11 @@ export async function getStravaActivity() {
     cache: "no-store",
   })
 
-  if (!tokenRes.ok) throw new Error("Failed to refresh Strava token")
+  if (!tokenRes.ok) {
+    const text = await tokenRes.text()
+    throw new Error(`Strava token refresh failed: ${text}`)
+  }
+
 
   const { access_token } = await tokenRes.json()
 

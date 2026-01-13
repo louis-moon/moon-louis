@@ -15,6 +15,7 @@ import {
 
 import { getGithubActivity } from "@/lib/activity/github"
 import { getSpotifyActivity } from "@/lib/activity/spotify"
+import { getStravaActivity } from "@/lib/activity/strava"
 
 import { Heatmap } from "@/components/activity/heatmap"
 
@@ -36,10 +37,16 @@ const watching = {
 }
 
 export default async function ActivityPage() {
-  const [github, spotify] = await Promise.all([
+  const [github, spotify, strava] = await Promise.all([
     getGithubActivity(),
     getSpotifyActivity(),
+    getStravaActivity(),
   ])
+
+console.log("STRAVA DATA", {
+  activities: strava.stats.activities,
+  days: strava.days.length,
+})
 
   return (
     <>
@@ -65,6 +72,15 @@ export default async function ActivityPage() {
           {/* GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
             {/* LISTENING */}
+            <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6">
+              <h2 className="text-sm font-medium mb-2">Training</h2>
+              <p className="text-xs text-muted-foreground">
+                {strava.stats.activities} activities ·{" "}
+                {strava.stats.totalDistanceHuman} ·{" "}
+                {strava.stats.totalTimeHuman}
+              </p>
+            </section>
+
             <section className="lg:col-span-3 bg-card border border-border rounded-xl p-6 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Music2 className="w-4 h-4 text-primary" />
