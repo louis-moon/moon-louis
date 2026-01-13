@@ -211,12 +211,11 @@ export default async function ActivityPage() {
                 </p>
               </div>
             </section>
-
-            {/* BUILDING + MOVING (FINAL STRUCTURE FIX) */}
+            {/* BUILDING + MOVING (POLISHED HIERARCHY FIX) */}
             {github && (
               <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
-                {/* Top header */}
-                <div className="mb-6">
+                {/* BUILDING HEADER */}
+                <div className="mb-4">
                   <div className="flex items-center gap-2">
                     <Code2 className="w-4 h-4 text-primary" />
                     <h2 className="text-sm font-medium">Building…</h2>
@@ -229,18 +228,18 @@ export default async function ActivityPage() {
                   </p>
                 </div>
 
-                {/* CENTERED VISUAL STACK */}
-                <div className="flex-1 flex flex-col justify-center space-y-10">
-                  {/* GITHUB */}
-                  <div className="space-y-3">
+                {/* CONTENT */}
+                <div className="flex-1 flex flex-col">
+                  {/* GITHUB (PRIMARY) */}
+                  <div className="mb-10">
                     <Heatmap
                       ariaLabel="GitHub contribution heatmap"
                       days={github.days}
                     />
                   </div>
 
-                  {/* MOVING */}
-                  <div className="space-y-3">
+                  {/* MOVING (SECONDARY) */}
+                  <div className="mt-auto space-y-3 opacity-90">
                     <div>
                       <div className="flex items-center gap-2">
                         <Dumbbell className="w-4 h-4 text-primary" />
@@ -263,7 +262,6 @@ export default async function ActivityPage() {
                 </div>
               </section>
             )}
-
           </div>
         </div>
       </main>
