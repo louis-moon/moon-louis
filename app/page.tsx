@@ -16,7 +16,7 @@ export default function HomePage() {
               Welcome
             </p>
 
-            <h1 className="text-6xl md:text-7xl font-light text-foreground mb-6 text-balance">
+            <h1 className="text-6xl md:text-7xl font-normal text-foreground mb-6 text-balance">
               문석현
             </h1>
 
