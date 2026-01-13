@@ -133,7 +133,7 @@ const tiles: Tile[] = [
   },
   {
     id: "creative",
-    title: "Creative",
+    title: "Words • Images • Sound",
     icon: Palette,
     color: "from-teal-500/10 to-teal-600/10 hover:from-teal-500/20 hover:to-teal-600/20",
     borderColor: "hover:border-teal-500/50",
