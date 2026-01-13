@@ -212,55 +212,58 @@ export default async function ActivityPage() {
               </div>
             </section>
 
-            {/* BUILDING + MOVING (FINAL FIX) */}
+            {/* BUILDING + MOVING (FINAL STRUCTURE FIX) */}
             {github && (
               <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
-                {/* Headers stay TOP aligned */}
-                <div className="space-y-8">
-                  {/* BUILDING HEADER */}
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Code2 className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium">Building…</h2>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      {github.stats.activeDays} active days ·{" "}
-                      {github.stats.total} commits ·{" "}
-                      {github.stats.reposTouched}{" "}
-                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
-                    </p>
+                {/* Top header */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2">
+                    <Code2 className="w-4 h-4 text-primary" />
+                    <h2 className="text-sm font-medium">Building…</h2>
                   </div>
-
-                  {/* MOVING HEADER */}
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Dumbbell className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium text-muted-foreground">
-                        …and moving
-                      </h2>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      {strava.stats.activities} activities ·{" "}
-                      {strava.stats.totalDistanceHuman} ·{" "}
-                      {strava.stats.totalTimeHuman}
-                    </p>
-                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {github.stats.activeDays} active days ·{" "}
+                    {github.stats.total} commits ·{" "}
+                    {github.stats.reposTouched}{" "}
+                    {github.stats.reposTouched === 1 ? "repo" : "repos"}
+                  </p>
                 </div>
 
-                {/* VISUAL MASS — centered */}
+                {/* CENTERED VISUAL STACK */}
                 <div className="flex-1 flex flex-col justify-center space-y-10">
-                  <Heatmap
-                    ariaLabel="GitHub contribution heatmap"
-                    days={github.days}
-                  />
+                  {/* GITHUB */}
+                  <div className="space-y-3">
+                    <Heatmap
+                      ariaLabel="GitHub contribution heatmap"
+                      days={github.days}
+                    />
+                  </div>
 
-                  <Heatmap
-                    ariaLabel="Strava activity heatmap"
-                    days={strava.days}
-                  />
+                  {/* MOVING */}
+                  <div className="space-y-3">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <Dumbbell className="w-4 h-4 text-primary" />
+                        <h3 className="text-sm font-medium text-muted-foreground">
+                          …and moving
+                        </h3>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {strava.stats.activities} activities ·{" "}
+                        {strava.stats.totalDistanceHuman} ·{" "}
+                        {strava.stats.totalTimeHuman}
+                      </p>
+                    </div>
+
+                    <Heatmap
+                      ariaLabel="Strava activity heatmap"
+                      days={strava.days}
+                    />
+                  </div>
                 </div>
               </section>
             )}
+
           </div>
         </div>
       </main>
