@@ -91,6 +91,14 @@ export async function getStravaActivity() {
 
   const activities: any[] = await actsRes.json()
 
+  if (activities.length > 0) {
+    console.log("STRAVA DATE RANGE:", {
+      oldest: activities[activities.length - 1]?.start_date_local,
+      newest: activities[0]?.start_date_local,
+    })
+  }
+
+
   console.log("STRAVA RAW ACTIVITIES COUNT:", activities.length)
   console.log("STRAVA RAW SAMPLE:", activities[0])
 
