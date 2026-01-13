@@ -76,11 +76,7 @@ export default async function ActivityPage() {
   const spotify =
     results[1].status === "fulfilled"
       ? results[1].value
-      : {
-          topArtists30: [],
-          topGenres90: [],
-          topTracks30: [],
-        }
+      : { topArtists30: [], topGenres90: [], topTracks30: [] }
 
   const strava =
     results[2].status === "fulfilled"
@@ -115,9 +111,6 @@ export default async function ActivityPage() {
             </p>
           </div>
 
-          {/* ─────────────────────────────────────
-              STATE CARDS
-             ───────────────────────────────────── */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* LISTENING */}
             <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
@@ -185,7 +178,7 @@ export default async function ActivityPage() {
               <div className="flex-1 flex flex-col justify-center">
                 <Image
                   src={reading.image}
-                  alt={`Cover of ${reading.title}`}
+                  alt={reading.title}
                   width={300}
                   height={400}
                   className="w-full aspect-[3/4] object-cover rounded-lg mb-4"
@@ -207,7 +200,7 @@ export default async function ActivityPage() {
               <div className="flex-1 flex flex-col justify-center">
                 <Image
                   src={watching.image}
-                  alt={`Poster for ${watching.title}`}
+                  alt={watching.title}
                   width={300}
                   height={450}
                   className="w-full aspect-[2/3] object-cover rounded-lg mb-4"
@@ -219,50 +212,46 @@ export default async function ActivityPage() {
               </div>
             </section>
 
-            {/* BUILDING + MOVING */}
+            {/* BUILDING + MOVING (CENTERED FIX) */}
             {github && (
-              <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col space-y-8">
-                {/* BUILDING */}
-                <div>
-                  <div className="mb-3">
-                    <div className="flex items-center gap-2">
-                      <Code2 className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium">Building…</h2>
+              <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
+                <div className="flex-1 flex flex-col justify-center space-y-10">
+                  {/* BUILDING */}
+                  <div>
+                    <div className="mb-3">
+                      <div className="flex items-center gap-2">
+                        <Code2 className="w-4 h-4 text-primary" />
+                        <h2 className="text-sm font-medium">Building…</h2>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {github.stats.activeDays} active days ·{" "}
+                        {github.stats.total} commits ·{" "}
+                        {github.stats.reposTouched}{" "}
+                        {github.stats.reposTouched === 1 ? "repo" : "repos"}
+                      </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
-                      {github.stats.activeDays} active days ·{" "}
-                      {github.stats.total} commits ·{" "}
-                      {github.stats.reposTouched}{" "}
-                      {github.stats.reposTouched === 1 ? "repo" : "repos"}
-                    </p>
+
+                    <Heatmap days={github.days} />
                   </div>
 
-                  <Heatmap
-                    ariaLabel="GitHub contribution heatmap"
-                    days={github.days}
-                  />
-                </div>
-
-                {/* MOVING */}
-                <div>
-                  <div className="mb-3">
-                    <div className="flex items-center gap-2">
-                      <Dumbbell className="w-4 h-4 text-primary" />
-                      <h2 className="text-sm font-medium text-muted-foreground">
-                        …and moving
-                      </h2>
+                  {/* MOVING */}
+                  <div>
+                    <div className="mb-3">
+                      <div className="flex items-center gap-2">
+                        <Dumbbell className="w-4 h-4 text-primary" />
+                        <h2 className="text-sm font-medium text-muted-foreground">
+                          …and moving
+                        </h2>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {strava.stats.activities} activities ·{" "}
+                        {strava.stats.totalDistanceHuman} ·{" "}
+                        {strava.stats.totalTimeHuman}
+                      </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
-                      {strava.stats.activities} activities ·{" "}
-                      {strava.stats.totalDistanceHuman} ·{" "}
-                      {strava.stats.totalTimeHuman}
-                    </p>
-                  </div>
 
-                  <Heatmap
-                    ariaLabel="Strava activity heatmap"
-                    days={strava.days}
-                  />
+                    <Heatmap days={strava.days} />
+                  </div>
                 </div>
               </section>
             )}
