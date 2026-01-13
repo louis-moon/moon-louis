@@ -185,53 +185,47 @@ export default async function ActivityPage() {
 
             {/* BUILDING */}
             {github && (
-              <section className="bg-card border rounded-xl p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Code2 className="w-4 h-4 text-primary" />
-                  <h2 className="text-sm font-medium">Building</h2>
+              <section className="bg-card border rounded-xl p-6 space-y-8">
+                {/* BUILDING */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Code2 className="w-4 h-4 text-primary" />
+                    <h2 className="text-sm font-medium">Building</h2>
+                  </div>
+
+                  <div className="text-xs text-muted-foreground mb-4 space-y-1">
+                    <div>{github.stats.activeDays} active days</div>
+                    <div>{github.stats.total} commits</div>
+                    <div>{github.stats.reposTouched} repos</div>
+                  </div>
+
+                  <Heatmap
+                    ariaLabel="GitHub contribution heatmap"
+                    days={github.days}
+                  />
                 </div>
 
-                {/* GitHub stats */}
-                <div className="text-xs text-muted-foreground mb-4 space-y-1">
-                  <div>{github.stats.activeDays} active days</div>
-                  <div>{github.stats.total} commits</div>
-                  <div>{github.stats.reposTouched} repos</div>
-                </div>
+                {/* TRAINING */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Dumbbell className="w-4 h-4 text-primary" />
+                    <h2 className="text-sm font-medium">Training</h2>
+                  </div>
 
-                <Heatmap
-                  ariaLabel="GitHub contribution heatmap"
-                  days={github.days}
-                />
+                  <div className="text-xs text-muted-foreground mb-4">
+                    {strava.stats.activities} activities ·{" "}
+                    {strava.stats.totalDistanceHuman} ·{" "}
+                    {strava.stats.totalTimeHuman}
+                  </div>
+
+                  <Heatmap
+                    ariaLabel="Strava activity heatmap"
+                    days={strava.days}
+                  />
+                </div>
               </section>
             )}
           </div>
-
-          {/* ─────────────────────────────────────
-              TRAINING (FULL WIDTH)
-             ───────────────────────────────────── */}
-          <section className="bg-card border rounded-xl p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <Dumbbell className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-medium">Training</h2>
-              </div>
-
-              <span className="text-xs text-muted-foreground">
-                Last {strava.windowDays} days
-              </span>
-            </div>
-
-            <p className="text-xs text-muted-foreground mb-4">
-              {strava.stats.activities} activities ·{" "}
-              {strava.stats.totalDistanceHuman} ·{" "}
-              {strava.stats.totalTimeHuman}
-            </p>
-
-            <Heatmap
-              ariaLabel="Strava activity heatmap"
-              days={strava.days}
-            />
-          </section>
         </div>
       </main>
     </>
