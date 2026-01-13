@@ -91,6 +91,10 @@ export async function getStravaActivity() {
 
   const activities: any[] = await actsRes.json()
 
+  console.log("STRAVA RAW ACTIVITIES COUNT:", activities.length)
+  console.log("STRAVA RAW SAMPLE:", activities[0])
+
+
   console.log("STRAVA RAW COUNT:", activities.length)
   console.log("STRAVA FIRST ACTIVITY:", activities[0])
   console.log("STRAVA LAST ACTIVITY:", activities[activities.length - 1])
