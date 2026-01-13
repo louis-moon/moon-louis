@@ -5,8 +5,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("PAGES API /api/activity HIT")
-
   try {
     const data = await getStravaActivity()
     res.status(200).json(data)

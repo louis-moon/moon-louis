@@ -1,9 +1,7 @@
-// lib/activity/strava.ts
-
 type HeatDay = { date: string; value: number }
 type BarPoint = { label: string; value: number }
 
-function toISODate(d: Date) {
+function toISODateUTC(d: Date) {
   return d.toISOString().slice(0, 10)
 }
 
@@ -19,68 +17,42 @@ function metersToMiles(m: number) {
   return m / 1609.344
 }
 
+async function fetchAllActivities(accessToken: string) {
+  let page = 1
+  const perPage = 200
+  const activities: any[] = []
+
+  while (page <= 3) {
+    const res = await fetch(
+      `https://www.strava.com/api/v3/athlete/activities?per_page=${perPage}&page=${page}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        cache: "no-store",
+      }
+    )
+
+    if (!res.ok) break
+
+    const batch = await res.json()
+    if (!Array.isArray(batch) || batch.length === 0) break
+
+    activities.push(...batch)
+    page++
+  }
+
+  return activities
+}
+
 export async function getStravaActivity() {
-  console.log("STRAVA ENV CHECK:", {
-    hasId: !!process.env.STRAVA_CLIENT_ID,
-    hasSecret: !!process.env.STRAVA_CLIENT_SECRET,
-    hasRefresh: !!process.env.STRAVA_REFRESH_TOKEN,
-  })
   const clientId = process.env.STRAVA_CLIENT_ID
   const clientSecret = process.env.STRAVA_CLIENT_SECRET
   const refreshToken = process.env.STRAVA_REFRESH_TOKEN
 
-  if (!clientId || !clientSecret || !refreshToken) {
-    return {
-      windowDays: 120,
-      days: [] as HeatDay[],
-      monthlySeries: [] as BarPoint[],
-      stats: { activities: 0, totalTimeHuman: "0m", totalDistanceHuman: "0 mi" },
-    }
-  }
-
-  const tokenRes = await fetch("https://www.strava.com/oauth/token", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-        client_id: clientId,
-        client_secret: clientSecret,
-        grant_type: "refresh_token",
-        refresh_token: refreshToken,
-    }),
-    cache: "no-store",
-    })
-
-  if (!tokenRes.ok) {
-    return {
-      windowDays: 120,
-      days: [] as HeatDay[],
-      monthlySeries: [] as BarPoint[],
-      stats: { activities: 0, totalTimeHuman: "0m", totalDistanceHuman: "0 mi" },
-    }
-  }
-
-  const tokenJson = await tokenRes.json()
-  const accessToken = tokenJson.access_token as string
-
   const windowDays = 120
-  const to = new Date()
-  const from = new Date()
-  from.setDate(to.getDate() - windowDays + 1)
 
-  // Pull last ~200 activities; plenty for 120 days for most people
-  const actsRes = await fetch(
-    "https://www.strava.com/api/v3/athlete/activities?per_page=200",
-    {
-        headers: {
-        Authorization: `Bearer ${accessToken}`,
-        },
-        cache: "no-store",
-    }
-    )
-
-  if (!actsRes.ok) {
+  if (!clientId || !clientSecret || !refreshToken) {
     return {
       windowDays,
       days: [] as HeatDay[],
@@ -89,83 +61,107 @@ export async function getStravaActivity() {
     }
   }
 
-  const activities: any[] = await actsRes.json()
-
-  if (activities.length > 0) {
-    console.log("STRAVA DATE RANGE:", {
-      oldest: activities[activities.length - 1]?.start_date_local,
-      newest: activities[0]?.start_date_local,
-    })
-  }
-
-
-  console.log("STRAVA RAW ACTIVITIES COUNT:", activities.length)
-  console.log("STRAVA RAW SAMPLE:", activities[0])
-
-
-  console.log("STRAVA RAW COUNT:", activities.length)
-  console.log("STRAVA FIRST ACTIVITY:", activities[0])
-  console.log("STRAVA LAST ACTIVITY:", activities[activities.length - 1])
-
-
-  console.log("STRAVA DEBUG:", {
-    status: actsRes.status,
-    count: activities.length,
-    sample: activities[0],
+  // Refresh token
+  const tokenRes = await fetch("https://www.strava.com/oauth/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: "refresh_token",
+      refresh_token: refreshToken,
+    }),
+    cache: "no-store",
   })
 
-  console.log("Strava activities count:", activities.length)
-  console.log("First activity sample:", activities[0])
-
-
-  if (!Array.isArray(activities)) {
-    console.error("Strava activities response:", activities)
+  if (!tokenRes.ok) {
+    throw new Error("Failed to refresh Strava token")
   }
 
+  const { access_token } = await tokenRes.json()
 
-  // Filter to window
-  const fromISO = toISODate(from)
-  const toISO = toISODate(to)
+  // Fetch activities (paginated)
+  const activities = await fetchAllActivities(access_token)
 
+  if (!Array.isArray(activities) || activities.length === 0) {
+    return {
+      windowDays,
+      days: [],
+      monthlySeries: [],
+      stats: { activities: 0, totalTimeHuman: "0m", totalDistanceHuman: "0 mi" },
+    }
+  }
+
+  // Sort deterministically (oldest → newest)
+  activities.sort(
+    (a, b) =>
+      new Date(a.start_date).getTime() -
+      new Date(b.start_date).getTime()
+  )
+
+  // Build UTC window
+  const to = new Date()
+  const from = new Date()
+  from.setUTCDate(to.getUTCDate() - windowDays + 1)
+
+  const fromISO = toISODateUTC(from)
+  const toISO = toISODateUTC(to)
+
+  // Filter to window (UTC-safe)
   const inWindow = activities.filter((a) => {
-    const day = toISODate(new Date(a.start_date_local))
+    if (!a.start_date) return false
+    const day = toISODateUTC(new Date(a.start_date))
     return day >= fromISO && day <= toISO
   })
 
-  // Heatmap: count activities per day (or use moving time sum; counts are cleaner)
+  // --- Heatmap ---
   const perDay = new Map<string, number>()
   for (const a of inWindow) {
-    const day = toISODate(new Date(a.start_date_local))
+    const day = toISODateUTC(new Date(a.start_date))
     perDay.set(day, (perDay.get(day) ?? 0) + 1)
   }
 
-  // Make contiguous list of days
   const days: HeatDay[] = []
   const cursor = new Date(from)
+
   while (cursor <= to) {
-    const day = toISODate(cursor)
+    const day = toISODateUTC(cursor)
     days.push({ date: day, value: perDay.get(day) ?? 0 })
-    cursor.setDate(cursor.getDate() + 1)
+    cursor.setUTCDate(cursor.getUTCDate() + 1)
   }
 
-  // Monthly bar: total moving time per month (hours)
-  const perMonth = new Map<string, number>() // YYYY-MM -> seconds
+  // --- Monthly Bar Chart ---
+  const perMonth = new Map<string, number>() // YYYY-MM → seconds
+
   for (const a of inWindow) {
-    const d = new Date(a.start_date_local)
-    const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`
+    if (!a.start_date) continue
+    const d = new Date(a.start_date)
+    const key = `${d.getUTCFullYear()}-${String(
+      d.getUTCMonth() + 1
+    ).padStart(2, "0")}`
+
     perMonth.set(key, (perMonth.get(key) ?? 0) + Number(a.moving_time ?? 0))
   }
 
   const monthlySeries: BarPoint[] = [...perMonth.entries()]
     .sort((a, b) => a[0].localeCompare(b[0]))
-    .slice(-8) // keep it clean
+    .slice(-8)
     .map(([label, seconds]) => ({
       label,
-      value: Math.round(seconds / 3600), // hours
+      value: Math.round(seconds / 3600),
     }))
 
-  const totalTime = inWindow.reduce((acc, a) => acc + Number(a.moving_time ?? 0), 0)
-  const totalDistance = inWindow.reduce((acc, a) => acc + Number(a.distance ?? 0), 0)
+  const totalTime = inWindow.reduce(
+    (acc, a) => acc + Number(a.moving_time ?? 0),
+    0
+  )
+
+  const totalDistance = inWindow.reduce(
+    (acc, a) => acc + Number(a.distance ?? 0),
+    0
+  )
 
   return {
     windowDays,
