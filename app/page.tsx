@@ -34,7 +34,7 @@ export default function HomePage() {
                   Activity
                 </h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  A live dashboard of what I’m up to
+                  Patterns in how I spend my time
                 </p>
                 <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
