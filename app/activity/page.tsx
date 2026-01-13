@@ -24,15 +24,15 @@ import { Heatmap } from "@/components/activity/heatmap"
 ────────────────────────────────────────────── */
 
 const reading = {
-  title: "Book Title",
-  author: "Author",
-  image: "/media/reading.jpg", // put file in /public/media/
+  title: "Sapiens: A Brief History of Humankind",
+  author: "Yuval Noah Harari",
+  image: "/media/reading.jpg",
 }
 
 const watching = {
-  title: "Movie Title",
-  director: "Director",
-  image: "/media/watching.jpg", // put file in /public/media/
+  title: "Past Lives",
+  director: "Celine Song",
+  image: "/media/watching.jpg",
 }
 
 export default async function ActivityPage() {
