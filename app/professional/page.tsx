@@ -55,16 +55,31 @@ const fullTime: Company[] = [
     ],
   },
   {
+    company: "amiqo",
+    location: "Atlanta, Georgia • Remote",
+    roles: [
+      {
+        title: "Head of Product",
+        type: "Full-time",
+        period: "Jul 2024 – Feb 2025 • 8 mos",
+        bullets: [
+          "Owned end-to-end product strategy and conceptualized platform to foster in-person connections through real-life activities; organized product requirements documents, KPI frameworks, and conducted user interviews to drive rapid product iteration",
+          "Orchestrated development of two core product features: an interest-matching algorithm and social sphere visualization tool; managed cross-functional team and collaborated with engineering, design, and marketing to drive product growth and success",
+        ],
+      },
+    ],
+  },
+  {
     company: "Rowan",
     location: "Orlando, Florida • Remote",
     roles: [
       {
         title: "Product Manager",
-        type: "Full-time",
-        period: "Mar 2024 – Feb 2025 • 1 yr",
+        type: "Contract",
+        period: "Mar 2024 – Jun 2024 • 4 mos",
         bullets: [
           "Established a semantic comparable business search query system to value businesses through comparable company analyses; formulated one version for the sell-side and one for the buy-side, bringing the time for process down from hours to seconds",
-          "Led product development initiatives for the financial valuation product, focusing on core functionalities and user experience; created & maintained comprehensive product roadmap, prioritizing key features for MVP development and future iterations",
+          "Led product development initiatives for the financial valuation product, focusing on core functionalities and user experience; created and maintained comprehensive product roadmap, prioritizing key features for MVP development and future iterations",
         ],
       },
     ],
@@ -93,8 +108,8 @@ const projects: Project[] = [
     name: "Tutoring for Tomorrow",
     period: "Aug 2015 – May 2021",
     bullets: [
-      "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, & expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
-      "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)3 nonprofit, & recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
+      "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, and expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
+      "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)(3) nonprofit, and recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
     ],
   },
 ]
@@ -125,8 +140,8 @@ const internships: Company[] = [
         type: "Internship",
         period: "Jun 2019 – Aug 2019 • 3 mos",
         bullets: [
-          "Designed and implemented teaching curriculum at Yale University summer program as one of 12 undergraduate instructors; taught Sustainable Development and Social Entrepreneurship and Politics, Law, & Economics to enhance academic breadth",
-          "Delivered 4 unique seminars each session, orchestrated 3 simulated case studies, and oversaw post-lecture breakout sessions; mentored high school students, enhancing their academic capabilities and resulting in 6 successful capstone research projects",
+          "Designed and implemented teaching curriculum at Yale University summer program as one of 12 undergraduate instructors; taught Sustainable Development and Social Entrepreneurship and Politics, Law, and Economics to enhance academic breadth",
+          "Delivered four unique seminars each session, orchestrated three simulated case studies, and oversaw post-lecture breakout sessions; mentored high school students, enhancing their academic capabilities and resulting in six successful capstone research projects",
         ],
       },
     ],
@@ -140,7 +155,7 @@ const internships: Company[] = [
         type: "Internship",
         period: "Jun 2018 – Aug 2018 • 3 mos",
         bullets: [
-          "Set up 5 summer boot camps with 100 students to teach teenagers computer science for South Florida's TechHire initiative, a campaign to expand local technology sectors by establishing talent pipelines in underserved communities across the nation",
+          "Set up five summer boot camps with 100 students to teach teenagers computer science for South Florida's TechHire initiative, a campaign to expand local technology sectors by establishing talent pipelines in underserved communities across the nation",
           "Modeled lead flows, managed marketing campaigns, and provided competitive analysis for the company's coding bootcamp; centered on search engine optimization along with improving click-through rates using CRM platforms and email marketing",
         ],
       },
