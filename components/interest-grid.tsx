@@ -37,7 +37,7 @@ type Tile = {
 const tiles: Tile[] = [
   {
     id: "entertainment-a",
-    title: "Music • Movies • TV",
+    title: "Sound • Story • Screen",
     icon: Music,
     color: "from-blue-500/10 to-blue-600/10 hover:from-blue-500/20 hover:to-blue-600/20",
     borderColor: "hover:border-blue-500/50",
@@ -49,7 +49,7 @@ const tiles: Tile[] = [
   },
   {
     id: "books-places",
-    title: "Books • Cities • Spots",
+    title: "Ideas • Places • Retreats",
     icon: Book,
     color: "from-amber-500/10 to-amber-600/10 hover:from-amber-500/20 hover:to-amber-600/20",
     borderColor: "hover:border-amber-500/50",
@@ -61,7 +61,7 @@ const tiles: Tile[] = [
   },
   {
     id: "sports",
-    title: "Ball • Non-ball • Outdoor",
+    title: "Competition • Movement • Nature",
     icon: Trophy,
     color: "from-green-500/10 to-green-600/10 hover:from-green-500/20 hover:to-green-600/20",
     borderColor: "hover:border-green-500/50",
@@ -73,7 +73,7 @@ const tiles: Tile[] = [
   },
   {
     id: "food-drink",
-    title: "Food • Drink • Alcohol",
+    title: "Taste • Refreshment • Indulgence",
     icon: Utensils,
     color: "from-rose-500/10 to-rose-600/10 hover:from-rose-500/20 hover:to-rose-600/20",
     borderColor: "hover:border-rose-500/50",
@@ -85,7 +85,7 @@ const tiles: Tile[] = [
   },
   {
     id: "travel-nature",
-    title: "Wish List • Pets • Animals",
+    title: "Aspirations • Companions • Creatures",
     icon: Plane,
     color: "from-cyan-500/10 to-cyan-600/10 hover:from-cyan-500/20 hover:to-cyan-600/20",
     borderColor: "hover:border-cyan-500/50",
@@ -97,7 +97,7 @@ const tiles: Tile[] = [
   },
   {
     id: "people",
-    title: "Actors • Athletes • Figures",
+    title: "Performance • Excellence • Influence",
     icon: Users,
     color: "from-violet-500/10 to-violet-600/10 hover:from-violet-500/20 hover:to-violet-600/20",
     borderColor: "hover:border-violet-500/50",
@@ -109,19 +109,19 @@ const tiles: Tile[] = [
   },
   {
     id: "academics-goals",
-    title: "Majors • Passions • Learn",
+    title: "Study • Purpose • Growth",
     icon: GraduationCap,
     color: "from-sky-500/10 to-sky-600/10 hover:from-sky-500/20 hover:to-sky-600/20",
     borderColor: "hover:border-sky-500/50",
     sections: [
-      { title: "What I Would Major In", items: ["Global Affairs", "Philosophy",  "Statistics"] },
+      { title: "What I Would Major In", items: ["Global Affairs", "Philosophy", "Statistics"] },
       { title: "Passions", items: ["Education", "Environment", "Science & Technology"] },
       { title: "Things to Learn / Work On", items: ["Korean & Spanish", "Relationships", "Systems Building"] },
     ],
   },
   {
     id: "games",
-    title: "Video • Card/Board • Recreation",
+    title: "Play • Strategy • Recreation",
     icon: Gamepad2,
     color: "from-indigo-500/10 to-indigo-600/10 hover:from-indigo-500/20 hover:to-indigo-600/20",
     borderColor: "hover:border-indigo-500/50",
@@ -133,12 +133,12 @@ const tiles: Tile[] = [
   },
   {
     id: "creative",
-    title: "Words • Images • Sound",
+    title: "Expression • Vision • Form",
     icon: Palette,
     color: "from-teal-500/10 to-teal-600/10 hover:from-teal-500/20 hover:to-teal-600/20",
     borderColor: "hover:border-teal-500/50",
     sections: [
-      { title: "Written", items: ["Journaling", "Reading", "Writing (Essays)",] },
+      { title: "Written", items: ["Journaling", "Reading", "Writing (Essays)"] },
       { title: "Visual", items: ["Video Editing", "Photography", "Art"] },
       { title: "Music", items: ["Jazz", "Piano", "Songwriting"] },
     ],
@@ -151,7 +151,6 @@ export function InterestGrid() {
 
   return (
     <div className="relative">
-      {/* 3 × 3 grid */}
       <div className="grid grid-cols-3 gap-4 md:gap-6">
         {tiles.map((tile) => {
           const Icon = tile.icon
@@ -168,10 +167,9 @@ export function InterestGrid() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              {/* CENTERING FIX: grid + place-items-center keeps the icon perfectly centered on mobile */}
               <div className="relative h-full flex items-center justify-center">
                 <div className="flex flex-col items-center justify-center gap-2 sm:gap-3">
-                  <div className="h-10 w-10 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center leading-none">
+                  <div className="h-10 w-10 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center">
                     <Icon className="block h-full w-full text-primary group-hover:scale-110 transition-transform" />
                   </div>
                   <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
@@ -184,7 +182,6 @@ export function InterestGrid() {
         })}
       </div>
 
-      {/* Modal */}
       {selected && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-in fade-in duration-200"
@@ -211,7 +208,6 @@ export function InterestGrid() {
               </button>
             </div>
 
-            {/* 3 sections × 3 items each */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {selected.sections.map((section) => (
                 <div
