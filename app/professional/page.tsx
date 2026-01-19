@@ -4,18 +4,18 @@ import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Briefcase, GraduationCap, HeartHandshake, FolderKanban } from "lucide-react"
 
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Professional — Louis Moon",
   description: "Turning ideas into real change",
-};
+}
 
 type Bullet = string
 
 type Role = {
   title: string
-  type: string
+  type: string // retained for data integrity / future use
   period: string
   bullets: Bullet[]
 }
@@ -86,7 +86,7 @@ const fullTime: Company[] = [
   },
 ]
 
-// PROJECTS (horizontal scroll) — intentionally NO title/type/location lines rendered
+// PROJECTS (horizontal scroll)
 const projects: Project[] = [
   {
     name: "Equity A1",
@@ -205,17 +205,22 @@ function CompanySection({ data }: { data: Company[] }) {
         >
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
             <h3 className="text-xl font-medium text-foreground">{co.company}</h3>
-            {co.location ? <p className="text-xs text-muted-foreground">{co.location}</p> : null}
+            {co.location && (
+              <p className="text-xs text-muted-foreground">{co.location}</p>
+            )}
           </div>
 
           <div className="space-y-6">
             {co.roles.map((role, i) => (
-              <div key={i} className="pt-4 border-t border-border first:pt-0 first:border-t-0">
+              <div
+                key={i}
+                className="pt-4 border-t border-border first:pt-0 first:border-t-0"
+              >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-                  <p className="text-sm text-primary">
-                    {role.title} • {role.type}
-                  </p>
-                  <span className="text-xs text-muted-foreground">{role.period}</span>
+                  <p className="text-sm text-primary">{role.title}</p>
+                  <span className="text-xs text-muted-foreground">
+                    {role.period}
+                  </span>
                 </div>
                 <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
                   {role.bullets.map((b, j) => (
@@ -244,7 +249,9 @@ function ProjectsCarousel({ data }: { data: Project[] }) {
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
-                <span className="text-xs text-muted-foreground whitespace-nowrap">{p.period}</span>
+                <span className="text-xs text-muted-foreground whitespace-nowrap">
+                  {p.period}
+                </span>
               </div>
 
               <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
@@ -275,7 +282,9 @@ export default function ProfessionalPage() {
               <Briefcase className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Experience</p>
             </div>
-            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">Professional</h1>
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">
+              Professional
+            </h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
               At the intersection of product, strategy, and people.
             </p>
