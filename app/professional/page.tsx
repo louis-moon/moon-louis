@@ -41,7 +41,7 @@ type Project = {
 const fullTime: Company[] = [
   {
     company: "Green Golf Carbon",
-    location: "Miami, Florida • On-site",
+    location: "Miami, Florida",
     roles: [
       {
         title: "Chief Product Officer",
@@ -56,7 +56,7 @@ const fullTime: Company[] = [
   },
   {
     company: "amiqo",
-    location: "Atlanta, Georgia • Remote",
+    location: "Atlanta, Georgia",
     roles: [
       {
         title: "Head of Product",
@@ -71,7 +71,7 @@ const fullTime: Company[] = [
   },
   {
     company: "Rowan",
-    location: "Orlando, Florida • Remote",
+    location: "Orlando, Florida",
     roles: [
       {
         title: "Product Manager",
@@ -118,7 +118,7 @@ const projects: Project[] = [
 const internships: Company[] = [
   {
     company: "Romero Capital",
-    location: "New York, New York • Remote",
+    location: "New York, New York",
     roles: [
       {
         title: "Investment Analyst Intern",
@@ -133,7 +133,7 @@ const internships: Company[] = [
   },
   {
     company: "Yale Young Global Scholars",
-    location: "New Haven, Connecticut • On-site",
+    location: "New Haven, Connecticut",
     roles: [
       {
         title: "Undergraduate Instructor",
@@ -148,7 +148,7 @@ const internships: Company[] = [
   },
   {
     company: "Florida Vocational Institute",
-    location: "Miami, Florida • On-site",
+    location: "Miami, Florida",
     roles: [
       {
         title: "Summer Intern",
