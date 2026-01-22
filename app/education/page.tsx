@@ -175,7 +175,7 @@ const honors = [
     tags: ["Scholarship"],
   },
   {
-    title: "Odyssey of the Mind: 2nd place World Finals; State Champion",
+    title: "Odyssey of the Mind: 2nd place World Finals, State Champion",
     organization: "Creative Competitions",
     tags: ["Problem-Solving"],
   },
