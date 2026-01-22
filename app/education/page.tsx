@@ -170,8 +170,8 @@ const honors = [
     tags: ["Finance"],
   },
   {
-    title: "National Merit Scholar",
-    organization: "National Merit Scholarship Program",
+    title: "National Merit Scholar Program: National Merit Scholar",
+    organization: "National Merit Scholarship Corporation",
     tags: ["Scholarship"],
   },
   {
