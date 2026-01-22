@@ -155,30 +155,31 @@ const collegeActivities = [ { title: "Yale Student Investment Group", role: "Inv
 
 const honors = [
   {
-    title: "National Merit Scholar",
-    organization: "National Merit Scholarship Corporation",
-    tags: ["Scholarship"],
+    title: "Envirothon: North American Qualifier, State Champion",
+    organization: "National Conservation Foundation",
+    tags: ["Environment"],
   },
   {
-    title: "National Economics Challenge: State Champion, 9th Place Nationally",
+    title: "National Economics Challenge: 9th place, State Champion",
     organization: "Council for Economic Education",
     tags: ["Economics"],
   },
   {
-    title: "National Finance Challenge: State Champion, Semifinalist",
+    title: "National Finance Challenge: Semi-Finalist, State Champion",
     organization: "Council for Economic Education",
     tags: ["Finance"],
   },
   {
-    title: "Odyssey of the Mind: 2nd Place World Finals",
+    title: "National Merit Scholar",
+    organization: "National Merit Scholarship Program",
+    tags: ["Scholarship"],
+  },
+  {
+    title: "Odyssey of the Mind: 2nd place; Ranatra Fusca Award",
     organization: "Creative Competitions",
     tags: ["Problem-Solving"],
   },
-  {
-    title: "Envirothon: North American Qualifier, 1st Place State",
-    organization: "National Conservation Foundation",
-    tags: ["Environment"],
-  },
+  
 ]
 
 const testScores = [
