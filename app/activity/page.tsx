@@ -92,7 +92,7 @@ export default async function ActivityPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* LISTENING */}
-            <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
+            <section className="bg-card border rounded-xl p-6 lg:h-[580px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Music2 className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Listening to</h2>
@@ -148,56 +148,64 @@ export default async function ActivityPage() {
             </section>
 
             {/* READING */}
-            <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
+            <section className="bg-card border rounded-xl p-6 lg:h-[580px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Currently reading</h2>
               </div>
 
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="w-full aspect-[2/3] relative mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src={reading.image}
-                    alt={reading.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 300px"
-                  />
+              <div className="flex-1 flex flex-col">
+                <div className="flex-1" />
+                <div>
+                  <div className="w-full aspect-[2/3] relative mb-4 overflow-hidden rounded-lg">
+                    <Image
+                      src={reading.image}
+                      alt={reading.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 300px"
+                    />
+                  </div>
+                  <p className="text-sm">{reading.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {reading.author}
+                  </p>
                 </div>
-                <p className="text-sm">{reading.title}</p>
-                <p className="text-xs text-muted-foreground">
-                  {reading.author}
-                </p>
+                <div className="flex-1" />
               </div>
             </section>
 
             {/* WATCHING */}
-            <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
+            <section className="bg-card border rounded-xl p-6 lg:h-[580px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Film className="w-4 h-4 text-primary" />
                 <h2 className="text-sm font-medium">Last watched</h2>
               </div>
 
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="w-full aspect-[2/3] relative mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src={watching.image}
-                    alt={watching.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 300px"
-                  />
+              <div className="flex-1 flex flex-col">
+                <div className="flex-1" />
+                <div>
+                  <div className="w-full aspect-[2/3] relative mb-4 overflow-hidden rounded-lg">
+                    <Image
+                      src={watching.image}
+                      alt={watching.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 300px"
+                    />
+                  </div>
+                  <p className="text-sm">{watching.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {watching.director}
+                  </p>
                 </div>
-                <p className="text-sm">{watching.title}</p>
-                <p className="text-xs text-muted-foreground">
-                  {watching.director}
-                </p>
+                <div className="flex-1" />
               </div>
             </section>
 
             {/* BUILDING + MOVING */}
             {github && (
-              <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
+              <section className="bg-card border rounded-xl p-6 lg:h-[580px] flex flex-col">
                 {/* BUILDING */}
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
