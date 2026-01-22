@@ -53,9 +53,9 @@ export default async function ActivityPage() {
     results[0].status === "fulfilled" ? results[0].value : null
 
   const spotify =
-    results[1].status === "fulfilled"
-      ? results[1].value
-      : { topArtists30: [], topGenres90: [], topTracks30: [] }
+  results[1].status === "fulfilled"
+    ? results[1].value
+    : { topArtists30: [], topGenres30: [], topTracks30: [] }
 
   const strava =
     results[2].status === "fulfilled"
@@ -120,7 +120,7 @@ export default async function ActivityPage() {
                     Top genres (90 days)
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {spotify.topGenres90.slice(0, 5).map((g) => (
+                    {spotify.topGenres30.map((g) => (
                       <span
                         key={g.name}
                         className="text-xs bg-secondary px-2 py-1 rounded-md"
