@@ -37,9 +37,9 @@ const reading = {
 }
 
 const watching = {
-  title: "Past Lives",
-  director: "Celine Song",
-  image: "/media/watching.jpg",
+  title: "No Other Choice",
+  director: "Park Chan-wook",
+  image: "/media/watched.jpg",
 }
 
 export default async function ActivityPage() {
@@ -173,7 +173,7 @@ export default async function ActivityPage() {
             <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Film className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-medium">Next watching</h2>
+                <h2 className="text-sm font-medium">Last watched</h2>
               </div>
 
               <div className="flex-1 flex flex-col justify-center">
