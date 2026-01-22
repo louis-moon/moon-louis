@@ -192,7 +192,7 @@ const apScores = [
   { subject: "World History", score: 5, year: 2015 },
   { subject: "Human Geography", score: 5, year: 2015 },
   { subject: "Chemistry", score: 4, year: 2016 },
-  { subject: "Spanish Language", score: 5, year: 2016 },
+  { subject: "Spanish Language and Culture", score: 5, year: 2016 },
   { subject: "Physics 1", score: 4, year: 2016 },
   { subject: "Calculus BC", score: 5, year: 2016 },
   { subject: "Calculus BC — AB Subscore", score: 5, year: 2016 },
@@ -218,28 +218,28 @@ const extracurriculars = [
     title: "National Honor Society",
     role: "President",
     description:
-      "Launched community service projects with Feed My Starving Children, Chapman Partnership, and elementary schools.",
+      "Launched community service projects with local organizations and managed existing ones",
     tags: ["Community Service"],
   },
   {
     title: "Honor Council",
     role: "Co-President",
     description:
-      "Led student-run body addressing academic misconduct; formalized and promoted the honor code.",
+      "Student-run body addressing academic misconduct; formalized and promoted honor code",
     tags: ["Leadership"],
   },
   {
     title: "Science National Honor Society",
     role: "VP of Competitions",
     description:
-      "Prepared competitors for Lexus Eco Challenge, Envirothon, and Fairchild Challenge; team won 1st in Astronaut Challenge.",
+      "Lexus Eco Challenge, Envirothon, and Fairchild Challenge; won 1st in Astronaut Challenge",
     tags: ["Science"],
   },
   {
     title: "Mu Alpha Theta",
     role: "VP of Tutoring",
     description:
-      "Consolidated schoolwide math tutoring; organized competition practice; managed field trips as treasurer in 10th grade.",
+      "Consolidated schoolwide tutoring, organized competition prep, and managed field trips",
     tags: ["Mathematics"],
   },
   {
