@@ -19,12 +19,12 @@ import { getSpotifyActivity } from "@/lib/activity/spotify"
 import { getStravaActivity } from "@/lib/activity/strava"
 import { Heatmap } from "@/components/activity/heatmap"
 
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Activity — Louis Moon",
   description: "Patterns in how I spend my time",
-};
+}
 
 /* ──────────────────────────────────────────────
    MANUAL CONTENT
@@ -53,9 +53,9 @@ export default async function ActivityPage() {
     results[0].status === "fulfilled" ? results[0].value : null
 
   const spotify =
-  results[1].status === "fulfilled"
-    ? results[1].value
-    : { topArtists30: [], topGenres30: [], topTracks30: [] }
+    results[1].status === "fulfilled"
+      ? results[1].value
+      : { topArtists30: [], topGenres30: [], topTracks30: [] }
 
   const strava =
     results[2].status === "fulfilled"
@@ -155,13 +155,15 @@ export default async function ActivityPage() {
               </div>
 
               <div className="flex-1 flex flex-col justify-center">
-                <Image
-                  src={reading.image}
-                  alt={reading.title}
-                  width={300}
-                  height={400}
-                  className="w-full aspect-[3/4] object-cover rounded-lg mb-4"
-                />
+                <div className="w-full aspect-[2/3] relative mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src={reading.image}
+                    alt={reading.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 300px"
+                  />
+                </div>
                 <p className="text-sm">{reading.title}</p>
                 <p className="text-xs text-muted-foreground">
                   {reading.author}
@@ -177,20 +179,23 @@ export default async function ActivityPage() {
               </div>
 
               <div className="flex-1 flex flex-col justify-center">
-                <Image
-                  src={watching.image}
-                  alt={watching.title}
-                  width={300}
-                  height={450}
-                  className="w-full aspect-[2/3] object-cover rounded-lg mb-4"
-                />
+                <div className="w-full aspect-[2/3] relative mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src={watching.image}
+                    alt={watching.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 300px"
+                  />
+                </div>
                 <p className="text-sm">{watching.title}</p>
                 <p className="text-xs text-muted-foreground">
                   {watching.director}
                 </p>
               </div>
             </section>
-            {/* BUILDING + MOVING (DESKTOP-OPTIMIZED, SYMMETRIC) */}
+
+            {/* BUILDING + MOVING */}
             {github && (
               <section className="bg-card border rounded-xl p-6 lg:h-[640px] flex flex-col">
                 {/* BUILDING */}
@@ -234,7 +239,6 @@ export default async function ActivityPage() {
                 </div>
               </section>
             )}
-
           </div>
         </div>
       </main>
