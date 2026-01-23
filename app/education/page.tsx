@@ -361,36 +361,6 @@ export default function EducationPage() {
             </div>
           </div>
 
-          {/* Music & Performance */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-6">
-              <Music className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light">
-                {musicAndPerformance.title}
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {musicAndPerformance.cards.map((card, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
-                  <h3 className="text-lg font-medium mb-1">{card.title}</h3>
-                  <p className="text-sm text-primary mb-4">{card.subtitle}</p>
-                  <ul className="space-y-3">
-                    {card.bullets.map((b, j) => (
-                      <li key={j} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary" />
-                        <p className="flex-1 text-sm text-muted-foreground leading-relaxed break-words">
-                          {b}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-
           {/* Coursework */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-2">
@@ -443,6 +413,35 @@ export default function EducationPage() {
                     {item.bullets.map((b, j) => (
                       <li key={j} className="text-sm text-muted-foreground">
                         {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Music & Performance */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <Music className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light">
+                {musicAndPerformance.title}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {musicAndPerformance.cards.map((card, i) => (
+                <div key={i} className="bg-card border rounded-xl p-6">
+                  <h3 className="text-lg font-medium mb-1">{card.title}</h3>
+                  <p className="text-sm text-primary mb-4">{card.subtitle}</p>
+                  <ul className="space-y-3">
+                    {card.bullets.map((b, j) => (
+                      <li key={j} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary" />
+                        <p className="flex-1 text-sm text-muted-foreground leading-relaxed break-words">
+                          {b}
+                        </p>
                       </li>
                     ))}
                   </ul>
