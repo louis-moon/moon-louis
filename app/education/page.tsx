@@ -223,7 +223,7 @@ const honors = [
   },
   {
   title: "Orgullo de Nuestra Juventud (Pride of Our Youth) Award",
-  organization: "Univision 23 (WLTV Miami)",
+  organization: "TelevisaUnivision",
   tags: ["Scholarship"],
   },
   {
