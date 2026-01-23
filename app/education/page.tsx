@@ -42,7 +42,7 @@ const educationTimeline = [
     period: "Aug 2014 – Jun 2018",
     focus: "Summa Cum Laude",
     description:
-      "National Honor Society President; parallel classical and jazz music training alongside advanced academic coursework",
+      "National Honor Society President, Chopin Foundation, Greater Miami Youth Symphony, Jazz Band",
     highlights: ["3rd in class of 673 students", "Johns Hopkins Book Award"],
   },
   {
