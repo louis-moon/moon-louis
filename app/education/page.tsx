@@ -51,7 +51,7 @@ const educationTimeline = [
     period: "Aug 2017 – Jun 2018",
     focus: "Introductory Mathematics",
     description:
-      "Completed university-level mathematics coursework at Miami Dade College's Kendall Campus",
+      "Completed university-level coursework at Miami Dade College's Kendall Campus",
     highlights: [
       "Calculus and Analytic Geometry III",
       "Introduction to Differential Equations",
@@ -157,16 +157,16 @@ const collegeActivities = [
     title: "Yale Student Investment Group",
     role: "Investment Analyst",
     bullets: [
-      "Produced one investment pitch per semester as part of a team managing approximately $500,000 on behalf of the university endowment",
-      "Won best pitch award presenting a small-cap industrial stock; recommendation up over +1000% since (TGLS)",
+      "Produced 1 investment pitch each semester as part of a team for fund managing ~$500,000 on behalf of university endowment",
+      "Won best pitch presenting small-cap industrial stock for Analyst Training Program conclusion, up over +1000% since (TGLS)",
     ],
   },
   {
     title: "Elmseed Enterprise Fund",
     role: "Project Head",
     bullets: [
-      "Led pro-bono consulting initiatives for New Haven startups through structured engagements and weekly office hours",
-      "Supported early-stage businesses across food, retail, and services in operational scaling and strategy",
+      "Spearheaded consulting initiatives for local New Haven startups and provided strategic advice during weekly office hours",
+      "Helped a Korean food cart operationalize, a Filipino outlet launch pop-ups, and a Mediterranean restaurant start franchising",
     ],
   },
   {
@@ -180,7 +180,7 @@ const collegeActivities = [
     title: "Dwight Hall at Yale",
     role: "Support Crew",
     bullets: [
-      "Organized logistics for FOCUS on New Haven, a pre-orientation program hosting 150 incoming students",
+      "Organized logistics for FOCUS on New Haven, one of Yale's nine pre-orientation programs hosting 150 students",
     ],
   },
 ]
@@ -232,12 +232,12 @@ const honors = [
     tags: ["Finance"],
   },
   {
-    title: "National Merit Scholar",
+    title: "National Merit Scholarship Program: National Merit Scholar",
     organization: "National Merit Scholarship Corporation",
     tags: ["Scholarship"],
   },
   {
-    title: "Odyssey of the Mind: 2nd Place World Finals",
+    title: "Odyssey of the Mind: 2nd Place World Finals, State Champion",
     organization: "Creative Competitions",
     tags: ["Problem-Solving"],
   },
@@ -245,7 +245,7 @@ const honors = [
 
 const testScores = [
   { test: "SAT", score: "1580/1600", detail: "780 EBRW, 800 Math" },
-  { test: "SAT Essay", score: "24/24", detail: "8/8/8" },
+  { test: "SAT Essay", score: "8/8/8", detail: "24/24" },
   { test: "SAT Subject Tests", score: "2400/2400", detail: "Chemistry, Math II, US History" },
 ]
 
@@ -256,6 +256,8 @@ const apScores = [
   { subject: "Spanish Language and Culture", score: 5, year: 2016 },
   { subject: "Physics 1", score: 4, year: 2016 },
   { subject: "Calculus BC", score: 5, year: 2016 },
+  { subject: "Calculus BC — AB Subscore", score: 5, year: 2016 },
+  { subject: "European History", score: 4, year: 2016 },
   { subject: "Environmental Science", score: 5, year: 2017 },
   { subject: "Computer Science A", score: 4, year: 2017 },
   { subject: "United States History", score: 5, year: 2017 },
@@ -263,7 +265,11 @@ const apScores = [
   { subject: "Physics C: Electricity & Magnetism", score: 5, year: 2017 },
   { subject: "English Language & Composition", score: 5, year: 2017 },
   { subject: "Statistics", score: 5, year: 2017 },
+  { subject: "Art History", score: 3, year: 2018 },
+  { subject: "Psychology", score: 4, year: 2018 },
+  { subject: "Biology", score: 3, year: 2018 },
   { subject: "English Literature & Composition", score: 5, year: 2018 },
+  { subject: "United States Government & Politics", score: 3, year: 2018 },
   { subject: "Macroeconomics", score: 5, year: 2018 },
   { subject: "Microeconomics", score: 5, year: 2018 },
 ]
@@ -273,35 +279,35 @@ const extracurriculars = [
     title: "National Honor Society",
     role: "President",
     description:
-      "Led community service initiatives and coordinated partnerships with local organizations",
-    tags: ["Leadership"],
+      "Launched community service projects with local organizations and managed existing ones",
+    tags: ["Community Service"],
   },
   {
     title: "Honor Council",
     role: "Co-President",
     description:
       "Student-run body addressing academic misconduct; formalized and promoted honor code",
-    tags: ["Governance"],
+    tags: ["Leadership"],
   },
   {
     title: "Science National Honor Society",
     role: "VP of Competitions",
     description:
-      "Organized academic competitions including Envirothon and Lexus Eco Challenge",
+      "Lexus Eco Challenge, Envirothon, and Fairchild Challenge; won 1st in Astronaut Challenge",
     tags: ["Science"],
   },
   {
     title: "Mu Alpha Theta",
     role: "VP of Tutoring",
     description:
-      "Consolidated schoolwide tutoring programs and supported math competition preparation",
+      "Consolidated schoolwide tutoring, organized competition prep, and managed field trips",
     tags: ["Mathematics"],
   },
   {
     title: "Achieve Miami",
     role: "Big Buddy",
     description:
-      "Mentored elementary students and supported literacy development",
+      "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School",
     tags: ["Volunteering"],
   },
 ]
