@@ -9,14 +9,15 @@ import {
   Calendar,
   Layers,
   Backpack,
+  Music,
 } from "lucide-react"
 
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Education — Louis Moon",
   description: "Expanding how I see the world",
-};
+}
 
 /* =========================
    DATA
@@ -26,7 +27,7 @@ const educationTimeline = [
   {
     institution: "Yale University",
     degree: "Bachelor of Science",
-    period: "Aug 2018 - May 2023",
+    period: "Aug 2018 – May 2023",
     focus: "Statistics & Data Science",
     description:
       "Senior Thesis: A Theoretical Framework for Implementing Dynamic Causal Modeling with RNNs to Recover Brain Connectivity",
@@ -38,19 +39,19 @@ const educationTimeline = [
   {
     institution: "Miami Palmetto Senior High School",
     degree: "High School Diploma",
-    period: "Aug 2014 - Jun 2018",
+    period: "Aug 2014 – Jun 2018",
     focus: "Summa Cum Laude",
     description:
-      "National Honor Society President, Chopin Foundation, Greater Miami Youth Symphony, Jazz Band",
+      "National Honor Society President; parallel classical and jazz music training alongside advanced academic coursework",
     highlights: ["3rd in class of 673 students", "Johns Hopkins Book Award"],
   },
   {
     institution: "Miami Dade College",
     degree: "Dual Enrollment",
-    period: "Aug 2017 - Jun 2018",
+    period: "Aug 2017 – Jun 2018",
     focus: "Introductory Mathematics",
     description:
-      "Completed university-level coursework at Miami Dade College's Kendall Campus",
+      "Completed university-level mathematics coursework at Miami Dade College's Kendall Campus",
     highlights: [
       "Calculus and Analytic Geometry III",
       "Introduction to Differential Equations",
@@ -59,7 +60,7 @@ const educationTimeline = [
   {
     institution: "Yale Young Global Scholars",
     degree: "Summer Program",
-    period: "Jul 2016 - Aug 2016",
+    period: "Jul 2016 – Aug 2016",
     focus: "Technology, Innovation & Entrepreneurship",
     description:
       "Academic enrichment and leadership training program for exceptional high school students",
@@ -151,7 +152,68 @@ const coursework = [
   },
 ]
 
-const collegeActivities = [ { title: "Yale Student Investment Group", role: "Investment Analyst", bullets: [ "Produced 1 investment pitch each semester as part of a team for fund managing ~$500,000 on behalf of university endowment", "Won best pitch presenting small-cap industrial stock for Analyst Training Program conclusion, up over +1000% since (TGLS)", ], }, { title: "Elmseed Enterprise Fund", role: "Project Head", bullets: [ "Spearheaded consulting initiatives for local New Haven startups and provided strategic advice during weekly office hours", "Helped a Korean food cart operationalize, a Filipino outlet launch pop-ups, and a Mediterranean restaurant start franchising", ], }, { title: "Volunteer Income Tax Assistance", role: "Tax Preparer", bullets: [ "Returned $150,000+ for 75 low-income New Haven residents by providing tax services as an IRS-certified volunteer", ], }, { title: "Dwight Hall at Yale", role: "Support Crew", bullets: [ "Organized logistics for FOCUS on New Haven, one of Yale's nine pre-orientation programs hosting 150 students", ], }, ]
+const collegeActivities = [
+  {
+    title: "Yale Student Investment Group",
+    role: "Investment Analyst",
+    bullets: [
+      "Produced one investment pitch per semester as part of a team managing approximately $500,000 on behalf of the university endowment",
+      "Won best pitch award presenting a small-cap industrial stock; recommendation up over +1000% since (TGLS)",
+    ],
+  },
+  {
+    title: "Elmseed Enterprise Fund",
+    role: "Project Head",
+    bullets: [
+      "Led pro-bono consulting initiatives for New Haven startups through structured engagements and weekly office hours",
+      "Supported early-stage businesses across food, retail, and services in operational scaling and strategy",
+    ],
+  },
+  {
+    title: "Volunteer Income Tax Assistance",
+    role: "Tax Preparer",
+    bullets: [
+      "Returned $150,000+ for 75 low-income New Haven residents by providing tax services as an IRS-certified volunteer",
+    ],
+  },
+  {
+    title: "Dwight Hall at Yale",
+    role: "Support Crew",
+    bullets: [
+      "Organized logistics for FOCUS on New Haven, a pre-orientation program hosting 150 incoming students",
+    ],
+  },
+]
+
+const musicAndPerformance = {
+  title: "Music & Performance",
+  cards: [
+    {
+      title: "Piano",
+      subtitle: "Classical",
+      bullets: [
+        "Performed in the Miami Chopin Foundation Young Pianists Concert series, presenting solo repertoire including Étude Op. 10, Nr 5 and Valse Op. 69, Nr 1",
+        "Competed in Florida Federation of Music Clubs, earning superior ratings through Musically Advanced II level across technical evaluation and sight-reading",
+      ],
+    },
+    {
+      title: "Woodwinds",
+      subtitle: "Orchestral",
+      bullets: [
+        "First Clarinetist with the Greater Miami Youth Symphony, performing full symphonic repertoire and extending training to oboe within the orchestral setting",
+        "Performed under GRAMMY-winning conductor and composer José Serebrier and collaborated internationally with the Dublin Youth Orchestra",
+      ],
+    },
+    {
+      title: "Jazz",
+      subtitle: "Ensemble",
+      bullets: [
+        "Alto saxophonist in Miami Palmetto's jazz band, performing standard and arranged repertoire across sectional rehearsal and ensemble performance settings",
+        "Competed at Florida Bandmasters Association Music Performance Assessments (MPA), performing in formal evaluations as well as public concerts and school events",
+      ],
+    },
+  ],
+};
 
 const honors = [
   {
@@ -160,7 +222,7 @@ const honors = [
     tags: ["Environment"],
   },
   {
-    title: "National Economics Challenge: 9th place, State Champion",
+    title: "National Economics Challenge: 9th Place, State Champion",
     organization: "Council for Economic Education",
     tags: ["Economics"],
   },
@@ -170,21 +232,20 @@ const honors = [
     tags: ["Finance"],
   },
   {
-    title: "National Merit Scholar Program: National Merit Scholar",
+    title: "National Merit Scholar",
     organization: "National Merit Scholarship Corporation",
     tags: ["Scholarship"],
   },
   {
-    title: "Odyssey of the Mind: 2nd place World Finals, State Champion",
+    title: "Odyssey of the Mind: 2nd Place World Finals",
     organization: "Creative Competitions",
     tags: ["Problem-Solving"],
   },
-  
 ]
 
 const testScores = [
   { test: "SAT", score: "1580/1600", detail: "780 EBRW, 800 Math" },
-  { test: "SAT Essay", score: "8/8/8", detail: "24/24" },
+  { test: "SAT Essay", score: "24/24", detail: "8/8/8" },
   { test: "SAT Subject Tests", score: "2400/2400", detail: "Chemistry, Math II, US History" },
 ]
 
@@ -195,8 +256,6 @@ const apScores = [
   { subject: "Spanish Language and Culture", score: 5, year: 2016 },
   { subject: "Physics 1", score: 4, year: 2016 },
   { subject: "Calculus BC", score: 5, year: 2016 },
-  { subject: "Calculus BC — AB Subscore", score: 5, year: 2016 },
-  { subject: "European History", score: 4, year: 2016 },
   { subject: "Environmental Science", score: 5, year: 2017 },
   { subject: "Computer Science A", score: 4, year: 2017 },
   { subject: "United States History", score: 5, year: 2017 },
@@ -204,11 +263,7 @@ const apScores = [
   { subject: "Physics C: Electricity & Magnetism", score: 5, year: 2017 },
   { subject: "English Language & Composition", score: 5, year: 2017 },
   { subject: "Statistics", score: 5, year: 2017 },
-  { subject: "Art History", score: 3, year: 2018 },
-  { subject: "Psychology", score: 4, year: 2018 },
-  { subject: "Biology", score: 3, year: 2018 },
   { subject: "English Literature & Composition", score: 5, year: 2018 },
-  { subject: "United States Government & Politics", score: 3, year: 2018 },
   { subject: "Macroeconomics", score: 5, year: 2018 },
   { subject: "Microeconomics", score: 5, year: 2018 },
 ]
@@ -218,35 +273,35 @@ const extracurriculars = [
     title: "National Honor Society",
     role: "President",
     description:
-      "Launched community service projects with local organizations and managed existing ones",
-    tags: ["Community Service"],
+      "Led community service initiatives and coordinated partnerships with local organizations",
+    tags: ["Leadership"],
   },
   {
     title: "Honor Council",
     role: "Co-President",
     description:
       "Student-run body addressing academic misconduct; formalized and promoted honor code",
-    tags: ["Leadership"],
+    tags: ["Governance"],
   },
   {
     title: "Science National Honor Society",
     role: "VP of Competitions",
     description:
-      "Lexus Eco Challenge, Envirothon, and Fairchild Challenge; won 1st in Astronaut Challenge",
+      "Organized academic competitions including Envirothon and Lexus Eco Challenge",
     tags: ["Science"],
   },
   {
     title: "Mu Alpha Theta",
     role: "VP of Tutoring",
     description:
-      "Consolidated schoolwide tutoring, organized competition prep, and managed field trips",
+      "Consolidated schoolwide tutoring programs and supported math competition preparation",
     tags: ["Mathematics"],
   },
   {
     title: "Achieve Miami",
     role: "Big Buddy",
     description:
-      "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School",
+      "Mentored elementary students and supported literacy development",
     tags: ["Volunteering"],
   },
 ]
@@ -270,10 +325,10 @@ export default function EducationPage() {
               <GraduationCap className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Academics</p>
             </div>
-            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">
+            <h1 className="text-5xl md:text-6xl font-light mb-6">
               Education
             </h1>
-            <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
               At the heart of interdisciplinary learning and growth.
             </p>
           </div>
@@ -287,7 +342,7 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {educationTimeline.map((edu, i) => (
-                <div key={i} className="bg-card border border-border rounded-xl p-8">
+                <div key={i} className="bg-card border rounded-xl p-8">
                   <h3 className="text-xl font-medium mb-1">{edu.institution}</h3>
                   <p className="text-sm text-primary mb-1">{edu.degree}</p>
                   <p className="text-xs text-muted-foreground mb-4">{edu.period}</p>
@@ -306,15 +361,46 @@ export default function EducationPage() {
             </div>
           </div>
 
+          {/* Music & Performance */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <Music className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl font-light">
+                {musicAndPerformance.title}
+              </h2>
+            </div>
+
+            <p className="text-sm text-muted-foreground max-w-3xl mb-8">
+              {musicAndPerformance.subtitle}
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {musicAndPerformance.cards.map((card, i) => (
+                <div key={i} className="bg-card border rounded-xl p-6">
+                  <h3 className="text-lg font-medium mb-1">{card.title}</h3>
+                  <p className="text-sm text-primary mb-4">{card.subtitle}</p>
+                  <ul className="space-y-3">
+                    {card.bullets.map((b, j) => (
+                      <li key={j} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary" />
+                        <p className="min-w-0 text-sm text-muted-foreground leading-relaxed">
+                          {b}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+
           {/* Coursework */}
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-2">
               <Library className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">Undergraduate Coursework</h2>
             </div>
-            <p className="text-xs text-muted-foreground md:hidden mb-4">
-              Swipe by term →
-            </p>
 
             <div className="relative">
               <div className="overflow-x-auto horizontal-scroll pb-6">
@@ -424,9 +510,6 @@ export default function EducationPage() {
                 Advanced Placement Examinations
               </h2>
             </div>
-            <p className="text-xs text-muted-foreground md:hidden mb-4">
-              Swipe by exam →
-            </p>
 
             <div className="relative">
               <div className="overflow-x-auto horizontal-scroll pb-6">
