@@ -370,10 +370,6 @@ export default function EducationPage() {
               </h2>
             </div>
 
-            <p className="text-sm text-muted-foreground max-w-3xl mb-8">
-              {musicAndPerformance.subtitle}
-            </p>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {musicAndPerformance.cards.map((card, i) => (
                 <div key={i} className="bg-card border rounded-xl p-6">
