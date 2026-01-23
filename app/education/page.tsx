@@ -217,9 +217,14 @@ const musicAndPerformance = {
 
 const honors = [
   {
-    title: "Envirothon: North American Qualifier, State Champion",
-    organization: "National Conservation Foundation",
-    tags: ["Environment"],
+    title: "National Merit Scholarship Program: National Merit Scholar",
+    organization: "National Merit Scholarship Corporation",
+    tags: ["Scholarship"],
+  },
+  {
+  title: "\"Orgullo de Nuestra Juventud\" (Pride of Our Youth) Award",
+  organization: "Univision 23",
+  tags: ["Scholarship"],
   },
   {
     title: "National Economics Challenge: 9th Place, State Champion",
@@ -232,14 +237,14 @@ const honors = [
     tags: ["Finance"],
   },
   {
-    title: "National Merit Scholarship Program: National Merit Scholar",
-    organization: "National Merit Scholarship Corporation",
-    tags: ["Scholarship"],
-  },
-  {
     title: "Odyssey of the Mind: 2nd Place World Finals, State Champion",
     organization: "Creative Competitions",
     tags: ["Problem-Solving"],
+  },
+  {
+    title: "Envirothon: North American Qualifier, State Champion",
+    organization: "National Conservation Foundation",
+    tags: ["Environment"],
   },
 ]
 
@@ -279,21 +284,21 @@ const extracurriculars = [
     title: "National Honor Society",
     role: "President",
     description:
-      "Launched community service projects with local organizations and managed existing ones",
+      "Launched community service projects with local partners and led schoolwide initiatives",
     tags: ["Community Service"],
   },
   {
     title: "Honor Council",
     role: "Co-President",
     description:
-      "Student-run body addressing academic misconduct; formalized and promoted honor code",
+      "Served on student-run body addressing academic misconduct; formalized honor code",
     tags: ["Leadership"],
   },
   {
     title: "Science National Honor Society",
     role: "VP of Competitions",
     description:
-      "Lexus Eco Challenge, Envirothon, and Fairchild Challenge; won 1st in Astronaut Challenge",
+      "Lexus Eco Challenge, Envirothon, and Fairchild Challenge; 1st in Astronaut Challenge",
     tags: ["Science"],
   },
   {
@@ -309,6 +314,13 @@ const extracurriculars = [
     description:
       "Mentored Little Buddies and taught literacy skills to kids at Goulds Elementary School",
     tags: ["Volunteering"],
+  },
+  {
+    title: "Temple Beth Am",
+    role: "Basketball Coach",
+    description:
+      "Coached a peer-based recreational basketball team within a Jewish temple community",
+    tags: ["Community"],
   },
 ]
 
