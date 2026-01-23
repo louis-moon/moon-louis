@@ -51,7 +51,7 @@ const educationTimeline = [
     period: "Aug 2017 – Jun 2018",
     focus: "Introductory Mathematics",
     description:
-      "Completed university-level coursework at Miami Dade College's Kendall Campus",
+      "Completed university-level coursework at Miami Dade College's Kendall Campus concurrently",
     highlights: [
       "Calculus and Analytic Geometry III",
       "Introduction to Differential Equations",
