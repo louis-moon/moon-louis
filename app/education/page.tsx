@@ -209,7 +209,7 @@ const musicAndPerformance = {
       subtitle: "Ensemble",
       bullets: [
         "Alto saxophonist in Miami Palmetto's jazz band, performing standard and arranged repertoire across sectional rehearsal and ensemble performance settings",
-        "Competed at Florida Bandmasters Association Music Performance Assessments (MPA), performing in formal evaluations as well as public concerts and school events",
+        "Competed at Florida Bandmasters Association Music Performance Assessments (MPA); performed in formal evaluations as well as public concerts and school events",
       ],
     },
   ],
