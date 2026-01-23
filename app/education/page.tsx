@@ -379,7 +379,7 @@ export default function EducationPage() {
                     {card.bullets.map((b, j) => (
                       <li key={j} className="flex items-start gap-3">
                         <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary" />
-                        <p className="min-w-0 text-sm text-muted-foreground leading-relaxed">
+                        <p className="flex-1 text-sm text-muted-foreground leading-relaxed break-words">
                           {b}
                         </p>
                       </li>
