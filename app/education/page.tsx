@@ -201,7 +201,7 @@ const musicAndPerformance = {
       subtitle: "Orchestral",
       bullets: [
         "First Clarinetist with the Greater Miami Youth Symphony, performing full symphonic repertoire and extending training to oboe within the orchestral setting",
-        "Performed under GRAMMY-winning conductor and composer José Serebrier and collaborated internationally with the Dublin Youth Orchestra",
+        "Performed solo under GRAMMY-winning conductor and composer José Serebrier and collaborated internationally with the Dublin Youth Orchestra",
       ],
     },
     {
