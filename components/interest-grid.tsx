@@ -115,7 +115,7 @@ const tiles: Tile[] = [
     borderColor: "hover:border-sky-500/50",
     sections: [
       { title: "What I Would Major In", items: ["Global Affairs", "Philosophy", "Statistics"] },
-      { title: "Passions", items: ["Education", "Environment", "Science & Technology"] },
+      { title: "Passions", items: ["Arts and Culture", "Economic Empowerment", "Science & Technology"] },
       { title: "Things to Learn / Work On", items: ["Korean & Spanish", "Relationships", "Systems Building"] },
     ],
   },
