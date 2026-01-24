@@ -54,7 +54,7 @@ I hear people in their late careers (mid-50s) entertain the idea of calculating 
 
 All of this serves to illustrate that for some people, enough is never enough--because their conception of freedom is defined by avoiding loss or constraint--while others with far less at least financially, are able to find meaning, value, and fulfillment in their day-to-day lives by treating money not as a game score to maximize or a cap to clear, but rather as an enabling structure that provides the base upon which a life can be deliberately built. This distinction matters, because money derives its value from the life it enables, not from its accumulation in isolation. I think it's important to note that your assets don't transfer to the afterlife.
 
-Equally as important as financial constraints are health ones. 6 out of 10 Americans have 1 chronic disease and 4 out of 10 have 2 or more chronic diseases that account for 90% of the $4.5 trillion annual health care costs in the nation.
+Equally as important as financial constraints are health ones. Six out of ten Americans have one chronic disease, and four out of ten have two or more chronic diseases that account for 90% of the $4.5 trillion annual health care costs in the nation.
 
 A lot of us are blessed as children to grow up without any life-threatening health issues, but the older we get, the more we see people who unfortunately fall victim to (chronic) illnesses, whether that be in our family, friend group, professional network, on social media, or the like.
 
