@@ -11,6 +11,85 @@ export const metadata: Metadata = {
 
 const essays = [
   {
+    title: "Structure and Freedom",
+    subtitle: "Open Notes",
+    date: "Jan 2026",
+    tags: ["Finances", "Health", "Social"],
+    excerpt:
+      "Freedom isn’t the absence of limits, but the way we live within them—across money, health, and relationships, this note explores how meaning emerges not from escape, but from choosing constraints well.",
+    content: `
+On two opposite ends of a spectrum lie freedom and structure: freedom being the ability and means to pursue the life you want to live, and structure being the constraints opposing unrestrained growth imposed by both environment and self. Not too long ago, in 1800, 81% of people worldwide lived in poverty (by a $1.90-per-day standard). By 1990, only 44% were in poverty, and today, that figure lies at under 10%.
+
+This newfound upward mobility, allowed by globalization and technological progress, has opened the doors to optionality, with people having the ability to choose what kinds of food they want to eat, what kinds of clothes they want to wear, what kinds of jobs they want to pursue, etc. And herein lies the crux of modern freedom--choice in a world of relative abundance.
+
+What ties people down in "modern freedom" can be broken down into three broad categories: financial, health, and social obligations. Financially, we are limited by our income and long-term asset holdings. Still, I find it very common to come across people like the following example on Reddit:
+
+"How do HENRYs afford to start a family in NYC?
+
+Happy 2026! We are a 37M/28F DINK couple in NYC interested in starting a family, but feel like we don't have any good options for how to proceed. I'm interested in what other HENRYs think about starting a family in VHCOL while staying on FIRE track (or maybe giving up on or delaying FIRE to have kids). Any advice would be appreciated.
+
+Here are our 2025 stats for background.
+
+2025 Income:
+
+P1 Day Job: Senior DS in Big Tech, Target TC $425k
+
+P2 Day Job: Senior Associate at D-tier IB, Target TC $340k
+
+Total income: ~$920k (P1 RSUs are up, P2 vested a one-time stock grant, we also have a growing side business that netted almost $13k this year. Honestly I'd say our reliable income is only ~$700k/year if I don't get laid off).
+
+...
+
+So yeah, no good options. How do people actually start a family here? None of this makes any financial or logical sense and pretty much every choice is terrible for quality of life. At this rate we might just do an IVF freeze-all and try again in 4-5 years. At that point we should be almost FI with a bigger nest egg and could find some low stress remote jobs to start a family anywhere without worrying about commuting into NYC. However, I don't really want to wait for my 40s to become a dad and I see plenty of HE couples in the FIRE subs with 2 school aged kids and $5-10m net worth by their late 40s. Do you just have to give up on sending your kids to a top school to FIRE with kids?"
+
+This essentially translates to a couple making close to $1m in annual income being unable to find the means to afford kids in New York City--which, yes, is a very high cost-of-living area, but as one commenter notes,
+
+"...Maybe you’re not ready for a kid if you can’t prioritize it financially. It can be that simple.
+
+or another:
+
+"You are so out of touch with reality. It’s not even worth addressing."
+
+I hear people in their late careers (mid-50s) entertain the idea of calculating how much money they'll need for retirement: "Oh, maybe $20m will do?"
+
+All of this serves to illustrate that for some people, enough is never enough--because their conception of freedom is defined by avoiding loss or constraint--while others with far less at least financially, are able to find meaning, value, and fulfillment in their day-to-day lives by treating money not as a game score to maximize or a cap to clear, but rather as an enabling structure that provides the base upon which a life can be deliberately built. This distinction matters, because money derives its value from the life it enables, not from its accumulation in isolation. I think it's important to note that your assets don't transfer to the afterlife.
+
+Equally as important as financial constraints are health ones. 6 out of 10 Americans have 1 chronic disease and 4 out of 10 have 2 or more chronic diseases that account for 90% of the $4.5 trillion annual health care costs in the nation.
+
+A lot of us are blessed as children to grow up without any life-threatening health issues, but the older we get, the more we see people who unfortunately fall victim to (chronic) illnesses, whether that be in our family, friend group, professional network, on social media, or the like.
+
+By definition, the inability to permanently resolve these constraints on our lives hampers our long-term agency. But by being cognizant and health-literate, there are ways to be prepared and dramatically increase our capacity to live fulfilling lives health-wise. For example,
+
+"1 out of 2 post-menopausal women will break a bone due to osteoporosis or loss of bone mineral density, and about 20% of women will not survive that year after they break a bone. While this may sound bad, one important way that women can improve their bone density and muscle mass is to resistance train regularly, whether that's at the gym or even at home."
+
+- @trishapasrichamd (Instagram)
+
+Another example:
+
+"Untreated hearing loss in older adults has been linked to faster cognitive decline and increased dementia risk. Why? Because when the brain has to work overtime to hear, it takes a toll on memory, focus, and mental clarity. Add in social isolation, and the impact is even greater.
+
+But here's the good news: Treating hearing loss may actually slow down cognitive decline. Hearing aids. Screenings. Awareness. These are small steps that protect big things--like brain function, independence, and quality of life."
+
+- @ladyspincedoc (TikTok)
+
+Health and medical challenges impose real and often irreversible constraints on freedom; however, awareness and deliberate management of these constraints can significantly preserve your health, maybe even making you healthier than you would have been otherwise.
+
+And finally, social obligations represent perhaps the clearest expression of the tension between freedom and structure, and can be broadly categorized into three groups: familial, friendships, and romantic relationships.
+
+I used to believe there was an inherent social contract embedded in having children--one that entailed being willing to do anything and everything they might need throughout their lives, given that you bring them into the world without their consent, in some sense. In contrast, I felt that the obligation to a partner was weaker, as the moral asymmetry seemed less pronounced in my eyes.
+
+At one point, I was told my life seemed to be in a good place and was asked what problems I had, so I wrote them all down--four in the short-term and four in the long-term. What struck me wasn't the content of the list, but how short it was. With the last problem being having kids or starting a family, it felt as though my life would, in a way, end there, as my focus would shift almost entirely toward theirs.
+
+All of this made me wonder whether there was more to it--whether my ultimate priority should always be others in the long run, or whether it should be myself, or at least something other than children alone, such as a partner or even work. In other words, I began to question whether meaning or freedom necessarily requires the surrender of self-direction, or whether there is room for commitment without complete self-erasure. 
+
+A while back, I asked my mother if she ever thinks about how life might have been different had she attended her dream school in Korea. To my surprise, she said yes--about how she might have been an architect and had her own life and dream career path, instead of being primarily a wife and mother first.
+
+For me, it isn't really about choosing kids versus a partner versus something else. Rather, it's about the fear of losing oneself entirely within any given role, and whether devotion must come at the cost of self-erasure. There is something undeniably beautiful about loving others and placing them above yourself--but when taken to its extreme, that same impulse can quietly hollow out the one doing the giving.
+
+I think this is where many people misinterpret ideas like self-interest, often appealing to tradition, faith, or ideology as justification. A shallow reading of economic thinking treats self-interest as a law of nature and, therefore, as an unquestioned good. But that framing misses the point. We see this play out financially, where accumulation becomes an end in itself, and physically, where neglect or complacency erodes long-term agency in the name of short-term comfort. The goal is not unrestrained self-interest, just as it is not total self-sacrifice or freedom. Meaning emerges somewhere in between--where freedom and structure coexist, and where individuals are able to choose commitments that support, rather than consume, the life they are meant to serve.
+`,
+  },
+  {
     title: "Covenant",
     subtitle: "Reflection #6",
     date: "Dec 2025",
