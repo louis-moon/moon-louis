@@ -243,35 +243,32 @@ function CompanySection({ data }: { data: Company[] }) {
   )
 }
 
-function ProjectsCarousel({ data }: { data: Project[] }) {
+function ProjectsSection({ data }: { data: Project[] }) {
   return (
-    <div className="relative">
-      <div className="-mx-6 px-6 overflow-x-auto horizontal-scroll pb-6">
-        <div className="flex gap-6 min-w-max">
-          {data.map((p) => (
-            <section
-              key={p.name}
-              className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5
-                         w-[320px] sm:w-[420px] md:w-[520px] flex-shrink-0"
-            >
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-xl font-medium text-foreground">{p.name}</h3>
-                <span className="text-xs text-muted-foreground whitespace-nowrap">
-                  {p.period}
-                </span>
-              </div>
+    <div className="space-y-6">
+      {data.map((p) => (
+        <section
+          key={p.name}
+          className="bg-card border border-border rounded-xl p-8
+                     hover:border-primary transition-all
+                     hover:shadow-lg hover:shadow-primary/5"
+        >
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <h3 className="text-xl font-medium text-foreground">
+              {p.name}
+            </h3>
+            <span className="text-xs text-muted-foreground whitespace-nowrap">
+              {p.period}
+            </span>
+          </div>
 
-              <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                {p.bullets.map((b, j) => (
-                  <li key={j}>{b}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
-      </div>
-
-      <div className="absolute right-0 top-0 bottom-6 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+          <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+            {p.bullets.map((b, i) => (
+              <li key={i}>{b}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </div>
   )
 }
@@ -312,10 +309,7 @@ export default function ProfessionalPage() {
               <FolderKanban className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light text-foreground">Projects</h2>
             </div>
-            <p className="text-xs text-muted-foreground md:hidden mb-4">
-              Swipe to explore →
-            </p>
-            <ProjectsCarousel data={projects} />
+            <ProjectsSection data={projects} />
           </section>
 
           {/* Internships */}
