@@ -93,8 +93,8 @@ const fullTime: Company[] = [
         type: "Full-time",
         period: "Jan 2023 – Mar 2024 • 1 yr 3 mos",
         bullets: [
-          "Utilized 3D CNN encoder and RNN decoder technology to build a video-to-text model with logistics clients for integration; focused on industry-specific use cases including package delivery verification, employee monitoring, and driver safety checks",
-          "Co-founded organization alongside Yale, Berkeley, and UChicago alums with a focus on product and software development; leveraged children's books to build a text-to-video model as a complementary solution using natural language processing tools",
+          "Utilized CNN/RNN and transformer-based architectures to build video-to-text models with logistics clients for production integration, refining requirements with operators; focused on delivery verification, employee monitoring, and driver safety checks",
+          "Co-founded the company alongside Yale, Berkeley, and UChicago alumni with a focus on product and software development; used children's books as training data to prototype a complementary text-to-video model using natural language processing techniques",
         ],
       },
     ],
