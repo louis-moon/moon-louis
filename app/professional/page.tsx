@@ -46,7 +46,7 @@ const fullTime: Company[] = [
       {
         title: "Chief Product Officer",
         type: "Full-time",
-        period: "Feb 2025 – Present • 1 yr",
+        period: "Feb 2025 – Present",
         bullets: [
           "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 25k+ golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
           "Building digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; directly working hand in hand with founders to raise venture capital funding, expand team, and validate product development",
@@ -61,7 +61,7 @@ const fullTime: Company[] = [
       {
         title: "Head of Product",
         type: "Full-time",
-        period: "Jul 2024 – Feb 2025 • 8 mos",
+        period: "Jul 2024 – Feb 2025",
         bullets: [
           "Owned end-to-end product strategy and conceptualized platform to foster in-person connections through real-life activities; organized product requirements documents, KPI frameworks, and conducted user interviews to drive rapid product iteration",
           "Orchestrated development of two core product features: an interest-matching algorithm and social sphere visualization tool; managed cross-functional team and collaborated with engineering, design, and marketing to drive product growth and success",
@@ -76,7 +76,7 @@ const fullTime: Company[] = [
       {
         title: "Product Manager",
         type: "Contract",
-        period: "Mar 2024 – Jun 2024 • 4 mos",
+        period: "Mar 2024 – Jun 2024",
         bullets: [
           "Established a semantic comparable business search query system to value businesses through comparable company analyses; formulated one version for the sell-side and one for the buy-side, bringing the time for process down from hours to seconds",
           "Led product development initiatives for the financial valuation product, focusing on core functionalities and user experience; created and maintained comprehensive product roadmap, prioritizing key features for MVP development and future iterations",
@@ -91,7 +91,7 @@ const fullTime: Company[] = [
       {
         title: "Co-Founder",
         type: "Full-time",
-        period: "Jan 2023 – Mar 2024 • 1 yr 3 mos",
+        period: "Jan 2023 – Mar 2024",
         bullets: [
           "Utilized CNN/RNN and transformer-based architectures to build video-to-text models with logistics clients for production integration, refining requirements with operators; focused on delivery verification, employee monitoring, and driver safety checks",
           "Co-founded the company alongside Yale, Berkeley, and UChicago alumni with a focus on product and software development; used children's books as training data to prototype a complementary text-to-video model using natural language processing techniques",
@@ -130,7 +130,7 @@ const internships: Company[] = [
       {
         title: "Investment Analyst Intern",
         type: "Internship",
-        period: "Apr 2020 – Jun 2020 • 3 mos",
+        period: "Apr 2020 – Jun 2020",
         bullets: [
           "Supported portfolio manager in reviewing investment prospects by performing due diligence and building valuation models; crafted scenario-based financial statements with schedules and spread industry comparables to enhance investment decisions",
           "Performed company valuations including discounted cash flow, comparable companies, and precedent transactions analyses; utilized LBO and M&A models to evaluate and compare valuation levels, resulting in full valuation comparisons and insights",
@@ -145,7 +145,7 @@ const internships: Company[] = [
       {
         title: "Undergraduate Instructor",
         type: "Internship",
-        period: "Jun 2019 – Aug 2019 • 3 mos",
+        period: "Jun 2019 – Aug 2019",
         bullets: [
           "Designed and implemented teaching curriculum at Yale University summer program as one of 12 undergraduate instructors; taught Sustainable Development and Social Entrepreneurship and Politics, Law, and Economics to enhance academic breadth",
           "Delivered four unique seminars each session, orchestrated three simulated case studies, and oversaw post-lecture breakout sessions; mentored high school students, enhancing their academic capabilities and resulting in six successful capstone research projects",
@@ -160,7 +160,7 @@ const internships: Company[] = [
       {
         title: "Summer Intern",
         type: "Internship",
-        period: "Jun 2018 – Aug 2018 • 3 mos",
+        period: "Jun 2018 – Aug 2018",
         bullets: [
           "Set up five summer boot camps with 100 students to teach teenagers computer science for South Florida's TechHire initiative, a campaign to expand local technology sectors by establishing talent pipelines in underserved communities across the nation",
           "Modeled lead flows, managed marketing campaigns, and provided competitive analysis for the company's coding bootcamp; centered on search engine optimization along with improving click-through rates using CRM platforms and email marketing",
