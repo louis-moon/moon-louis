@@ -677,7 +677,7 @@ export default function ProfessionalPage() {
                 style={{ width: FIELD_SIZE, height: FIELD_SIZE }}
                 className="
                   relative
-                  p-4            // 👈 ADD THIS (or p-5 if you want more)
+                  p-5            // 👈 ADD THIS (or p-5 if you want more)
                   origin-center
                   rounded-[2.5rem]
                   border border-border/60
