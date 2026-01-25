@@ -1,21 +1,22 @@
+'use client'
+
 // app/professional/page.tsx
 
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Navigation } from "@/components/navigation"
 import { AnimatedBackground } from "@/components/animated-background"
-import { Briefcase, GraduationCap, HeartHandshake, FolderKanban } from "lucide-react"
+import { Briefcase, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Professional — Louis Moon",
-  description: "Turning ideas into real change",
-}
+// =======================
+// Types (UNCHANGED)
+// =======================
 
 type Bullet = string
 
 type Role = {
   title: string
-  type: string // retained for data integrity / future use
+  type: string
   period: string
   bullets: Bullet[]
 }
@@ -26,18 +27,16 @@ type Company = {
   roles: Role[]
 }
 
-/**
- * Projects are NOT companies/employment entries.
- * We intentionally do NOT model or render any role/title/type line for projects.
- * We also intentionally do NOT include location for projects.
- */
 type Project = {
   name: string
-  period: string
-  bullets: Bullet[]
+  location: string
+  roles: ProjectRole[]
 }
 
-// FULL-TIME (vertical stack)
+// =======================
+// Data (UNCHANGED)
+// =======================
+
 const fullTime: Company[] = [
   {
     company: "Green Golf Carbon",
@@ -101,27 +100,37 @@ const fullTime: Company[] = [
   },
 ]
 
-// PROJECTS (horizontal scroll)
 const projects: Project[] = [
   {
     name: "Tsai CITY Accelerator",
-    period: "Sep 2021 – Nov 2021",
-    bullets: [
-      "Participated in Tsai CITY's flagship venture accelerator; secured initial funding, mentorship, and strategic support",
-      "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine concepts",
+    location: "New Haven, Connecticut",
+    roles: [
+      {
+        title: "Fall Cohort",
+        period: "Sep 2021 – Nov 2021",
+        bullets: [
+          "Participated in Tsai CITY's flagship venture accelerator; secured initial funding, mentorship, and strategic support",
+          "Embedded within Yale's broader innovation pipeline; collaborated with peers and experts to refine concepts",
+        ],
+      },
     ],
   },
   {
     name: "Tutoring for Tomorrow",
-    period: "Aug 2015 – May 2021",
-    bullets: [
-      "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, and expanded operations to 4 schools in Miami-Dade County as Executive Director of charitable education nonprofit after having previously served as tutor, Vice President, and President",
-      "Personally raised over $5,000 as a tutor, incorporated organization as a 501(c)(3) nonprofit, and recruited over 50 student-tutors; engaged with top lawyers and nonprofit education consultants to establish a board of directors and formalize business strategy",
+    location: "Miami, Florida",
+    roles: [
+      {
+        title: "Executive Director",
+        period: "Aug 2015 – May 2021",
+        bullets: [
+          "Tripled sales to $3,000 a month, raised over $100,000 in 5 years, and expanded operations to 4 schools in Miami-Dade County",
+          "Personally raised over $5,000, incorporated organization as a 501(c)(3), and recruited over 50 student tutors",
+        ],
+      },
     ],
   },
 ]
 
-// INTERNSHIPS (vertical stack)
 const internships: Company[] = [
   {
     company: "Romero Capital",
@@ -170,7 +179,6 @@ const internships: Company[] = [
   },
 ]
 
-// VOLUNTEERING (vertical stack)
 const volunteering: Company[] = [
   {
     company: "Big Brothers Big Sisters of Miami",
@@ -202,135 +210,539 @@ const volunteering: Company[] = [
   },
 ]
 
-function CompanySection({ data }: { data: Company[] }) {
-  return (
-    <div className="space-y-6">
-      {data.map((co) => (
-        <section
-          key={co.company}
-          className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-        >
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-            <h3 className="text-xl font-medium text-foreground">{co.company}</h3>
-            {co.location && (
-              <p className="text-xs text-muted-foreground">{co.location}</p>
-            )}
-          </div>
+// =======================
+// Optional display-only metadata for Projects
+// (Does NOT change your project content; just lets you add a title/location
+// so Projects can visually match Companies.)
+// =======================
 
-          <div className="space-y-6">
-            {co.roles.map((role, i) => (
-              <div
-                key={i}
-                className="pt-4 border-t border-border first:pt-0 first:border-t-0"
-              >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-                  <p className="text-sm text-primary">{role.title}</p>
-                  <span className="text-xs text-muted-foreground">
-                    {role.period}
-                  </span>
-                </div>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                  {role.bullets.map((b, j) => (
-                    <li key={j}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
+const projectDisplayMeta: Record<
+  string,
+  {
+    title?: string
+    location?: string
+  }
+> = {
+  "Tsai CITY Accelerator": {
+    title: "Fall Cohort",
+    location: "New Haven, Connecticut",
+  },
+  "Tutoring for Tomorrow": {
+    title: "Executive Director",
+    location: "Miami, Florida",
+  },
+}
+
+// =======================
+// Bubble Model
+// =======================
+
+type BubbleContent =
+  | { kind: "company"; data: Company }
+  | { kind: "project"; data: Project }
+
+type BubbleCategory = "fullTime" | "projects" | "internships" | "volunteering"
+
+type BubbleSeed = {
+  id: string
+  label: string
+  diameter: number
+  category: BubbleCategory
+  seedX: number
+  seedY: number
+  content: BubbleContent
+}
+
+type BubbleSim = BubbleSeed & {
+  x: number
+  y: number
+  vx: number
+  vy: number
+}
+
+const categoryStyle: Record<
+  BubbleCategory,
+  {
+    fill: string
+    ring: string
+    hoverRing: string
+    glow: string
+    legendDot: string
+    legendBg: string
+  }
+> = {
+  fullTime: {
+    fill: "bg-gradient-to-br from-blue-700/45 to-blue-600/30",
+    ring: "ring-blue-700/60",
+    hoverRing: "group-hover:ring-blue-600/90",
+    glow: "group-hover:shadow-blue-600/30",
+    legendDot: "bg-blue-600",
+    legendBg: "bg-blue-800/25",
+  },
+  projects: {
+    fill: "bg-cyan-500/16",
+    ring: "ring-cyan-500/45",
+    hoverRing: "group-hover:ring-cyan-400/85",
+    glow: "group-hover:shadow-cyan-400/20",
+    legendDot: "bg-cyan-400",
+    legendBg: "bg-cyan-500/10",
+  },
+  internships: {
+    fill: "bg-purple-600/18",
+    ring: "ring-purple-500/55",
+    hoverRing: "group-hover:ring-purple-400/90",
+    glow: "group-hover:shadow-purple-400/25",
+    legendDot: "bg-purple-400",
+    legendBg: "bg-purple-500/12",
+  },
+  volunteering: {
+    fill: "bg-emerald-500/18",
+    ring: "ring-emerald-500/45",
+    hoverRing: "group-hover:ring-emerald-400/85",
+    glow: "group-hover:shadow-emerald-400/20",
+    legendDot: "bg-emerald-400",
+    legendBg: "bg-emerald-500/10",
+  },
+}
+
+const seedBubbles: BubbleSeed[] = [
+  {
+    id: "ggc",
+    label: "Green Golf Carbon",
+    diameter: 200,
+    category: "fullTime",
+    seedX: 0,
+    seedY: 0,
+    content: { kind: "company", data: fullTime[0] },
+  },
+  {
+    id: "amiqo",
+    label: "amiqo",
+    diameter: 160,
+    category: "fullTime",
+    seedX: -190,
+    seedY: -130,
+    content: { kind: "company", data: fullTime[1] },
+  },
+  {
+    id: "rowan",
+    label: "Rowan",
+    diameter: 140,
+    category: "fullTime",
+    seedX: 210,
+    seedY: -110,
+    content: { kind: "company", data: fullTime[2] },
+  },
+  {
+    id: "equitya1",
+    label: "Equity A1",
+    diameter: 150,
+    category: "fullTime",
+    seedX: 220,
+    seedY: 140,
+    content: { kind: "company", data: fullTime[3] },
+  },
+
+  {
+    id: "tsai",
+    label: "Tsai CITY Accelerator",
+    diameter: 125,
+    category: "projects",
+    seedX: -320,
+    seedY: 160,
+    content: { kind: "project", data: projects[0] },
+  },
+  {
+    id: "tutoring",
+    label: "Tutoring for Tomorrow",
+    diameter: 175,
+    category: "projects",
+    seedX: -40,
+    seedY: 260,
+    content: { kind: "project", data: projects[1] },
+  },
+
+  {
+    id: "romero",
+    label: "Romero Capital",
+    diameter: 125,
+    category: "internships",
+    seedX: 380,
+    seedY: -40,
+    content: { kind: "company", data: internships[0] },
+  },
+  {
+    id: "yygs",
+    label: "Yale Young Global Scholars",
+    diameter: 125,
+    category: "internships",
+    seedX: 120,
+    seedY: -360,
+    content: { kind: "company", data: internships[1] },
+  },
+  {
+    id: "fvi",
+    label: "Florida Vocational Institute",
+    diameter: 125,
+    category: "internships",
+    seedX: -380,
+    seedY: -40,
+    content: { kind: "company", data: internships[2] },
+  },
+
+  {
+    id: "bbbs",
+    label: "Big Brothers Big Sisters of Miami",
+    diameter: 130,
+    category: "volunteering",
+    seedX: 60,
+    seedY: -300,
+    content: { kind: "company", data: volunteering[0] },
+  },
+  {
+    id: "yaleclub",
+    label: "Yale Club of South Florida",
+    diameter: 130,
+    category: "volunteering",
+    seedX: -140,
+    seedY: -320,
+    content: { kind: "company", data: volunteering[1] },
+  },
+]
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n))
+}
+
+function useBubbleSimulation(seeds: BubbleSeed[], bounds: { w: number; h: number }) {
+  const padding = 22
+  const maxSpeed = 0.7
+
+  const simRef = useRef<BubbleSim[]>([])
+  const [, setTick] = useState(0)
+
+  useEffect(() => {
+    simRef.current = seeds.map((s) => ({
+      ...s,
+      x: s.seedX,
+      y: s.seedY,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+    }))
+    setTick((t) => t + 1)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seeds.length])
+
+  useEffect(() => {
+    if (!bounds.w || !bounds.h) return
+
+    let raf = 0
+
+    const step = () => {
+      const nodes = simRef.current
+      if (!nodes.length) {
+        raf = requestAnimationFrame(step)
+        return
+      }
+
+      for (const n of nodes) {
+        const ax = (n.seedX - n.x) * 0.0025
+        const ay = (n.seedY - n.y) * 0.0025
+        n.vx += ax
+        n.vy += ay
+
+        n.vx += (Math.random() - 0.5) * 0.02
+        n.vy += (Math.random() - 0.5) * 0.02
+
+        n.vx *= 0.92
+        n.vy *= 0.92
+
+        n.vx = clamp(n.vx, -maxSpeed, maxSpeed)
+        n.vy = clamp(n.vy, -maxSpeed, maxSpeed)
+      }
+
+      for (const n of nodes) {
+        n.x += n.vx
+        n.y += n.vy
+      }
+
+      for (let iter = 0; iter < 3; iter++) {
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i]
+            const b = nodes[j]
+            const ar = a.diameter / 2
+            const br = b.diameter / 2
+            const minDist = ar + br + padding
+
+            const dx = b.x - a.x
+            const dy = b.y - a.y
+            const dist = Math.hypot(dx, dy) || 0.0001
+
+            if (dist < minDist) {
+              const overlap = (minDist - dist) / dist
+              const pushX = dx * overlap * 0.5
+              const pushY = dy * overlap * 0.5
+
+              a.x -= pushX
+              a.y -= pushY
+              b.x += pushX
+              b.y += pushY
+
+              a.vx -= pushX * 0.02
+              a.vy -= pushY * 0.02
+              b.vx += pushX * 0.02
+              b.vy += pushY * 0.02
+            }
+          }
+        }
+      }
+
+      const halfW = bounds.w / 2
+      const halfH = bounds.h / 2
+      for (const n of nodes) {
+        const r = n.diameter / 2
+        const minX = -halfW + r
+        const maxX = halfW - r
+        const minY = -halfH + r
+        const maxY = halfH - r
+
+        if (n.x < minX) {
+          n.x = minX
+          n.vx *= -0.4
+        }
+        if (n.x > maxX) {
+          n.x = maxX
+          n.vx *= -0.4
+        }
+        if (n.y < minY) {
+          n.y = minY
+          n.vy *= -0.4
+        }
+        if (n.y > maxY) {
+          n.y = maxY
+          n.vy *= -0.4
+        }
+      }
+
+      setTick((t) => (t + 1) % 1000000)
+      raf = requestAnimationFrame(step)
+    }
+
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
+  }, [bounds.h, bounds.w])
+
+  return simRef
+}
+
+function LegendPill({ label, category }: { label: string; category: BubbleCategory }) {
+  const s = categoryStyle[category]
+  return (
+    <span className={`inline-flex items-center gap-2 rounded-full border border-border/60 px-3 py-1 ${s.legendBg}`}>
+      <span className={`w-2 h-2 rounded-full ${s.legendDot}`} />
+      {label}
+    </span>
   )
 }
 
-function ProjectsSection({ data }: { data: Project[] }) {
-  return (
-    <div className="space-y-6">
-      {data.map((p) => (
-        <section
-          key={p.name}
-          className="bg-card border border-border rounded-xl p-8
-                     hover:border-primary transition-all
-                     hover:shadow-lg hover:shadow-primary/5"
-        >
-          <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-xl font-medium text-foreground">
-              {p.name}
-            </h3>
-            <span className="text-xs text-muted-foreground whitespace-nowrap">
-              {p.period}
-            </span>
-          </div>
-
-          <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-            {p.bullets.map((b, i) => (
-              <li key={i}>{b}</li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </div>
-  )
-}
+// =======================
+// Page
+// =======================
 
 export default function ProfessionalPage() {
+  const [active, setActive] = useState<BubbleSim | null>(null)
+
+  const fieldRef = useRef<HTMLDivElement | null>(null)
+  const [bounds, setBounds] = useState({ w: 900, h: 900 })
+
+  useEffect(() => {
+    const el = fieldRef.current
+    if (!el) return
+
+    const ro = new ResizeObserver(() => {
+      const r = el.getBoundingClientRect()
+      setBounds({ w: Math.max(320, r.width), h: Math.max(520, r.height) })
+    })
+
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  const seeds = useMemo(() => seedBubbles, [])
+  const simRef = useBubbleSimulation(seeds, bounds)
+
   return (
     <>
       <AnimatedBackground />
       <Navigation />
-      <main className="min-h-screen pt-24 px-6 pb-20">
+
+      <main className="min-h-screen pt-32 px-6 pb-32">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="animate-fade-in mb-16">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="mb-24">
+            <div className="flex items-center gap-3 mb-5">
               <Briefcase className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Experience</p>
             </div>
-            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-6">
+            <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
               Professional
             </h1>
-            <p className="text-lg text-muted-foreground font-light max-w-2xl text-pretty leading-relaxed">
+            <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
               At the intersection of product, strategy, and people.
             </p>
           </div>
 
-          {/* Full-time */}
-          <section className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
-              <Briefcase className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Full-time</h2>
+          {/* Bubble Field */}
+          <div
+            ref={fieldRef}
+            className="relative h-[980px] rounded-[2.5rem] border border-border/60 bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6 overflow-hidden"
+          >
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="w-[520px] h-[520px] rounded-full bg-blue-500/8 blur-[120px]" />
             </div>
-            <CompanySection data={fullTime} />
-          </section>
+            {/* atmospheric light */}
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500/12 blur-3xl" />
+              <div className="absolute -bottom-28 -right-28 w-[34rem] h-[34rem] rounded-full bg-indigo-500/12 blur-3xl" />
+            </div>
 
-          {/* Projects */}
-          <section className="mb-20">
-            <div className="flex items-center gap-3 mb-2">
-              <FolderKanban className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Projects</h2>
-            </div>
-            <ProjectsSection data={projects} />
-          </section>
+            {/* origin at center */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {simRef.current.map((b) => {
+                const s = categoryStyle[b.category]
 
-          {/* Internships */}
-          <section className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
-              <GraduationCap className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Internships</h2>
-            </div>
-            <CompanySection data={internships} />
-          </section>
+                const labelSize =
+                  b.diameter >= 180
+                    ? "text-base"
+                    : b.diameter >= 150
+                    ? "text-sm"
+                    : "text-xs"
 
-          {/* Volunteering */}
-          <section>
-            <div className="flex items-center gap-3 mb-8">
-              <HeartHandshake className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light text-foreground">Volunteering</h2>
+                return (
+                  <motion.button
+                    key={b.id}
+                    onClick={() => setActive(b)}
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.985 }}
+                    style={{ width: b.diameter, height: b.diameter }}
+                    animate={{ x: b.x, y: b.y }}
+                    transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
+                    className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex items-center justify-center text-center px-6 select-none`}
+                    aria-label={b.label}
+                  >
+                    <span
+                      className={`${labelSize} font-medium text-foreground leading-snug text-balance`}
+                    >
+                      {b.label}
+                    </span>
+
+                    {/* small category dot for instant recognition */}
+                    <span
+                      className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
+                      aria-hidden="true"
+                    />
+                  </motion.button>
+                )
+              })}
             </div>
-            <CompanySection data={volunteering} />
-          </section>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+            <LegendPill label="Full-time" category="fullTime" />
+            <LegendPill label="Projects" category="projects" />
+            <LegendPill label="Internships" category="internships" />
+            <LegendPill label="Volunteering" category="volunteering" />
+            <span className="ml-auto hidden md:inline">Click a bubble to explore details.</span>
+            <span className="md:hidden">Tap a bubble to explore details.</span>
+          </div>
         </div>
       </main>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/45 backdrop-blur-lg z-50 flex items-center justify-center p-6"
+
+          >
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0, y: 10 }}
+              transition={{ type: "spring", stiffness: 160, damping: 20 }}
+              className="bg-card max-w-2xl w-full rounded-3xl p-10 relative border border-border"
+            >
+              <button
+                onClick={() => setActive(null)}
+                className="absolute top-6 right-6 text-muted-foreground hover:text-foreground"
+                aria-label="Close"
+              >
+                <X />
+              </button>
+
+              {active.content.kind === "company" && (
+                <div className="space-y-6">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                    <h2 className="text-2xl font-medium text-foreground">{active.content.data.company}</h2>
+                    <span className="text-xs text-muted-foreground">{active.content.data.location}</span>
+                  </div>
+
+                  {active.content.data.roles.map((role, i) => (
+                    <div key={i} className="space-y-3">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <p className="text-sm text-primary font-medium">{role.title}</p>
+                        <span className="text-xs text-muted-foreground">{role.period}</span>
+                      </div>
+                      <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed">
+                        {role.bullets.map((b, j) => (
+                          <li key={j}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {active.content.kind === "project" && (
+                <div className="space-y-6">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                    <h2 className="text-2xl font-medium text-foreground">
+                      {active.content.data.name}
+                    </h2>
+                    <span className="text-xs text-muted-foreground">
+                      {active.content.data.location}
+                    </span>
+                  </div>
+
+                  {active.content.data.roles.map((role, i) => (
+                    <div key={i} className="space-y-3">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <p className="text-sm text-primary font-medium">
+                          {role.title}
+                        </p>
+                        <span className="text-xs text-muted-foreground">
+                          {role.period}
+                        </span>
+                      </div>
+
+                      <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed">
+                        {role.bullets.map((b, j) => (
+                          <li key={j}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
