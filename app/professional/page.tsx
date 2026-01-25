@@ -655,7 +655,7 @@ export default function ProfessionalPage() {
               Professional
             </h1>
             <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
-              At the intersection of product, strategy, and people.
+              At the intersection of product, systems, and people.
             </p>
           </div>
 
