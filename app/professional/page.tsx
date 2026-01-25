@@ -564,7 +564,7 @@ function useBubbleSimulation(
 
     raf = requestAnimationFrame(step)
     return () => cancelAnimationFrame(raf)
-  }, [bounds.h, bounds.w])
+  }, [bounds.h, bounds.w, isMobile])
 
   return simRef
 }
@@ -717,16 +717,20 @@ export default function ProfessionalPage() {
                         className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex items-center justify-center text-center px-6 select-none`}
                         aria-label={b.label}
                       >
+                        {/* ✅ LABEL (back) */}
                         <span
-                          className="absolute left-1/2 -translate-x-1/2"
+                          style={computeLabelStyle(b.label, b.diameter, isMobile)}
+                          className="font-medium text-foreground text-center text-balance"
+                        >
+                          {b.label}
+                        </span>
+
+                        {/* ✅ DOT (now positioned safely) */}
+                        <span
+                          className={`absolute left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
                           style={{
-                            bottom: isMobile ? `${b.diameter * 0.12}px` : '1rem',
+                            bottom: isMobile ? `${Math.max(12, b.diameter * 0.14)}px` : "1rem",
                           }}
-                        />
-
-
-                        <span
-                          className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
                           aria-hidden="true"
                         />
                       </motion.button>
