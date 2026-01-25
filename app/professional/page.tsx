@@ -594,7 +594,11 @@ export default function ProfessionalPage() {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
 
   const mobileScale = isMobile
-    ? Math.min((window.innerWidth - 32) / BASE_FIELD_SIZE, 1)
+    ? Math.min(
+        (window.innerWidth - 32) / BASE_FIELD_SIZE,
+        (window.innerHeight - 220) / BASE_FIELD_SIZE,
+        1
+      )
     : 1
 
   useEffect(() => {
