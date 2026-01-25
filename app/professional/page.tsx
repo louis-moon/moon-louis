@@ -311,6 +311,8 @@ const categoryStyle: Record<
   },
 }
 
+const BASE_FIELD_SIZE = 980
+
 const seedBubbles: BubbleSeed[] = [
   {
     id: "ggc",
@@ -529,10 +531,11 @@ function useBubbleSimulation(
       const halfH = bounds.h / 2
       for (const n of nodes) {
         const r = n.diameter / 2
-        const minX = -halfW + r
-        const maxX = halfW - r
-        const minY = -halfH + r
-        const maxY = halfH - r
+        const minX = -halfW + r + edgePadding
+        const maxX = halfW - r - edgePadding
+        const minY = -halfH + r + edgePadding
+        const maxY = halfH - r - edgePadding
+
 
         if (n.x < minX) {
           n.x = minX
@@ -587,6 +590,7 @@ export default function ProfessionalPage() {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
 
   const FIELD_SIZE = isMobile ? 820 : 980
+  const FIELD_SCALE = FIELD_SIZE / BASE_FIELD_SIZE
 
   useEffect(() => {
     const el = fieldRef.current
@@ -620,7 +624,15 @@ export default function ProfessionalPage() {
     return () => clearTimeout(id)
   }, [])
 
-  const seeds = useMemo(() => seedBubbles, [])
+  const seeds = useMemo(() => {
+    return seedBubbles.map((b) => ({
+      ...b,
+      seedX: b.seedX * FIELD_SCALE,
+      seedY: b.seedY * FIELD_SCALE,
+      diameter: b.diameter * FIELD_SCALE,
+    }))
+  }, [FIELD_SCALE])
+
   const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
   return (
