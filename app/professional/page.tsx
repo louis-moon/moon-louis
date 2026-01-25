@@ -447,9 +447,9 @@ function useBubbleSimulation(
   isMobile: boolean
 ) {
   const settleStrength = useRef(0)
-  const padding = isMobile ? 56 : 26
+  const padding = isMobile ? 88 : 26
   const edgePaddingX = isMobile ? 32 : 0
-  const edgePaddingY = isMobile ? 32 : 0
+  const edgePaddingY = isMobile ? 56 : 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -505,7 +505,8 @@ function useBubbleSimulation(
         n.y += n.vy
       }
 
-      for (let iter = 0; iter < 3; iter++) {
+      const collisionIters = isMobile ? 6 : 3
+      for (let iter = 0; iter < collisionIters; iter++) {
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const a = nodes[i]
@@ -707,7 +708,7 @@ export default function ProfessionalPage() {
                   width: isMobile ? "100%" : BASE_FIELD_SIZE,
                   maxWidth: BASE_FIELD_SIZE,
                   height: isMobile
-                    ? BASE_FIELD_SIZE
+                    ? BASE_FIELD_SIZE * 1.2
                     : BASE_FIELD_SIZE,
                 }}
                 className="
