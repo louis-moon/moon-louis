@@ -499,14 +499,14 @@ function useBubbleSimulation(
         n.y += n.vy
       }
 
-      for (let iter = 0; iter < 3; iter++) {
+      for (let iter = 0; iter < 6; iter++) {
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const a = nodes[i]
             const b = nodes[j]
             const ar = a.diameter / 2
             const br = b.diameter / 2
-            const minDist = ar + br + padding
+            const minDist = ar + br + padding + 2
 
             const dx = b.x - a.x
             const dy = b.y - a.y
