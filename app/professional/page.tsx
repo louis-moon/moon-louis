@@ -708,8 +708,8 @@ export default function ProfessionalPage() {
                   width: isMobile ? "100%" : BASE_FIELD_SIZE,
                   maxWidth: BASE_FIELD_SIZE,
                   height: isMobile
-                    ? BASE_FIELD_SIZE * 1.2
-                    : BASE_FIELD_SIZE * 1.2,
+                    ? BASE_FIELD_SIZE * 1.25
+                    : BASE_FIELD_SIZE * 1.25,
                 }}
                 className="
                   relative
