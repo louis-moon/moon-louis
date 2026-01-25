@@ -729,10 +729,12 @@ export default function ProfessionalPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setActive(null)}
             className="fixed inset-0 bg-black/45 backdrop-blur-lg z-50 flex items-center justify-center p-6"
 
           >
             <motion.div
+              onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.96, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.96, opacity: 0, y: 10 }}
