@@ -603,7 +603,7 @@ export default function ProfessionalPage() {
     requestAnimationFrame(() => {
       vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2
       vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2
-    })
+    }, 50)
   }, [])
 
 
@@ -615,10 +615,10 @@ export default function ProfessionalPage() {
       <AnimatedBackground />
       <Navigation />
 
-      <main className="min-h-screen pt-32 px-6 pb-32">
+      <main className="min-h-screen pt-20 md:pt-32 px-6 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-24">
+          <div className="mb-12 md:mb-24">
             <div className="flex items-center gap-3 mb-5">
               <Briefcase className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Experience</p>
@@ -638,12 +638,14 @@ export default function ProfessionalPage() {
               ref={viewportRef}
               className="
                 relative
-                h-[720px] md:h-[980px]
+                h-[82vh] md:h-[980px]
                 overflow-auto md:overflow-visible
                 overscroll-contain
                 flex justify-center
+                -mx-6 md:mx-0
               "
             >
+
               {/* This is the fixed-size universe (always 980x980) */}
               <div
                 ref={fieldRef}
@@ -652,12 +654,12 @@ export default function ProfessionalPage() {
                   h-[980px] w-[980px]
                   origin-center
                   md:scale-100
-                  scale-[0.72]
+                  scale-[0.9] sm:scale-[0.82] md:scale-100
                   rounded-[2.5rem]
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
-                  my-8 md:my-0
+                  my-2 md:my-0
                 "
               >
                 {/* center glow */}
