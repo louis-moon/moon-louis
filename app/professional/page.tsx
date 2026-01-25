@@ -444,7 +444,7 @@ function useBubbleSimulation(
   isMobile: boolean
 ) {
   const padding = isMobile ? 30 : 22
-  const edgePadding = isMobile ? 20 : 0
+  const edgePadding = isMobile ? 24 : 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -677,7 +677,7 @@ export default function ProfessionalPage() {
                 style={{ width: FIELD_SIZE, height: FIELD_SIZE }}
                 className="
                   relative
-                  p-5            // 👈 ADD THIS (or p-5 if you want more)
+                  p-5
                   origin-center
                   rounded-[2.5rem]
                   border border-border/60
