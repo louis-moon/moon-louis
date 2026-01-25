@@ -446,7 +446,7 @@ function useBubbleSimulation(
   bounds: { w: number; h: number },
   isMobile: boolean
 ) {
-  const padding = isMobile ? 38 : 26
+  const padding = isMobile ? 56 : 26
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 32 : 0
   const maxSpeed = 0.7
@@ -590,39 +590,29 @@ export default function ProfessionalPage() {
   const fieldRef = useRef<HTMLDivElement | null>(null)
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const [bounds, setBounds] = useState({ w: 900, h: 900 })
+  const [isMobile, setIsMobile] = useState(false)
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768
-
-  const [mobileScale, setMobileScale] = useState(1)
-
+  // -----------------------
+  // Mobile detection (safe)
+  // -----------------------
   useEffect(() => {
-    if (!isMobile) return
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
 
-    const compute = () => {
-      const vw = window.innerWidth
-
-      const scale = Math.min(
-        (vw - 32) / BASE_FIELD_SIZE,
-        1
-      )
-
-      setMobileScale(scale)
-    }
-
-    compute()
-    setTimeout(compute, 250)
-  }, [isMobile])
-
+  // -----------------------
+  // Resize observer for physics bounds
+  // -----------------------
   useEffect(() => {
     const el = fieldRef.current
     if (!el) return
 
     const ro = new ResizeObserver(() => {
-      const w = el.offsetWidth
-      const h = el.offsetHeight
       setBounds({
-        w: Math.max(320, w),
-        h: Math.max(520, h),
+        w: Math.max(320, el.offsetWidth),
+        h: Math.max(520, el.offsetHeight),
       })
     })
 
@@ -630,13 +620,16 @@ export default function ProfessionalPage() {
     return () => ro.disconnect()
   }, [])
 
+  // -----------------------
+  // Mobile seed compression (visual polish)
+  // -----------------------
   const seeds = useMemo(() => {
     if (!isMobile) return seedBubbles
 
     return seedBubbles.map(b => ({
       ...b,
-      seedY: b.seedY * 0.82, // tighten vertical spread
-      seedX: b.seedX * 0.95, // optional, very light
+      seedY: b.seedY * 0.9,
+      seedX: b.seedX,
     }))
   }, [isMobile])
 
@@ -649,67 +642,67 @@ export default function ProfessionalPage() {
 
       <main className="min-h-screen pt-20 md:pt-32 px-6 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto">
+
           {/* Header */}
           <div className="mb-12 md:mb-24">
             <div className="flex items-center gap-3 mb-5">
               <Briefcase className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Experience</p>
             </div>
+
             <h1 className="text-5xl md:text-6xl font-light text-foreground mb-8 tracking-tight">
               Professional
             </h1>
+
             <p className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed">
               At the intersection of product, systems, and people.
             </p>
           </div>
 
-          {/* Bubble Field */}
+          {/* Bubble Experience (single scroll context on mobile) */}
           <div className="flex justify-center">
-            {/* This is the mobile pan/zoom viewport */}
             <div
               ref={viewportRef}
               className="
                 relative
-                h-[calc(100vh-220px)]
-                overflow-y-auto
-                overflow-x-hidden
-                overscroll-contain
-                flex justify-center
+                min-h-fit
+                overflow-visible
+                flex flex-col items-center
                 -mx-6 md:mx-0
               "
             >
-
-              {/* This is the fixed-size universe (always 980x980) */}
+              {/* Bubble Field */}
               <div
                 ref={fieldRef}
                 style={{
                   width: isMobile ? "100%" : BASE_FIELD_SIZE,
                   maxWidth: BASE_FIELD_SIZE,
-                  height: isMobile ? BASE_FIELD_SIZE * 1.35 : BASE_FIELD_SIZE,
+                  height: isMobile
+                    ? BASE_FIELD_SIZE
+                    : BASE_FIELD_SIZE,
                 }}
                 className="
                   relative
                   mx-auto
                   p-6 md:p-8
-                  origin-center
                   rounded-[2.5rem]
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
                 "
               >
-                {/* center glow */}
+                {/* Center glow */}
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                   <div className="w-[520px] h-[520px] rounded-full bg-blue-500/8 blur-[120px]" />
                 </div>
 
-                {/* atmospheric light */}
+                {/* Atmospheric light */}
                 <div className="pointer-events-none absolute inset-0">
                   <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500/12 blur-3xl" />
                   <div className="absolute -bottom-28 -right-28 w-[34rem] h-[34rem] rounded-full bg-indigo-500/12 blur-3xl" />
                 </div>
 
-                {/* origin at center */}
+                {/* Origin at center */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   {simRef.current.map((b) => {
                     const s = categoryStyle[b.category]
@@ -722,40 +715,51 @@ export default function ProfessionalPage() {
                         whileTap={{ scale: 0.985 }}
                         style={{ width: b.diameter, height: b.diameter }}
                         animate={{ x: b.x, y: b.y }}
-                        transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 120,
+                          damping: 18,
+                          mass: 0.6,
+                        }}
                         className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex flex-col items-center justify-center text-center px-6 select-none`}
                         aria-label={b.label}
                       >
-                        {/* LABEL */}
                         <span
-                          style={computeLabelStyle(b.label, b.diameter, isMobile)}
-                          className="font-medium text-foreground text-center leading-tight mb-3"
+                          style={computeLabelStyle(
+                            b.label,
+                            b.diameter,
+                            isMobile
+                          )}
+                          className="font-medium text-foreground leading-tight mb-3"
                         >
                           {b.label}
                         </span>
 
-                        {/* DOT */}
                         <span
                           className={`w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
-                          aria-hidden="true"
+                          aria-hidden
                         />
                       </motion.button>
                     )
-
                   })}
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Legend */}
-          <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-            <LegendPill label="Full-time" category="fullTime" />
-            <LegendPill label="Projects" category="projects" />
-            <LegendPill label="Internships" category="internships" />
-            <LegendPill label="Volunteering" category="volunteering" />
-            <span className="ml-auto hidden md:inline">Click a bubble to explore details.</span>
-            <span className="md:hidden">Tap a bubble to explore details.</span>
+              {/* Legend (part of same scroll on mobile) */}
+              <div className="relative mt-6 mb-4 px-6 text-xs text-muted-foreground">
+                <div className="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-background to-transparent" />
+                <div className="relative flex flex-wrap items-center gap-3 justify-center">
+                  <LegendPill label="Full-time" category="fullTime" />
+                  <LegendPill label="Projects" category="projects" />
+                  <LegendPill label="Internships" category="internships" />
+                  <LegendPill label="Volunteering" category="volunteering" />
+                </div>
+
+                <p className="mt-3 text-center md:hidden">
+                  Tap a bubble to explore details.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </main>
