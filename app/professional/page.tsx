@@ -446,6 +446,7 @@ function useBubbleSimulation(
   bounds: { w: number; h: number },
   isMobile: boolean
 ) {
+  const settleStrength = useRef(0)
   const padding = isMobile ? 56 : 26
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 32 : 0
@@ -479,8 +480,13 @@ function useBubbleSimulation(
       }
 
       for (const n of nodes) {
-        const ax = (n.seedX - n.x) * 0.0025
-        const ay = (n.seedY - n.y) * 0.0025
+        settleStrength.current = Math.min(
+          1,
+          settleStrength.current + (isMobile ? 0.02 : 0.003)
+        )
+
+        const ax = (n.seedX - n.x) * 0.0025 * settleStrength.current
+        const ay = (n.seedY - n.y) * 0.0025 * settleStrength.current
         n.vx += ax
         n.vy += ay
 
@@ -591,6 +597,7 @@ export default function ProfessionalPage() {
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const [bounds, setBounds] = useState({ w: 900, h: 900 })
   const [isMobile, setIsMobile] = useState(false)
+  const [hasSettled, setHasSettled] = useState(false)
 
   // -----------------------
   // Mobile detection (safe)
@@ -601,6 +608,16 @@ export default function ProfessionalPage() {
     window.addEventListener("resize", check)
     return () => window.removeEventListener("resize", check)
   }, [])
+
+  useEffect(() => {
+    if (isMobile) return
+
+    const t = setTimeout(() => {
+      setHasSettled(true)
+    }, 4500) // 👈 this is your 5s settle
+
+    return () => clearTimeout(t)
+  }, [isMobile])
 
   // -----------------------
   // Resize observer for physics bounds
@@ -624,14 +641,26 @@ export default function ProfessionalPage() {
   // Mobile seed compression (visual polish)
   // -----------------------
   const seeds = useMemo(() => {
-    if (!isMobile) return seedBubbles
+    // desktop: start messy, then settle
+    if (!isMobile && !hasSettled) {
+      return seedBubbles.map(b => ({
+        ...b,
+        seedX: b.seedX + (Math.random() - 0.5) * 120,
+        seedY: b.seedY + (Math.random() - 0.5) * 120,
+      }))
+    }
 
-    return seedBubbles.map(b => ({
-      ...b,
-      seedY: b.seedY * 0.9,
-      seedX: b.seedX,
-    }))
-  }, [isMobile])
+    // mobile or post-settle
+    if (isMobile) {
+      return seedBubbles.map(b => ({
+        ...b,
+        seedY: b.seedY * 0.9,
+        seedX: b.seedX,
+      }))
+    }
+
+    return seedBubbles
+  }, [isMobile, hasSettled])
 
   const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
@@ -747,7 +776,8 @@ export default function ProfessionalPage() {
 
               {/* Legend (part of same scroll on mobile) */}
               <div className="relative mt-6 mb-4 px-6 text-xs text-muted-foreground">
-                <div className="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-background to-transparent" />
+                {/* fade only on mobile */}
+                <div className="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-background to-transparent md:hidden" />
                 <div className="relative flex flex-wrap items-center gap-3 justify-center">
                   <LegendPill label="Full-time" category="fullTime" />
                   <LegendPill label="Projects" category="projects" />
@@ -755,8 +785,13 @@ export default function ProfessionalPage() {
                   <LegendPill label="Volunteering" category="volunteering" />
                 </div>
 
-                <p className="mt-3 text-center md:hidden">
-                  Tap a bubble to explore details.
+                <p className="mt-3 text-center text-xs text-muted-foreground">
+                  <span className="hidden md:inline">
+                    Click a bubble to explore details.
+                  </span>
+                  <span className="md:hidden">
+                    Tap a bubble to explore details.
+                  </span>
                 </p>
               </div>
             </div>
