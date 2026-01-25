@@ -27,10 +27,16 @@ type Company = {
   roles: Role[]
 }
 
-type Project = {
+type ProjectRole = {
   title: string
   period: string
-  bulets: Bullet[]
+  bullets: Bullet[]
+}
+
+type Project = {
+  name: string
+  location: string
+  roles: ProjectRole[]
 }
 
 // =======================
