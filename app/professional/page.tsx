@@ -446,69 +446,92 @@ function useBubbleSimulation(
   bounds: { w: number; h: number },
   isMobile: boolean
 ) {
-  const settleStrength = useRef(0)
+  // --- Tuning knobs (adjust to taste) ---
+  const SETTLE_DURATION_MS = isMobile ? 9000 : 7500 // total “cinematic” settle time
+  const RETURN_TO_SEED_MS = isMobile ? 8000 : 6500  // how long attraction ramps up
   const padding = isMobile ? 88 : 26
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 56 : 0
-  const maxSpeed = 0.7
-  const startTimeRef = useRef<number | null>(null)
+  const maxSpeed = isMobile ? 0.55 : 0.65
 
+  // Helpers
+  const clamp01 = (n: number) => Math.max(0, Math.min(1, n))
+  const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
+  const easeInOutCubic = (t: number) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+  const startTimeRef = useRef<number | null>(null)
   const simRef = useRef<BubbleSim[]>([])
   const [, setTick] = useState(0)
 
+  // Initialize nodes
   useEffect(() => {
     simRef.current = seeds.map((s) => ({
       ...s,
       x: s.seedX,
       y: s.seedY,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
+
+      // Slightly calmer initial velocity helps the “float” feel
+      vx: (Math.random() - 0.5) * (isMobile ? 0.22 : 0.28),
+      vy: (Math.random() - 0.5) * (isMobile ? 0.22 : 0.28),
     }))
     setTick((t) => t + 1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seeds.length])
 
   useEffect(() => {
-    startTimeRef.current = performance.now()
-    settleStrength.current = 0
     if (!bounds.w || !bounds.h) return
 
+    startTimeRef.current = performance.now()
     let raf = 0
 
     const step = () => {
       const now = performance.now()
-      const elapsed =
-        startTimeRef.current ? now - startTimeRef.current : 0
+      const elapsed = startTimeRef.current ? now - startTimeRef.current : 0
 
-      // 0 → 1 over ~6 seconds
-      const settleProgress = Math.min(elapsed / 6000, 1)
+      // 0 → 1 over SETTLE_DURATION_MS (overall “calm down”)
+      const settleT = clamp01(elapsed / SETTLE_DURATION_MS)
+      const settleStrength = easeOutCubic(settleT)
+
+      // 0 → 1 over RETURN_TO_SEED_MS (how fast attraction ramps)
+      const returnT = clamp01(elapsed / RETURN_TO_SEED_MS)
+      const returnStrength = easeInOutCubic(returnT)
+
       const nodes = simRef.current
       if (!nodes.length) {
         raf = requestAnimationFrame(step)
         return
       }
 
+      // ---- Integrate forces ----
       for (const n of nodes) {
-        settleStrength.current = Math.min(
-          1,
-          settleStrength.current + (isMobile ? 0.02 : 0.003)
-        )
+        // Attraction slowly ramps up as returnStrength grows
+        const attractionBase = 0.0016
+        const attractionRamp = 0.0022 * returnStrength
+        const attraction = attractionBase + attractionRamp
 
-        const attraction = 0.0025 + settleProgress * 0.0015
-
-        const ax = (n.seedX - n.x) * attraction * settleStrength.current
-        const ay = (n.seedY - n.y) * attraction * settleStrength.current
+        const ax = (n.seedX - n.x) * attraction * settleStrength
+        const ay = (n.seedY - n.y) * attraction * settleStrength
         n.vx += ax
         n.vy += ay
 
-        n.vx += (Math.random() - 0.5) * 0.02
-        n.vy += (Math.random() - 0.5) * 0.02
+        // “Air” noise fades out over time (key to dreamy settle)
+        const noise = (isMobile ? 0.018 : 0.014) * (1 - settleStrength)
+        n.vx += (Math.random() - 0.5) * noise
+        n.vy += (Math.random() - 0.5) * noise
 
-        n.vx *= 0.92
-        n.vy *= 0.92
+        // Damping increases over time (more glide early, more lock late)
+        const dampingEarly = 0.935
+        const dampingLate = 0.86
+        const damping = dampingEarly + (dampingLate - dampingEarly) * settleStrength
 
-        n.vx = clamp(n.vx, -maxSpeed, maxSpeed)
-        n.vy = clamp(n.vy, -maxSpeed, maxSpeed)
+        n.vx *= damping
+        n.vy *= damping
+
+        // Speed limit slightly tightens as we settle
+        const speedCap = maxSpeed * (1 - 0.35 * settleStrength)
+        n.vx = clamp(n.vx, -speedCap, speedCap)
+        n.vy = clamp(n.vy, -speedCap, speedCap)
       }
 
       for (const n of nodes) {
@@ -516,9 +539,12 @@ function useBubbleSimulation(
         n.y += n.vy
       }
 
+      // ---- Collisions ----
+      // More iterations early, fewer late (prevents jitter at the end)
       const collisionIters = Math.round(
-        2 + settleProgress * (isMobile ? 8 : 6)
+        (isMobile ? 10 : 8) - (isMobile ? 5 : 4) * settleStrength
       )
+
       for (let iter = 0; iter < collisionIters; iter++) {
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
@@ -526,9 +552,9 @@ function useBubbleSimulation(
             const b = nodes[j]
             const ar = a.diameter / 2
             const br = b.diameter / 2
-            const dynamicPadding =
-              padding * (0.6 + 0.4 * settleProgress)
 
+            // Padding gently tightens as they settle in
+            const dynamicPadding = padding * (0.75 + 0.25 * (1 - settleStrength))
             const minDist = ar + br + dynamicPadding
 
             const dx = b.x - a.x
@@ -545,24 +571,27 @@ function useBubbleSimulation(
               b.x += pushX
               b.y += pushY
 
-              a.vx -= pushX * 0.02
-              a.vy -= pushY * 0.02
-              b.vx += pushX * 0.02
-              b.vy += pushY * 0.02
+              // Collision impulse fades as we approach final rest (prevents late “popping”)
+              const impulse = 0.02 * (1 - 0.65 * settleStrength)
+              a.vx -= pushX * impulse
+              a.vy -= pushY * impulse
+              b.vx += pushX * impulse
+              b.vy += pushY * impulse
             }
           }
         }
       }
 
+      // ---- Bounds ----
       const halfW = bounds.w / 2
       const halfH = bounds.h / 2
+
       for (const n of nodes) {
         const r = n.diameter / 2
         const minX = -halfW + r + edgePaddingX
         const maxX = halfW - r - edgePaddingX
         const minY = -halfH + r + edgePaddingY
         const maxY = halfH - r - edgePaddingY
-
 
         if (n.x < minX) {
           n.x = minX
