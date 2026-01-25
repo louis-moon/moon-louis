@@ -416,6 +416,22 @@ const seedBubbles: BubbleSeed[] = [
   },
 ]
 
+function computeLabelStyle(label: string, diameter: number) {
+  const base = diameter * 0.12 // proportional baseline
+  const max = 18
+  const min = 11
+
+  // penalize long strings slightly
+  const lengthPenalty = Math.max(0, label.length - 18) * 0.25
+
+  const size = clamp(base - lengthPenalty, min, max)
+
+  return {
+    fontSize: `${size}px`,
+    lineHeight: 1.25,
+  }
+}
+
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n))
 }
@@ -618,13 +634,6 @@ export default function ProfessionalPage() {
               {simRef.current.map((b) => {
                 const s = categoryStyle[b.category]
 
-                const labelSize =
-                  b.diameter >= 180
-                    ? "text-base"
-                    : b.diameter >= 150
-                    ? "text-sm"
-                    : "text-xs"
-
                 return (
                   <motion.button
                     key={b.id}
@@ -638,10 +647,12 @@ export default function ProfessionalPage() {
                     aria-label={b.label}
                   >
                     <span
-                      className={`${labelSize} font-medium text-foreground leading-snug text-balance`}
+                      style={computeLabelStyle(b.label, b.diameter)}
+                      className="font-medium text-foreground text-center text-balance"
                     >
                       {b.label}
                     </span>
+
 
                     {/* small category dot for instant recognition */}
                     <span
