@@ -447,7 +447,8 @@ function useBubbleSimulation(
   isMobile: boolean
 ) {
   const padding = isMobile ? 30 : 22
-  const edgePadding = isMobile ? 32 : 0
+  const edgePaddingX = isMobile ? 32 : 0
+  const edgePaddingY = isMobile ? 48 : 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -534,10 +535,10 @@ function useBubbleSimulation(
       const halfH = bounds.h / 2
       for (const n of nodes) {
         const r = n.diameter / 2
-        const minX = -halfW + r + edgePadding
-        const maxX = halfW - r - edgePadding
-        const minY = -halfH + r + edgePadding
-        const maxY = halfH - r - edgePadding
+        const minX = -halfW + r + edgePaddingX
+        const maxX = halfW - r - edgePaddingX
+        const minY = -halfH + r + edgePaddingY
+        const maxY = halfH - r - edgePaddingY
 
 
         if (n.x < minX) {
@@ -666,7 +667,7 @@ export default function ProfessionalPage() {
               ref={viewportRef}
               className="
                 relative
-                h-[82vh] md:h-[980px]
+                h-[86vh] md:h-[980px]
                 overflow-auto md:overflow-visible
                 overscroll-contain
                 flex justify-center
