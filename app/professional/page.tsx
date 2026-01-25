@@ -30,7 +30,7 @@ type Company = {
 type Project = {
   title: string
   period: string
-  bulets: Bullet[[]
+  bulets: Bullet[]
 }
 
 // =======================
