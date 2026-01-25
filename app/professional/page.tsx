@@ -446,7 +446,7 @@ function useBubbleSimulation(
   bounds: { w: number; h: number },
   isMobile: boolean
 ) {
-  const padding = isMobile ? 30 : 22
+  const padding = isMobile ? 38 : 26
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 32 : 0
   const maxSpeed = 0.7
