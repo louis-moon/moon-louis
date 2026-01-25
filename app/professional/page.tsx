@@ -453,6 +453,7 @@ function useBubbleSimulation(
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 56 : 0
   const maxSpeed = isMobile ? 0.55 : 0.65
+  const FLOAT_PHASE_MS = isMobile ? 2200 : 1800
 
   // Helpers
   const clamp01 = (n: number) => Math.max(0, Math.min(1, n))
@@ -480,144 +481,150 @@ function useBubbleSimulation(
   }, [seeds.length])
 
   useEffect(() => {
-    if (!bounds.w || !bounds.h) return
+  if (!bounds.w || !bounds.h) return
 
-    startTimeRef.current = performance.now()
-    let raf = 0
+  let raf = 0
+  let started = false
 
-    const step = () => {
-      const now = performance.now()
-      const elapsed = startTimeRef.current ? now - startTimeRef.current : 0
+  const step = () => {
+    if (!started) {
+      started = true
+      startTimeRef.current = performance.now()
+    }
 
-      // 0 → 1 over SETTLE_DURATION_MS (overall “calm down”)
-      const settleT = clamp01(elapsed / SETTLE_DURATION_MS)
-      const settleStrength = easeOutCubic(settleT)
+    const now = performance.now()
+    const elapsed = startTimeRef.current ? now - startTimeRef.current : 0
 
-      // 0 → 1 over RETURN_TO_SEED_MS (how fast attraction ramps)
-      const returnT = clamp01(elapsed / RETURN_TO_SEED_MS)
-      const returnStrength = easeInOutCubic(returnT)
+    const settleT = clamp01(elapsed / SETTLE_DURATION_MS)
+    const settleStrength = easeOutCubic(settleT)
 
-      const nodes = simRef.current
-      if (!nodes.length) {
-        raf = requestAnimationFrame(step)
-        return
+    const nodes = simRef.current
+    if (!nodes.length) {
+      raf = requestAnimationFrame(step)
+      return
+    }
+
+    // ---- Integrate forces ----
+    for (const n of nodes) {
+
+      // 🔥 CHANGE 3 LIVES RIGHT HERE 🔥
+      let attraction = 0
+
+      if (elapsed > FLOAT_PHASE_MS) {
+        const t = clamp01(
+          (elapsed - FLOAT_PHASE_MS) / RETURN_TO_SEED_MS
+        )
+        const eased = easeInOutCubic(t)
+        attraction = (0.0014 + 0.0022 * eased) * settleStrength
       }
 
-      // ---- Integrate forces ----
-      for (const n of nodes) {
-        // Attraction slowly ramps up as returnStrength grows
-        const attractionBase = 0.0016
-        const attractionRamp = 0.0022 * returnStrength
-        const attraction = attractionBase + attractionRamp
+      const ax = (n.seedX - n.x) * attraction
+      const ay = (n.seedY - n.y) * attraction
+      n.vx += ax
+      n.vy += ay
 
-        const ax = (n.seedX - n.x) * attraction * settleStrength
-        const ay = (n.seedY - n.y) * attraction * settleStrength
-        n.vx += ax
-        n.vy += ay
+      // Air noise (fade out over time)
+      const noise = (isMobile ? 0.018 : 0.014) * (1 - settleStrength)
+      n.vx += (Math.random() - 0.5) * noise
+      n.vy += (Math.random() - 0.5) * noise
 
-        // “Air” noise fades out over time (key to dreamy settle)
-        const noise = (isMobile ? 0.018 : 0.014) * (1 - settleStrength)
-        n.vx += (Math.random() - 0.5) * noise
-        n.vy += (Math.random() - 0.5) * noise
+      // Damping ramps up
+      const dampingEarly = 0.935
+      const dampingLate = 0.86
+      const damping =
+        dampingEarly + (dampingLate - dampingEarly) * settleStrength
 
-        // Damping increases over time (more glide early, more lock late)
-        const dampingEarly = 0.935
-        const dampingLate = 0.86
-        const damping = dampingEarly + (dampingLate - dampingEarly) * settleStrength
+      n.vx *= damping
+      n.vy *= damping
 
-        n.vx *= damping
-        n.vy *= damping
+      const speedCap = maxSpeed * (1 - 0.35 * settleStrength)
+      n.vx = clamp(n.vx, -speedCap, speedCap)
+      n.vy = clamp(n.vy, -speedCap, speedCap)
+    }
 
-        // Speed limit slightly tightens as we settle
-        const speedCap = maxSpeed * (1 - 0.35 * settleStrength)
-        n.vx = clamp(n.vx, -speedCap, speedCap)
-        n.vy = clamp(n.vy, -speedCap, speedCap)
-      }
+    for (const n of nodes) {
+      n.x += n.vx
+      n.y += n.vy
+    }
 
-      for (const n of nodes) {
-        n.x += n.vx
-        n.y += n.vy
-      }
+    // ---- Collisions ----
+    const collisionIters = Math.round(
+      (isMobile ? 10 : 8) - (isMobile ? 5 : 4) * settleStrength
+    )
 
-      // ---- Collisions ----
-      // More iterations early, fewer late (prevents jitter at the end)
-      const collisionIters = Math.round(
-        (isMobile ? 10 : 8) - (isMobile ? 5 : 4) * settleStrength
-      )
+    for (let iter = 0; iter < collisionIters; iter++) {
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i]
+          const b = nodes[j]
+          const ar = a.diameter / 2
+          const br = b.diameter / 2
 
-      for (let iter = 0; iter < collisionIters; iter++) {
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const a = nodes[i]
-            const b = nodes[j]
-            const ar = a.diameter / 2
-            const br = b.diameter / 2
+          const dynamicPadding =
+            padding * (0.75 + 0.25 * (1 - settleStrength))
+          const minDist = ar + br + dynamicPadding
 
-            // Padding gently tightens as they settle in
-            const dynamicPadding = padding * (0.75 + 0.25 * (1 - settleStrength))
-            const minDist = ar + br + dynamicPadding
+          const dx = b.x - a.x
+          const dy = b.y - a.y
+          const dist = Math.hypot(dx, dy) || 0.0001
 
-            const dx = b.x - a.x
-            const dy = b.y - a.y
-            const dist = Math.hypot(dx, dy) || 0.0001
+          if (dist < minDist) {
+            const overlap = (minDist - dist) / dist
+            const pushX = dx * overlap * 0.5
+            const pushY = dy * overlap * 0.5
 
-            if (dist < minDist) {
-              const overlap = (minDist - dist) / dist
-              const pushX = dx * overlap * 0.5
-              const pushY = dy * overlap * 0.5
+            a.x -= pushX
+            a.y -= pushY
+            b.x += pushX
+            b.y += pushY
 
-              a.x -= pushX
-              a.y -= pushY
-              b.x += pushX
-              b.y += pushY
-
-              // Collision impulse fades as we approach final rest (prevents late “popping”)
-              const impulse = 0.02 * (1 - 0.65 * settleStrength)
-              a.vx -= pushX * impulse
-              a.vy -= pushY * impulse
-              b.vx += pushX * impulse
-              b.vy += pushY * impulse
-            }
+            const impulse = 0.02 * (1 - 0.65 * settleStrength)
+            a.vx -= pushX * impulse
+            a.vy -= pushY * impulse
+            b.vx += pushX * impulse
+            b.vy += pushY * impulse
           }
         }
       }
-
-      // ---- Bounds ----
-      const halfW = bounds.w / 2
-      const halfH = bounds.h / 2
-
-      for (const n of nodes) {
-        const r = n.diameter / 2
-        const minX = -halfW + r + edgePaddingX
-        const maxX = halfW - r - edgePaddingX
-        const minY = -halfH + r + edgePaddingY
-        const maxY = halfH - r - edgePaddingY
-
-        if (n.x < minX) {
-          n.x = minX
-          n.vx *= -0.4
-        }
-        if (n.x > maxX) {
-          n.x = maxX
-          n.vx *= -0.4
-        }
-        if (n.y < minY) {
-          n.y = minY
-          n.vy *= -0.4
-        }
-        if (n.y > maxY) {
-          n.y = maxY
-          n.vy *= -0.4
-        }
-      }
-
-      setTick((t) => (t + 1) % 1000000)
-      raf = requestAnimationFrame(step)
     }
 
+    // ---- Bounds ----
+    const halfW = bounds.w / 2
+    const halfH = bounds.h / 2
+
+    for (const n of nodes) {
+      const r = n.diameter / 2
+      const minX = -halfW + r + edgePaddingX
+      const maxX = halfW - r - edgePaddingX
+      const minY = -halfH + r + edgePaddingY
+      const maxY = halfH - r - edgePaddingY
+
+      if (n.x < minX) {
+        n.x = minX
+        n.vx *= -0.4
+      }
+      if (n.x > maxX) {
+        n.x = maxX
+        n.vx *= -0.4
+      }
+      if (n.y < minY) {
+        n.y = minY
+        n.vy *= -0.4
+      }
+      if (n.y > maxY) {
+        n.y = maxY
+        n.vy *= -0.4
+      }
+    }
+
+    setTick(t => (t + 1) % 1_000_000)
     raf = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(raf)
-  }, [bounds.h, bounds.w, isMobile])
+  }
+
+  raf = requestAnimationFrame(step)
+  return () => cancelAnimationFrame(raf)
+}, [bounds.h, bounds.w, isMobile])
+
 
   return simRef
 }
@@ -676,12 +683,14 @@ export default function ProfessionalPage() {
   // Mobile seed compression (visual polish)
   // -----------------------
   const seeds = useMemo(() => {
+    const SCATTER = isMobile ? 420 : 520
+
     return seedBubbles.map(b => ({
       ...b,
-      seedX: b.seedX + (Math.random() - 0.5) * 120,
-      seedY: b.seedY + (Math.random() - 0.5) * 120,
+      seedX: b.seedX + (Math.random() - 0.5) * SCATTER,
+      seedY: b.seedY + (Math.random() - 0.5) * SCATTER,
     }))
-  }, [])
+  }, [isMobile])
 
   const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
@@ -758,37 +767,45 @@ export default function ProfessionalPage() {
                     const s = categoryStyle[b.category]
 
                     return (
-                      <motion.button
+                      <div
                         key={b.id}
-                        onClick={() => setActive(b)}
-                        whileHover={{ scale: 1.06 }}
-                        whileTap={{ scale: 0.985 }}
+                        className="absolute"
                         style={{
-                          width: b.diameter,
-                          height: b.diameter,
                           transform: `translate3d(${b.x}px, ${b.y}px, 0)`,
                         }}
-                        className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex flex-col items-center justify-center text-center px-6 select-none`}
                       >
-                        <span
-                          style={computeLabelStyle(
-                            b.label,
-                            b.diameter,
-                            isMobile
-                          )}
-                          className="font-medium text-foreground leading-tight mb-3"
+                        <motion.button
+                          onClick={() => setActive(b)}
+                          whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.985 }}
+                          style={{
+                            width: b.diameter,
+                            height: b.diameter,
+                          }}
+                          className={`group rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex flex-col items-center justify-center text-center px-6 select-none`}
+                          aria-label={b.label}
                         >
-                          {b.label}
-                        </span>
+                          <span
+                            style={computeLabelStyle(
+                              b.label,
+                              b.diameter,
+                              isMobile
+                            )}
+                            className="font-medium text-foreground leading-tight mb-3"
+                          >
+                            {b.label}
+                          </span>
 
-                        <span
-                          className={`w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
-                          aria-hidden
-                        />
-                      </motion.button>
+                          <span
+                            className={`w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
+                            aria-hidden
+                          />
+                        </motion.button>
+                      </div>
                     )
                   })}
                 </div>
+
               </div>
 
               {/* Legend (part of same scroll on mobile) */}
