@@ -444,7 +444,7 @@ function useBubbleSimulation(
   isMobile: boolean
 ) {
   const padding = isMobile ? 30 : 22
-  const edgePadding = isMobile ? 16 : 0
+  const edgePadding = isMobile ? 20 : 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
