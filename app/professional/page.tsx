@@ -448,7 +448,7 @@ function useBubbleSimulation(
 ) {
   const padding = isMobile ? 30 : 22
   const edgePaddingX = isMobile ? 32 : 0
-  const edgePaddingY = 0
+  const edgePaddingY = isMobile ? 32 : 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -597,7 +597,7 @@ export default function ProfessionalPage() {
 
   useEffect(() => {
     if (!isMobile) return
-    setMobileFieldSize(Math.min(window.innerHeight * 0.78, 760))
+    setMobileFieldSize(Math.min(window.innerHeight * 0.75, 740))
   }, [isMobile])
 
   const FIELD_SIZE = isMobile ? mobileFieldSize : 980
