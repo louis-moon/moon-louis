@@ -734,16 +734,12 @@ export default function ProfessionalPage() {
                         onClick={() => setActive(b)}
                         whileHover={{ scale: 1.06 }}
                         whileTap={{ scale: 0.985 }}
-                        style={{ width: b.diameter, height: b.diameter }}
-                        animate={{ x: b.x, y: b.y }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 120,
-                          damping: 18,
-                          mass: 0.6,
+                        style={{
+                          width: b.diameter,
+                          height: b.diameter,
+                          transform: `translate3d(${b.x}px, ${b.y}px, 0)`,
                         }}
                         className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex flex-col items-center justify-center text-center px-6 select-none`}
-                        aria-label={b.label}
                       >
                         <span
                           style={computeLabelStyle(
