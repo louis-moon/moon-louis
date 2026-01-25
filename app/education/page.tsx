@@ -222,7 +222,7 @@ const honors = [
     tags: ["Scholarship"],
   },
   {
-  title: "Orgullo de Nuestra Juventud Scholarship Award",
+  title: "Orgullo de Nuestra Juventud: Scholarship Award",
   organization: "TelevisaUnivision",
   tags: ["Scholarship"],
   },
