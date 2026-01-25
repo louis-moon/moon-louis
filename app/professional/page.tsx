@@ -28,9 +28,9 @@ type Company = {
 }
 
 type Project = {
-  name: string
-  location: string
-  roles: ProjectRole[]
+  title: string
+  period: string
+  bulets: Bullet[[]
 }
 
 // =======================
