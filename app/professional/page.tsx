@@ -91,7 +91,7 @@ const fullTime: Company[] = [
       {
         title: "Co-Founder",
         type: "Full-time",
-        period: "Jan 2023 – Mar 2024",
+        period: "Apr 2023 – Mar 2024",
         bullets: [
           "Utilized CNN/RNN and transformer-based architectures to build video-to-text models with logistics clients for production integration, refining requirements with operators; focused on delivery verification, employee monitoring, and driver safety checks",
           "Co-founded the company alongside Yale, Berkeley, and UChicago alumni with a focus on product and software development; used children's books as training data to prototype a complementary text-to-video model using natural language processing techniques",
