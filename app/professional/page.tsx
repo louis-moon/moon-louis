@@ -448,7 +448,7 @@ function useBubbleSimulation(
 ) {
   const padding = isMobile ? 30 : 22
   const edgePaddingX = isMobile ? 32 : 0
-  const edgePaddingY = isMobile ? 48 : 0
+  const edgePaddingY = 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -593,7 +593,14 @@ export default function ProfessionalPage() {
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
 
-  const FIELD_SIZE = isMobile ? 820 : 980
+  const [mobileFieldSize, setMobileFieldSize] = useState(760)
+
+  useEffect(() => {
+    if (!isMobile) return
+    setMobileFieldSize(Math.min(window.innerHeight * 0.78, 760))
+  }, [isMobile])
+
+  const FIELD_SIZE = isMobile ? mobileFieldSize : 980
   const FIELD_SCALE = FIELD_SIZE / BASE_FIELD_SIZE
 
   useEffect(() => {
@@ -611,21 +618,6 @@ export default function ProfessionalPage() {
 
     ro.observe(el)
     return () => ro.disconnect()
-  }, [])
-
-
-  useEffect(() => {
-    const vp = viewportRef.current
-    if (!vp) return
-
-    const id = setTimeout(() => {
-      requestAnimationFrame(() => {
-        vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2
-        vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2
-      })
-    }, 50)
-
-    return () => clearTimeout(id)
   }, [])
 
   const seeds = useMemo(() => {
@@ -667,8 +659,9 @@ export default function ProfessionalPage() {
               ref={viewportRef}
               className="
                 relative
-                h-[86vh] md:h-[980px]
-                overflow-auto md:overflow-visible
+                h-auto md:h-[980px]
+                overflow-hidden
+
                 overscroll-contain
                 flex justify-center
                 -mx-6 md:mx-0
