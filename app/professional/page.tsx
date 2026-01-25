@@ -593,15 +593,9 @@ export default function ProfessionalPage() {
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
 
-  const [mobileFieldSize, setMobileFieldSize] = useState(760)
-
-  useEffect(() => {
-    if (!isMobile) return
-    setMobileFieldSize(Math.min(window.innerHeight * 0.75, 740))
-  }, [isMobile])
-
-  const FIELD_SIZE = isMobile ? mobileFieldSize : 980
-  const FIELD_SCALE = FIELD_SIZE / BASE_FIELD_SIZE
+  const mobileScale = isMobile
+    ? Math.min((window.innerWidth - 32) / BASE_FIELD_SIZE, 1)
+    : 1
 
   useEffect(() => {
     const el = fieldRef.current
@@ -620,14 +614,7 @@ export default function ProfessionalPage() {
     return () => ro.disconnect()
   }, [])
 
-  const seeds = useMemo(() => {
-    return seedBubbles.map((b) => ({
-      ...b,
-      seedX: b.seedX * FIELD_SCALE,
-      seedY: b.seedY * FIELD_SCALE,
-      diameter: b.diameter * FIELD_SCALE,
-    }))
-  }, [FIELD_SCALE])
+  const seeds = useMemo(() => seedBubbles, [])
 
   const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
@@ -653,7 +640,13 @@ export default function ProfessionalPage() {
           </div>
 
           {/* Bubble Field */}
-          <div className="-mx-6 md:mx-0">
+          <div
+            className="flex justify-center"
+            style={{
+              transform: `scale(${mobileScale})`,
+              transformOrigin: "top center",
+            }}
+          >
             {/* This is the mobile pan/zoom viewport */}
             <div
               ref={viewportRef}
@@ -671,16 +664,16 @@ export default function ProfessionalPage() {
               {/* This is the fixed-size universe (always 980x980) */}
               <div
                 ref={fieldRef}
-                style={{ width: FIELD_SIZE, height: FIELD_SIZE }}
+                style={{ width: BASE_FIELD_SIZE, height: BASE_FIELD_SIZE }}
                 className="
                   relative
+                  mx-auto
                   p-8
                   origin-center
                   rounded-[2.5rem]
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
-                  my-2 md:my-0
                 "
               >
                 {/* center glow */}
