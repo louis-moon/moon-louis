@@ -599,12 +599,10 @@ export default function ProfessionalPage() {
     if (!isMobile) return
 
     const compute = () => {
-      const vh = window.visualViewport?.height ?? window.innerHeight
       const vw = window.innerWidth
 
       const scale = Math.min(
         (vw - 32) / BASE_FIELD_SIZE,
-        (vh - 180) / BASE_FIELD_SIZE,
         1
       )
 
@@ -612,7 +610,7 @@ export default function ProfessionalPage() {
     }
 
     compute()
-    setTimeout(compute, 250) // allow Safari chrome to settle
+    setTimeout(compute, 250)
   }, [isMobile])
 
   useEffect(() => {
@@ -666,21 +664,15 @@ export default function ProfessionalPage() {
           </div>
 
           {/* Bubble Field */}
-          <div
-            className="flex justify-center"
-            style={{
-              transform: `scale(${mobileScale})`,
-              transformOrigin: isMobile ? "center center" : "top center"
-            }}
-          >
+          <div className="flex justify-center">
             {/* This is the mobile pan/zoom viewport */}
             <div
               ref={viewportRef}
               className="
                 relative
-                h-auto md:h-[980px]
-                overflow-hidden
-
+                h-[calc(100vh-220px)]
+                overflow-y-auto
+                overflow-x-hidden
                 overscroll-contain
                 flex justify-center
                 -mx-6 md:mx-0
@@ -690,11 +682,15 @@ export default function ProfessionalPage() {
               {/* This is the fixed-size universe (always 980x980) */}
               <div
                 ref={fieldRef}
-                style={{ width: BASE_FIELD_SIZE, height: BASE_FIELD_SIZE }}
+                style={{
+                  width: isMobile ? "100%" : BASE_FIELD_SIZE,
+                  maxWidth: BASE_FIELD_SIZE,
+                  height: isMobile ? BASE_FIELD_SIZE * 1.35 : BASE_FIELD_SIZE,
+                }}
                 className="
                   relative
                   mx-auto
-                  p-8
+                  p-6 md:p-8
                   origin-center
                   rounded-[2.5rem]
                   border border-border/60
