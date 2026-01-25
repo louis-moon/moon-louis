@@ -217,32 +217,32 @@ const musicAndPerformance = {
 
 const honors = [
   {
-    title: "National Merit Scholarship Program: National Merit Scholar",
+    title: "National Merit Scholar: Scholarship Recipient",
     organization: "National Merit Scholarship Corporation",
     tags: ["Scholarship"],
   },
   {
-  title: "Orgullo de Nuestra Juventud (Pride of Our Youth) Award",
+  title: "Orgullo de Nuestra Juventud Scholarship Award",
   organization: "TelevisaUnivision",
   tags: ["Scholarship"],
   },
   {
-    title: "National Economics Challenge: 9th Place, State Champion",
+    title: "National Economics Challenge: 9th place",
     organization: "Council for Economic Education",
     tags: ["Economics"],
   },
   {
-    title: "National Finance Challenge: Semi-Finalist, State Champion",
+    title: "National Finance Challenge: Semi-Finalist",
     organization: "Council for Economic Education",
     tags: ["Finance"],
   },
   {
-    title: "Odyssey of the Mind: 2nd Place World Finals, State Champion",
+    title: "Odyssey of the Mind: 2nd place World Finals",
     organization: "Creative Competitions",
     tags: ["Problem-Solving"],
   },
   {
-    title: "Envirothon: North American Qualifier, State Champion",
+    title: "NCF-Envirothon: North American Qualifier",
     organization: "National Conservation Foundation",
     tags: ["Environment"],
   },
