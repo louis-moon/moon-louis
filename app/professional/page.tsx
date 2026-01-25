@@ -418,12 +418,15 @@ const seedBubbles: BubbleSeed[] = [
   },
 ]
 
-function computeLabelStyle(label: string, diameter: number) {
-  const base = diameter * 0.12 // proportional baseline
-  const max = 18
-  const min = 11
+function computeLabelStyle(
+  label: string,
+  diameter: number,
+  isMobile: boolean
+) {
+  const base = diameter * 0.12
+  const max = isMobile ? 16 : 18
+  const min = isMobile ? 10.5 : 11
 
-  // penalize long strings slightly
   const lengthPenalty = Math.max(0, label.length - 18) * 0.25
 
   const size = clamp(base - lengthPenalty, min, max)
@@ -715,11 +718,12 @@ export default function ProfessionalPage() {
                         aria-label={b.label}
                       >
                         <span
-                          style={computeLabelStyle(b.label, b.diameter)}
-                          className="font-medium text-foreground text-center text-balance"
-                        >
-                          {b.label}
-                        </span>
+                          className="absolute left-1/2 -translate-x-1/2"
+                          style={{
+                            bottom: isMobile ? `${b.diameter * 0.12}px` : '1rem',
+                          }}
+                        />
+
 
                         <span
                           className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
