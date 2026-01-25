@@ -616,10 +616,15 @@ export default function ProfessionalPage() {
           </div>
 
           {/* Bubble Field */}
-          <div
-            ref={fieldRef}
-            className="relative h-[980px] rounded-[2.5rem] border border-border/60 bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6 overflow-hidden"
-          >
+          <div className="overflow-auto -mx-6 md:mx-0">
+            <div className="min-w-[980px] flex justify-center">
+              <div
+                ref={fieldRef}
+                className="relative h-[980px] w-[980px] rounded-[2.5rem] border border-border/60 bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6 overflow-hidden"
+              >
+            </div>
+          </div>
+
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
               <div className="w-[520px] h-[520px] rounded-full bg-blue-500/8 blur-[120px]" />
             </div>
