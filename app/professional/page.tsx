@@ -598,14 +598,15 @@ export default function ProfessionalPage() {
     const vp = viewportRef.current
     if (!vp) return
 
-    // Center the scroll so users see the middle (GGC) immediately
-    // Run after layout paints
-    requestAnimationFrame(() => {
-      vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2
-      vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2
+    const id = setTimeout(() => {
+      requestAnimationFrame(() => {
+        vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2
+        vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2
+      })
     }, 50)
-  }, [])
 
+    return () => clearTimeout(id)
+  }, [])
 
   const seeds = useMemo(() => seedBubbles, [])
   const simRef = useBubbleSimulation(seeds, bounds)
