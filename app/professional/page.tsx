@@ -616,59 +616,62 @@ export default function ProfessionalPage() {
           </div>
 
           {/* Bubble Field */}
-          <div className="overflow-auto -mx-6 md:mx-0">
+          <div className="overflow-auto -mx-6 md:mx-0 mt-16 md:mt-0">
+            {/* Wide canvas to prevent vertical stacking on mobile */}
             <div className="min-w-[980px] flex justify-center">
+              {/* Scaled constellation field */}
               <div
                 ref={fieldRef}
-                className="relative h-[980px] w-[980px] rounded-[2.5rem] border border-border/60 bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6 overflow-hidden"
+                className="relative h-[980px] w-[980px] scale-[0.72] md:scale-100 origin-center rounded-[2.5rem] border border-border/60 bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6 overflow-hidden"
               >
+                {/* central glow */}
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <div className="w-[520px] h-[520px] rounded-full bg-blue-500/8 blur-[120px]" />
+                </div>
+
+                {/* atmospheric light */}
+                <div className="pointer-events-none absolute inset-0">
+                  <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500/12 blur-3xl" />
+                  <div className="absolute -bottom-28 -right-28 w-[34rem] h-[34rem] rounded-full bg-indigo-500/12 blur-3xl" />
+                </div>
+
+                {/* origin at center */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {simRef.current.map((b) => {
+                    const s = categoryStyle[b.category]
+
+                    return (
+                      <motion.button
+                        key={b.id}
+                        onClick={() => setActive(b)}
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.985 }}
+                        style={{ width: b.diameter, height: b.diameter }}
+                        animate={{ x: b.x, y: b.y }}
+                        transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
+                        className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex items-center justify-center text-center px-6 select-none`}
+                        aria-label={b.label}
+                      >
+                        <span
+                          style={computeLabelStyle(b.label, b.diameter)}
+                          className="font-medium text-foreground text-center text-balance"
+                        >
+                          {b.label}
+                        </span>
+
+                        {/* category dot */}
+                        <span
+                          className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
+                          aria-hidden="true"
+                        />
+                      </motion.button>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
           </div>
 
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div className="w-[520px] h-[520px] rounded-full bg-blue-500/8 blur-[120px]" />
-            </div>
-            {/* atmospheric light */}
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500/12 blur-3xl" />
-              <div className="absolute -bottom-28 -right-28 w-[34rem] h-[34rem] rounded-full bg-indigo-500/12 blur-3xl" />
-            </div>
-
-            {/* origin at center */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              {simRef.current.map((b) => {
-                const s = categoryStyle[b.category]
-
-                return (
-                  <motion.button
-                    key={b.id}
-                    onClick={() => setActive(b)}
-                    whileHover={{ scale: 1.06 }}
-                    whileTap={{ scale: 0.985 }}
-                    style={{ width: b.diameter, height: b.diameter }}
-                    animate={{ x: b.x, y: b.y }}
-                    transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
-                    className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex items-center justify-center text-center px-6 select-none`}
-                    aria-label={b.label}
-                  >
-                    <span
-                      style={computeLabelStyle(b.label, b.diameter)}
-                      className="font-medium text-foreground text-center text-balance"
-                    >
-                      {b.label}
-                    </span>
-
-
-                    {/* small category dot for instant recognition */}
-                    <span
-                      className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
-                      aria-hidden="true"
-                    />
-                  </motion.button>
-                )
-              })}
-            </div>
-          </div>
 
           {/* Legend */}
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
