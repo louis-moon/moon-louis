@@ -437,7 +437,7 @@ function clamp(n: number, min: number, max: number) {
 }
 
 function useBubbleSimulation(seeds: BubbleSeed[], bounds: { w: number; h: number }) {
-  const padding = 22
+  const padding = 2const padding = window.innerWidth < 768 ? 30 : 22
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -579,6 +579,10 @@ export default function ProfessionalPage() {
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const [bounds, setBounds] = useState({ w: 900, h: 900 })
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+
+  const FIELD_SIZE = isMobile ? 820 : 980
+
   useEffect(() => {
     const el = fieldRef.current
     if (!el) return
@@ -586,7 +590,10 @@ export default function ProfessionalPage() {
     const ro = new ResizeObserver(() => {
       const w = el.offsetWidth
       const h = el.offsetHeight
-      setBounds({ w: Math.max(320, w), h: Math.max(520, h) })
+      setBounds({
+        w: Math.max(320, w),
+        h: Math.max(520, h),
+      })
     })
 
     ro.observe(el)
@@ -650,12 +657,10 @@ export default function ProfessionalPage() {
               {/* This is the fixed-size universe (always 980x980) */}
               <div
                 ref={fieldRef}
+                style={{ width: FIELD_SIZE, height: FIELD_SIZE }}
                 className="
                   relative
-                  h-[980px] w-[980px]
                   origin-center
-                  md:scale-100
-                  scale-[0.9] sm:scale-[0.82] md:scale-100
                   rounded-[2.5rem]
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
