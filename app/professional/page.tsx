@@ -576,6 +576,7 @@ export default function ProfessionalPage() {
   const [active, setActive] = useState<BubbleSim | null>(null)
 
   const fieldRef = useRef<HTMLDivElement | null>(null)
+  const viewportRef = useRef<HTMLDivElement | null>(null)
   const [bounds, setBounds] = useState({ w: 900, h: 900 })
 
   useEffect(() => {
@@ -583,13 +584,28 @@ export default function ProfessionalPage() {
     if (!el) return
 
     const ro = new ResizeObserver(() => {
-      const r = el.getBoundingClientRect()
-      setBounds({ w: Math.max(320, r.width), h: Math.max(520, r.height) })
+      const w = el.offsetWidth
+      const h = el.offsetHeight
+      setBounds({ w: Math.max(320, w), h: Math.max(520, h) })
     })
 
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
+
+
+  useEffect(() => {
+    const vp = viewportRef.current
+    if (!vp) return
+
+    // Center the scroll so users see the middle (GGC) immediately
+    // Run after layout paints
+    requestAnimationFrame(() => {
+      vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2
+      vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2
+    })
+  }, [])
+
 
   const seeds = useMemo(() => seedBubbles, [])
   const simRef = useBubbleSimulation(seeds, bounds)
@@ -616,15 +632,35 @@ export default function ProfessionalPage() {
           </div>
 
           {/* Bubble Field */}
-          <div className="overflow-auto -mx-6 md:mx-0 mt-16 md:mt-0">
-            {/* Wide canvas to prevent vertical stacking on mobile */}
-            <div className="min-w-[980px] flex justify-center">
-              {/* Scaled constellation field */}
+          <div className="-mx-6 md:mx-0">
+            {/* This is the mobile pan/zoom viewport */}
+            <div
+              ref={viewportRef}
+              className="
+                relative
+                h-[720px] md:h-[980px]
+                overflow-auto md:overflow-visible
+                overscroll-contain
+                flex justify-center
+              "
+            >
+              {/* This is the fixed-size universe (always 980x980) */}
               <div
                 ref={fieldRef}
-                className="relative h-[980px] w-[980px] scale-[0.72] md:scale-100 origin-center rounded-[2.5rem] border border-border/60 bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6 overflow-hidden"
+                className="
+                  relative
+                  h-[980px] w-[980px]
+                  origin-center
+                  md:scale-100
+                  scale-[0.72]
+                  rounded-[2.5rem]
+                  border border-border/60
+                  bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
+                  overflow-hidden
+                  my-8 md:my-0
+                "
               >
-                {/* central glow */}
+                {/* center glow */}
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                   <div className="w-[520px] h-[520px] rounded-full bg-blue-500/8 blur-[120px]" />
                 </div>
@@ -659,7 +695,6 @@ export default function ProfessionalPage() {
                           {b.label}
                         </span>
 
-                        {/* category dot */}
                         <span
                           className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
                           aria-hidden="true"
@@ -671,7 +706,6 @@ export default function ProfessionalPage() {
               </div>
             </div>
           </div>
-
 
           {/* Legend */}
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
