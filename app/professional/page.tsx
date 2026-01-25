@@ -714,7 +714,7 @@ export default function ProfessionalPage() {
                         {/* LABEL */}
                         <span
                           style={computeLabelStyle(b.label, b.diameter, isMobile)}
-                          className="font-medium text-foreground text-balance block max-w-full leading-tight mb-3"
+                          className="font-medium text-foreground text-center leading-tight mb-3"
                         >
                           {b.label}
                         </span>
