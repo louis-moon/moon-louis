@@ -451,6 +451,7 @@ function useBubbleSimulation(
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 56 : 0
   const maxSpeed = 0.7
+  const startTimeRef = useRef<number | null>(null)
 
   const simRef = useRef<BubbleSim[]>([])
   const [, setTick] = useState(0)
@@ -468,11 +469,19 @@ function useBubbleSimulation(
   }, [seeds.length])
 
   useEffect(() => {
+    startTimeRef.current = performance.now()
+    settleStrength.current = 0
     if (!bounds.w || !bounds.h) return
 
     let raf = 0
 
     const step = () => {
+      const now = performance.now()
+      const elapsed =
+        startTimeRef.current ? now - startTimeRef.current : 0
+
+      // 0 → 1 over ~6 seconds
+      const settleProgress = Math.min(elapsed / 6000, 1)
       const nodes = simRef.current
       if (!nodes.length) {
         raf = requestAnimationFrame(step)
@@ -485,8 +494,10 @@ function useBubbleSimulation(
           settleStrength.current + (isMobile ? 0.02 : 0.003)
         )
 
-        const ax = (n.seedX - n.x) * 0.0025 * settleStrength.current
-        const ay = (n.seedY - n.y) * 0.0025 * settleStrength.current
+        const attraction = 0.0025 + settleProgress * 0.0015
+
+        const ax = (n.seedX - n.x) * attraction * settleStrength.current
+        const ay = (n.seedY - n.y) * attraction * settleStrength.current
         n.vx += ax
         n.vy += ay
 
@@ -505,7 +516,9 @@ function useBubbleSimulation(
         n.y += n.vy
       }
 
-      const collisionIters = isMobile ? 6 : 3
+      const collisionIters = Math.round(
+        2 + settleProgress * (isMobile ? 8 : 6)
+      )
       for (let iter = 0; iter < collisionIters; iter++) {
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
@@ -513,7 +526,10 @@ function useBubbleSimulation(
             const b = nodes[j]
             const ar = a.diameter / 2
             const br = b.diameter / 2
-            const minDist = ar + br + padding
+            const dynamicPadding =
+              padding * (0.6 + 0.4 * settleProgress)
+
+            const minDist = ar + br + dynamicPadding
 
             const dx = b.x - a.x
             const dy = b.y - a.y
@@ -598,7 +614,6 @@ export default function ProfessionalPage() {
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const [bounds, setBounds] = useState({ w: 900, h: 900 })
   const [isMobile, setIsMobile] = useState(false)
-  const [hasSettled, setHasSettled] = useState(false)
 
   // -----------------------
   // Mobile detection (safe)
@@ -609,16 +624,6 @@ export default function ProfessionalPage() {
     window.addEventListener("resize", check)
     return () => window.removeEventListener("resize", check)
   }, [])
-
-  useEffect(() => {
-    if (isMobile) return
-
-    const t = setTimeout(() => {
-      setHasSettled(true)
-    }, 4500) // 👈 this is your 5s settle
-
-    return () => clearTimeout(t)
-  }, [isMobile])
 
   // -----------------------
   // Resize observer for physics bounds
@@ -642,26 +647,12 @@ export default function ProfessionalPage() {
   // Mobile seed compression (visual polish)
   // -----------------------
   const seeds = useMemo(() => {
-    // desktop: start messy, then settle
-    if (!isMobile && !hasSettled) {
-      return seedBubbles.map(b => ({
-        ...b,
-        seedX: b.seedX + (Math.random() - 0.5) * 120,
-        seedY: b.seedY + (Math.random() - 0.5) * 120,
-      }))
-    }
-
-    // mobile or post-settle
-    if (isMobile) {
-      return seedBubbles.map(b => ({
-        ...b,
-        seedY: b.seedY * 0.9,
-        seedX: b.seedX,
-      }))
-    }
-
-    return seedBubbles
-  }, [isMobile, hasSettled])
+    return seedBubbles.map(b => ({
+      ...b,
+      seedX: b.seedX + (Math.random() - 0.5) * 120,
+      seedY: b.seedY + (Math.random() - 0.5) * 120,
+    }))
+  }, [])
 
   const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
