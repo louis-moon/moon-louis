@@ -708,27 +708,25 @@ export default function ProfessionalPage() {
                         style={{ width: b.diameter, height: b.diameter }}
                         animate={{ x: b.x, y: b.y }}
                         transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
-                        className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex items-center justify-center text-center px-6 select-none`}
+                        className={`group absolute rounded-full border border-border/70 ${s.fill} ring-2 ${s.ring} ${s.hoverRing} shadow-sm hover:shadow-2xl ${s.glow} transition-[box-shadow,border-color,background-color] flex flex-col items-center justify-center text-center px-6 select-none`}
                         aria-label={b.label}
                       >
-                        {/* ✅ LABEL (back) */}
+                        {/* LABEL */}
                         <span
                           style={computeLabelStyle(b.label, b.diameter, isMobile)}
-                          className="font-medium text-foreground text-center text-balance"
+                          className="font-medium text-foreground text-balance block max-w-full leading-tight mb-3"
                         >
                           {b.label}
                         </span>
 
-                        {/* ✅ DOT (now positioned safely) */}
+                        {/* DOT */}
                         <span
-                          className={`absolute left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
-                          style={{
-                            bottom: isMobile ? `${Math.max(12, b.diameter * 0.14)}px` : "1rem",
-                          }}
+                          className={`w-2.5 h-2.5 rounded-full ${s.legendDot} shadow`}
                           aria-hidden="true"
                         />
                       </motion.button>
                     )
+
                   })}
                 </div>
               </div>
