@@ -436,8 +436,13 @@ function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n))
 }
 
-function useBubbleSimulation(seeds: BubbleSeed[], bounds: { w: number; h: number }) {
-  const padding = 2const padding = window.innerWidth < 768 ? 30 : 22
+function useBubbleSimulation(
+  seeds: BubbleSeed[],
+  bounds: { w: number; h: number },
+  isMobile: boolean
+) {
+  const padding = isMobile ? 30 : 22
+  const edgePadding = isMobile ? 16 : 0
   const maxSpeed = 0.7
 
   const simRef = useRef<BubbleSim[]>([])
@@ -616,7 +621,7 @@ export default function ProfessionalPage() {
   }, [])
 
   const seeds = useMemo(() => seedBubbles, [])
-  const simRef = useBubbleSimulation(seeds, bounds)
+  const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
   return (
     <>
