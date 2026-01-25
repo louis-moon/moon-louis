@@ -593,13 +593,27 @@ export default function ProfessionalPage() {
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
 
-  const mobileScale = isMobile
-    ? Math.min(
-        (window.innerWidth - 32) / BASE_FIELD_SIZE,
-        (window.innerHeight - 220) / BASE_FIELD_SIZE,
+  const [mobileScale, setMobileScale] = useState(1)
+
+  useEffect(() => {
+    if (!isMobile) return
+
+    const compute = () => {
+      const vh = window.visualViewport?.height ?? window.innerHeight
+      const vw = window.innerWidth
+
+      const scale = Math.min(
+        (vw - 32) / BASE_FIELD_SIZE,
+        (vh - 180) / BASE_FIELD_SIZE,
         1
       )
-    : 1
+
+      setMobileScale(scale)
+    }
+
+    compute()
+    setTimeout(compute, 250) // allow Safari chrome to settle
+  }, [isMobile])
 
   useEffect(() => {
     const el = fieldRef.current
@@ -618,7 +632,15 @@ export default function ProfessionalPage() {
     return () => ro.disconnect()
   }, [])
 
-  const seeds = useMemo(() => seedBubbles, [])
+  const seeds = useMemo(() => {
+    if (!isMobile) return seedBubbles
+
+    return seedBubbles.map(b => ({
+      ...b,
+      seedY: b.seedY * 0.82, // tighten vertical spread
+      seedX: b.seedX * 0.95, // optional, very light
+    }))
+  }, [isMobile])
 
   const simRef = useBubbleSimulation(seeds, bounds, isMobile)
 
@@ -648,7 +670,7 @@ export default function ProfessionalPage() {
             className="flex justify-center"
             style={{
               transform: `scale(${mobileScale})`,
-              transformOrigin: "top center",
+              transformOrigin: isMobile ? "center center" : "top center"
             }}
           >
             {/* This is the mobile pan/zoom viewport */}
