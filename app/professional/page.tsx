@@ -311,7 +311,7 @@ const categoryStyle: Record<
   },
 }
 
-const BASE_FIELD_SIZE = 980
+const BASE_FIELD_SIZE = 820
 
 const seedBubbles: BubbleSeed[] = [
   {
@@ -448,8 +448,8 @@ function useBubbleSimulation(
 ) {
   // --- Tuning knobs (adjust to taste) ---
   const padding = isMobile ? 88 : 26
-  const edgePaddingX = isMobile ? 32 : 0
-  const edgePaddingY = isMobile ? 56 : 0
+  const edgePaddingX = isMobile ? 32 : 28
+  const edgePaddingY = isMobile ? 56 : 48
   const maxSpeed = isMobile ? 0.55 : 0.65
   const FLOAT_PHASE_MS = isMobile ? 3000 : 2500      // pure float, no attraction
   const DRIFT_PHASE_MS = isMobile ? 6000 : 5000      // slow pull toward seed
@@ -725,12 +725,24 @@ export default function ProfessionalPage() {
   // Mobile seed compression (visual polish)
   // -----------------------
   const seeds = useMemo(() => {
-    const SCATTER = isMobile ? 420 : 520
+    if (isMobile) {
+      // 🔙 EXACTLY how mobile behaved before
+      const SCATTER = 420
+      return seedBubbles.map(b => ({
+        ...b,
+        seedX: b.seedX + (Math.random() - 0.5) * SCATTER,
+        seedY: b.seedY + (Math.random() - 0.5) * SCATTER,
+      }))
+    }
+
+    // 🖥 Desktop-only horizontal bias
+    const SCATTER_X = 420
+    const SCATTER_Y = 240
 
     return seedBubbles.map(b => ({
       ...b,
-      seedX: b.seedX + (Math.random() - 0.5) * SCATTER,
-      seedY: b.seedY + (Math.random() - 0.5) * SCATTER,
+      seedX: b.seedX + (Math.random() - 0.5) * SCATTER_X,
+      seedY: b.seedY + (Math.random() - 0.5) * SCATTER_Y,
     }))
   }, [isMobile])
 
@@ -776,11 +788,11 @@ export default function ProfessionalPage() {
               <div
                 ref={fieldRef}
                 style={{
-                  width: isMobile ? "100%" : BASE_FIELD_SIZE,
-                  maxWidth: BASE_FIELD_SIZE,
+                  width: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
+                  maxWidth: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
                   height: isMobile
                     ? BASE_FIELD_SIZE * 1.25
-                    : BASE_FIELD_SIZE * 1.25,
+                    : BASE_FIELD_SIZE * 0.85,
                 }}
                 className="
                   relative
