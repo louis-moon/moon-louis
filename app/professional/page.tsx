@@ -447,13 +447,16 @@ function useBubbleSimulation(
   isMobile: boolean
 ) {
   // --- Tuning knobs (adjust to taste) ---
-  const SETTLE_DURATION_MS = isMobile ? 9000 : 7500 // total “cinematic” settle time
-  const RETURN_TO_SEED_MS = isMobile ? 8000 : 6500  // how long attraction ramps up
   const padding = isMobile ? 88 : 26
   const edgePaddingX = isMobile ? 32 : 0
   const edgePaddingY = isMobile ? 56 : 0
   const maxSpeed = isMobile ? 0.55 : 0.65
-  const FLOAT_PHASE_MS = isMobile ? 2200 : 1800
+  const FLOAT_PHASE_MS = isMobile ? 3000 : 2500      // pure float, no attraction
+  const DRIFT_PHASE_MS = isMobile ? 6000 : 5000      // slow pull toward seed
+  const SETTLE_PHASE_MS = isMobile ? 3000 : 2500     // final stabilization
+
+  const TOTAL_DURATION_MS =
+    FLOAT_PHASE_MS + DRIFT_PHASE_MS + SETTLE_PHASE_MS
 
   // Helpers
   const clamp01 = (n: number) => Math.max(0, Math.min(1, n))
@@ -473,8 +476,8 @@ function useBubbleSimulation(
       y: s.seedY,
 
       // Slightly calmer initial velocity helps the “float” feel
-      vx: (Math.random() - 0.5) * (isMobile ? 0.22 : 0.28),
-      vy: (Math.random() - 0.5) * (isMobile ? 0.22 : 0.28),
+      vx: 0,
+      vy: 0,
     }))
     setTick((t) => t + 1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -495,8 +498,39 @@ function useBubbleSimulation(
     const now = performance.now()
     const elapsed = startTimeRef.current ? now - startTimeRef.current : 0
 
-    const settleT = clamp01(elapsed / SETTLE_DURATION_MS)
-    const settleStrength = easeOutCubic(settleT)
+    // ---- Helpers local to step ----
+    const smoothstep = (x: number) => x * x * (3 - 2 * x)
+
+    // ---- Phase ramps (short “pose”, long gentle engagement) ----
+    const COLLISION_RAMP_START = isMobile ? 650 : 500
+    const COLLISION_RAMP_MS = isMobile ? 5200 : 4600
+
+    const BOUNDS_RAMP_START = isMobile ? 750 : 600
+    const BOUNDS_RAMP_MS = isMobile ? 5600 : 5000
+
+    const collisionAlpha = smoothstep(
+      clamp01((elapsed - COLLISION_RAMP_START) / COLLISION_RAMP_MS)
+    )
+
+    const boundsAlpha = smoothstep(
+      clamp01((elapsed - BOUNDS_RAMP_START) / BOUNDS_RAMP_MS)
+    )
+
+    // ---- Cinematic time dilation ----
+    // Goal: very short “initial pose” (~0.5–0.8s), then a long, slow 5–10s drift.
+    const baseRaw = clamp01(elapsed / (isMobile ? 19000 : 17000))
+    const baseTime = Math.pow(baseRaw, 2.6) // bigger exponent = slower emergence
+
+    // While constraints are still ramping in, keep time slightly suppressed
+    const constraintAlpha = Math.max(collisionAlpha, boundsAlpha)
+    const constraintEase = 0.35 + 0.65 * constraintAlpha
+
+    // Final time scale (never fully zero to avoid stuck/jitter artifacts)
+    const timeScale = Math.max(baseTime * constraintEase, 0.018)
+
+    // “How settled are we” (used for noise damping etc.)
+    const t = clamp01(elapsed / TOTAL_DURATION_MS)
+    const settleStrength = easeInOutCubic(t)
 
     const nodes = simRef.current
     if (!nodes.length) {
@@ -506,50 +540,53 @@ function useBubbleSimulation(
 
     // ---- Integrate forces ----
     for (const n of nodes) {
-
-      // 🔥 CHANGE 3 LIVES RIGHT HERE 🔥
+      // Attraction ramps slowly after FLOAT phase
       let attraction = 0
-
       if (elapsed > FLOAT_PHASE_MS) {
-        const t = clamp01(
-          (elapsed - FLOAT_PHASE_MS) / RETURN_TO_SEED_MS
-        )
-        const eased = easeInOutCubic(t)
-        attraction = (0.0014 + 0.0022 * eased) * settleStrength
+        const driftT = clamp01((elapsed - FLOAT_PHASE_MS) / DRIFT_PHASE_MS)
+        const driftStrength = easeInOutCubic(driftT)
+        attraction = (isMobile ? 0.00035 : 0.00042) * driftStrength
       }
 
       const ax = (n.seedX - n.x) * attraction
       const ay = (n.seedY - n.y) * attraction
-      n.vx += ax
-      n.vy += ay
 
-      // Air noise (fade out over time)
-      const noise = (isMobile ? 0.018 : 0.014) * (1 - settleStrength)
-      n.vx += (Math.random() - 0.5) * noise
-      n.vy += (Math.random() - 0.5) * noise
+      n.vx += ax * timeScale
+      n.vy += ay * timeScale
 
-      // Damping ramps up
-      const dampingEarly = 0.935
-      const dampingLate = 0.86
-      const damping =
-        dampingEarly + (dampingLate - dampingEarly) * settleStrength
+      // Air noise (fade out over time AND fade in gently so it doesn’t “wake up” fast)
+      const noiseBase = (isMobile ? 0.014 : 0.011) * (1 - settleStrength)
+      const noise = noiseBase * (0.25 + 0.75 * constraintAlpha)
+
+      n.vx += (Math.random() - 0.5) * noise * timeScale
+      n.vy += (Math.random() - 0.5) * noise * timeScale
+
+      // Damping ramps up (calmer overall)
+      const dampingEarly = 0.972
+      const dampingLate = 0.90
+      const damping = dampingEarly + (dampingLate - dampingEarly) * settleStrength
 
       n.vx *= damping
       n.vy *= damping
 
-      const speedCap = maxSpeed * (1 - 0.35 * settleStrength)
+      // Speed cap (keep calm)
+      const speedCap = maxSpeed * (1 - 0.10 * settleStrength)
       n.vx = clamp(n.vx, -speedCap, speedCap)
       n.vy = clamp(n.vy, -speedCap, speedCap)
     }
 
     for (const n of nodes) {
-      n.x += n.vx
-      n.y += n.vy
+      n.x += n.vx * timeScale
+      n.y += n.vy * timeScale
     }
 
-    // ---- Collisions ----
-    const collisionIters = Math.round(
-      (isMobile ? 10 : 8) - (isMobile ? 5 : 4) * settleStrength
+    // ---- Collisions (always on, but strength ramps in smoothly) ----
+    const collisionIters = Math.max(
+      1,
+      Math.round(
+        ((isMobile ? 10 : 8) - (isMobile ? 5 : 4) * settleStrength) *
+          (0.10 + 0.90 * collisionAlpha)
+      )
     )
 
     for (let iter = 0; iter < collisionIters; iter++) {
@@ -560,8 +597,7 @@ function useBubbleSimulation(
           const ar = a.diameter / 2
           const br = b.diameter / 2
 
-          const dynamicPadding =
-            padding * (0.75 + 0.25 * (1 - settleStrength))
+          const dynamicPadding = padding * (0.80 + 0.20 * (1 - settleStrength))
           const minDist = ar + br + dynamicPadding
 
           const dx = b.x - a.x
@@ -573,22 +609,24 @@ function useBubbleSimulation(
             const pushX = dx * overlap * 0.5
             const pushY = dy * overlap * 0.5
 
-            a.x -= pushX
-            a.y -= pushY
-            b.x += pushX
-            b.y += pushY
+            const push = timeScale * collisionAlpha
 
-            const impulse = 0.02 * (1 - 0.65 * settleStrength)
-            a.vx -= pushX * impulse
-            a.vy -= pushY * impulse
-            b.vx += pushX * impulse
-            b.vy += pushY * impulse
+            a.x -= pushX * push
+            a.y -= pushY * push
+            b.x += pushX * push
+            b.y += pushY * push
+
+            const impulse = 0.018 * (1 - 0.65 * settleStrength) * collisionAlpha
+            a.vx -= pushX * impulse * timeScale
+            a.vy -= pushY * impulse * timeScale
+            b.vx += pushX * impulse * timeScale
+            b.vy += pushY * impulse * timeScale
           }
         }
       }
     }
 
-    // ---- Bounds ----
+    // ---- Bounds (no teleports; correction ramps in) ----
     const halfW = bounds.w / 2
     const halfH = bounds.h / 2
 
@@ -599,29 +637,33 @@ function useBubbleSimulation(
       const minY = -halfH + r + edgePaddingY
       const maxY = halfH - r - edgePaddingY
 
+      const k = timeScale * boundsAlpha
+
       if (n.x < minX) {
-        n.x = minX
-        n.vx *= -0.4
+        n.x += (minX - n.x) * k
+        n.vx *= 1 - 0.35 * boundsAlpha
       }
       if (n.x > maxX) {
-        n.x = maxX
-        n.vx *= -0.4
+        n.x += (maxX - n.x) * k
+        n.vx *= 1 - 0.35 * boundsAlpha
       }
       if (n.y < minY) {
-        n.y = minY
-        n.vy *= -0.4
+        n.y += (minY - n.y) * k
+        n.vy *= 1 - 0.35 * boundsAlpha
       }
       if (n.y > maxY) {
-        n.y = maxY
-        n.vy *= -0.4
+        n.y += (maxY - n.y) * k
+        n.vy *= 1 - 0.35 * boundsAlpha
       }
     }
 
-    setTick(t => (t + 1) % 1_000_000)
+    setTick((t) => (t + 1) % 1_000_000)
     raf = requestAnimationFrame(step)
   }
 
+  // kick off loop
   raf = requestAnimationFrame(step)
+
   return () => cancelAnimationFrame(raf)
 }, [bounds.h, bounds.w, isMobile])
 
