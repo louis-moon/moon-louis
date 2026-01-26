@@ -725,19 +725,8 @@ export default function ProfessionalPage() {
   // Mobile seed compression (visual polish)
   // -----------------------
   const seeds = useMemo(() => {
-    if (isMobile) {
-      // 🔙 EXACTLY how mobile behaved before
-      const SCATTER = 420
-      return seedBubbles.map(b => ({
-        ...b,
-        seedX: b.seedX + (Math.random() - 0.5) * SCATTER,
-        seedY: b.seedY + (Math.random() - 0.5) * SCATTER,
-      }))
-    }
-
-    // 🖥 Desktop-only horizontal bias
-    const SCATTER_X = 420
-    const SCATTER_Y = 240
+    const SCATTER_X = isMobile ? 420 : 420
+    const SCATTER_Y = isMobile ? 420 : 240
 
     return seedBubbles.map(b => ({
       ...b,
@@ -791,8 +780,8 @@ export default function ProfessionalPage() {
                   width: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
                   maxWidth: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
                   height: isMobile
-                    ? BASE_FIELD_SIZE * 1.25
-                    : BASE_FIELD_SIZE * 0.85,
+                    ? BASE_FIELD_SIZE * 2
+                    : BASE_FIELD_SIZE * 0.75,
                 }}
                 className="
                   relative
