@@ -249,7 +249,7 @@ const honors = [
 ]
 
 const testScores = [
-  { test: "SAT", score: "1580/1600", detail: "780 EBRW, 800 Math" },
+  { test: "SAT", score: "1580/1600", detail: "800 Math, 780 EBRW" },
   { test: "SAT Essay", score: "8/8/8", detail: "24/24" },
   { test: "SAT Subject Tests", score: "2400/2400", detail: "Chemistry, Math II, US History" },
 ]
