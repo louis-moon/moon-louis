@@ -197,43 +197,41 @@ A lot of the thoughts in this essay are shaped by the 19th- and 20th-century exi
     excerpt:
       "Our perspective isn’t a clear window into reality, but a lens built from socialization, language, and consciousness. This reflection explores how those forces quietly construct the worlds we live in.",
     content: `
-Statement: Our view of the world is not a neutral observation, but a constructed lens shaped by socialization, language, and consciousness.
+Our view of the world is not a neutral observation, but a constructed lens shaped by socialization, language, and consciousness.
 
-Socialization
+What follows is not an argument for relativism, nor a claim that truth does not exist. Rather, it is an attempt to understand how our experience of reality is shaped—first by the environments that we are born into, then by the language we inherit, and finally by the level of consciousness through which we interpret it. If perception is constructed rather than neutral, then perspective is not merely something we have, but something we are responsible for.
 
 The primary agents of socialization in order of influence are as follows:
 
-1.	The dinner table: family culture is where we get our earliest worldviews, and identity and values are transmitted informally.
+1. The dinner table: family culture is where we get our earliest worldviews, and identity and values are transmitted informally.
 
-2.	School: this is where we first encounter norms, hierarchy, and shared learning, and how we learn socially acceptable behavior and thought.
+2. School: this is where we first encounter norms, hierarchy, and shared learning, and how we learn socially acceptable behavior and thought.
 
-3.	Church: (religious) institutions shape our morality, truth, and tradition, with belief systems being inherited before they are chosen.
+3. Church: (religious) institutions shape our morality, truth, and tradition, with belief systems being inherited before they are chosen.
 
-Although there are other factors in play as well (e.g. media, workplace, technology), most early socialization is shaped by these three mechanisms.
+Although there are other factors in play as well (e.g. media, workplace, technology), most early socialization is shaped by these three mechanisms. These early environments do more than transmit values; they quietly determine the categories through which we come to interpret the world in the first place.
 
-Language
+If socialization gives us our first worldview, language is what stabilizes and formalizes it. We think because we have language, not just speak because we think. Language is primarily an expression of thought rather than a means of efficient communication. If you think about it, you may “think” in your native language, but that doesn’t quite nail down the nature of thought itself.
 
-We think because we have language, not just speak because we think. Language is primarily an expression of thought rather than a means of efficient communication. If you think about it, you may “think” in your native language, but that doesn’t quite nail down the nature of thought itself.
+A common response to this fragmentation is the belief that a single, unifying language would resolve misunderstanding across cultures. I sometimes hear people say that we should all have one unifying language, like the concept of a lingua franca, that facilitates communication across cultures. But there was such a language, Proto-Indo-European, and the nature of language is to branch off into several different sub-structures because the people, by nature of living in different parts of the world and developing different cultures, encode a different worldview into the words they use to communicate with each other. This divergence from a shared origin leads to new realities being created, with each language encoding a different worldview.
 
-Side note: I sometimes hear people say that we should all have one unifying language, like the concept of a lingua franca, that facilitates communication across cultures. But there was such a language, Proto-Indo-European, and the nature of language is to branch off into several different sub-structures because the people, by nature of living in different parts of the world and developing different cultures, encode a different worldview into the words they use to communicate with each other. This divergence from a shared origin leads to new realities being created, with each language encoding a different worldview.
+Language defines what we can name, and therefore what we can know. And our reality is filtered by these linguistic categories. Once language sets the boundaries of what can be named and known, perspective becomes the inevitable result of where one stands within those boundaries.
 
-Language defines what we can name, and therefore what we can know. And our reality is filtered by these linguistic categories.
-
-Perspective
+Perspective is not a flaw in human reasoning, but the unavoidable condition under which all reasoning occurs.
 
 People harp on this point a lot, but there is no accessible objective reality, and no view from nowhere—only viewpoints conditioned by experience. By virtue of each of us having our own unique perspectives, we each hold multiple truths rather than a single inaccessible, shared truth.
 
-Social identity theory, particularly the in/out-group theory, highlights how groups define the self and the “other,” and this belonging is tied to a shared worldview. We have a protective instinct of group identity, and bias, prejudice, community, and culture are organized around it.
+Social identity theory, particularly the in/out-group theory, highlights how groups define the self and the “other,” and this belonging is tied to a shared worldview. We have a protective instinct of group identity, and bias, prejudice, community, and culture are organized around it. But perspective alone does not explain how we are able to step outside these inherited frames, reflect on them, and imagine alternatives.
 
-Consciousness
+Consciousness is what allows perspective to become visible to itself.
 
-If you’ve heard of the thought experiment of a 2-dimensional creature trying to visualize a 3-dimensional world (impossible), think of an ant’s frame of reference relative to a human in terms of “level” of consciousness. There is a gradient of awareness and complexity, with each step allowing for a broader perception of reality.
+If you’ve heard of the thought experiment of a 2-dimensional creature trying to visualize a 3- dimensional world (impossible), think of an ant’s frame of reference relative to a human in terms of “level” of consciousness. There is a gradient of awareness and complexity, with each step allowing for a broader perception of reality.
 
 This allows us to imagine futures and reflect on the past; consciousness expands our meaning-making capacity. Taking the analogy a step further, it’s not hard to imagine going from a human’s level of consciousness to a superintelligent AI’s and, going back to the topic of language, imagining that they would develop a “higher” form of communication, in line with their level of consciousness.
 
-It’s also been heavily emphasized how institutions shape our thoughts, with schools, media, religion, and the government serving as mental architects. Together, they shape how we interpret the world before we question it.
+It’s also been heavily emphasized how institutions shape our thoughts, with schools, media, religion, and the government serving as mental architects. Together, they shape how we interpret the world before we question it. Once we recognize that consciousness mediates how the world appears to us, the question shifts from ‘what exists’ to ‘how things exist for us.’
 
-Existence
+To make sense of how perception shapes reality, it helps to distinguish between different ways that things can be said to “exist.”
 
 Let’s define the following terms as follows:
 
@@ -244,8 +242,6 @@ Let’s define the following terms as follows:
 “Subsist”: perceived existence (think Harry Potter: even though he’s not “real,” there is a near infinite number of conceptions of Harry Potter; for example, the sum of J.K. Rowling’s written words about him; the movie depictions of him; my conception of him; your conception of him; and every other reader’s as well, etc.)
 
 There are versions of ourselves that only live in others’ minds. We never know the inner life of another directly, and instead, we relate through mental models and assumptions. This ties back to the idea that there is no objective reality (no objective “us” / static personal identity), and we instead relate through mental models and assumptions.
-
-World-construction
 
 Together, consciousness + socialization + language produce our worldviews, and meaning is ultimately a constructed lens. Through this shared reality we live in, society only works because we agree to believe together, and reality is built collectively, not discovered individually.
 
