@@ -447,7 +447,7 @@ function useBubbleSimulation(
   isMobile: boolean
 ) {
   // --- Tuning knobs (adjust to taste) ---
-  const padding = isMobile ? 88 : 26
+  const padding = isMobile ? 96 : 26
   const edgePaddingX = isMobile ? 32 : 28
   const edgePaddingY = isMobile ? 56 : 48
   const maxSpeed = isMobile ? 0.55 : 0.65
