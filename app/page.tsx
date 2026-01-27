@@ -82,7 +82,7 @@ export default function HomePage() {
                       className="group relative block p-8 bg-card border border-primary/40 rounded-xl transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                     >
                       {/* Blue node */}
-                      <span className="absolute top-6 right-6 h-2.5 w-2.5 rounded-full bg-primary/80 group-hover:bg-primary transition-colors" />
+                      <span className="absolute top-5 right-5 h-2 w-2 rounded-full bg-primary/80 group-hover:bg-primary transition-colors" />
 
                       <h3 className="text-lg font-normal mb-2 transition-all group-hover:text-primary group-hover:-translate-y-0.5">
                         {title}
