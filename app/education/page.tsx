@@ -352,8 +352,7 @@ export default function EducationPage() {
           </div>
 
           {/* Timeline */}
-          <div className="relative pl-6 mb-8">
-            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="relative mb-8">
             <div className="flex items-start gap-3 mb-8">
               <Calendar className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Timeline</h2>
@@ -386,8 +385,7 @@ export default function EducationPage() {
           </div>
 
           {/* Coursework */}
-          <div className="relative pl-6 mb-8">
-            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="relative mb-8">
             <div className="flex items-start gap-3 mb-8">
               <Library className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Undergraduate Coursework</h2>
@@ -395,7 +393,7 @@ export default function EducationPage() {
 
             <div className="relative">
               <div className="overflow-x-auto horizontal-scroll pb-6">
-                <div className="flex gap-6 min-w-max">
+                <div className="flex gap-6 min-w-max pr-6">
                   {[...coursework].reverse().map((block) => (
                     <div
                       key={block.term}
@@ -404,7 +402,7 @@ export default function EducationPage() {
                       <h3 className="font-medium mb-4">{block.term}</h3>
                       <div className="space-y-3">
                         {block.courses.map((c) => (
-                          <div key={c.code} className="bg-secondary border rounded-lg p-3">
+                          <div key={c.code} className="bg-primary/9 border rounded-lg p-3">
                             <p className="text-sm font-medium">
                               {c.code}: {c.title}
                             </p>
@@ -423,8 +421,7 @@ export default function EducationPage() {
           </div>
 
           {/* College Extracurriculars */}
-          <div className="relative pl-6 mb-8">
-            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="relative mb-8">
             <div className="flex items-start gap-3 mb-8">
               <Users className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">College Extracurriculars</h2>
@@ -453,7 +450,6 @@ export default function EducationPage() {
 
           {/* Music & Performance */}
           <div className="relative bg-primary/5 rounded-2xl p-8 mb-8">
-            <span className="absolute left-0 top-9 w-1 h-6 rounded-full bg-primary/40" />
 
             <div className="flex items-start gap-3 mb-8">
               <Music className="w-5 h-5 text-primary mt-[5px]" />
@@ -484,8 +480,7 @@ export default function EducationPage() {
           </div>
 
           {/* Honors & Awards */}
-          <div className="border border-dashed border-primary/30 rounded-2xl p-8 mb-8 relative pl-6">
-            <span className="absolute left-0 top-9 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="border border-dashed border-primary/30 rounded-2xl p-8 mb-8 relative">
 
             <div className="flex items-start gap-3 mb-8">
               <Award className="w-5 h-5 text-primary mt-[5px]" />
@@ -506,7 +501,7 @@ export default function EducationPage() {
                     {h.tags.map((t, j) => (
                       <span
                         key={j}
-                        className="text-xs bg-secondary px-2 py-1 rounded-md border"
+                        className="text-xs bg-primary/9 text-foreground px-2 py-1 rounded-md"
                       >
                         {t}
                       </span>
@@ -518,8 +513,7 @@ export default function EducationPage() {
           </div>
 
           {/* Standardized Testing */}
-          <div className="relative pl-6 mb-8">
-            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="relative mb-8">
             <div className="flex items-start gap-3 mb-8">
               <BookOpen className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Standardized Testing</h2>
@@ -540,8 +534,7 @@ export default function EducationPage() {
           </div>
 
           {/* AP Scores */}
-          <div className="relative pl-6 mb-8">
-            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="relative mb-8">
             <div className="flex items-start gap-3 mb-8">
               <Layers className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">
@@ -551,11 +544,11 @@ export default function EducationPage() {
 
             <div className="relative">
               <div className="overflow-x-auto horizontal-scroll pb-6">
-                <div className="flex gap-4 min-w-max">
+                <div className="flex gap-4 min-w-max pr-12">
                   {apScores.map((ap, i) => (
                     <div
                       key={i}
-                      className="w-[220px] flex-shrink-0 bg-secondary border border-border/50 rounded-lg p-4"
+                      className="w-[220px] flex-shrink-0 bg-primary/9 border border-border/50 rounded-lg p-4"
                     >
                       <div className="flex justify-between mb-2">
                         <p className="text-sm font-medium">{ap.subject}</p>
@@ -571,8 +564,7 @@ export default function EducationPage() {
           </div>
 
           {/* High School Extracurriculars */}
-          <div className="relative pl-6 mb-20">
-            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+          <div className="relative mb-20">
             <div className="flex items-start gap-3 mb-8">
               <Backpack className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">High School Extracurriculars</h2>
@@ -593,7 +585,7 @@ export default function EducationPage() {
                     {e.tags.map((t, j) => (
                       <span
                         key={j}
-                        className="text-xs bg-secondary px-2 py-1 rounded-md border"
+                        className="text-xs bg-primary/9 text-foreground px-2 py-1 rounded-md"
                       >
                         {t}
                       </span>

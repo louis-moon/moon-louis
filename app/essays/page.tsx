@@ -483,7 +483,7 @@ export default function EssaysPage() {
           </div>
 
           {/* Featured Essays */}
-          <section className="mb-20">
+          <section className="mb-8">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-xs tracking-wide uppercase text-primary">
                 Featured
