@@ -338,8 +338,8 @@ export default function EducationPage() {
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="animate-fade-in mb-16">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="animate-fade-in mb-8">
+            <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Academics</p>
             </div>
@@ -352,7 +352,8 @@ export default function EducationPage() {
           </div>
 
           {/* Timeline */}
-          <div className="mb-20">
+          <div className="relative pl-6 mb-8">
+            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-center gap-3 mb-8">
               <Calendar className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">Timeline</h2>
@@ -360,16 +361,23 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {educationTimeline.map((edu, i) => (
-                <div key={i} className="bg-card border rounded-xl p-8">
+                <div
+                  key={i}
+                  className={`bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10 ${
+                    i % 2 === 0 ? "md:translate-y-0" : "md:translate-y-6"
+                  }`}
+                >
                   <h3 className="text-xl font-medium mb-1">{edu.institution}</h3>
                   <p className="text-sm text-primary mb-1">{edu.degree}</p>
                   <p className="text-xs text-muted-foreground mb-4">{edu.period}</p>
                   <p className="text-sm font-medium mb-2">{edu.focus}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{edu.description}</p>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {edu.description}
+                  </p>
                   <div className="space-y-2">
                     {edu.highlights.map((h, j) => (
                       <div key={j} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary" />
+                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary/40" />
                         <p className="text-xs text-muted-foreground">{h}</p>
                       </div>
                     ))}
@@ -380,8 +388,9 @@ export default function EducationPage() {
           </div>
 
           {/* Coursework */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-2">
+          <div className="relative pl-6 mb-8">
+            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+            <div className="flex items-center gap-3 mb-8">
               <Library className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">Undergraduate Coursework</h2>
             </div>
@@ -392,7 +401,7 @@ export default function EducationPage() {
                   {[...coursework].reverse().map((block) => (
                     <div
                       key={block.term}
-                      className="w-[320px] md:w-[420px] flex-shrink-0 bg-card border rounded-xl p-6"
+                      className="w-[320px] md:w-[420px] flex-shrink-0 bg-card border border-primary/40 rounded-xl p-6 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                     >
                       <h3 className="font-medium mb-4">{block.term}</h3>
                       <div className="space-y-3">
@@ -416,7 +425,8 @@ export default function EducationPage() {
           </div>
 
           {/* College Extracurriculars */}
-          <div className="mb-20">
+          <div className="relative pl-6 mb-8">
+            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-center gap-3 mb-8">
               <Users className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">College Extracurriculars</h2>
@@ -424,13 +434,17 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {collegeActivities.map((item, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
+                <div
+                  key={i}
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                >
                   <h3 className="font-medium">{item.title}</h3>
                   <p className="text-sm text-primary mb-3">{item.role}</p>
-                  <ul className="list-disc pl-5 space-y-2">
+                  <ul className="space-y-2">
                     {item.bullets.map((b, j) => (
-                      <li key={j} className="text-sm text-muted-foreground">
-                        {b}
+                      <li key={j} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary/40" />
+                        <p className="text-sm text-muted-foreground">{b}</p>
                       </li>
                     ))}
                   </ul>
@@ -440,23 +454,26 @@ export default function EducationPage() {
           </div>
 
           {/* Music & Performance */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="relative bg-primary/5 rounded-2xl p-8 mb-8">
+            <span className="absolute left-0 top-9 w-1 h-6 rounded-full bg-primary/40" />
+
+            <div className="flex items-center gap-3 mb-8">
               <Music className="w-5 h-5 text-primary" />
-              <h2 className="text-2xl font-light">
-                {musicAndPerformance.title}
-              </h2>
+              <h2 className="text-2xl font-light">{musicAndPerformance.title}</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {musicAndPerformance.cards.map((card, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
+                <div
+                  key={i}
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                >
                   <h3 className="text-lg font-medium mb-1">{card.title}</h3>
                   <p className="text-sm text-primary mb-4">{card.subtitle}</p>
                   <ul className="space-y-3">
                     {card.bullets.map((b, j) => (
                       <li key={j} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary" />
+                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary/40" />
                         <p className="flex-1 text-sm text-muted-foreground leading-relaxed break-words">
                           {b}
                         </p>
@@ -469,7 +486,9 @@ export default function EducationPage() {
           </div>
 
           {/* Honors & Awards */}
-          <div className="mb-20">
+          <div className="border border-dashed border-primary/30 rounded-2xl p-8 mb-8 relative pl-6">
+            <span className="absolute left-0 top-9 w-1 h-6 rounded-full bg-primary/40" />
+
             <div className="flex items-center gap-3 mb-8">
               <Award className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">Honors & Awards</h2>
@@ -477,7 +496,10 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {honors.map((h, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
+                <div
+                  key={i}
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                >
                   <h3 className="font-medium mb-2">{h.title}</h3>
                   <p className="text-sm text-muted-foreground mb-3">
                     {h.organization}
@@ -498,7 +520,8 @@ export default function EducationPage() {
           </div>
 
           {/* Standardized Testing */}
-          <div className="mb-20">
+          <div className="relative pl-6 mb-8">
+            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-center gap-3 mb-8">
               <BookOpen className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">Standardized Testing</h2>
@@ -506,7 +529,10 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testScores.map((t, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
+                <div
+                  key={i}
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                >
                   <p className="text-sm text-muted-foreground">{t.test}</p>
                   <p className="text-3xl font-light text-primary">{t.score}</p>
                   <p className="text-xs text-muted-foreground">{t.detail}</p>
@@ -516,8 +542,9 @@ export default function EducationPage() {
           </div>
 
           {/* AP Scores */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-2">
+          <div className="relative pl-6 mb-8">
+            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
+            <div className="flex items-center gap-3 mb-8">
               <Layers className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">
                 Advanced Placement Examinations
@@ -530,7 +557,7 @@ export default function EducationPage() {
                   {apScores.map((ap, i) => (
                     <div
                       key={i}
-                      className="w-[220px] flex-shrink-0 bg-card border rounded-lg p-4"
+                      className="w-[220px] flex-shrink-0 bg-secondary border border-border/50 rounded-lg p-4"
                     >
                       <div className="flex justify-between mb-2">
                         <p className="text-sm font-medium">{ap.subject}</p>
@@ -546,7 +573,8 @@ export default function EducationPage() {
           </div>
 
           {/* High School Extracurriculars */}
-          <div className="mb-20">
+          <div className="relative pl-6 mb-20">
+            <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-center gap-3 mb-8">
               <Backpack className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-light">High School Extracurriculars</h2>
@@ -554,7 +582,10 @@ export default function EducationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {extracurriculars.map((e, i) => (
-                <div key={i} className="bg-card border rounded-xl p-6">
+                <div
+                  key={i}
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                >
                   <h3 className="font-medium">{e.title}</h3>
                   <p className="text-sm text-primary">{e.role}</p>
                   <p className="text-sm text-muted-foreground mb-3">
