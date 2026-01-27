@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils"
 
 type Section = {
   title: string
-  items: string[] // exactly 3
+  items: string[]
 }
 
 type Tile = {
@@ -27,13 +27,9 @@ type Tile = {
   icon: LucideIcon
   color: string
   borderColor: string
-  sections: [Section, Section, Section] // exactly 3
+  sections: [Section, Section, Section]
 }
 
-/**
- * 3 × 3 tiles. Each tile expands to 3 categories, each with 3 items.
- * Total: 9 tiles, 27 categories, 81 items.
- */
 const tiles: Tile[] = [
   {
     id: "entertainment-a",
@@ -154,6 +150,7 @@ export function InterestGrid() {
       <div className="grid grid-cols-3 gap-4 md:gap-6">
         {tiles.map((tile) => {
           const Icon = tile.icon
+
           return (
             <button
               key={tile.id}
@@ -167,11 +164,13 @@ export function InterestGrid() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <div className="relative h-full flex items-center justify-center">
+              <div className="relative h-full w-full flex items-center justify-center">
                 <div className="flex flex-col items-center justify-center gap-2 sm:gap-3">
-                  <div className="h-10 w-10 sm:h-8 sm:w-8 md:h-10 md:w-10 flex items-center justify-center">
-                    <Icon className="block h-full w-full text-primary group-hover:scale-110 transition-transform" />
+                  {/* ICON WRAPPER — FIXED */}
+                  <div className="h-10 w-10 flex items-center justify-center flex-none">
+                    <Icon className="h-full w-full block shrink-0 text-primary group-hover:scale-110 transition-transform" />
                   </div>
+
                   <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
                     {tile.title}
                   </p>
@@ -195,7 +194,7 @@ export function InterestGrid() {
               <div className="flex items-center gap-3">
                 {(() => {
                   const SelectedIcon: LucideIcon = selected.icon
-                  return <SelectedIcon className="w-6 h-6 text-primary" />
+                  return <SelectedIcon className="w-6 h-6 text-primary block shrink-0" />
                 })()}
                 <h3 className="text-2xl font-medium text-foreground">{selected.title}</h3>
               </div>
@@ -204,7 +203,7 @@ export function InterestGrid() {
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Close"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 block" />
               </button>
             </div>
 
