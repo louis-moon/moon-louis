@@ -576,12 +576,12 @@ export default function EducationPage() {
                   key={i}
                   className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                 >
-                  <h3 className="font-medium">{e.title}</h3>
-                  <p className="text-sm text-primary">{e.role}</p>
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <h3 className="font-medium mb-1">{e.title}</h3>
+                  <p className="text-sm text-primary mb-2">{e.role}</p>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                     {e.description}
                   </p>
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex gap-2 flex-wrap mt-2">
                     {e.tags.map((t, j) => (
                       <span
                         key={j}
