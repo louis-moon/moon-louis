@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 const essays = [
   {
+    id: "structure-and-freedom",
     title: "Structure and Freedom",
     subtitle: "Open Notes",
     date: "Jan 2026",
@@ -90,6 +91,7 @@ I think this is where many people misinterpret ideas like self-interest, often a
 `,
   },
   {
+    id: "covenant",
     title: "Covenant",
     subtitle: "Reflection #6",
     date: "Dec 2025",
@@ -139,6 +141,7 @@ Meaning and agency are not just personal virtues—they are social obligations. 
 `,
   },
   {
+    id: "praxis",
     title: "Praxis",
     subtitle: "Reflection #5",
     date: "Dec 2025",
@@ -190,6 +193,7 @@ A lot of the thoughts in this essay are shaped by the 19th- and 20th-century exi
 `,
   },
   {
+    id: "perspective",
     title: "Perspective",
     subtitle: "Reflection #4",
     date: "Dec 2025",
@@ -251,6 +255,7 @@ Once we understand that perception is constructed, we gain the ability to reshap
 `,
   },
   {
+    id: "social-faith",
     title: "Social Faith",
     subtitle: "Reflection #3",
     date: "Nov 2025",
@@ -306,6 +311,7 @@ Humans share 98.8% of our DNA with chimpanzees—we are all more alike than we t
 `,
   },
 {
+  id: "be-different",
     title: "Be Different",
     subtitle: "Reflection #2",
     date: "Nov 2025",
@@ -329,6 +335,7 @@ I think too many people want to fit in, especially if they find themselves out o
 `,
   },
   {
+    id: "on-meaning",
   title: "On Meaning",
   subtitle: "Reflection #1",
   date: "Oct 2025",
@@ -378,6 +385,7 @@ At least, they have for me in my own lived experience.
 `,
 },
   {
+    id: "the-dead-shall-be-praised",
     title: "The Dead Shall Be Praised",
     subtitle: "ENGL 120",
     date: "Nov 2018",
@@ -417,6 +425,7 @@ I have never seen leaves change color first-hand. I have seen red and orange lea
     tags: ["Place Writing", "History", "Reflection"],
   },
   {
+    id: "the-lessons-we-take-from-obstacles",
     title: "The Lessons We Take from Obstacles",
     subtitle: "Common App",
     date: "Nov 2017",
@@ -441,6 +450,20 @@ We returned to World Finals the following year to place second overall, and I st
   },
 ]
 
+const FEATURED_ESSAY_IDS = [
+  "structure-and-freedom",
+  "social-faith",
+  "the-dead-shall-be-praised",
+]
+
+const featuredEssays = essays.filter(e =>
+  FEATURED_ESSAY_IDS.includes(e.id)
+)
+
+const archivedEssays = essays.filter(
+  e => !FEATURED_ESSAY_IDS.includes(e.id)
+)
+
 export default function EssaysPage() {
   return (
     <>
@@ -448,7 +471,7 @@ export default function EssaysPage() {
       <Navigation />
       <main className="min-h-screen pt-24 px-6 pb-20">
         <div className="max-w-4xl mx-auto">
-          <div className="animate-fade-in mb-16">
+          <div className="animate-fade-in mb-8">
             <div className="flex items-center gap-3 mb-4">
               <FileText className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Written</p>
@@ -459,62 +482,137 @@ export default function EssaysPage() {
             </p>
           </div>
 
-          <div className="space-y-8">
-            {essays.map((essay, index) => (
-              <article
-                key={index}
-                className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5 group"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <BookOpen className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div className="flex-1">
-                    <h2 className="text-2xl font-medium mb-1 group-hover:text-primary transition-colors">
-                      {essay.title}
-                    </h2>
-                    <p className="text-sm text-primary mb-2">{essay.subtitle}</p>
-                    <p className="text-xs text-muted-foreground">{essay.date}</p>
-                  </div>
-                </div>
+          {/* Featured Essays */}
+          <section className="mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-xs tracking-wide uppercase text-primary">
+                Featured
+              </span>
+              <div className="flex-1 h-px bg-border" />
+            </div>
 
-                <div className="mb-4">
-                  <p className="text-muted-foreground leading-relaxed italic">{essay.excerpt}</p>
-                </div>
-
-                <details className="group/details">
-                  <summary className="cursor-pointer text-sm text-primary hover:text-primary/80 transition-colors list-none flex items-center gap-2">
-                    <span>Read full essay</span>
-                    <span className="text-xs">→</span>
-                  </summary>
-                  <div className="mt-6 pt-6 border-t border-border">
-                    <div className="prose prose-sm max-w-none">
-                      {essay.content
-                        .split(/\r?\n\s*\r?\n/)   // handles \n\n, \r\n\r\n, and blank lines with spaces
-                        .filter(p => p.trim())
-                        .map((paragraph, pIndex) => (
-                          <p
-                            key={pIndex}
-                            className="text-muted-foreground leading-relaxed mb-4 whitespace-pre-line"
-                          >
-                            {paragraph}
-                          </p>
-                      ))}
+            <div className="space-y-10">
+              {featuredEssays.map((essay) => (
+                <article
+                  key={essay.id}
+                  className="bg-card border border-primary/40 rounded-2xl p-10 hover:border-primary transition-all hover:shadow-xl hover:shadow-primary/10 group"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <BookOpen className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h2 className="text-3xl font-medium mb-1 group-hover:text-primary transition-colors">
+                        {essay.title}
+                      </h2>
+                      <p className="text-sm text-primary mb-2">
+                        {essay.subtitle}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {essay.date}
+                      </p>
                     </div>
                   </div>
-                </details>
 
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {essay.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="text-xs text-primary bg-secondary/70 px-3 py-1 rounded-full border border-border"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
+                  <p className="text-muted-foreground leading-relaxed italic mb-6">
+                    {essay.excerpt}
+                  </p>
+
+                  <details className="group/details">
+                    <summary className="cursor-pointer text-sm text-primary hover:text-primary/80 transition-colors list-none flex items-center gap-2">
+                      <span>Read full essay</span>
+                      <span className="text-xs">→</span>
+                    </summary>
+
+                    <div className="mt-6 pt-6 border-t border-border">
+                      <div className="prose prose-sm max-w-none">
+                        {essay.content
+                          .split(/\r?\n\s*\r?\n/)
+                          .filter(p => p.trim())
+                          .map((paragraph, pIndex) => (
+                            <p
+                              key={pIndex}
+                              className="text-muted-foreground leading-relaxed mb-4 whitespace-pre-line"
+                            >
+                              {paragraph}
+                            </p>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    {essay.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="text-xs text-primary bg-secondary/70 px-3 py-1 rounded-full border border-border"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* Essay Archive */}
+          <section>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-xs tracking-wide uppercase text-muted-foreground">
+                Archive
+              </span>
+              <div className="flex-1 h-px bg-border" />
+            </div>
+
+            <div className="space-y-6">
+              {archivedEssays.map((essay) => (
+                <article
+                  key={essay.id}
+                  className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5 group"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <BookOpen className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h2 className="text-xl font-medium mb-1 group-hover:text-primary transition-colors">
+                        {essay.title}
+                      </h2>
+                      <p className="text-sm text-primary mb-2">
+                        {essay.subtitle}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {essay.date}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-muted-foreground leading-relaxed italic mb-4">
+                    {essay.excerpt}
+                  </p>
+
+                  <details>
+                    <summary className="cursor-pointer text-sm text-primary">
+                      Read full essay →
+                    </summary>
+
+                    <div className="mt-6 pt-6 border-t border-border">
+                      <div className="prose prose-sm max-w-none">
+                        {essay.content
+                          .split(/\r?\n\s*\r?\n/)
+                          .filter(p => p.trim())
+                          .map((paragraph, pIndex) => (
+                            <p
+                              key={pIndex}
+                              className="text-muted-foreground leading-relaxed mb-4 whitespace-pre-line"
+                            >
+                              {paragraph}
+                            </p>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+                </article>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
     </>

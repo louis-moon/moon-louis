@@ -363,9 +363,7 @@ export default function EducationPage() {
               {educationTimeline.map((edu, i) => (
                 <div
                   key={i}
-                  className={`bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10 ${
-                    i % 2 === 0 ? "md:translate-y-0" : "md:translate-y-6"
-                  }`}
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                 >
                   <h3 className="text-xl font-medium mb-1">{edu.institution}</h3>
                   <p className="text-sm text-primary mb-1">{edu.degree}</p>
