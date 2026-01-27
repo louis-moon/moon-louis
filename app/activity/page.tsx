@@ -109,7 +109,7 @@ export default async function ActivityPage() {
                         {spotify.topArtists30.slice(0, 5).map((a) => (
                           <li
                             key={a.name}
-                            className="text-sm bg-secondary px-3 py-2 rounded-lg"
+                            className="text-sm bg-primary/9 px-3 py-2 rounded-lg"
                           >
                             {a.name}
                           </li>
@@ -125,7 +125,7 @@ export default async function ActivityPage() {
                         {spotify.topGenres30.map((g) => (
                           <span
                             key={g.name}
-                            className="text-xs bg-secondary px-2 py-1 rounded-md"
+                            className="text-xs bg-primary/9 px-2 py-1 rounded-md"
                           >
                             {g.name}
                           </span>
