@@ -586,7 +586,7 @@ export default function EducationPage() {
               {musicAndPerformance.cards.map((card, i) => (
                 <div
                   key={i}
-                  className="bg-primary/9 hover:bg-primary/12 border border-primary/20 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                 >
                   <h3 className="text-lg font-medium mb-1">{card.title}</h3>
                   <p className="text-sm text-primary mb-4">{card.subtitle}</p>
