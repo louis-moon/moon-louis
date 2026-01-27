@@ -340,7 +340,7 @@ export default function EducationPage() {
           {/* Header */}
           <div className="animate-fade-in mb-8">
             <div className="flex items-start gap-3 mb-8">
-              <GraduationCap className="w-5 h-5 text-primary mt-[2px]" />
+              <GraduationCap className="w-5 h-5 text-primary mt-[0px]" />
               <p className="text-sm text-muted-foreground">Academics</p>
             </div>
             <h1 className="text-5xl md:text-6xl font-light mb-6">
@@ -355,7 +355,7 @@ export default function EducationPage() {
           <div className="relative pl-6 mb-8">
             <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-start gap-3 mb-8">
-              <Calendar className="w-5 h-5 text-primary mt-[2px]" />
+              <Calendar className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Timeline</h2>
             </div>
 
@@ -391,7 +391,7 @@ export default function EducationPage() {
           <div className="relative pl-6 mb-8">
             <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-start gap-3 mb-8">
-              <Library className="w-5 h-5 text-primary mt-[2px]" />
+              <Library className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Undergraduate Coursework</h2>
             </div>
 
@@ -428,7 +428,7 @@ export default function EducationPage() {
           <div className="relative pl-6 mb-8">
             <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-start gap-3 mb-8">
-              <Users className="w-5 h-5 text-primary mt-[2px]" />
+              <Users className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">College Extracurriculars</h2>
             </div>
 
@@ -458,7 +458,7 @@ export default function EducationPage() {
             <span className="absolute left-0 top-9 w-1 h-6 rounded-full bg-primary/40" />
 
             <div className="flex items-start gap-3 mb-8">
-              <Music className="w-5 h-5 text-primary mt-[2px]" />
+              <Music className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">{musicAndPerformance.title}</h2>
             </div>
 
@@ -490,7 +490,7 @@ export default function EducationPage() {
             <span className="absolute left-0 top-9 w-1 h-6 rounded-full bg-primary/40" />
 
             <div className="flex items-start gap-3 mb-8">
-              <Award className="w-5 h-5 text-primary mt-[2px]" />
+              <Award className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Honors & Awards</h2>
             </div>
 
@@ -523,7 +523,7 @@ export default function EducationPage() {
           <div className="relative pl-6 mb-8">
             <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-start gap-3 mb-8">
-              <BookOpen className="w-5 h-5 text-primary mt-[2px]" />
+              <BookOpen className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">Standardized Testing</h2>
             </div>
 
@@ -545,7 +545,7 @@ export default function EducationPage() {
           <div className="relative pl-6 mb-8">
             <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-start gap-3 mb-8">
-              <Layers className="w-5 h-5 text-primary mt-[2px]" />
+              <Layers className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">
                 Advanced Placement Examinations
               </h2>
@@ -576,7 +576,7 @@ export default function EducationPage() {
           <div className="relative pl-6 mb-20">
             <span className="absolute left-0 top-1 w-1 h-6 rounded-full bg-primary/40" />
             <div className="flex items-start gap-3 mb-8">
-              <Backpack className="w-5 h-5 text-primary mt-[2px]" />
+              <Backpack className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">High School Extracurriculars</h2>
             </div>
 
