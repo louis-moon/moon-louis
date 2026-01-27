@@ -3,14 +3,49 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { ArrowRight, Home } from "lucide-react"
 import Link from "next/link"
 
+const cards = [
+  {
+    href: "/activity",
+    title: "Activity",
+    desc: "Patterns in how I spend my time",
+  },
+  {
+    href: "/education",
+    title: "Education",
+    desc: "Expanding how I see the world",
+  },
+  {
+    href: "/essays",
+    title: "Essays",
+    desc: "Reflections on growth and change",
+  },
+  {
+    href: "/media",
+    title: "Media",
+    desc: "Moments that shape who I am",
+  },
+  {
+    href: "/personal",
+    title: "Personal",
+    desc: "What matters most beyond work",
+  },
+  {
+    href: "/professional",
+    title: "Professional",
+    desc: "Turning ideas into real change",
+  },
+]
+
 export default function HomePage() {
   return (
     <>
       <AnimatedBackground />
       <Navigation />
+
       <main className="min-h-screen pt-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="animate-fade-in">
+            {/* Header */}
             <p className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
               <Home className="w-4 h-4 text-primary" />
               Welcome
@@ -20,89 +55,48 @@ export default function HomePage() {
               문석현
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-2xl text-pretty leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-2xl text-pretty leading-[1.65]">
               Exploring the intersections of systems, culture, and human experience.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-              {/* Activity FIRST */}
-              <Link
-                href="/activity"
-                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-              >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Activity
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Patterns in how I spend my time
-                </p>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+            {/* Card Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+              {cards.map(({ href, title, desc }, index) => {
+                const isLast = index === cards.length - 1
+                const isEndOfRowLg = (index + 1) % 3 === 0
 
-              <Link
-                href="/education"
-                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-              >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Education
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Expanding how I see the world
-                </p>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+                return (
+                  <div key={href} className="relative">
+                    {/* Vertical connector (mobile only) */}
+                    {!isLast && (
+                      <span className="md:hidden absolute left-1/2 bottom-[-24px] h-6 w-px bg-primary/30 rounded-full" />
+                    )}
 
-              <Link
-                href="/essays"
-                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-              >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Essays
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Reflections on growth and change
-                </p>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+                    {/* Horizontal connector (lg only, not end of row) */}
+                    {!isEndOfRowLg && (
+                      <span className="hidden lg:block absolute top-1/2 right-[-24px] w-6 h-px bg-primary/30 rounded-full" />
+                    )}
 
-              <Link
-                href="/media"
-                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-              >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Media
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Moments that shape who I am
-                </p>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+                    <Link
+                      href={href}
+                      className="group relative block p-8 bg-card border border-primary/40 rounded-xl transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                    >
+                      {/* Blue node */}
+                      <span className="absolute top-6 right-6 h-2.5 w-2.5 rounded-full bg-primary/80 group-hover:bg-primary transition-colors" />
 
-              <Link
-                href="/personal"
-                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-              >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Personal
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  What matters most beyond work
-                </p>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+                      <h3 className="text-lg font-normal mb-2 transition-all group-hover:text-primary group-hover:-translate-y-0.5">
+                        {title}
+                      </h3>
 
-              <Link
-                href="/professional"
-                className="group p-8 bg-card border border-border rounded-xl hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/5"
-              >
-                <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                  Professional
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Turning ideas into real change
-                </p>
-                <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-              </Link>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {desc}
+                      </p>
+
+                      <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

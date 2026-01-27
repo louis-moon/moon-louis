@@ -506,7 +506,7 @@ export default function EssaysPage() {
                   {essay.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="text-xs text-foreground bg-secondary px-3 py-1 rounded-full border border-border"
+                      className="text-xs text-primary bg-secondary/70 px-3 py-1 rounded-full border border-border"
                     >
                       {tag}
                     </span>
