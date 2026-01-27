@@ -500,9 +500,10 @@ export default function EssaysPage() {
                   <div className="flex items-start gap-4 mb-4">
                     <BookOpen className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                     <div className="flex-1">
-                      <h2 className="text-3xl font-medium mb-1 group-hover:text-primary transition-colors">
+                      <h2 className="text-xl font-medium mb-1 group-hover:text-primary transition-colors">
                         {essay.title}
                       </h2>
+
                       <p className="text-sm text-primary mb-2">
                         {essay.subtitle}
                       </p>
@@ -517,7 +518,7 @@ export default function EssaysPage() {
                   </p>
 
                   <details className="group/details">
-                    <summary className="cursor-pointer text-sm text-primary hover:text-primary/80 transition-colors list-none flex items-center gap-2">
+                    <summary className="cursor-pointer text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-2">
                       <span>Read full essay</span>
                       <span className="text-xs">→</span>
                     </summary>
@@ -589,9 +590,10 @@ export default function EssaysPage() {
                   </p>
 
                   <details>
-                    <summary className="cursor-pointer text-sm text-primary">
+                    <summary className="cursor-pointer text-sm text-primary list-none">
                       Read full essay →
                     </summary>
+
 
                     <div className="mt-6 pt-6 border-t border-border">
                       <div className="prose prose-sm max-w-none">
