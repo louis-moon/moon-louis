@@ -532,10 +532,11 @@ export default function EducationPage() {
               </div>
 
               {/* Stronger fade on mobile + subtle swipe hint */}
-              <div className="absolute right-0 top-0 bottom-6 w-24 bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none md:hidden" />
-              <div className="absolute right-4 bottom-2 md:hidden flex items-center gap-1 text-xs text-muted-foreground pointer-events-none">
-                <span>Swipe</span>
-                <span className="text-sm">→</span>
+              <div className="mt-6 flex items-center justify-end gap-2 pr-2">
+                <span className="text-xs tracking-wide text-muted-foreground/70">
+                  Swipe
+                </span>
+                <span className="text-xs text-muted-foreground/70">→</span>
               </div>
 
               {/* Desktop fade (lighter) */}
@@ -691,10 +692,11 @@ export default function EducationPage() {
               </div>
 
               {/* Stronger fade on mobile + subtle swipe hint */}
-              <div className="absolute right-0 top-0 bottom-6 w-24 bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none md:hidden" />
-              <div className="absolute right-4 bottom-2 md:hidden flex items-center gap-1 text-xs text-muted-foreground pointer-events-none">
-                <span>Swipe</span>
-                <span className="text-sm">→</span>
+              <div className="mt-6 flex items-center justify-end gap-2 pr-2">
+                <span className="text-xs tracking-wide text-muted-foreground/70">
+                  Swipe
+                </span>
+                <span className="text-xs text-muted-foreground/70">→</span>
               </div>
 
               {/* Desktop fade (lighter) */}
