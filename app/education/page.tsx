@@ -478,8 +478,8 @@ export default function EducationPage() {
 
                   <div className="space-y-2">
                     {edu.highlights.map((h, j) => (
-                      <div key={j} className="flex gap-3">
-                        <span className="mt-[0.6em] w-1.5 h-1.5 flex-shrink-0 rounded-full bg-primary/30" />
+                      <div key={j} className="flex items-start gap-3">
+                        <span className="mt-1.5 w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="text-xs text-muted-foreground leading-relaxed">
                           {h}
                         </p>
@@ -504,7 +504,7 @@ export default function EducationPage() {
                   {[...coursework].reverse().map((block) => (
                     <div
                       key={block.term}
-                      className="w-[320px] md:w-[420px] flex-shrink-0 bg-primary/5 border border-primary/40 rounded-xl p-6 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                      className="w-[320px] md:w-[420px] flex-shrink-0 border border-primary/40 rounded-xl p-6 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                     >
                       {/* Keep term black for header consistency */}
                       <h3 className="font-medium mb-4 text-foreground">
@@ -563,7 +563,7 @@ export default function EducationPage() {
                   <ul className="space-y-3">
                     {item.bullets.map((b, j) => (
                       <li key={j} className="flex gap-3">
-                        <span className="mt-[0.6em] w-1.5 h-1.5 flex-shrink-0 rounded-full bg-primary/30" />
+                        <span className="mt-[0.6em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="text-sm text-muted-foreground leading-relaxed">
                           {b}
                         </p>
@@ -594,7 +594,7 @@ export default function EducationPage() {
                   <ul className="space-y-3">
                     {card.bullets.map((b, j) => (
                       <li key={j} className="flex gap-3">
-                        <span className="mt-[0.6em] w-1.5 h-1.5 flex-shrink-0 rounded-full bg-primary/30" />
+                        <span className="mt-[0.6em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="flex-1 text-sm text-muted-foreground leading-relaxed break-words">
                           {b}
                         </p>
