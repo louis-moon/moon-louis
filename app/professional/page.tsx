@@ -746,7 +746,7 @@ export default function ProfessionalPage() {
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="mb-12 md:mb-24">
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-5">
               <Briefcase className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Experience</p>
