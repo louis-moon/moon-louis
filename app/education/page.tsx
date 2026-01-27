@@ -576,7 +576,7 @@ export default function EducationPage() {
           </div>
 
           {/* Music & Performance */}
-          <div className="relative bg-primary/5 rounded-2xl p-8 mb-8">
+          <div className="relative mb-8">
             <div className="flex items-start gap-3 mb-8">
               <Music className="w-5 h-5 text-primary mt-[5px]" />
               <h2 className="text-2xl font-light">{musicAndPerformance.title}</h2>
@@ -586,7 +586,7 @@ export default function EducationPage() {
               {musicAndPerformance.cards.map((card, i) => (
                 <div
                   key={i}
-                  className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+                  className="bg-primary/9 hover:bg-primary/12 border border-primary/20 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                 >
                   <h3 className="text-lg font-medium mb-1">{card.title}</h3>
                   <p className="text-sm text-primary mb-4">{card.subtitle}</p>
