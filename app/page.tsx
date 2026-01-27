@@ -55,12 +55,12 @@ export default function HomePage() {
               문석현
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-2xl text-pretty leading-[1.65]">
+            <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl text-pretty leading-[1.65]">
               Exploring the intersections of systems, culture, and human experience.
             </p>
 
             {/* Card Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
               {cards.map(({ href, title, desc }, index) => {
                 const isLast = index === cards.length - 1
                 const isEndOfRowLg = (index + 1) % 3 === 0
