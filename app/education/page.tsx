@@ -654,7 +654,7 @@ export default function EducationPage() {
                 >
                   <p className="text-sm text-muted-foreground">{t.test}</p>
                   <p className="text-3xl font-light text-primary">{t.score}</p>
-                  <p className="text-xs text-muted-foreground">{t.detail}</p>
+                  <p className="mt-2 text-xs text-muted-foreground">{t.detail}</p>
                 </div>
               ))}
             </div>
