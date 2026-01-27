@@ -77,7 +77,7 @@ export default async function ActivityPage() {
       <main className="min-h-screen pt-24 px-6 pb-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="animate-fade-in mb-16">
+          <div className="animate-fade-in mb-8">
             <div className="flex items-center gap-3 mb-4">
               <ActivityIcon className="w-6 h-6 text-primary" />
               <p className="text-sm text-muted-foreground">Present</p>
