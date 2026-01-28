@@ -156,7 +156,7 @@ export function InterestGrid() {
               key={tile.id}
               onClick={() => setSelectedId(tile.id)}
               className={cn(
-                "aspect-square bg-gradient-to-br border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 group relative overflow-hidden leading-none appearance-none",
+                "aspect-square bg-gradient-to-br border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 group relative overflow-hidden grid place-items-center",
                 tile.color,
                 tile.borderColor,
                 selectedId === tile.id && "scale-95 opacity-50",
@@ -165,17 +165,15 @@ export function InterestGrid() {
 
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <div className="relative h-full w-full flex items-center justify-center">
-                <div className="flex flex-col items-center justify-center gap-2 sm:gap-3">
-                  {/* ICON WRAPPER — FIXED */}
-                  <div className="h-10 w-10 flex items-center justify-center flex-none">
-                    <Icon className="h-full w-full block shrink-0 text-primary group-hover:scale-110 transition-transform" />
-                  </div>
-
-                  <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
-                    {tile.title}
-                  </p>
+              <div className="relative flex flex-col items-center justify-center gap-2 sm:gap-3">
+                {/* ICON WRAPPER */}
+                <div className="h-10 w-10 flex items-center justify-center flex-none">
+                  <Icon className="h-full w-full block shrink-0 text-primary group-hover:scale-110 transition-transform" />
                 </div>
+
+                <p className="hidden sm:block text-sm md:text-base font-medium text-foreground text-center leading-tight">
+                  {tile.title}
+                </p>
               </div>
             </button>
           )
