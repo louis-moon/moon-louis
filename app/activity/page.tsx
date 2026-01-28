@@ -74,7 +74,7 @@ export default async function ActivityPage() {
       <AnimatedBackground />
       <Navigation />
 
-      <main className="min-h-screen pt-24 px-6 pb-20">
+      <main className="min-h-screen pt-24 px-6 pb-12 md:pb-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="animate-fade-in mb-8">
