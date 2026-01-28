@@ -156,12 +156,13 @@ export function InterestGrid() {
               key={tile.id}
               onClick={() => setSelectedId(tile.id)}
               className={cn(
-                "aspect-square bg-gradient-to-br border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 group relative overflow-hidden",
+                "aspect-square bg-gradient-to-br border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 group relative overflow-hidden leading-none appearance-none",
                 tile.color,
                 tile.borderColor,
                 selectedId === tile.id && "scale-95 opacity-50",
               )}
             >
+
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div className="relative h-full w-full flex items-center justify-center">
