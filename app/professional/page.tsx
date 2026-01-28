@@ -169,7 +169,7 @@ const internships: Company[] = [
     ],
   },
   {
-    company: "Florida Vocational Institute",
+    company: "FVI School of Nursing and Technology",
     location: "Miami, Florida",
     roles: [
       {
@@ -391,7 +391,7 @@ const seedBubbles: BubbleSeed[] = [
   },
   {
     id: "fvi",
-    label: "Florida Vocational Institute",
+    label: "FVI School of Nursing and Technology",
     diameter: 125,
     category: "internships",
     seedX: -380,
