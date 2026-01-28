@@ -314,6 +314,9 @@ const categoryStyle: Record<
 const BASE_FIELD_SIZE = 820
 const DESKTOP_STAGE_W = BASE_FIELD_SIZE * 1.35
 
+const MOBILE_FIELD_W = BASE_FIELD_SIZE * 1.15
+const MOBILE_FIELD_H = BASE_FIELD_SIZE * 1.75
+
 const seedBubbles: BubbleSeed[] = [
   {
     id: "ggc",
@@ -781,11 +784,9 @@ export default function ProfessionalPage() {
               <div
                 ref={fieldRef}
                 style={{
-                  width: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
-                  maxWidth: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
-                  height: isMobile
-                    ? BASE_FIELD_SIZE * 1.50
-                    : BASE_FIELD_SIZE * 0.75,
+                  width: isMobile ? MOBILE_FIELD_W : BASE_FIELD_SIZE * 1.35,
+                  maxWidth: isMobile ? MOBILE_FIELD_W : BASE_FIELD_SIZE * 1.35,
+                  height: isMobile ? MOBILE_FIELD_H : BASE_FIELD_SIZE * 0.75,
                 }}
                 className="
                   relative
@@ -794,7 +795,7 @@ export default function ProfessionalPage() {
                   rounded-[2.5rem]
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
-                  overflow-hidden
+                  overflow-visible md:overflow-hidden
                 "
               >
                 {/* Center glow */}
