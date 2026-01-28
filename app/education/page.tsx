@@ -652,9 +652,11 @@ export default function EducationPage() {
                   key={i}
                   className="bg-card border border-primary/40 rounded-xl p-8 transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                 >
-                  <p className="text-sm text-muted-foreground">{t.test}</p>
-                  <p className="text-3xl font-light text-primary">{t.score}</p>
-                  <p className="mt-2 text-xs text-muted-foreground">{t.detail}</p>
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm text-muted-foreground">{t.test}</p>
+                    <p className="text-3xl font-light text-primary">{t.score}</p>
+                    <p className="text-xs text-muted-foreground">{t.detail}</p>
+                  </div>
                 </div>
               ))}
             </div>
