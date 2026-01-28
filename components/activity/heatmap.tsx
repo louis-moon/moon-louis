@@ -23,8 +23,8 @@ const MOBILE_CONFIG = {
   visibleWeeks: 14, // restore fuller history
   rowGap: 5,
   colGap: 5,
-  minCell: 16,
-  maxCell: 16,
+  minCell: 14,
+  maxCell: 14,
 } as const
 
 /* ──────────────────────────────────────────────
