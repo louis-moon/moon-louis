@@ -803,6 +803,7 @@ export default function ProfessionalPage() {
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
+                  [clip-path:inset(0_round_2.5rem)]
                 "
               >
                 {/* Center glow */}
