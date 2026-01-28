@@ -94,7 +94,7 @@ export default async function ActivityPage() {
             {[
               /* LISTENING */
               <section key="listening" className="relative">
-                <div className="bg-card border border-primary/40 rounded-xl p-6 lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
+                <div className="bg-card border border-primary/40 rounded-xl p-6 h-auto lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
                   <div className="flex items-center gap-2 mb-4">
                     <Music2 className="w-4 h-4 text-primary" />
                     <h2 className="text-sm font-medium">Listening to</h2>
@@ -152,7 +152,7 @@ export default async function ActivityPage() {
 
               /* READING */
               <section key="reading" className="relative">
-                <div className="bg-card border border-primary/40 rounded-xl p-6 lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
+                <div className="bg-card border border-primary/40 rounded-xl p-6 h-auto lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
                   <div className="flex items-center gap-2 mb-4">
                     <BookOpen className="w-4 h-4 text-primary" />
                     <h2 className="text-sm font-medium">Currently reading</h2>
@@ -182,7 +182,7 @@ export default async function ActivityPage() {
 
               /* WATCHING */
               <section key="watching" className="relative">
-                <div className="bg-card border border-primary/40 rounded-xl p-6 lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
+                <div className="bg-card border border-primary/40 rounded-xl p-6 h-auto lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
                   <div className="flex items-center gap-2 mb-4">
                     <Film className="w-4 h-4 text-primary" />
                     <h2 className="text-sm font-medium">Last watched</h2>
@@ -213,7 +213,7 @@ export default async function ActivityPage() {
               /* BUILDING + MOVING */
               github && (
                 <section key="building" className="relative">
-                  <div className="bg-card border border-primary/40 rounded-xl p-6 lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
+                  <div className="bg-card border border-primary/40 rounded-xl p-6 h-auto lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-3">
                         <Code2 className="w-4 h-4 text-primary" />
