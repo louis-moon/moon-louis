@@ -9,19 +9,22 @@ type Day = {
 }
 
 /* ──────────────────────────────────────────────
-   Tunable configuration (design knobs)
+   Responsive configuration
 ────────────────────────────────────────────── */
-const HEATMAP_CONFIG = {
-  // Reduce this to 48 / 46 / 42 to “fill” the card more
-  visibleWeeks: 36,
-
-  // Spacing (px)
-  rowGap: 5, // vertical gap between cells
-  colGap: 3, // horizontal gap between weeks
-
-  // Cell size bounds (px)
-  minCell: 12,
+const DESKTOP_CONFIG = {
+  visibleWeeks: 15,
+  rowGap: 4,
+  colGap: 4,
+  minCell: 14,
   maxCell: 14,
+} as const
+
+const MOBILE_CONFIG = {
+  visibleWeeks: 14, // restore fuller history
+  rowGap: 5,
+  colGap: 5,
+  minCell: 19,
+  maxCell: 19,
 } as const
 
 /* ──────────────────────────────────────────────
@@ -53,6 +56,19 @@ function useContainerWidth<T extends HTMLElement>() {
   return { ref, width }
 }
 
+function useIsDesktop(breakpoint = 1024) {
+  const [isDesktop, setIsDesktop] = React.useState(false)
+
+  React.useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= breakpoint)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [breakpoint])
+
+  return isDesktop
+}
+
 /* ──────────────────────────────────────────────
    Heatmap
 ────────────────────────────────────────────── */
@@ -64,6 +80,9 @@ export function Heatmap({
   ariaLabel: string
 }) {
   const { ref, width } = useContainerWidth<HTMLDivElement>()
+  const isDesktop = useIsDesktop()
+
+  const CONFIG = isDesktop ? DESKTOP_CONFIG : MOBILE_CONFIG
 
   const ordered = [...days].sort((a, b) => a.date.localeCompare(b.date))
 
@@ -92,16 +111,16 @@ export function Heatmap({
     allWeeks.push(padded.slice(i, i + 7))
   }
 
-  // Keep the RIGHT edge anchored to the present
+  // Anchor RIGHT edge to present
   const weeks = allWeeks.slice(
-    Math.max(0, allWeeks.length - HEATMAP_CONFIG.visibleWeeks)
+    Math.max(0, allWeeks.length - CONFIG.visibleWeeks)
   )
 
   /* ──────────────────────────────────────────────
      Responsive sizing
   ────────────────────────────────────────────── */
   const columns = weeks.length
-  const { colGap, rowGap, minCell, maxCell } = HEATMAP_CONFIG
+  const { colGap, rowGap, minCell, maxCell } = CONFIG
 
   const cellSize = React.useMemo(() => {
     if (!width || columns === 0) return maxCell
