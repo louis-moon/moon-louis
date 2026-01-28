@@ -15,7 +15,7 @@ const DESKTOP_CONFIG = {
   visibleWeeks: 15,
   rowGap: 4,
   colGap: 4,
-  minCell: 14,
+  minCell: 12,
   maxCell: 14,
 } as const
 
@@ -23,7 +23,7 @@ const MOBILE_CONFIG = {
   visibleWeeks: 14, // restore fuller history
   rowGap: 5,
   colGap: 5,
-  minCell: 14,
+  minCell: 12,
   maxCell: 14,
 } as const
 
