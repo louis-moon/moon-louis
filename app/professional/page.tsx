@@ -777,26 +777,32 @@ export default function ProfessionalPage() {
               flex flex-col items-center
             "
           >
-              {/* Bubble Field */}
+            {/* Bubble Field (layout wrapper — controls width & bleed) */}
+            <div
+              ref={fieldRef}
+              style={{
+                width: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
+                maxWidth: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
+                height: isMobile
+                  ? BASE_FIELD_SIZE * 1.5
+                  : BASE_FIELD_SIZE * 0.75,
+              }}
+              className="
+                relative
+                mx-auto
+                -mx-6 md:mx-auto
+              "
+            >
+              {/* Visual wrapper — owns radius + clipping */}
               <div
-                ref={fieldRef}
-                style={{
-                  width: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
-                  maxWidth: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
-                  height: isMobile
-                    ? BASE_FIELD_SIZE * 1.50
-                    : BASE_FIELD_SIZE * 0.75,
-                }}
                 className="
                   relative
-                  mx-auto
+                  h-full w-full
                   p-6 md:p-8
                   rounded-[2.5rem]
                   border border-border/60
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
-
-                  -mx-6 md:mx-auto
                 "
               >
                 {/* Center glow */}
@@ -854,9 +860,9 @@ export default function ProfessionalPage() {
                     )
                   })}
                 </div>
-
               </div>
-
+            </div>
+          </div>
               {/* Legend (part of same scroll on mobile) */}
               <div className="relative mt-6 mb-4 px-6 text-xs text-muted-foreground">
                 {/* fade only on mobile */}
