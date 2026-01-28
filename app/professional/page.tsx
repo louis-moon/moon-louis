@@ -54,7 +54,7 @@ const fullTime: Company[] = [
         period: "Feb 2025 – Jan 2026",
         bullets: [
           "Originated go-to-market documents (e.g. business plan, pitch deck, project design document, project proposal) and strategy; built comprehensive database of 25k+ golf courses and ran SCEPTER model simulating carbon dioxide removal through ERW",
-          "Laid the foudnation for a digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; worked closely with founders to support grant and fellowship applications, expand team, and validate product development",
+          "Laid the foundation for a digital golf twin product: a real-time virtual replica of golf courses to save inputs, manage risk, and boost profitability; worked closely with founders to support grant and fellowship applications, expand team, and validate product development",
         ],
       },
     ],
