@@ -883,7 +883,8 @@ export default function ProfessionalPage() {
               </p>
             </div>
           </div>
-
+        </div>
+      </main>
 
       {/* Detail Modal */}
       <AnimatePresence>
