@@ -312,6 +312,7 @@ const categoryStyle: Record<
 }
 
 const BASE_FIELD_SIZE = 820
+const DESKTOP_STAGE_W = BASE_FIELD_SIZE * 1.35
 
 const seedBubbles: BubbleSeed[] = [
   {
@@ -743,11 +744,14 @@ export default function ProfessionalPage() {
       <Navigation />
 
       <main className="min-h-screen pt-20 md:pt-32 px-6 pb-24 md:pb-32">
-        <div className="max-w-7xl mx-auto">
+        <div
+          className="mx-auto w-full"
+          style={{ maxWidth: isMobile ? "100%" : DESKTOP_STAGE_W }}
+        >
 
           {/* Header */}
-          <div className="mb-8 px-0 md:px-0">
-            <div className="max-w-2xl">
+          <div className="mb-8 px-0">
+            <div>
               <div className="flex items-center gap-3 mb-5">
                 <Briefcase className="w-6 h-6 text-primary" />
                 <p className="text-sm text-muted-foreground">Experience</p>
@@ -764,17 +768,15 @@ export default function ProfessionalPage() {
           </div>
 
           {/* Bubble Experience (single scroll context on mobile) */}
-          <div className="flex justify-center">
-            <div
-              ref={viewportRef}
-              className="
-                relative
-                min-h-fit
-                overflow-visible
-                flex flex-col items-center
-                -mx-6 md:-mx-12 lg:-mx-24
-              "
-            >
+          <div
+            ref={viewportRef}
+            className="
+              relative
+              min-h-fit
+              overflow-visible
+              flex flex-col items-center
+            "
+          >
               {/* Bubble Field */}
               <div
                 ref={fieldRef}
@@ -875,7 +877,6 @@ export default function ProfessionalPage() {
               </div>
             </div>
           </div>
-        </div>
       </main>
 
       {/* Detail Modal */}
