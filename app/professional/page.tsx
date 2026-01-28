@@ -449,7 +449,7 @@ function useBubbleSimulation(
 ) {
   // --- Tuning knobs (adjust to taste) ---
   const padding = isMobile ? 96 : 26
-  const edgePaddingX = isMobile ? 32 : 28
+  const edgePaddingX = isMobile ? 20 : 28
   const edgePaddingY = isMobile ? 56 : 48
   const maxSpeed = isMobile ? 0.55 : 0.65
   const FLOAT_PHASE_MS = isMobile ? 3000 : 2500      // pure float, no attraction
@@ -796,7 +796,7 @@ export default function ProfessionalPage() {
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
 
-                  -mx-12 md:mx-auto
+                  -mx-6 md:mx-auto
                 "
               >
                 {/* Center glow */}
