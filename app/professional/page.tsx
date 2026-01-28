@@ -743,7 +743,7 @@ export default function ProfessionalPage() {
       <AnimatedBackground />
       <Navigation />
 
-      <main className="min-h-screen pt-20 md:pt-32 px-6 pb-24 md:pb-32">
+      <main className="min-h-screen pt-20 md:pt-32 px-6 pb-12 md:pb-32">
         <div
           className="mx-auto w-full"
           style={{ maxWidth: isMobile ? "100%" : DESKTOP_STAGE_W }}
@@ -784,7 +784,7 @@ export default function ProfessionalPage() {
                 width: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
                 maxWidth: isMobile ? "100%" : BASE_FIELD_SIZE * 1.35,
                 height: isMobile
-                  ? BASE_FIELD_SIZE * 1.75
+                  ? BASE_FIELD_SIZE * 1.65
                   : BASE_FIELD_SIZE * 0.75,
               }}
               className="
