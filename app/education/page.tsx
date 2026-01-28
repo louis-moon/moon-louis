@@ -479,7 +479,7 @@ export default function EducationPage() {
                   <div className="space-y-2">
                     {edu.highlights.map((h, j) => (
                       <div className="flex gap-3">
-                        <span className="mt-[0.6em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
+                        <span className="mt-[0.45em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="text-xs text-muted-foreground leading-relaxed">
                           {h}
                         </p>
@@ -563,7 +563,7 @@ export default function EducationPage() {
                   <ul className="space-y-3">
                     {item.bullets.map((b, j) => (
                       <li key={j} className="flex gap-3">
-                        <span className="mt-[0.6em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
+                        <span className="mt-[0.45em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="text-sm text-muted-foreground leading-relaxed">
                           {b}
                         </p>
@@ -594,7 +594,7 @@ export default function EducationPage() {
                   <ul className="space-y-3">
                     {card.bullets.map((b, j) => (
                       <li key={j} className="flex gap-3">
-                        <span className="mt-[0.6em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
+                        <span className="mt-[0.45em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="flex-1 text-sm text-muted-foreground leading-relaxed break-words">
                           {b}
                         </p>
