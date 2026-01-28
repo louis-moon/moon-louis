@@ -1,4 +1,8 @@
 // components/activity/heatmap.tsx
+"use client"
+
+import * as React from "react"
+
 type Day = {
   date: string // YYYY-MM-DD
   value: number
@@ -12,6 +16,27 @@ function level(v: number) {
   return 4
 }
 
+/* ──────────────────────────────────────────────
+   Resize observer hook
+────────────────────────────────────────────── */
+function useContainerWidth<T extends HTMLElement>() {
+  const ref = React.useRef<T | null>(null)
+  const [width, setWidth] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!ref.current) return
+
+    const ro = new ResizeObserver(([entry]) => {
+      setWidth(entry.contentRect.width)
+    })
+
+    ro.observe(ref.current)
+    return () => ro.disconnect()
+  }, [])
+
+  return { ref, width }
+}
+
 export function Heatmap({
   days,
   ariaLabel,
@@ -19,8 +44,8 @@ export function Heatmap({
   days: Day[]
   ariaLabel: string
 }) {
-  // Expect days to cover a contiguous range. Render as weeks (columns) × 7 (rows).
-  // We'll pad at the beginning so the first column starts on Sunday.
+  const { ref, width } = useContainerWidth<HTMLDivElement>()
+
   const ordered = [...days].sort((a, b) => a.date.localeCompare(b.date))
 
   if (ordered.length === 0) {
@@ -31,12 +56,14 @@ export function Heatmap({
     )
   }
 
+  /* ──────────────────────────────────────────────
+     Normalize into weeks × 7 days
+  ────────────────────────────────────────────── */
   const start = new Date(ordered[0].date + "T00:00:00")
-  const startDow = start.getUTCDay() // 0..6 (Sun..Sat)
+  const startDow = start.getUTCDay() // Sun = 0
 
   const padded: Day[] = []
   for (let i = 0; i < startDow; i++) {
-    // pad “empty” days before start
     padded.push({ date: `pad-${i}`, value: 0 })
   }
   padded.push(...ordered)
@@ -46,43 +73,82 @@ export function Heatmap({
     weeks.push(padded.slice(i, i + 7))
   }
 
+  /* ──────────────────────────────────────────────
+     Responsive sizing
+  ────────────────────────────────────────────── */
+  const columns = weeks.length
+  const gap = 6 // px (matches gap-1.5)
+  const MIN_CELL = 6
+  const MAX_CELL = 14
+
+  const cellSize = React.useMemo(() => {
+    if (!width || columns === 0) return MAX_CELL
+
+    const totalGap = gap * (columns - 1)
+    const raw = Math.floor((width - totalGap) / columns)
+
+    return Math.max(MIN_CELL, Math.min(MAX_CELL, raw))
+  }, [width, columns])
+
+  const needsScroll = cellSize === MIN_CELL
+
   return (
-    <div aria-label={ariaLabel} role="img" className="w-full">
-      <div className="flex gap-1.5 overflow-x-auto horizontal-scroll pb-2">
-        {weeks.map((week, wi) => (
-          <div key={wi} className="flex flex-col gap-1.5">
-            {Array.from({ length: 7 }).map((_, di) => {
-              const d = week[di]
-              const v = d?.value ?? 0
-              const lv = level(v)
+    <div
+      ref={ref}
+      aria-label={ariaLabel}
+      role="img"
+      className="w-full min-w-0"
+    >
+      <div
+        className={`${
+          needsScroll ? "overflow-x-auto" : "overflow-x-hidden"
+        } pb-2`}
+      >
+        <div
+          className="flex min-w-max"
+          style={{ gap: `${gap}px` }}
+        >
+          {weeks.map((week, wi) => (
+            <div
+              key={wi}
+              className="flex flex-col"
+              style={{ gap: `${gap}px` }}
+            >
+              {Array.from({ length: 7 }).map((_, di) => {
+                const d = week[di]
+                const v = d?.value ?? 0
+                const lv = level(v)
 
-              // Keep colors consistent with your theme: use primary/secondary + opacity.
-              // (No explicit hex colors.)
-              const cls =
-                lv === 0
-                  ? "bg-muted"
-                  : lv === 1
-                    ? "bg-primary/20"
-                    : lv === 2
-                      ? "bg-primary/35"
-                      : lv === 3
-                        ? "bg-primary/55"
-                        : "bg-primary/75"
+                const cls =
+                  lv === 0
+                    ? "bg-muted"
+                    : lv === 1
+                      ? "bg-primary/20"
+                      : lv === 2
+                        ? "bg-primary/35"
+                        : lv === 3
+                          ? "bg-primary/55"
+                          : "bg-primary/75"
 
-              return (
-                <div
-                  key={di}
-                  className={`h-3.5 w-3.5 rounded-[4px] border border-border ${cls}`}
-                  title={
-                    d?.date?.startsWith("pad-")
-                      ? ""
-                      : `${d?.date}: ${v}`
-                  }
-                />
-              )
-            })}
-          </div>
-        ))}
+                return (
+                  <div
+                    key={di}
+                    className={`rounded-[4px] border border-border ${cls}`}
+                    style={{
+                      width: `${cellSize}px`,
+                      height: `${cellSize}px`,
+                    }}
+                    title={
+                      d?.date?.startsWith("pad-")
+                        ? ""
+                        : `${d?.date}: ${v}`
+                    }
+                  />
+                )
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

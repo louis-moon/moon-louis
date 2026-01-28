@@ -213,7 +213,7 @@ export default async function ActivityPage() {
               /* BUILDING + MOVING */
               github && (
                 <section key="building" className="relative">
-                  <div className="bg-card border border-primary/40 rounded-xl p-6 h-auto lg:h-[580px] flex flex-col transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/10">
+                  <div className="bg-card border border-primary/40 rounded-xl p-6 h-auto lg:h-[580px] flex flex-col min-w-0 transition-all ...">
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-3">
                         <Code2 className="w-4 h-4 text-primary" />
@@ -255,9 +255,8 @@ export default async function ActivityPage() {
                 </section>
               ),
             ].filter(Boolean).map((card, i, arr) => (
-              <div key={i} className="relative">
+              <div key={i} className="relative min-w-0">
                 {card}
-                {/* Horizontal connector — desktop only, not last card */}
                 {i < arr.length - 1 && (
                   <span className="hidden lg:block absolute top-1/2 right-[-24px] w-6 h-px bg-primary/30 rounded-full" />
                 )}
