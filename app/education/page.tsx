@@ -478,8 +478,8 @@ export default function EducationPage() {
 
                   <div className="space-y-2">
                     {edu.highlights.map((h, j) => (
-                      <div key={j} className="flex items-start gap-3">
-                        <span className="mt-1.5 w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
+                      <div className="flex gap-3">
+                        <span className="mt-[0.6em] w-1.25 h-1.25 flex-shrink-0 rounded-full bg-primary/30" />
                         <p className="text-xs text-muted-foreground leading-relaxed">
                           {h}
                         </p>
