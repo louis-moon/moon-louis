@@ -796,7 +796,7 @@ export default function ProfessionalPage() {
                   bg-gradient-to-b from-blue-500/6 via-transparent to-indigo-500/6
                   overflow-hidden
 
-                  -mx-6 md:mx-auto
+                  -mx-12 md:mx-auto
                 "
               >
                 {/* Center glow */}
