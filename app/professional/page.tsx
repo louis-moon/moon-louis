@@ -862,30 +862,28 @@ export default function ProfessionalPage() {
                 </div>
               </div>
             </div>
-          </div>
-              {/* Legend (part of same scroll on mobile) */}
-              <div className="relative mt-6 mb-4 px-6 text-xs text-muted-foreground">
-                {/* fade only on mobile */}
-                <div className="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-background to-transparent md:hidden" />
-                <div className="relative flex flex-wrap items-center gap-3 justify-center">
-                  <LegendPill label="Full-time" category="fullTime" />
-                  <LegendPill label="Projects" category="projects" />
-                  <LegendPill label="Internships" category="internships" />
-                  <LegendPill label="Volunteering" category="volunteering" />
-                </div>
 
-                <p className="mt-3 text-center text-xs text-muted-foreground">
-                  <span className="hidden md:inline">
-                    Click a bubble to explore details.
-                  </span>
-                  <span className="md:hidden">
-                    Tap a bubble to explore details.
-                  </span>
-                </p>
+            {/* Legend (part of same scroll context) */}
+            <div className="relative mt-6 mb-4 px-6 text-xs text-muted-foreground">
+              <div className="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-background to-transparent md:hidden" />
+              <div className="relative flex flex-wrap items-center gap-3 justify-center">
+                <LegendPill label="Full-time" category="fullTime" />
+                <LegendPill label="Projects" category="projects" />
+                <LegendPill label="Internships" category="internships" />
+                <LegendPill label="Volunteering" category="volunteering" />
               </div>
+
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                <span className="hidden md:inline">
+                  Click a bubble to explore details.
+                </span>
+                <span className="md:hidden">
+                  Tap a bubble to explore details.
+                </span>
+              </p>
             </div>
           </div>
-      </main>
+
 
       {/* Detail Modal */}
       <AnimatePresence>
